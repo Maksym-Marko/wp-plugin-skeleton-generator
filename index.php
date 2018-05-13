@@ -1,158 +1,213 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WP Plugin Sceleton Generator</title>
 
-final class MxGeneratePluginStructure
-{
+	<link rel="stylesheet" href="access/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="access/css/style.css" />
 
-	public $scan_dir;
+</head>
+<body>
 
-	public function __construct( $dir )
-	{
+<div class="container">
+  <div class="text-center">        
+    <h2>Create a new skeleton of a plugin</h2>
+    <p class="lead">To create a skeleton for a plugin, you need to specify some information.</p>
+    <p class="lead">All fields placed lower are mandatory.</p>
+  </div>
 
-		$this->scan_dir = $dir;
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Required information</h4>
+      <form class="needs-validation" id="mxFormCreateSceleton">
+        <div class="row">
+          <div class="col-md-12">
+            <label for="pluginName">Plugin name:</label>
+            <input type="text" class="form-control" id="pluginName" name="plugin_name" placeholder="" value="" />
+            <div class="invalid-feedback">
+              Valid plugin name is required.
+            </div>
+          </div>
 
-	}
+          <div class="col-md-12 mt-3">
+            <label for="briefDescription">Brief description:</label>
+		        <textarea class="form-control" rows="5" id="briefDescription" name="brief_description"></textarea>
+            <div class="invalid-feedback">
+              Valid brief description is required.
+            </div>
+            <div class="mx-min_length"></div>
+          </div>
 
-	/*
-	* Generate a new Plugin
-	*/
-	public function generatePlugin()
-	{
+          <div class="col-md-12 mt-3">
+            <label for="longDescription">Long description:</label>
+		        <textarea class="form-control" rows="5" id="longDescription" name="long_description"></textarea>
+            <div class="invalid-feedback">
+              Valid long description is required.
+            </div>
+            <div class="mx-min_length"></div>
+          </div>
 
-		// run mx_scan_dir function
-		$this->mx_scan_dir( $this->scan_dir );
+          <div class="col-md-12 mt-3">            
+            <label for="contributors">Contributors <span class="text-muted">(this should be a list of wordpress.org userid's)</span>:</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="contributors" name="contributors" placeholder="Contributors" />
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your contributors is required.
+                </div>
+            </div>
+          </div>
 
-	}
+          <div class="col-md-12 mt-3">
+            <label for="pluginURI">Plugin URI <span class="text-muted">(example: https://github.com/Maxim-us/wp-plugin-skeleton):</span></label>
+            <input type="url" class="form-control" id="pluginURI" name="plugin_uri" placeholder="" value="" />
+            <div class="invalid-feedback">
+              Valid plugin URI is required.
+            </div>
+          </div>
 
-	/*
-	* This function checks a particular directory
-	*/
-	public function mx_scan_dir( $dir )
-	{
+          <div class="col-md-12 mt-3">
+            <label for="author">Author <span class="text-muted">(example: Marko Maksym):</span></label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="" value="" />
+            <div class="invalid-feedback">
+              Valid Author is required.
+            </div>
+          </div>
 
-		$current_dirs = scandir( $dir );
+		      <div class="col-md-12 mt-3">
+            <label for="authorURI">Author URI <span class="text-muted">(example: https://github.com/Maxim-us):</span></label>
+            <input type="url" class="form-control" id="authorURI" name="author_uri" placeholder="" value="" />
+            <div class="invalid-feedback">
+              Valid Author URI is required.
+            </div>
+          </div>              
 
-		// create dir if is not exists
-		$this->mx_create_dir( $dir );
-		
-		// each of all folders and files
-		foreach ( $current_dirs as $key => $value ) {
+        </div>
 
-			// exclude '.', '..'
-			if( ! in_array( $value, array( '.', '..' ) ) ) :
+        <hr class="mb-4">
 
-				// find fiels
-				if( $this->mx_is_file( $value ) ) :					
+        <button class="btn btn-primary float-right" type="submit">Create a new skeleton of a plugin</button>
 
-					// create file
-					$this->create_plugin_file( $dir . $value );
+      </form>
+    </div>
+  </div>
 
-				// find directories
-				else :
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2018 WP Plugin Sceleton Generator</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-sceleton-generator" target="_blank">Github</a></li>
+      <li class="list-inline-item"><a href="https://github.com/Maxim-us" target="_blank">Marko Maksym</a></li>
+    </ul>
+  </footer>
+</div>
 
-					$this->mx_scan_dir( $dir . $value . '/' );
+<script src="access/js/jquery-3.3.1.min.js"></script>
+<script>
 
-				endif;
+$( document ).ready( function(){
 
-			endif;
+  // submit
+  $( '#mxFormCreateSceleton' ).on( 'submit', function( e ){
 
-		}
+    e.preventDefault();
 
-	}
+    var notSubmitted = [];
 
-	/*
-	* This function checks the current item. Return true if an element is a file
-	*/
-	public function mx_is_file( $obj )
-	{
+    $( this ).find( 'input, textarea' ).each( function(){
 
-		// check MIME type
-		$list_mime_type = array( 
+      // check empty
+      //mxCheckEmpty( $( this ) );
 
-			'.php',
-			'.js',
-			'.css',
-			'.txt',
-			'.jpg',
-			'.png',
-			'.otf',
-			'.eot',
-			'.svg',
-			'.ttf',
-			'.woff',
-			'.woff2',
+      if( $( this ).attr( 'data-not-submitted' ) === 'true' ){
 
-		);
+        notSubmitted.push( 'true' );
 
-		foreach ( $list_mime_type as $item_mime_type ) {
-			
-			if( strpos( $obj, $item_mime_type ) ) :
+      }
 
-				return true;
+    } );
 
-				break;
+    // AJAX
+    var _this = $( this );
 
-			endif;
+    setTimeout( function(){
 
-		}
+      if( notSubmitted.length === 0 ){        
 
-		return false;
+        mxPostData( _this.serialize() );
 
-	}
+      }      
 
-	/*
-	* This function creates a file and writes into it special information
-	*/
-	public function create_plugin_file( $input_file )
-	{
+    },1000 );   
 
-		$input = $input_file;
+  } );
 
-		// Prepare the file for creation
-		$output = str_replace( 'input', 'output', $input );
+  // change
+  $( 'input, textarea' ).each( function(){
 
-		// Get data from the source
-		$current_content = file_get_contents($input);
+    $( this ).on( 'change', function(){
 
-		// Replace the flags with a unique string (UPC)
-		$current_modify_unique_str_uk = str_replace( '|UNIQUESTRING|', 'WWWWWW', $current_content );
+      // check empty
+      mxCheckEmpty( $( this ) );   
 
-		// Replace the flags with a unique string (LOWC)
-		$current_modify_unique_str_lk = str_replace( '|uniquestring|', 'wwwwww', $current_modify_unique_str_uk );
+    } );
 
-		// Create a unique class name
-		$current_modify_unique_class_name = str_replace( '|UniqueClassMame|', 'UniqueClassName', $current_modify_unique_str_lk );
+  } );
 
-		// Write the name of the table in the uninstall.php file |table_slug| wwwwww_table_slug
-		$current_create_unique_table_slug = str_replace( '|table_slug|', 'wwwwww_table_slug', $current_modify_unique_class_name );
+  // paste
+  $( 'input, textarea' ).each( function(){
 
-		// finish file
-		$final_version = $current_create_unique_table_slug;
+    $( this ).on( 'paste', function(){
 
-		// create file
-		file_put_contents( $output, $final_version );
+      // check empty
+      mxCheckEmpty( $( this ) );   
 
-	}
+    } );
 
-	/*
-	* Create new folder
-	*/ 
-	public function mx_create_dir( $dir )
-	{
+  } );
 
-		$dir_in_output = str_replace( 'input', 'output', $dir );
+} );
 
-		// if the dir exists, return
-		if( !file_exists( $dir_in_output ) ) :
+// check empty
+function mxCheckEmpty( _this ){
 
-			mkdir( $dir_in_output, 0777, true );
+  if( _this.val().length === 0 ){
 
-		endif;
+    _this.addClass( 'mx-border_red' );
 
-	}
+    _this.next( '.invalid-feedback' ).addClass( 'mx-db' );        
+
+    // not submitted
+    _this.attr( 'data-not-submitted', 'true' );
+
+  } else{
+
+    _this.removeClass( 'mx-border_red' );
+
+    _this.next( '.invalid-feedback' ).removeClass( 'mx-db' );
+
+    // is submitted
+    _this.removeAttr( 'data-not-submitted' );
+
+  }
 
 }
 
-// new instance
-$new_instance = new MxGeneratePluginStructure( 'generate/input/' );
+// $.post
+function mxPostData( serialize ){
 
-$new_instance->generatePlugin();
+  $.post( "generate.php", serialize, function( data ) {
+
+    //console.log( 'Created!' );
+    console.log( data );
+
+  } );
+
+}
+
+</script>
+	
+</body>
+</html>

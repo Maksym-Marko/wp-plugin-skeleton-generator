@@ -1,0 +1,11 @@
+.mx-min_length,
+.invalid-feedback{
+	color: red;
+	font-size: 12px;
+}
+.mx-border_red{
+	border: 1px solid red;
+}
+.mx-db{
+	display: block;
+}
