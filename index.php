@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>WP Plugin Sceleton Generator</title>
 
-	<link rel="stylesheet" href="access/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="access/css/bootstrap.min.css" />
   <link rel="stylesheet" href="access/css/style.css" />
 
 </head>
@@ -62,7 +62,7 @@
           </div>
 
           <div class="col-md-12 mt-3">
-            <label for="pluginURI">Plugin URI <span class="text-muted">(example: https://github.com/Maxim-us/wp-plugin-skeleton):</span></label>
+            <label for="pluginURI">Plugin URI <span class="text-muted">(example: https://github.com/Maxim-us/wp-plugin-skeleton)</span>:</label>
             <input type="url" class="form-control" id="pluginURI" name="plugin_uri" placeholder="" value="" />
             <div class="invalid-feedback">
               Valid plugin URI is required.
@@ -70,7 +70,7 @@
           </div>
 
           <div class="col-md-12 mt-3">
-            <label for="author">Author <span class="text-muted">(example: Marko Maksym):</span></label>
+            <label for="author">Author <span class="text-muted">(example: Marko Maksym)</span>:</label>
             <input type="text" class="form-control" id="author" name="author" placeholder="" value="" />
             <div class="invalid-feedback">
               Valid Author is required.
@@ -78,7 +78,7 @@
           </div>
 
 		      <div class="col-md-12 mt-3">
-            <label for="authorURI">Author URI <span class="text-muted">(example: https://github.com/Maxim-us):</span></label>
+            <label for="authorURI">Author URI <span class="text-muted">(example: https://github.com/Maxim-us)</span>:</label>
             <input type="url" class="form-control" id="authorURI" name="author_uri" placeholder="" value="" />
             <div class="invalid-feedback">
               Valid Author URI is required.
@@ -105,109 +105,7 @@
 </div>
 
 <script src="access/js/jquery-3.3.1.min.js"></script>
-<script>
-
-$( document ).ready( function(){
-
-  // submit
-  $( '#mxFormCreateSceleton' ).on( 'submit', function( e ){
-
-    e.preventDefault();
-
-    var notSubmitted = [];
-
-    $( this ).find( 'input, textarea' ).each( function(){
-
-      // check empty
-      //mxCheckEmpty( $( this ) );
-
-      if( $( this ).attr( 'data-not-submitted' ) === 'true' ){
-
-        notSubmitted.push( 'true' );
-
-      }
-
-    } );
-
-    // AJAX
-    var _this = $( this );
-
-    setTimeout( function(){
-
-      if( notSubmitted.length === 0 ){        
-
-        mxPostData( _this.serialize() );
-
-      }      
-
-    },1000 );   
-
-  } );
-
-  // change
-  $( 'input, textarea' ).each( function(){
-
-    $( this ).on( 'change', function(){
-
-      // check empty
-      mxCheckEmpty( $( this ) );   
-
-    } );
-
-  } );
-
-  // paste
-  $( 'input, textarea' ).each( function(){
-
-    $( this ).on( 'paste', function(){
-
-      // check empty
-      mxCheckEmpty( $( this ) );   
-
-    } );
-
-  } );
-
-} );
-
-// check empty
-function mxCheckEmpty( _this ){
-
-  if( _this.val().length === 0 ){
-
-    _this.addClass( 'mx-border_red' );
-
-    _this.next( '.invalid-feedback' ).addClass( 'mx-db' );        
-
-    // not submitted
-    _this.attr( 'data-not-submitted', 'true' );
-
-  } else{
-
-    _this.removeClass( 'mx-border_red' );
-
-    _this.next( '.invalid-feedback' ).removeClass( 'mx-db' );
-
-    // is submitted
-    _this.removeAttr( 'data-not-submitted' );
-
-  }
-
-}
-
-// $.post
-function mxPostData( serialize ){
-
-  $.post( "generate.php", serialize, function( data ) {
-
-    //console.log( 'Created!' );
-    console.log( data );
-
-  } );
-
-}
-
-</script>
+<script src="access/js/main.js"></script>
 	
 </body>
 </html>

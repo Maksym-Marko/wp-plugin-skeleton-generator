@@ -3,12 +3,58 @@
 final class MxGeneratePluginStructure
 {
 
+	// directory with source code
 	public $scan_dir;
 
-	public function __construct( $dir )
-	{
+	// plugin name
+	public $plugin_name;
 
-		$this->scan_dir = $dir;
+	// unique string (upper case)
+	public $uniquestring_upc;
+
+	// Unique string (upper case)
+	public $uniquestring_lowc;
+
+	// unique string (lowercase)
+	public $unique_class_name;
+
+	// main file name
+	public $main_file_name;
+
+	// brief description
+	public $brief_description;
+
+	// long description
+	public $long_description;
+
+	// contributors
+	public $contributors;
+
+	// plugin URL
+	public $plugin_uri;
+
+	// author's name
+	public $author;
+
+	// author URL
+	public $author_uri;
+
+	// constructor
+	public function __construct( $array_vars, $dir )
+	{
+		
+		$this->plugin_name 			= $array_vars['plugin_name'];
+		$this->uniquestring_upc 	= $array_vars['uniquestring_upc'];
+		$this->uniquestring_lowc 	= $array_vars['uniquestring_lowc'];
+		$this->unique_class_name 	= $array_vars['unique_class_name'];
+		$this->main_file_name 		= $array_vars['main_file_name'];
+		$this->brief_description 	= $array_vars['brief_description'];
+		$this->long_description 	= $array_vars['long_description'];
+		$this->contributors 		= $array_vars['contributors'];
+		$this->plugin_uri 			= $array_vars['plugin_uri'];
+		$this->author 				= $array_vars['author'];
+		$this->author_uri 			= $array_vars['author_uri'];
+		$this->scan_dir 			= $dir;
 
 	}
 
@@ -20,6 +66,7 @@ final class MxGeneratePluginStructure
 
 		// run mx_scan_dir function
 		$this->mx_scan_dir( $this->scan_dir );
+
 
 	}
 
@@ -107,25 +154,66 @@ final class MxGeneratePluginStructure
 		$input = $input_file;
 
 		// Prepare the file for creation
-		$output = str_replace( 'input', 'output', $input );
+		if( $input == 'generate/input/wp-plugin-skeleton.php' ) :
+
+			$output = 'generate/output/' . $this->main_file_name . '/' . $this->main_file_name . '.php';
+
+		else :
+
+			$output = str_replace( 'input', 'output/' . $this->main_file_name, $input );
+
+		endif;
 
 		// Get data from the source
 		$current_content = file_get_contents($input);
 
 		// Replace the flags with a unique string (UPC)
-		$current_modify_unique_str_uk = str_replace( '|UNIQUESTRING|', 'WWWWWW', $current_content );
+		$current_modify_unique_str_upc = str_replace( '|UNIQUESTRING|', $this->uniquestring_upc, $current_content );
 
 		// Replace the flags with a unique string (LOWC)
-		$current_modify_unique_str_lk = str_replace( '|uniquestring|', 'wwwwww', $current_modify_unique_str_uk );
+		$current_modify_unique_str_lowc = str_replace( '|uniquestring|', $this->uniquestring_lowc, $current_modify_unique_str_upc );
 
 		// Create a unique class name
-		$current_modify_unique_class_name = str_replace( '|UniqueClassMame|', 'UniqueClassName', $current_modify_unique_str_lk );
+		$current_modify_unique_class_name = str_replace( '|UniqueClassName|', $this->unique_class_name, $current_modify_unique_str_lowc );
 
-		// Write the name of the table in the uninstall.php file |table_slug| wwwwww_table_slug
-		$current_create_unique_table_slug = str_replace( '|table_slug|', 'wwwwww_table_slug', $current_modify_unique_str_lk );
+		// Write the name of the table in the uninstall.php file
+		$current_create_unique_table_slug = str_replace( '|table_slug|', $this->uniquestring_lowc . '_table_slug', $current_modify_unique_class_name );
+
+		// plugin name		
+		$current_create_plugin_name = str_replace( '|Plugin Name|', $this->plugin_name, $current_create_unique_table_slug );
+
+		// main file name
+		$current_create_main_file_name = str_replace( 'wp-plugin-skeleton', $this->main_file_name, $current_create_plugin_name );
+
+		// brief description
+		$current_create_brief_description = str_replace( '|Brief description|', $this->brief_description, $current_create_main_file_name );
+
+		// long description
+		$current_create_long_description = str_replace( '|Long description|', $this->long_description, $current_create_brief_description );
+
+		// contributors
+		$current_create_contributors = str_replace( '|Contributors|', $this->contributors, $current_create_long_description );
+
+		// plugin URL
+		$current_create_plugin_uri = str_replace( '|Plugin URI|', $this->plugin_uri, $current_create_contributors );
+
+		// author
+		$current_create_author = str_replace( '|Author|', $this->author, $current_create_plugin_uri );
+
+		// author URL
+		$current_create_author_uri = str_replace( '|Author URI|', $this->author_uri, $current_create_author );
+
+		// unique menu slug
+		$current_create_menu_slug = str_replace( '|unique_menu_slug|', $this->uniquestring_lowc . '-' . $this->main_file_name . '-menu', $current_create_author_uri );
+
+		// unique submenu slug
+		$current_create_submenu_slug = str_replace( '|unique_submenu_slug|', $this->uniquestring_lowc . '-' . $this->main_file_name . '-submenu', $current_create_menu_slug );
+
+		// final appearance
+		$mx_final = $current_create_submenu_slug;
 
 		// create file
-		file_put_contents( $output, $current_modify_unique_class_name );
+		file_put_contents( $output, $mx_final );
 
 	}
 
@@ -135,7 +223,7 @@ final class MxGeneratePluginStructure
 	public function mx_create_dir( $dir )
 	{
 
-		$dir_in_output = str_replace( 'input', 'output', $dir );
+		$dir_in_output = str_replace( 'input', 'output/' . $this->main_file_name, $dir );
 
 		if( !file_exists( $dir_in_output ) ) :
 
@@ -147,16 +235,23 @@ final class MxGeneratePluginStructure
 
 }
 
+// if $_POST is empty
+if( empty( $_POST) ) :
+
+	die( 'Nothing sent!' );
+
+endif;
+
 // Checking for empty value
-// foreach( $_POST as $key => $value ) :
+foreach( $_POST as $key => $value ) :
 
-// 	if( empty( $value) ) :
+	if( empty( $value) ) :
 
-// 		die( 'All fields are required!' );
+		die( 'All fields are required!' );
 
-// 	endif;
+	endif;
 
-// endforeach;
+endforeach;
 
 // create a list of vars
 $plugin_name = preg_replace( '/[^A-Za-z0-9\-|\s]/', '', $_POST['plugin_name'] );
@@ -177,7 +272,13 @@ $uniquestring_upc = strtoupper( $uniquestring );
 $uniquestring_lowc = strtolower( $uniquestring );
 
 // unique class name
-$unique_class_name = '';
+$unique_class_name = $uniquestring_upc;
+
+foreach( $arr_words as $key => $value ) :
+
+	$unique_class_name .= ucfirst( $value );
+
+endforeach;
 
 // main file name
 $main_file_name = strtolower( str_replace( ' ', '-', $plugin_name) );
@@ -194,8 +295,24 @@ $author = $_POST['author'];
 
 $author_uri = $_POST['author_uri'];
 
+// array vars
+$array_vars = array(
+
+	'plugin_name' 		=> $plugin_name,
+	'uniquestring_upc'	=> $uniquestring_upc,
+	'uniquestring_lowc'	=> $uniquestring_lowc,
+	'unique_class_name'	=> $unique_class_name,
+	'main_file_name'	=> $main_file_name,
+	'brief_description'	=> $brief_description,
+	'long_description'	=> $long_description,
+	'contributors'		=> $contributors,
+	'plugin_uri'		=> $plugin_uri,
+	'author'			=> $author,
+	'author_uri'		=> $author_uri
+
+);
+
 // new instance
-$new_instance = new MxGeneratePluginStructure( 'generate/input/' );
+$new_instance = new MxGeneratePluginStructure( $array_vars, 'generate/input/' );
 
-// $new_instance->generatePlugin();
-
+$new_instance->generatePlugin();
