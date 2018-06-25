@@ -16,12 +16,14 @@ class |UNIQUESTRING|AdminMain
 
 		$this->plugin_name = |UNIQUESTRING|_PLUGN_BASE_NAME;
 
+		$this->|uniquestring|_include();
+
 	}
 
 	/*
 	* Include the necessary basic files for the admin panel
 	*/
-	public function include()
+	public function |uniquestring|_include()
 	{
 
 		// require database-talk class
@@ -61,7 +63,7 @@ class |UNIQUESTRING|AdminMain
 		public function add_admin_pages()
 		{
 
-			add_menu_page( 'Title of the page', 'Link Name', 'manage_options', '|unique_menu_slug|', array( $this, 'admin_index' ), '|icon|', 111 ); // icons https://developer.wordpress.org/resource/dashicons/#id
+			add_menu_page( 'Title of the page', 'Link Name', 'manage_options', '|unique_menu_slug|', array( $this, 'admin_index' ), 'dashicons-image-filter', 111 ); // icons https://developer.wordpress.org/resource/dashicons/#id
 
 			// add submenu
 			add_submenu_page( '|unique_menu_slug|', 'Submenu title', 'Submenu item', 'manage_options', '|unique_submenu_slug|', array( $this, 'page_distributor' ) );

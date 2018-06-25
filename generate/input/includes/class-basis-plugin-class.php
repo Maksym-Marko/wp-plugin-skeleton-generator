@@ -12,6 +12,9 @@ class |UNIQUESTRING|BasisPluginClass
 	public static function activate()
 	{
 
+		// set option for rewrite rules CPT
+		self::create_option_for_activation();
+
 		// Create table
 		global $wpdb;
 
@@ -23,7 +26,7 @@ class |UNIQUESTRING|BasisPluginClass
 			$sql = "CREATE TABLE IF NOT EXISTS `$table_name`
 			(
 				`id` int(11) NOT NULL AUTO_INCREMENT,
-				`post_id` varchar(40) NOT NULL,
+				`some_field` varchar(40) NOT NULL,
 				PRIMARY KEY (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=$wpdb->charset AUTO_INCREMENT=1;";
 
@@ -35,19 +38,29 @@ class |UNIQUESTRING|BasisPluginClass
 				$table_name,
 
 				array(
-					'post_id' => 0,
+					'some_field' => 'Some string.',
 				)
 
 			);
 		}
+
+	}
+
+	public static function deactivate()
+	{
 
 		// Rewrite rules
 		flush_rewrite_rules();
 
 	}
 
-	public static function deactivate()
+	/*
+	* This function sets the option in the table for CPT rewrite rules
+	*/
+	public static function create_option_for_activation()
 	{
+
+		add_option( '|uniquestring|_flush_rewrite_rules', 'go_flush_rewrite_rules' );
 
 	}
 

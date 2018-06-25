@@ -4,18 +4,21 @@ jQuery( document ).ready( function( $ ){
 
 		e.preventDefault();
 
-		var nonce = $( '#|uniquestring|_wpnonce' ).val();
+		var nonce = $( this ).find( '#|uniquestring|_wpnonce' ).val();
+
+		var someString = $( '#|uniquestring|_some_string' ).val();
 
 		var data = {
 
 			'action': '|uniquestring|_update',
-			'nonce': nonce
+			'nonce': nonce,
+			'|uniquestring|_some_string': someString
 
 		};
 
 		jQuery.post( ajaxurl, data, function( response ){
 
-			alert( 'Changes saved!' );
+			console.log( response );
 
 		} );
 

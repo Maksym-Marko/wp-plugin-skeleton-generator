@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<form id="|uniquestring|_form_update" class="mx-settings" method="post" action="">
 
 		<h2>Default script</h2>
-		<textarea name="|uniquestring|_script_body" id="|uniquestring|_script_body"><?php echo |uniquestring|_select_script(); ?></textarea>
+		<textarea name="|uniquestring|_some_string" id="|uniquestring|_some_string"><?php echo |uniquestring|_select_script(); ?></textarea>
 
 		<p class="mx-submit_button_wrap">
 			<input type="hidden" id="|uniquestring|_wpnonce" name="|uniquestring|_wpnonce" value="<?php echo wp_create_nonce( '|uniquestring|_nonce_request' ) ;?>" />

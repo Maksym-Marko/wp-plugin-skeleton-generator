@@ -53,6 +53,12 @@ final class |UniqueClassName|
 		// Part of the Administrator
 		require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes\admin\class-admin-main.php';
 
+		/*
+		* CPT class
+		* If you do not need CPT, delete the line below
+		*/
+		require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes\admin\class-cpt-talk.php';
+
 	}
 
 	// Define function

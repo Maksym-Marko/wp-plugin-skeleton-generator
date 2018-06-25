@@ -21,8 +21,8 @@ function |uniquestring|_select_script() {
 
 	$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
-	$get_scripts_string = $wpdb->get_row( "SELECT script FROM $table_name WHERE id = 1" );
+	$get_scripts_string = $wpdb->get_row( "SELECT some_field FROM $table_name WHERE id = 1" );
 
-	return $get_scripts_string->script; // The 'script' string is variable
+	return $get_scripts_string->some_field; // The 'some_field' string is variable
 
 }

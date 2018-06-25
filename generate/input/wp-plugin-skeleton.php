@@ -49,7 +49,7 @@ if ( ! defined( '|UNIQUESTRING|_PLUGN_BASE_NAME' ) ) {
 */
 if ( ! class_exists( '|UniqueClassName|' ) ) {
 
-	require_once plugin_dir_path( __FILE__ ) . '/includes/class-final-main-class.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-final-main-class.php';
 
 	// Create new instance
 	new |UniqueClassName|();
