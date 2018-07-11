@@ -5,4 +5,4 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
 
-<h1>Page 2</h1>
+<h1><?php echo __( 'Page 2', '|uniquestring|-domain' ); ?></h1>

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
 
-<h1>Settings Page</h1>
+<h1><?php echo __( 'Settings Page', '|uniquestring|-domain' ); ?></h1>
 
 <div class="mx-block_wrap">
 

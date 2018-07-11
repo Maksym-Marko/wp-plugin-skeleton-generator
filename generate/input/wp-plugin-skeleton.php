@@ -63,4 +63,16 @@ if ( ! class_exists( '|UniqueClassName|' ) ) {
 	// Deactivation
 	register_deactivation_hook( __FILE__, array( '|UNIQUESTRING|BasisPluginClass', 'deactivate' ) );
 
+	/*
+	* Translate plugin
+	*/
+	add_action( 'plugins_loaded', '|uniquestring|_translate' );
+
+	function |uniquestring|_translate()
+	{
+
+		load_plugin_textdomain( '|uniquestring|-domain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+	}
+
 }

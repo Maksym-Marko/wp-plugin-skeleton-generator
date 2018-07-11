@@ -126,6 +126,9 @@ final class MxGeneratePluginStructure
 			'.ttf',
 			'.woff',
 			'.woff2',
+			'.mo',
+			'.po',
+			'.pot',
 
 		);
 

@@ -34,11 +34,11 @@ class |UNIQUESTRING|AdminMain
 	/*
 	* Registration of styles and scripts
 	*/
-	public function register()
+	public function |uniquestring|_register()
 	{
 
 		// register scripts and styles
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, '|uniquestring|_enqueue' ) );
 
 		// register admin menu
 		add_action( 'admin_menu', array( $this, 'add_admin_pages' ) );
@@ -48,12 +48,12 @@ class |UNIQUESTRING|AdminMain
 
 	}
 
-		public function enqueue()
+		public function |uniquestring|_enqueue()
 		{
 
 			wp_enqueue_style( '|uniquestring|_font_awesome', |UNIQUESTRING|_PLUGIN_URL . 'assets/font-awesome-4.6.3/css/font-awesome.min.css' );
 
-			wp_enqueue_style( '|uniquestring|_admin_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/css/style.css', array( '|UNIQUESTRING|_font_awesome' ), |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
+			wp_enqueue_style( '|uniquestring|_admin_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/css/style.css', array( '|uniquestring|_font_awesome' ), |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
 
 			wp_enqueue_script( '|uniquestring|_admin_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/js/script.js', array( 'jquery' ), |UNIQUESTRING|_PLUGIN_VERSION, false );
 
@@ -63,10 +63,10 @@ class |UNIQUESTRING|AdminMain
 		public function add_admin_pages()
 		{
 
-			add_menu_page( 'Title of the page', 'Link Name', 'manage_options', '|unique_menu_slug|', array( $this, 'admin_index' ), 'dashicons-image-filter', 111 ); // icons https://developer.wordpress.org/resource/dashicons/#id
+			add_menu_page( __( 'Title of the page', '|uniquestring|-domain' ), __( 'Link Name', '|uniquestring|-domain' ), 'manage_options', '|unique_menu_slug|', array( $this, 'admin_index' ), 'dashicons-image-filter', 111 ); // icons https://developer.wordpress.org/resource/dashicons/#id
 
 			// add submenu
-			add_submenu_page( '|unique_menu_slug|', 'Submenu title', 'Submenu item', 'manage_options', '|unique_submenu_slug|', array( $this, 'page_distributor' ) );
+			add_submenu_page( '|unique_menu_slug|', __( 'Submenu title', '|uniquestring|-domain' ), __( 'Submenu item', '|uniquestring|-domain' ), 'manage_options', '|unique_submenu_slug|', array( $this, 'page_distributor' ) );
 
 		}
 
@@ -123,4 +123,4 @@ class |UNIQUESTRING|AdminMain
 $initialize_class = new |UNIQUESTRING|AdminMain();
 
 // Apply scripts and styles
-$initialize_class->register();
+$initialize_class->|uniquestring|_register();
