@@ -4,7 +4,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class |UNIQUESTRING|BasisPluginClass
+class |UNIQUESTRING|_Basis_Plugin_Class
 {
 
 	private static $table_slug = |UNIQUESTRING|_TABLE_SLUG;

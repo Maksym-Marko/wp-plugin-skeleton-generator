@@ -1,4 +1,4 @@
-jQuery( document ).ready( function( $ ){
+jQuery( document ).ready( function( $ ) {
 
 	$( '#|uniquestring|_form_update' ).on( 'submit', function( e ){
 
@@ -16,9 +16,10 @@ jQuery( document ).ready( function( $ ){
 
 		};
 
-		jQuery.post( ajaxurl, data, function( response ){
+		jQuery.post( mxmlb_admin_localize.ajaxurl, data, function( response ){
 
-			console.log( response );
+			// console.log( response );
+			alert( 'Value updated.' );
 
 		} );
 

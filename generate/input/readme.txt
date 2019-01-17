@@ -24,7 +24,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 = From WordPress.org =
 
-1. Download 'Attach element from activity'.
+1. Download 'WP Plugin Skeleton'.
 2. Upload the 'WP Plugin Skeleton' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
 3. Activate 'WP Plugin Skeleton' from your Plugins page.
 4. ...

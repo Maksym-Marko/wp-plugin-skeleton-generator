@@ -3,7 +3,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|FrontEndMain
+class |UNIQUESTRING|_FrontEnd_Main
 {
 
 	/*
@@ -30,7 +30,7 @@ class |UNIQUESTRING|FrontEndMain
 }
 
 // Initialize
-$initialize_class = new |UNIQUESTRING|FrontEndMain();
+$initialize_class = new |UNIQUESTRING|_FrontEnd_Main();
 
 // Apply scripts and styles
 $initialize_class->|uniquestring|_register();

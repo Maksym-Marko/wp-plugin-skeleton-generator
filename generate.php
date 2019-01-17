@@ -157,15 +157,27 @@ final class MxGeneratePluginStructure
 		$input = $input_file;
 
 		// Prepare the file for creation
-		if( $input == 'generate/input/wp-plugin-skeleton.php' ) :
+		/*rename  main file*/
+		if( $input == 'generate/input/wp-plugin-skeleton.php' ) {
 
 			$output = 'generate/output/' . $this->main_file_name . '/' . $this->main_file_name . '.php';
+		}
+		/*rename  controller*/
+		elseif( $input == 'generate/input/includes/admin/controllers/MXXXXX_Main_Page_Controller.php' ) {
 
-		else :
+			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/controllers/' . $this->uniquestring_upc . '_Main_Page_Controller.php';
+		}
+		/*rename  model*/
+		elseif( $input == 'generate/input/includes/admin/models/MXXXXX_Main_Page_Model.php' ) {
+
+			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/models/' . $this->uniquestring_upc . '_Main_Page_Model.php';
+		}
+		/*miss*/
+		else {
 
 			$output = str_replace( 'input', 'output/' . $this->main_file_name, $input );
 
-		endif;
+		}
 
 		// Get data from the source
 		$current_content = file_get_contents($input);

@@ -4,25 +4,19 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /*
-* Require template for admin panel
+* Require class for admin panel
 */
-function |uniquestring|_require_template_admin( $file ) {
+function |uniquestring|_require_class_file_admin( $file ) {
 
-	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes\admin\templates\\' . $file;
+	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/classes/' . $file;
 
 }
 
 /*
-* Select data
+* Require a Model
 */
-function |uniquestring|_select_script() {
+function |uniquestring|_use_model( $model ) {
 
-	global $wpdb;
-
-	$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
-
-	$get_scripts_string = $wpdb->get_row( "SELECT some_field FROM $table_name WHERE id = 1" );
-
-	return $get_scripts_string->some_field; // The 'some_field' string is variable
+	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/models/' . $model . '.php';
 
 }

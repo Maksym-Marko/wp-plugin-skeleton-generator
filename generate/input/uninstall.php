@@ -8,7 +8,7 @@ global $wpdb;
 // table name
 $table_names = array();
 
-$table_names[] = $wpdb->prefix . '|table_slug|';
+$table_names[] = $wpdb->prefix . '|uniquestring|_table_slug';
 
 // drop table(s);
 foreach( $table_names as $table_name ){

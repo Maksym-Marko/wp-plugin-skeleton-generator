@@ -48,16 +48,16 @@ $( document ).ready( function(){
   } );
 
   // paste
-  $( 'input, textarea' ).each( function(){
+  // $( 'input, textarea' ).each( function(){
 
-    $( this ).on( 'paste', function(){
+  //   $( this ).on( 'paste', function(){
 
-      // check empty
-      mxCheckEmpty( $( this ) );   
+  //     // check empty
+  //     mxCheckEmpty( $( this ) );   
 
-    } );
+  //   } );
 
-  } );
+  // } );
 
 } );
 
