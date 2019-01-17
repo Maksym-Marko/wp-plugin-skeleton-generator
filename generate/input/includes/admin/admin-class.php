@@ -17,8 +17,6 @@ class |UNIQUESTRING|_Admin_Main
 	public function __construct()
 	{
 
-		$this->plugin_name = |UNIQUESTRING|_PLUGN_BASE_NAME;
-
 	}
 
 	/*
@@ -81,11 +79,6 @@ class |UNIQUESTRING|_Admin_Main
 		// sub menu item
 		// |UNIQUESTRING|_Route::|uniquestring|_get( 'MainMenuController', 'sub', '', [], 'sub_menu' );
 
-	}
-
-	public function |uniquestring|_get_actions()
-	{
-		return |UNIQUESTRING|_Admin_Main::$ajax_actions;
 	}
 
 }

@@ -12,6 +12,16 @@ function |uniquestring|_require_class_file_admin( $file ) {
 
 }
 
+
+/*
+* Require class for frontend panel
+*/
+function |uniquestring|_require_class_file_frontend( $file ) {
+
+	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/classes/' . $file;
+
+}
+
 /*
 * Require a Model
 */

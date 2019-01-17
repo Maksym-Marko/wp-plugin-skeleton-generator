@@ -56,13 +56,13 @@ final class |UniqueClassName|
 	/*
 	* Include Frontend Path
 	*/
-	// public function |uniquestring|_include_frontend_path()
-	// {
+	public function |uniquestring|_include_frontend_path()
+	{
 
-	// 	// Part of the Frontend
-	// 	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/class-frontend-main.php';
+		// Part of the Frontend
+		require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/frontend-main.php';
 	
-	// }
+	}
 
 }
 
@@ -74,3 +74,6 @@ $final_class_instance->|uniquestring|_include();
 
 // include admin parth
 $final_class_instance->|uniquestring|_include_admin_path();
+
+// include frontend parth
+$final_class_instance->|uniquestring|_include_frontend_path();

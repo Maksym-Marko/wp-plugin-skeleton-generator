@@ -67,6 +67,8 @@ final class MxGeneratePluginStructure
 		// run mx_scan_dir function
 		$this->mx_scan_dir( $this->scan_dir );
 
+		echo $this->main_file_name;
+
 
 	}
 
@@ -79,7 +81,7 @@ final class MxGeneratePluginStructure
 		$current_dirs = scandir( $dir );
 
 		// create dir if is not exists
-		$this->mx_create_dir( $dir );
+		// $this->mx_create_dir( $dir );
 		
 		// each of all folders and files
 		foreach ( $current_dirs as $key => $value ) {
@@ -228,7 +230,9 @@ final class MxGeneratePluginStructure
 		$mx_final = $current_create_submenu_slug;
 
 		// create file
-		file_put_contents( $output, $mx_final );
+		// file_put_contents( $output, $mx_final );
+
+		$this->mx_create_zip( 'generate/output/' . $this->main_file_name . '.zip', $output, $mx_final );
 
 	}
 
@@ -245,6 +249,28 @@ final class MxGeneratePluginStructure
 			mkdir( $dir_in_output, 0777, true );
 
 		endif;
+
+	}
+
+	/*
+	* Create new folder
+	*/ 
+	public function mx_create_zip( $zip_arhive, $file, $input )
+	{
+
+		$file = str_replace( 'generate/output/', '', $file );
+
+		$zip = new ZipArchive;
+
+		if ( $zip->open( $zip_arhive ) !== TRUE ) {
+
+			$res = $zip->open( $zip_arhive, ZipArchive::CREATE );
+
+		}
+
+		$zip->addFromString( $file, $input );
+
+		$zip->close();
 
 	}
 
