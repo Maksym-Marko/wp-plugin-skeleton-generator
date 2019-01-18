@@ -17,4 +17,18 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 
 	}
 
+	public function submenu()
+	{
+
+		return new |UNIQUESTRING|_View( 'sub-page' );
+
+	}
+
+	public function hidemenu()
+	{
+
+		return new |UNIQUESTRING|_View( 'hidemenu-page' );
+
+	}
+
 }

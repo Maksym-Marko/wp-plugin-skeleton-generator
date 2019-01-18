@@ -77,7 +77,15 @@ class |UNIQUESTRING|_Admin_Main
 		] );
 
 		// sub menu item
-		// |UNIQUESTRING|_Route::|uniquestring|_get( 'MainMenuController', 'sub', '', [], 'sub_menu' );
+		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'submenu', '', [
+			'page_title' => 'Sub Menu title',
+			'menu_title' => 'Sub menu'
+		], 'sub_menu' );
+
+		// sub menu item
+		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'hidemenu', 'NULL', [
+			'page_title' => 'Hidden Menu title',
+		], 'hide_menu' );
 
 	}
 
