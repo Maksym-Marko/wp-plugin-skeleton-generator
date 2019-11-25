@@ -31,4 +31,11 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 
 	}
 
+	public function settings_menu_item_action()
+	{
+
+		return new |UNIQUESTRING|_View( 'settings-page' );
+
+	}
+
 }

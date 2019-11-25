@@ -27,13 +27,14 @@
     transition: 0.3s all ease;
 }
 .mx-download-plugin a {
-	position: absolute;
+    position: absolute;
     left: 50%;
+    width: 300px;
     margin-left: -175px;
     margin-top: -32px;
     top: 50%;
     background: #edeef0;
-    padding: 19px 110px;
+    padding: 19px 10px;
     font-weight: bold;
     -webkit-box-shadow: 2px -2px 23px -5px rgba(0,123,255,1);
     -moz-box-shadow: 2px -2px 23px -5px rgba(0,123,255,1);

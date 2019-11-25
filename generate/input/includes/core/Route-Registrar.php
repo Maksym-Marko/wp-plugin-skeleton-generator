@@ -44,10 +44,17 @@ class |UNIQUESTRING|_Route_Registrar
 	public $sub_menu_slug = false;
 
 	/**
+	* set plugin name
+	*/
+	public $plugin_name;
+
+	/**
 	* |UNIQUESTRING|_Route_Registrar constructor
 	*/
 	public function __construct( ...$args )
 	{
+
+		$this->plugin_name = |UNIQUESTRING|_PLUGN_BASE_NAME;
 
 		// set data
 		$this->|uniquestring|_set_data( ...$args );
@@ -80,8 +87,10 @@ class |UNIQUESTRING|_Route_Registrar
 	*
 	* $sub_menu_slug 	- slug of sub menu
 	*
+	* $settings_area 	- place item to settings area (core WP Settings menu item)
+	*
 	*/
-	public function |uniquestring|_set_data( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menu_properties, $sub_menu_slug = false )
+	public function |uniquestring|_set_data( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menu_properties, $sub_menu_slug = false, $settings_area = false )
 	{
 
 		// set controller
@@ -120,6 +129,18 @@ class |UNIQUESTRING|_Route_Registrar
 			$this->sub_menu_slug = $sub_menu_slug;
 
 			$|uniquestring|_callback_function_menu = '|uniquestring|_create_admin_sub_menu';
+			
+		}
+
+		/*
+		* check if it's settings menu item
+		*/
+		if( $settings_area !== false ) {
+
+			$|uniquestring|_callback_function_menu = '|uniquestring|_settings_area_menu_item';
+
+			// add link Settings under the name of the plugin
+			add_filter( "plugin_action_links_$this->plugin_name", array( $this, '|uniquestring|_create_settings_link' ) );
 			
 		}
 
@@ -167,7 +188,7 @@ class |UNIQUESTRING|_Route_Registrar
 	public function |uniquestring|_create_admin_sub_menu()
 	{
 		
-		// create a menu
+		// create a sub menu
 		add_submenu_page( $this->slug,
 			 __( $this->properties['page_title'], '|uniquestring|-domain' ),
 			 __( $this->properties['menu_title'], '|uniquestring|-domain' ),
@@ -177,6 +198,33 @@ class |UNIQUESTRING|_Route_Registrar
 		);
 
 	}
+
+	/**
+	* Create Settings area menu item
+	*/
+	public function |uniquestring|_settings_area_menu_item()
+	{
+		
+		// create a settings menu
+		add_options_page(
+			__( $this->properties['page_title'], '|uniquestring|-domain' ),
+			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
+			$this->properties['capability'],
+			$this->sub_menu_slug,
+			array( $this, '|uniquestring|_view_connector' )
+		);
+
+	}
+		public function |uniquestring|_create_settings_link( $links )
+		{
+
+			$settings_link = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->sub_menu_slug . '">' . __( $this->properties['menu_title'], '|uniquestring|-domain' ) . '</a>'; // options-general.php
+
+			array_push( $links, $settings_link );
+
+			return $links;
+
+		}
 
 		// connect view
 		public function |uniquestring|_view_connector()

@@ -82,10 +82,16 @@ class |UNIQUESTRING|_Admin_Main
 			'menu_title' => 'Sub menu'
 		], 'sub_menu' );
 
-		// sub menu item
+		// hide menu item
 		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'hidemenu', 'NULL', [
 			'page_title' => 'Hidden Menu title',
 		], 'hide_menu' );
+
+		// sub settings menu item
+		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'settings_menu_item_action', 'NULL', [
+			'menu_title' => 'Settings Item',
+			'page_title' => 'Title of settings page'
+		], 'settings_menu_item', true );
 
 	}
 

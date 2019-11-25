@@ -107,7 +107,7 @@ function mxAppendLink( $zip ) {
 
   $( '.mx-download-plugin' ).addClass( 'mx-download-active' );
 
-  $( '.mx-download-plugin' ).find( 'a' ).attr( 'href', 'http://wp-functions/wp-plugin-sceleton-generator/generate/output/' + $zip_name );
+  $( '.mx-download-plugin' ).find( 'a' ).attr( 'href', '/wp-plugin-sceleton-generator/generate/output/' + $zip_name );
 
   $( '.mx-download-plugin' ).find( 'a span' ).text( $zip );
 
