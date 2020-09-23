@@ -87,7 +87,7 @@ final class MxGeneratePluginStructure
 		foreach ( $current_dirs as $key => $value ) {
 
 			// exclude '.', '..'
-			if( ! in_array( $value, array( '.', '..' ) ) ) :
+			if( ! in_array( $value, [ '.', '..' ] ) ) :
 
 				// find fiels
 				if( $this->mx_is_file( $value ) ) :					
@@ -114,7 +114,7 @@ final class MxGeneratePluginStructure
 	public function mx_is_file( $obj )
 	{
 
-		$list_mime_type = array( 
+		$list_mime_type = [ 
 
 			'.php',
 			'.js',
@@ -132,7 +132,7 @@ final class MxGeneratePluginStructure
 			'.po',
 			'.pot',
 
-		);
+		];
 
 		foreach ( $list_mime_type as $item_mime_type ) {
 			
@@ -337,7 +337,7 @@ $author = $_POST['author'];
 $author_uri = $_POST['author_uri'];
 
 // array vars
-$array_vars = array(
+$array_vars = [
 
 	'plugin_name' 		=> $plugin_name,
 	'uniquestring_upc'	=> $uniquestring_upc,
@@ -351,7 +351,7 @@ $array_vars = array(
 	'author'			=> $author,
 	'author_uri'		=> $author_uri
 
-);
+];
 
 // new instance
 $new_instance = new MxGeneratePluginStructure( $array_vars, 'generate/input/' );

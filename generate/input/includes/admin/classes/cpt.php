@@ -20,7 +20,7 @@ class |UNIQUESTRING|CPTclass
 	public static function createCPT()
 	{
 
-		add_action( 'init', array( '|UNIQUESTRING|CPTclass', '|uniquestring|_custom_init' ) );
+		add_action( 'init', [ '|UNIQUESTRING|CPTclass', '|uniquestring|_custom_init' ] );
 
 	}
 
@@ -30,9 +30,9 @@ class |UNIQUESTRING|CPTclass
 	public static function |uniquestring|_custom_init()
 	{
 		
-		register_post_type( '|uniquestring|_books', array(
+		register_post_type( '|uniquestring|_books', [
 
-			'labels'             => array(
+			'labels'             => [
 				'name'               => 'Books',
 				'singular_name'      => 'Book',
 				'add_new'            => 'Add a new one',
@@ -46,7 +46,7 @@ class |UNIQUESTRING|CPTclass
 				'parent_item_colon'  => '',
 				'menu_name'          => 'Books'
 
-			  ),
+			],
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
@@ -57,9 +57,9 @@ class |UNIQUESTRING|CPTclass
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'supports'           => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ]
 
-		) );
+		] );
 
 		// Rewrite rules
 		if( is_admin() && get_option( '|uniquestring|_flush_rewrite_rules' ) == 'go_flush_rewrite_rules' )
@@ -70,6 +70,103 @@ class |UNIQUESTRING|CPTclass
 			flush_rewrite_rules();
 
 		}
+
+		/*
+		* add metaboxes
+		*/
+		
+		// add text input
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'text-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'Text field', 'mx-domain' )
+			]
+		);
+
+		// add email input
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'email-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'E-mail field', 'mx-domain' ),
+				'metabox_type'	=> 'input-email'
+			]
+		);
+
+		// add url input
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'url-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'URL field', 'mx-domain' ),
+				'metabox_type'	=> 'input-url'
+			]
+		);
+
+		// description
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'desc-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'Some Description', 'mx-domain' ),
+				'metabox_type'	=> 'textarea'
+			]
+		);
+
+		// add checkboxes
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'checkboxes-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'Checkbox Buttons', 'mx-domain' ),
+				'metabox_type'	=> 'checkbox',
+				'options' 		=> [
+					[
+						'value' => 'Dog',
+						'checked' 	=> true
+					],
+					[
+						'value' 	=> 'Cat'
+					],
+					[
+						'value' 	=> 'Fish'
+					]		
+				]
+			]
+		);
+
+		// add radio buttons
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'radio-buttons-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'Radio Buttons', 'mx-domain' ),
+				'metabox_type'	=> 'radio',
+				'options' 		=> [
+					[
+						'value' => 'red'
+					],
+					[
+						'value' => 'green'
+					],
+					[
+						'value' 	=> 'Yellow',
+						'checked' 	=> true
+					]		
+				]
+			]
+		);
+
+		// image upload
+		new |UNIQUESTRING|_Metaboxes_Class(
+			[
+				'id'			=> 'featured-image-metabox',
+				'post_types' 	=> '|uniquestring|_books',
+				'name'			=> esc_html( 'Featured image', 'mx-domain' ),
+				'metabox_type'	=> 'image'
+			]
+		);
 
 	}
 

@@ -16,7 +16,7 @@ jQuery( document ).ready( function( $ ) {
 
 		};
 
-		jQuery.post( mxmlb_admin_localize.ajaxurl, data, function( response ){
+		jQuery.post( |uniquestring|_admin_localize.ajaxurl, data, function( response ){
 
 			// console.log( response );
 			alert( 'Value updated.' );

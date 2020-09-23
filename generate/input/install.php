@@ -37,9 +37,9 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 
 				$table_name,
 
-				array(
+				[
 					'some_field' => 'Some string.',
-				)
+				]
 
 			);
 		}

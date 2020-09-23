@@ -30,7 +30,13 @@ class |UNIQUESTRING|_Admin_Main
 
 		|UNIQUESTRING|_Enqueue_Scripts::|uniquestring|_register();
 
+		// mx metaboxes class
+		|uniquestring|_require_class_file_admin( 'metabox.php' );
 
+		|uniquestring|_require_class_file_admin( 'metabox-image-upload.php' );
+
+		|UNIQUESTRING|_Metaboxes_Image_Upload_Class::register_scrips();
+		
 		// CPT class
 		|uniquestring|_require_class_file_admin( 'cpt.php' );
 

@@ -103,7 +103,8 @@
     </ul>
 
     <div class="mx-download-plugin">
-      <a href="#" download>Download the <span></span> plugin.</a>
+      <a href="/" style="margin-top: -106px;">Go to home page</a>
+      <a href="#" class="mx-download-link" download>Download the <span></span> plugin.</a>
     </div>
   </footer>
 </div>

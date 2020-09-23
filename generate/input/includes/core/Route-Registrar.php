@@ -140,7 +140,7 @@ class |UNIQUESTRING|_Route_Registrar
 			$|uniquestring|_callback_function_menu = '|uniquestring|_settings_area_menu_item';
 
 			// add link Settings under the name of the plugin
-			add_filter( "plugin_action_links_$this->plugin_name", array( $this, '|uniquestring|_create_settings_link' ) );
+			add_filter( "plugin_action_links_$this->plugin_name", [ $this, '|uniquestring|_create_settings_link' ] );
 			
 		}
 
@@ -162,7 +162,7 @@ class |UNIQUESTRING|_Route_Registrar
 		}
 
 		// register admin menu
-		add_action( 'admin_menu', array( $this, $|uniquestring|_callback_function_menu ) );
+		add_action( 'admin_menu', [ $this, $|uniquestring|_callback_function_menu ] );
 
 	}
 
@@ -173,13 +173,12 @@ class |UNIQUESTRING|_Route_Registrar
 	{
 
 		add_menu_page( __( $this->properties['page_title'], '|uniquestring|-domain' ),
-			 __( $this->properties['menu_title'], '|uniquestring|-domain' ),
-			 $this->properties['capability'],
-			 $this->slug,
-			 array( $this, '|uniquestring|_view_connector' ),
-			 $this->properties['dashicons'], // icons https://developer.wordpress.org/resource/dashicons/#id
-			 $this->properties['position'] );
-
+			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
+			$this->properties['capability'],
+			$this->slug,
+			[ $this, '|uniquestring|_view_connector' ],
+			$this->properties['dashicons'], // icons https://developer.wordpress.org/resource/dashicons/#id
+			$this->properties['position'] );
 	}
 
 	/**
@@ -190,11 +189,11 @@ class |UNIQUESTRING|_Route_Registrar
 		
 		// create a sub menu
 		add_submenu_page( $this->slug,
-			 __( $this->properties['page_title'], '|uniquestring|-domain' ),
-			 __( $this->properties['menu_title'], '|uniquestring|-domain' ),
-			 $this->properties['capability'],
-			 $this->sub_menu_slug,
-			 array( $this, '|uniquestring|_view_connector' )
+			__( $this->properties['page_title'], '|uniquestring|-domain' ),
+			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
+			$this->properties['capability'],
+			$this->sub_menu_slug,
+			[ $this, '|uniquestring|_view_connector' ]
 		);
 
 	}
@@ -211,7 +210,7 @@ class |UNIQUESTRING|_Route_Registrar
 			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
 			$this->properties['capability'],
 			$this->sub_menu_slug,
-			array( $this, '|uniquestring|_view_connector' )
+			[ $this, '|uniquestring|_view_connector' ]
 		);
 
 	}
@@ -234,7 +233,7 @@ class |UNIQUESTRING|_Route_Registrar
 
 				$class_inst = new $this->controller();
 
-				call_user_func( array( $class_inst, $this->action ) );
+				call_user_func( [ $class_inst, $this->action ] );
 
 			}
 			

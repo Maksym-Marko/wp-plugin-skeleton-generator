@@ -6,7 +6,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) die();
 global $wpdb;
 
 // table name
-$table_names = array();
+$table_names = [];
 
 $table_names[] = $wpdb->prefix . '|uniquestring|_table_slug';
 
@@ -20,7 +20,7 @@ foreach( $table_names as $table_name ){
 }
 
 // Delete posts CPT
-$posts = get_posts( array( 'post_type' => '|uniquestring|_book', 'numberposts' => -1 ) );
+$posts = get_posts( [ 'post_type' => '|uniquestring|_book', 'numberposts' => -1 ] );
 
 foreach( $posts as $post ){
 

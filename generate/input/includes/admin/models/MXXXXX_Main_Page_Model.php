@@ -15,7 +15,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	public static function |uniquestring|_wp_ajax()
 	{
 
-		add_action( 'wp_ajax_|uniquestring|_update', array( '|UNIQUESTRING|_Main_Page_Model', 'prepare_update_database_column' ), 10, 1 );
+		add_action( 'wp_ajax_|uniquestring|_update', [ '|UNIQUESTRING|_Main_Page_Model', 'prepare_update_database_column' ], 10, 1 );
 
 	}
 
@@ -53,13 +53,13 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 			$wpdb->update(
 
 				$table_name, 
-				array(
+				[
 					'some_field' => $clean_string,
-				), 
-				array( 'id' => 1 ), 
-				array( 
+				], 
+				[ 'id' => 1 ], 
+				[ 
 					'%s'
-				)
+				]
 
 			);
 
