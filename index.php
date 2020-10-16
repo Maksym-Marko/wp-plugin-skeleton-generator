@@ -103,7 +103,7 @@
     </ul>
 
     <div class="mx-download-plugin">
-      <a href="/" style="margin-top: -106px;">Go to home page</a>
+      <a href="/wp-plugin-sceleton-generator/" style="margin-top: -106px;">Close</a>
       <a href="#" class="mx-download-link" download>Download the <span></span> plugin.</a>
     </div>
   </footer>
