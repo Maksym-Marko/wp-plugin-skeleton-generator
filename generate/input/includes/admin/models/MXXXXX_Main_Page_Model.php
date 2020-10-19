@@ -54,9 +54,9 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 				$table_name, 
 				[
-					'some_field' => $clean_string,
+					'mx_name' => $clean_string,
 				], 
-				[ 'id' => 1 ], 
+				[ 'product_id' => 1 ], 
 				[ 
 					'%s'
 				]

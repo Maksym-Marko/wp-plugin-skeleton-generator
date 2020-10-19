@@ -53,7 +53,7 @@ if ( ! defined( '|UNIQUESTRING|_PLUGN_BASE_NAME' ) ) {
 */
 if ( ! defined( '|UNIQUESTRING|_TABLE_SLUG' ) ) {
 
-	define( '|UNIQUESTRING|_TABLE_SLUG', '|uniquestring|_table_slug' );
+	define( '|UNIQUESTRING|_TABLE_SLUG', '|uniquestring|_mx_table' );
 
 }
 

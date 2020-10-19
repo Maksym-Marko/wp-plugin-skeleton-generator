@@ -3,6 +3,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// create table class
+require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
 
 class |UNIQUESTRING|_Basis_Plugin_Class
 {
@@ -21,16 +23,26 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 		// Table name
 		$table_name = $wpdb->prefix . self::$table_slug;
 
-		if ( $wpdb->get_var( "SHOW TABLES LIKE '" . $table_name . "'" ) !=  $table_name ) {
+		$product_table = new |UNIQUESTRING|CreateTable( $table_name );
 
-			$sql = "CREATE TABLE IF NOT EXISTS `$table_name`
-			(
-				`id` int(11) NOT NULL AUTO_INCREMENT,
-				`some_field` varchar(40) NOT NULL,
-				PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=$wpdb->charset AUTO_INCREMENT=1;";
+		// add some column
+			// varchar
+			$product_table->varchar( 'mx_name', 200, true, 'text' );
 
-			$wpdb->query( $sql );
+			// longtext
+			$product_table->longtext( 'mx_desc' );
+
+			// created
+			$product_table->datetime( 'mx_created' );			
+
+		// create columns with "product_id" as AUTO_INCREMENT
+		$product_table->create_columns( 'product_id' );
+
+		// create table
+		$table_created = $product_table->create_table();
+
+		// if table has created, insert data
+		if( $table_created == 1 ) {
 
 			// Insert dummy data
 			$wpdb->insert(
@@ -38,10 +50,13 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 				$table_name,
 
 				[
-					'some_field' => 'Some string.',
+					'mx_name' => 'Cool product',
+					'mx_desc' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua.'
 				]
 
 			);
+
 		}
 
 	}

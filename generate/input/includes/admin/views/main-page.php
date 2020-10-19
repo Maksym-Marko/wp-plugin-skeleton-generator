@@ -7,7 +7,7 @@
 		<form id="|uniquestring|_form_update" class="mx-settings" method="post" action="">
 
 			<h2>Default script</h2>
-			<textarea name="|uniquestring|_some_string" id="|uniquestring|_some_string"><?php echo $data->some_field; ?></textarea>
+			<textarea name="|uniquestring|_some_string" id="|uniquestring|_some_string"><?php echo $data->mx_name; ?></textarea>
 
 			<p class="mx-submit_button_wrap">
 				<input type="hidden" id="|uniquestring|_wpnonce" name="|uniquestring|_wpnonce" value="<?php echo wp_create_nonce( '|uniquestring|_nonce_request' ) ;?>" />
