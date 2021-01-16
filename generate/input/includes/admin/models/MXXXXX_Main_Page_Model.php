@@ -32,7 +32,9 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 		if( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ){
 
 			// Update data
-			self::update_database_column( $_POST['|uniquestring|_some_string'] );		
+			$str = sanitize_text_field( $_POST['|uniquestring|_some_string'] );
+
+			self::update_database_column( $str );		
 
 		}
 
