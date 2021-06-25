@@ -27,7 +27,7 @@ class |UNIQUESTRING|_Display_Error
 
 			<div class="notice notice-error is-dismissible">
 
-			    <p><?php echo $this->|uniquestring|_error_notice; ?></p>
+			    <p><?php echo esc_attr( $this->|uniquestring|_error_notice ); ?></p>
 			    
 			</div>
 		    

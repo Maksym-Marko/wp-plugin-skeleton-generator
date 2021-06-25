@@ -14,7 +14,7 @@ abstract class |UNIQUESTRING|_Controller
 	*/
 	public function __call( $name, $arguments ) {
 
-		echo 'Missing method "' . $name . '"!';
+		echo esc_attr( 'Missing method "' . $name . '"!' );
 
 	}
 	
