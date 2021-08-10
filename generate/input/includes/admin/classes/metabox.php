@@ -141,8 +141,6 @@ class |UNIQUESTRING|_Metaboxes_Class
 
 		endif;
 
-
-
 		// save data
 		update_post_meta( $post_id, $this->args['post_meta_key'], $value );
 		
@@ -264,7 +262,6 @@ class |UNIQUESTRING|_Metaboxes_Class
 											<?php echo $meta_value == $val['value'] ? 'checked' : ''; ?>
 
 										<?php endif; ?>
-
 
 									>
 									<label for="<?php echo esc_attr( $this->args['post_meta_key'] ) . $i; ?>"><?php echo $val['value']; ?></label>

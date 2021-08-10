@@ -63,3 +63,16 @@ function |uniquestring|_debug_to_file( $content ) {
 		return ob_get_clean();
 
 	}
+
+/*
+* Manage posts columns. Add column to position
+*/
+function |uniquestring|_insert_new_column_to_position( array $columns, int $position, array $new_column ) {
+
+	$chunked_array = array_chunk( $columns, $position, true );
+
+	$result = array_merge( $chunked_array[0], $new_column, $chunked_array[1] );
+
+	return $result;
+
+}

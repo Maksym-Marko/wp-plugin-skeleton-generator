@@ -20,7 +20,43 @@ class |UNIQUESTRING|CPTclass
 	public static function createCPT()
 	{
 
+		// create CPT
 		add_action( 'init', [ '|UNIQUESTRING|CPTclass', '|uniquestring|_custom_init' ] );
+
+		// manage columns
+		// add ID column to the table
+		add_filter( 'manage_|uniquestring|_books_posts_columns', [ '|UNIQUESTRING|CPTclass', '|uniquestring|add_id_column' ], 20, 1 );
+
+			// manage ID column
+			add_action( 'manage_|uniquestring|_books_posts_custom_column', [ '|UNIQUESTRING|CPTclass', '|uniquestring|_books_column_row' ], 20, 2 );
+
+	}
+
+	/*
+	* Manage new column
+	*/
+	public static function |uniquestring|_books_column_row( $column, $post_id )
+	{
+
+		if( $column === 'book_id' ) {
+
+			echo 'Book ID = ' . $post_id;
+
+		}			
+
+	}
+
+	/*
+	* Add new column to the Custom Post Type
+	*/
+	public static function |uniquestring|add_id_column( $columns )
+	{
+
+		$new_column = ['book_id' => 'Book ID'];
+
+		$new_columns = |uniquestring|_insert_new_column_to_position( $columns, 3, $new_column );
+
+		return $new_columns;
 
 	}
 

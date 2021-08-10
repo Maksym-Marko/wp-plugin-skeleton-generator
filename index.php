@@ -96,7 +96,7 @@
   </div>
 
   <footer class="mx-footer my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">© 2018 - 2019 WP Plugin Sceleton Generator</p>
+    <p class="mb-1">© 2018 - 2021 WP Plugin Sceleton Generator</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-sceleton-generator" target="_blank">Github</a></li>
       <li class="list-inline-item"><a href="https://github.com/Maxim-us" target="_blank">Marko Maksym</a></li>
