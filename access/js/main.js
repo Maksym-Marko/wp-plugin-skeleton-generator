@@ -1,7 +1,7 @@
 $( document ).ready( function(){
 
   // submit
-  $( '#mxFormCreateSceleton' ).on( 'submit', function( e ){
+  $( '#mxFormCreateSkeleton' ).on( 'submit', function( e ){
 
     e.preventDefault();
 
@@ -107,7 +107,7 @@ function mxAppendLink( $zip ) {
 
   $( '.mx-download-plugin' ).addClass( 'mx-download-active' );
 
-  $( '.mx-download-plugin' ).find( 'a.mx-download-link' ).attr( 'href', '/wp-plugin-sceleton-generator/generate/output/' + $zip_name );
+  $( '.mx-download-plugin' ).find( 'a.mx-download-link' ).attr( 'href', '/wp-plugin-skeleton-generator/generate/output/' + $zip_name );
 
   $( '.mx-download-plugin' ).find( 'a.mx-download-link span' ).text( $zip );
 

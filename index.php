@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>WP Plugin Sceleton Generator</title>
+	<title>WP Plugin Skeleton Generator</title>
 
   <link rel="stylesheet" href="access/css/bootstrap.min.css" />
   <link rel="stylesheet" href="access/css/style.css" />
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-12 order-md-1">
       <h4 class="mb-3">Required information</h4>
-      <form class="needs-validation" id="mxFormCreateSceleton">
+      <form class="needs-validation" id="mxFormCreateSkeleton">
         <div class="row">
           <div class="col-md-12">
             <label for="pluginName">Plugin name:</label>
@@ -96,14 +96,14 @@
   </div>
 
   <footer class="mx-footer my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">© 2018 - 2021 WP Plugin Sceleton Generator</p>
+    <p class="mb-1">© 2018 - 2021 WP Plugin Skeleton Generator</p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-sceleton-generator" target="_blank">Github</a></li>
+      <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-skeleton-generator" target="_blank">Github</a></li>
       <li class="list-inline-item"><a href="https://github.com/Maxim-us" target="_blank">Marko Maksym</a></li>
     </ul>
 
     <div class="mx-download-plugin">
-      <a href="/wp-plugin-sceleton-generator/" style="margin-top: -106px;">Close</a>
+      <a href="/wp-plugin-skeleton-generator/" style="margin-top: -106px;">Close</a>
       <a href="#" class="mx-download-link" download>Download the <span></span> plugin.</a>
     </div>
   </footer>
