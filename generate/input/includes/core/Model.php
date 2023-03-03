@@ -36,7 +36,7 @@ class |UNIQUESTRING|_Model
 	/**
 	* select row from the database
 	*/
-	public function |uniquestring|_get_row( $table = NULL, $wher_name, $wher_value )
+	public function |uniquestring|_get_row( $table = NULL, $wher_name = NULL, $wher_value = NULL )
 	{
 
 		$table_name = $this->wpdb->prefix . $this->table;
@@ -45,6 +45,18 @@ class |UNIQUESTRING|_Model
 
 			$table_name = $table;
 
+		}
+
+		if( $wher_name == NULL ) {
+
+			$wher_name = 'name';
+
+		}
+
+		if( $wher_value == NULL ) {
+
+			$wher_value = 'value';
+			
 		}
 
 		$get_row = $this->wpdb->get_row( "SELECT $this->fields FROM $table_name WHERE $wher_name = $wher_value" );

@@ -1,25 +1,28 @@
-jQuery( document ).ready( function( $ ) {
+jQuery( document ).ready( function ( $ ) {
 
-	$( '#|uniquestring|_form_update' ).on( 'submit', function( e ){
+	$( '#|uniquestring|_form_update' ).on( 'submit', function ( e ) {
 
 		e.preventDefault();
 
 		var nonce = $( this ).find( '#|uniquestring|_wpnonce' ).val();
 
-		var someString = $( '#|uniquestring|_some_string' ).val();
+		var name = $( '#|uniquestring|_mx_name' ).val();
+
+		var description = $( '#|uniquestring|_mx_description' ).val();
 
 		var data = {
 
 			'action': '|uniquestring|_update',
 			'nonce': nonce,
-			'|uniquestring|_some_string': someString
+			'name': name,
+			'description': description
 
 		};
 
-		jQuery.post( |uniquestring|_admin_localize.ajaxurl, data, function( response ){
+		jQuery.post( |uniquestring|_admin_localize.ajaxurl, data, function ( response ) {
 
 			// console.log( response );
-			alert( 'Value updated.' );
+			alert( 'Updated!' );
 
 		} );
 

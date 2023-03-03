@@ -14,7 +14,7 @@ jQuery( document ).ready( function( $ ) {
 			return;
 		}
 
-		frame = wp.media.frames.customBackground = wp.media({
+		frame = wp.media.frames.customBackground = wp.media( {
 
 			title: 'choose image',
 
@@ -28,12 +28,12 @@ jQuery( document ).ready( function( $ ) {
 			},
 
 			multyple: false
-		});
+		} );
 
 
 		frame.on( 'select', function() {
 
-			var attachment = frame.state().get('selection').first();
+			var attachment = frame.state().get( 'selection' ).first();
 
 			// and show the image's data
 			var image_id = attachment.id;

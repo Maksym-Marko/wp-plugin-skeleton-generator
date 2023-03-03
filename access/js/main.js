@@ -105,10 +105,14 @@ function mxAppendLink( $zip ) {
 
   $zip_name = $zip + '.zip';
 
+  var curr_url = $( '.mx-download-plugin' ).attr( 'data-curr-url' )
+
   $( '.mx-download-plugin' ).addClass( 'mx-download-active' );
 
-  $( '.mx-download-plugin' ).find( 'a.mx-download-link' ).attr( 'href', '/wp-plugin-skeleton-generator/generate/output/' + $zip_name );
+  $( '.mx-download-plugin' ).find( 'a.mx-download-link' ).attr( 'href', curr_url + 'generate/output/' + $zip_name );
 
   $( '.mx-download-plugin' ).find( 'a.mx-download-link span' ).text( $zip );
 
 }
+
+console.log(  )

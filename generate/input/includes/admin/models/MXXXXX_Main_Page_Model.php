@@ -1,11 +1,11 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
-* Main page Model
-*/
+ * Main page Model
+ */
 class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 {
 
@@ -15,8 +15,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	public static function |uniquestring|_wp_ajax()
 	{
 
-		add_action( 'wp_ajax_|uniquestring|_update', [ '|UNIQUESTRING|_Main_Page_Model', 'prepare_update_database_column' ], 10, 1 );
-
+		add_action('wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|_Main_Page_Model', 'prepare_update_database_column'], 10, 1);
 	}
 
 	/*
@@ -24,47 +23,49 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	*/
 	public static function prepare_update_database_column()
 	{
-		
+
 		// Checked POST nonce is not empty
-		if( empty( $_POST['nonce'] ) ) wp_die( '0' );
+		if ( empty( $_POST['nonce'] ) ) wp_die( '0' );
 
 		// Checked or nonce match
-		if( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ){
+		if ( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ) {
 
 			// Update data
-			$str = sanitize_text_field( $_POST['|uniquestring|_some_string'] );
+			$name = sanitize_text_field( $_POST['name'] );
+			$desc = esc_html( $_POST['description'] );
 
-			self::update_database_column( $str );		
+			$data = [
+				"name" => $name,
+				"desc" => $desc,
+			];
 
+			self::update_database_column( $data );
 		}
 
 		wp_die();
-
 	}
 
-		// Update data
-		public static function update_database_column( $string )
-		{
+	// Update data
+	public static function update_database_column( $data )
+	{
 
-			global $wpdb;
+		global $wpdb;
 
-			$clean_string = esc_html( $string );
+		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
-			$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$wpdb->update(
 
-			$wpdb->update(
+			$table_name,
+			[
+				'mx_name' => $data['name'],
+				'mx_desc' => $data['desc'],
+			],
+			['product_id' => 1],
+			[
+				'%s',
+				'%s',
+			]
 
-				$table_name, 
-				[
-					'mx_name' => $clean_string,
-				], 
-				[ 'product_id' => 1 ], 
-				[ 
-					'%s'
-				]
-
-			);
-
-		}
-	
+		);
+	}
 }

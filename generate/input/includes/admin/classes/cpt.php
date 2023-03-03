@@ -83,6 +83,7 @@ class |UNIQUESTRING|CPTclass
 				'menu_name'          => 'Books'
 
 			],
+			'show_in_rest'		 => true,
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,

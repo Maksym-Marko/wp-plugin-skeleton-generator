@@ -90,7 +90,7 @@ class |UNIQUESTRING|_Route_Registrar
 	* $settings_area 	- place item to settings area (core WP Settings menu item)
 	*
 	*/
-	public function |uniquestring|_set_data( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menu_properties, $sub_menu_slug = false, $settings_area = false )
+	public function |uniquestring|_set_data( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menu_properties = [], $sub_menu_slug = false, $settings_area = false )
 	{
 
 		// set controller

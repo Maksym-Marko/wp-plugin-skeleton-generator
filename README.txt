@@ -1,14 +1,17 @@
-== WP Plugin Skeleton Generator ==
+== WPP Generator ==
 
-WP Plugin Skeleton Generator Version: 			4.0
-WP Plugin Skeleton Generator Author: 			Maksym Marko
-WP Plugin Skeleton Generator Author Website:	https://markomaksym.com.ua/
+WPP Generator Version: 			5.0
+WPP Generator Author: 			Maksym Marko
+WPP Generator Author Website:	https://markomaksym.com.ua/
 
 ===
 This script is intended to create a basic skeleton for your future WordPress plugin.
 Includes a minimal set of files and functions.
 
 == Changelog ==
+
+= 5.0 =
+* PHP 8.0 support.
 
 = 4.0 =
 * manage_{$post->post_type}_posts_columns and manage_{$post->post_type}_posts_custom_column

@@ -30,7 +30,7 @@ class |UNIQUESTRING|_FrontEnd_Main
 }
 
 // Initialize
-$initialize_admin_class = new |UNIQUESTRING|_FrontEnd_Main();
+$initialize_frontend_class = new |UNIQUESTRING|_FrontEnd_Main();
 
 // include classes
-$initialize_admin_class->|uniquestring|_additional_classes();
+$initialize_frontend_class->|uniquestring|_additional_classes();
