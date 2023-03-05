@@ -31,18 +31,21 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 		if ( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ) {
 
 			// Update data
-			$name = sanitize_text_field( $_POST['name'] );
-			$desc = esc_html( $_POST['description'] );
+			$id = sanitize_text_field( $_POST['id'] );
+			$title = sanitize_text_field( $_POST['title'] );
+			$description = esc_html( $_POST['description'] );
 
 			$data = [
-				"name" => $name,
-				"desc" => $desc,
+				'id' => $id,
+				'title' => $title,
+				'description' => $description,
 			];
 
 			self::update_database_column( $data );
 		}
 
 		wp_die();
+
 	}
 
 	// Update data
@@ -57,15 +60,16 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 			$table_name,
 			[
-				'mx_name' => $data['name'],
-				'mx_desc' => $data['desc'],
+				'title' => $data['title'],
+				'description' => $data['description'],
 			],
-			['product_id' => 1],
+			['id' => $data['id']],
 			[
 				'%s',
 				'%s',
 			]
 
 		);
+
 	}
 }

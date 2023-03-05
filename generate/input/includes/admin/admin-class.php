@@ -42,6 +42,9 @@ class |UNIQUESTRING|_Admin_Main
 
 		|UNIQUESTRING|CPTclass::createCPT();
 
+		// custom table
+		|uniquestring|_require_class_file_admin( 'custom-table.php' );
+
 	}
 
 	/*
@@ -98,6 +101,11 @@ class |UNIQUESTRING|_Admin_Main
 			'menu_title' => 'Settings Item',
 			'page_title' => 'Title of settings page'
 		], 'settings_menu_item', true );
+
+		// single table item
+		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'single_table_item', 'NULL', [
+			'page_title' => 'Single Table Item',
+		], 'single_table_item' );
 
 	}
 

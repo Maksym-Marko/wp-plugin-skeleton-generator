@@ -26,17 +26,20 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 		$product_table = new |UNIQUESTRING|CreateTable( $table_name );
 
 		// add some column
-			// varchar
-			$product_table->varchar( 'mx_name', 200, true, 'text' );
+			// title
+			$product_table->varchar( 'title', 200, true, 'text' );
 
 			// longtext
-			$product_table->longtext( 'mx_desc' );
+			$product_table->longtext( 'description' );
+
+			// statue
+			$product_table->varchar( 'status', 20, true, 'publish' );
 
 			// created
-			$product_table->datetime( 'mx_created' );			
+			$product_table->datetime( 'created_at' );			
 
-		// create columns with "product_id" as AUTO_INCREMENT
-		$product_table->create_columns( 'product_id' );
+		// create "id" column as AUTO_INCREMENT
+		$product_table->create_columns();
 
 		// create table
 		$table_created = $product_table->create_table();
@@ -45,14 +48,40 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 		if( $table_created == 1 ) {
 
 			// Insert dummy data
+			// 1
 			$wpdb->insert(
 
 				$table_name,
 
 				[
-					'mx_name' => 'Cool product',
-					'mx_desc' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua.'
+					'title' 		=> 'ASUS PCI-Ex GeForce RTX 4090',
+					'description' 	=> 'Graphics chip: GeForce RTX 4090. Memory: 24 GB. Memory bus width: 384 bit. Memory type: GDDR6X. Type of cooling system: Active.',
+					'status' 		=> 'publish',
+				],
+
+				[
+					'%s',
+					'%s',
+					'%s',
+				]
+
+			);
+
+			// 2
+			$wpdb->insert(
+
+				$table_name,
+
+				[
+					'title' 		=> 'MSI PCI-Ex GeForce RTX 3070',
+					'description' 	=> 'Graphics chip: GeForce RTX 3070 Ti. Memory capacity: 8 GB. Memory bus capacity: 256 bits. Memory type: GDDR6X. Type of cooling system: Active.',
+					'status' 		=> 'publish',
+				],
+
+				[
+					'%s',
+					'%s',
+					'%s',
 				]
 
 			);

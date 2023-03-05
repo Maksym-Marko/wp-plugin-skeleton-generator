@@ -6,7 +6,8 @@ jQuery( document ).ready( function ( $ ) {
 
 		var nonce = $( this ).find( '#|uniquestring|_wpnonce' ).val();
 
-		var name = $( '#|uniquestring|_mx_name' ).val();
+		var title = $( '#|uniquestring|_title' ).val();
+		var id = $( '#|uniquestring|_id' ).val();
 
 		var description = $( '#|uniquestring|_mx_description' ).val();
 
@@ -14,7 +15,8 @@ jQuery( document ).ready( function ( $ ) {
 
 			'action': '|uniquestring|_update',
 			'nonce': nonce,
-			'name': name,
+			'id': id,
+			'title': title,
 			'description': description
 
 		};
