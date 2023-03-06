@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Create a WordPress plugin starter kit</title>
+  <title>Create a WordPress Plugin Boilerplate</title>
 
   <link rel="stylesheet" href="access/css/bootstrap.min.css" />
   <link rel="stylesheet" href="access/css/style.css" />
@@ -14,8 +14,8 @@
 
   <div class="container mt-5">
     <div class="text-center">
-      <h2>Create a WordPress plugin starter kit</h2>
-      <p class="lead">To create a WordPress plugin starter kit, fill out the fields below.</p>
+      <h2>WPP Generator</h2>
+      <p class="lead">To create a WordPress Plugin Boilerplate, fill out the fields below.</p>
       <p class="lead">This information will be included in your future plugin.</p>
     </div>
 
@@ -34,7 +34,7 @@
 
             <div class="col-md-12 mt-3">
               <label for="briefDescription">Brief description:</label>
-              <textarea class="form-control" rows="5" id="briefDescription" name="brief_description"></textarea>
+              <textarea class="form-control" rows="5" id="briefDescription" name="brief_description">This is my extremely useful plugin</textarea>
               <div class="invalid-feedback">
                 Valid brief description is required.
               </div>
@@ -43,7 +43,7 @@
 
             <div class="col-md-12 mt-3">
               <label for="longDescription">Long description:</label>
-              <textarea class="form-control" rows="5" id="longDescription" name="long_description"></textarea>
+              <textarea class="form-control" rows="5" id="longDescription" name="long_description">This is my extremely useful WordPress plugin. It will make a lot of people happy</textarea>
               <div class="invalid-feedback">
                 Valid long description is required.
               </div>
@@ -91,14 +91,14 @@
 
           <hr class="mb-4">
 
-          <button class="btn btn-primary float-right" type="submit">Create a new skeleton of a plugin</button>
+          <button class="btn btn-primary float-right" type="submit">Create Plugin Boilerplate</button>
 
         </form>
       </div>
     </div>
 
     <footer class="mx-footer my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2018 - 2023 WP Plugin Skeleton Generator</p>
+      <p class="mb-1">© 2018 - 2023 WPP Generator</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-skeleton-generator" target="_blank">Github</a></li>
         <li class="list-inline-item"><a href="https://markomaksym.com.ua/" target="_blank">Marko Maksym</a></li>

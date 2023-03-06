@@ -5,6 +5,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 {
+
+	protected $model_inst;
+
+	public function __construct()
+	{
+
+		$this->model_inst = new |UNIQUESTRING|_Main_Page_Model();
+		
+	}
 	
 	public function index()
 	{
@@ -38,29 +47,17 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 	{
 
 		// trash action
-		$trash_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
+		$item_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
 
-		if( $trash_id ) {
+		if( $item_id ) {
 
 			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'trash' ) ) {
 
-				global $wpdb;
-
-				$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
-
-				$wpdb->delete( 
-					$table, 
-					[
-						'id' => $trash_id
-					], 
-					[ 
-						'%d'
-					] 
-				);
+				$this->model_inst->move_to_trash( $item_id );
 
 			}
 
-			wp_redirect( admin_url( 'admin.php?page=single_table_item' ) );
+			wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
 
 			return;
 
@@ -69,13 +66,11 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 		// edit action
 		$item_id = isset( $_GET['edit-item'] ) ? trim( sanitize_text_field( $_GET['edit-item'] ) ) : 0;
 		
-		$model_inst = new |UNIQUESTRING|_Main_Page_Model();
-
-		$data = $model_inst->|uniquestring|_get_row( NULL, 'id', intval( $item_id ) );
+		$data = $this->model_inst->|uniquestring|_get_row( NULL, 'id', intval( $item_id ) );
 
 		if( $data == NULL ) {
-			if( $_SERVER['HTTP_REFERER'] == NULL ) {
-				wp_redirect( admin_url( 'admin.php?page=single_table_item' ) );
+			if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
+				wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
 			} else {
 				wp_redirect( $_SERVER['HTTP_REFERER'] );
 			}
@@ -83,6 +78,13 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 		}
 		
 		return new |UNIQUESTRING|_View( 'single-table-item', $data );
+
+	}		
+
+	// create table item
+	public function create_table_item() {
+
+		return new |UNIQUESTRING|_View( 'create-table-item' );
 
 	}
 

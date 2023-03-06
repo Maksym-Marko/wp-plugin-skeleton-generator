@@ -19,24 +19,15 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 		parent::__construct(
 			array(
-				'singular' => 'product',
-				'plural' => 'products',
+				'singular' => '|uniquestring|_singular',
+				'plural' => '|uniquestring|_plural',
 			)
 		);
 
-    }	
-
-	public function get_columns() {
-		return [
-			'cb'            => '<input type="checkbox" />',
-			'id'         	=> __( 'ID', '|uniquestring|-domain' ),
-			'title'         => __( 'Title', '|uniquestring|-domain' ),
-			'description' 	=> __( 'Description', '|uniquestring|-domain' ),
-			'status' 		=> __( 'Status', '|uniquestring|-domain' ),
-		];
-	}	
+	}
 
 	public function prepare_items() {
+
 		global $wpdb;
 
 		// pagination
@@ -59,17 +50,20 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		if ( ! empty( $_REQUEST['s'] ) ) {
 			$search = "AND title LIKE '%" . esc_sql( $wpdb->esc_like( wc_clean( wp_unslash( $_REQUEST['s'] ) ) ) ) . "%' ";
 		}
+
+		// status
+		$status = "AND status = 'publish'";
 		
 		// get data
 		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$items = $wpdb->get_results(
-			"SELECT * FROM {$table} WHERE 1 = 1 {$search}" .
+			"SELECT * FROM {$table} WHERE 1 = 1 {$status} {$search}" .
 			$wpdb->prepare( "ORDER BY {$orderby} {$order} LIMIT %d OFFSET %d;", $per_page, $offset ),
 			ARRAY_A
 		);
 
-		$count = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE 1 = 1 {$search};" );
+		$count = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE 1 = 1 {$status} {$search};" );
 
 		// set data
 		$this->items = $items;
@@ -93,7 +87,20 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 				'total_pages' => ceil( $count / $per_page ),
 			)
 		);
+
 	}
+
+	public function get_columns() {
+
+		return [
+			'cb'            => '<input type="checkbox" />',
+			'id'         	=> __( 'ID', '|uniquestring|-domain' ),
+			'title'         => __( 'Title', '|uniquestring|-domain' ),
+			'description' 	=> __( 'Description', '|uniquestring|-domain' ),
+			'status' 		=> __( 'Status', '|uniquestring|-domain' ),
+		];
+		
+	}	
 
 	public function get_hidden_columns() {
 
@@ -121,7 +128,9 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 	}
 
 	public function column_cb( $item ) {
-		echo sprintf( '<input type="checkbox" name="$item[]" value="%1$s" />', $item['id'] );
+		
+		echo sprintf( '<input type="checkbox" class="|uniquestring|_bulk_input" name="|uniquestring|-action-%1$s" value="%1$s" />', $item['id'] );
+	
 	}
 
 	public function column_id( $item ) {
@@ -132,7 +141,7 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	public function column_title( $item ) {
 
-		$url     = admin_url( 'admin.php?page=single_table_item' );
+		$url     = admin_url( 'admin.php?page=' . |UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU );
 
 		$user_id = get_current_user_id();
 
@@ -187,21 +196,25 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 	}
 
     public function ajax_user_can() {
+
 		return current_user_can( 'edit_posts' );
+
 	}
 
 	protected function get_bulk_actions() {
-		// if ( ! current_user_can( 'remove_users' ) ) {
-		// 	return array();
-		// }
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return [];
+		}
 
 		return [
-			'delete' => __( 'Move to trash', '|uniquestring|-domain' ),
+			'trash' => __( 'Move to trash', '|uniquestring|-domain' ),
 		];
 
 	}
 
 	public function search_box( $text, $input_id ) {
+
 		if ( empty( $_REQUEST['s'] ) && ! $this->has_items() ) {
 			return;
 		}
@@ -242,6 +255,8 @@ function  |uniquestring|_table_layout() {
 		$table_instance->search_box( 'Search Items', '|uniquestring|_custom_talbe_search_input' );
 	echo '</form>';
 
-	$table_instance->display();
+	echo '<form id="|uniquestring|_custom_talbe_form" method="post">';
+		$table_instance->display();
+	echo '</form>';
 
 }

@@ -1,5 +1,9 @@
 <div class="mx-single-table-item-wrap">
 
+    <h1><?php echo __( 'Edit Table Item', '|uniquestring|-domain' ); ?></h1>
+
+    <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
+
     <div class="mx-block_wrap">
 
         <form id="|uniquestring|_form_update" class="mx-settings" method="post" action="">

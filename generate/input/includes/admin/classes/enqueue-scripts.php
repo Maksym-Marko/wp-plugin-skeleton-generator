@@ -36,7 +36,8 @@ class |UNIQUESTRING|_Enqueue_Scripts
 
 			wp_localize_script( '|uniquestring|_admin_script', '|uniquestring|_admin_localize', [
 
-				'ajaxurl' 			=> admin_url( 'admin-ajax.php' )
+				'ajaxurl' 			=> admin_url( 'admin-ajax.php' ),
+				'main_page' 		=> admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ),
 
 			] );
 

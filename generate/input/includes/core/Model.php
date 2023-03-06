@@ -47,19 +47,15 @@ class |UNIQUESTRING|_Model
 
 		}
 
-		if( $wher_name == NULL ) {
+		$where = '';
 
-			$wher_name = 'name';
+		if( $wher_name !== NULL && $wher_value !== NULL ) {
+
+			$where = "WHERE $wher_name = $wher_value";
 
 		}
 
-		if( $wher_value == NULL ) {
-
-			$wher_value = 'value';
-			
-		}
-
-		$get_row = $this->wpdb->get_row( "SELECT $this->fields FROM $table_name WHERE $wher_name = $wher_value" );
+		$get_row = $this->wpdb->get_row( "SELECT $this->fields FROM $table_name {$where}" );
 
 		return $get_row;
 		

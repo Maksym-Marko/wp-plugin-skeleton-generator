@@ -84,7 +84,27 @@ if ( ! defined( '|UNIQUESTRING|_PLUGIN_VERSION' ) ) {
 if ( ! defined( '|UNIQUESTRING|_MAIN_MENU_SLUG' ) ) {
 
 	// version
-	define( '|UNIQUESTRING|_MAIN_MENU_SLUG', '|uniquestring|-wp-plugin-skeleton-menu' );
+	define( '|UNIQUESTRING|_MAIN_MENU_SLUG', '|uniquestring|-wp-plugin-skeleton-main-page' );
+
+}
+
+/*
+* Define |UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU
+*/
+if ( ! defined( '|UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU' ) ) {
+
+	// version
+	define( '|UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU', '|uniquestring|-wp-plugin-skeleton-single-page' );
+
+}
+
+/*
+* Define |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU
+*/
+if ( ! defined( '|UNIQUESTRING|_CREATE_TABLE_ITEM_MENU' ) ) {
+
+	// version
+	define( '|UNIQUESTRING|_CREATE_TABLE_ITEM_MENU', '|uniquestring|-wp-plugin-skeleton-create-item-page' );
 
 }
 

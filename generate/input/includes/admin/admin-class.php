@@ -85,6 +85,16 @@ class |UNIQUESTRING|_Admin_Main
 			'menu_title' => 'Main menu'
 		] );
 
+			// single table item
+			|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'single_table_item', 'NULL', [
+				'page_title' => 'Single Table Item',
+			], |UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU );
+
+			// single table item
+			|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'create_table_item', 'NULL', [
+				'page_title' => 'Create Table Item',
+			], |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU );
+
 		// sub menu item
 		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'submenu', '', [
 			'page_title' => 'Sub Menu title',
@@ -101,11 +111,6 @@ class |UNIQUESTRING|_Admin_Main
 			'menu_title' => 'Settings Item',
 			'page_title' => 'Title of settings page'
 		], 'settings_menu_item', true );
-
-		// single table item
-		|UNIQUESTRING|_Route::|uniquestring|_get( '|UNIQUESTRING|_Main_Page_Controller', 'single_table_item', 'NULL', [
-			'page_title' => 'Single Table Item',
-		], 'single_table_item' );
 
 	}
 

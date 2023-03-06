@@ -117,7 +117,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'text-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'Text field', 'mx-domain' )
+				'name'			=> esc_html( 'Text field', '|uniquestring|-domain' )
 			]
 		);
 
@@ -126,7 +126,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'email-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'E-mail field', 'mx-domain' ),
+				'name'			=> esc_html( 'E-mail field', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'input-email'
 			]
 		);
@@ -136,7 +136,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'url-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'URL field', 'mx-domain' ),
+				'name'			=> esc_html( 'URL field', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'input-url'
 			]
 		);
@@ -146,7 +146,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'desc-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'Some Description', 'mx-domain' ),
+				'name'			=> esc_html( 'Some Description', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'textarea'
 			]
 		);
@@ -156,7 +156,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'checkboxes-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'Checkbox Buttons', 'mx-domain' ),
+				'name'			=> esc_html( 'Checkbox Buttons', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'checkbox',
 				'options' 		=> [
 					[
@@ -178,7 +178,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'radio-buttons-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'Radio Buttons', 'mx-domain' ),
+				'name'			=> esc_html( 'Radio Buttons', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'radio',
 				'options' 		=> [
 					[
@@ -200,7 +200,7 @@ class |UNIQUESTRING|CPTclass
 			[
 				'id'			=> 'featured-image-metabox',
 				'post_types' 	=> '|uniquestring|_books',
-				'name'			=> esc_html( 'Featured image', 'mx-domain' ),
+				'name'			=> esc_html( 'Featured image', '|uniquestring|-domain' ),
 				'metabox_type'	=> 'image'
 			]
 		);
