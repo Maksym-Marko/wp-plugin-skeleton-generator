@@ -1,10 +1,8 @@
 <div class="mx-main-page-text-wrap">
 
-	<div class="wrap">
+	<h2><?php echo __( 'Main page', '|uniquestring|-domain' ); ?></h2>
 
-		<h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', '|uniquestring|-domain' ); ?></h1>
-		<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU ); ?>" class="page-title-action">Add New</a>
-		<hr class="wp-header-end">
+	<div class="wrap">
 
 		<?php
 			|uniquestring|_table_layout();

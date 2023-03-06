@@ -33,6 +33,28 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 		// Checked or nonce match
 		if ( wp_verify_nonce( $_POST['nonce'], 'bulk-|uniquestring|_plural' ) ) {
 
+			// delete
+			if( $_POST['bulk_action']  == 'delete' ) {
+
+				if ( ! current_user_can( 'edit_posts' ) ) return;
+
+				self::action_delete( $_POST['ids'] );	
+				
+				return;
+
+			}
+			
+			// restore
+			if( $_POST['bulk_action']  == 'restore' ) {
+
+				if ( ! current_user_can( 'edit_posts' ) ) return;
+
+				self::action_restore( $_POST['ids'] );	
+				
+				return;
+
+			}
+
 			// move to trash
 			if( $_POST['bulk_action']  == 'trash' ) {
 
@@ -51,6 +73,34 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// handle bulk actions
+	// Delete permanently
+	public static function action_delete( $ids )
+	{
+
+		foreach ( $ids as $id ) {
+
+			( new self )->delete_permanently( $id );
+
+		}
+
+		return;
+
+	}
+
+	// Restore
+	public static function action_restore( $ids )
+	{
+
+		foreach ( $ids as $id ) {
+
+			( new self )->restore_item( $id );
+
+		}
+
+		return;
+
+	}
+
 	// Move to Trash
 	public static function action_trash( $ids )
 	{
@@ -177,6 +227,28 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	/*
 	* Actions
 	*/
+	// restore item
+	public function restore_item( $id )
+	{
+
+		global $wpdb;
+		
+		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+
+		$wpdb->update(
+
+			$table_name,
+			[
+				'status' 		=> 'publish',
+			],
+			['id' => $id],
+			[
+				'%s',
+			]
+
+		);
+
+	}
 	// move to trash
 	public function move_to_trash( $id )
 	{

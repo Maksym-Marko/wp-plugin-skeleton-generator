@@ -4,7 +4,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if( ! class_exists('WP_List_Table' ) ) {
-    require_once( ABSPATH . 'wp-admin/includes/screen.php' );
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
@@ -15,13 +14,13 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 	* |UNIQUESTRING|_Custom_Table
 	*/
 
-    public function __construct( $args = array() ) {
+    public function __construct( $args = [] ) {
 
 		parent::__construct(
-			array(
+			[
 				'singular' => '|uniquestring|_singular',
 				'plural' => '|uniquestring|_plural',
-			)
+			]
 		);
 
 	}
@@ -52,7 +51,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		}
 
 		// status
-		$status = "AND status = 'publish'";
+		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$status = "AND status = '$item_status'";
 		
 		// get data
 		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
@@ -81,11 +81,11 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 		// Set the pagination.
 		$this->set_pagination_args(
-			array(
+			[
 				'total_items' => $count,
 				'per_page'    => $per_page,
 				'total_pages' => ceil( $count / $per_page ),
-			)
+			]
 		);
 
 	}
@@ -105,7 +105,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 	public function get_hidden_columns() {
 
 		return [
-			'status'
+			'id',
+			'status',
 		];
 
 	}
@@ -123,7 +124,7 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	public function column_default( $item, $column_name ) {
 
-		do_action( "manage_{$this->screen->id}_custom_column", $column_name, $item );
+		do_action( "manage_|uniquestring|_items_custom_column", $column_name, $item );
 
 	}
 
@@ -157,20 +158,57 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 			$actions['trash'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Trash', '|uniquestring|-domain' ) . '" href="' . esc_url(
 				wp_nonce_url(
 					add_query_arg(
-						array(
+						[
 							'trash' => $item['id'],
-						),
+						],
 						$url
 					),
 					'trash',
 					'|uniquestring|_nonce'
 				)
 			) . '">' . esc_html__( 'Trash', '|uniquestring|-domain' ) . '</a>';
+
+			$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+
+			if( $item_status == 'trash' ) {
+
+				unset( $actions['edit'] );
+				unset( $actions['trash'] );
+
+				$actions['restore'] = '<a aria-label="' . esc_attr__( 'Restore', '|uniquestring|-domain' ) . '" href="' . esc_url(
+					wp_nonce_url(
+						add_query_arg(
+							[
+								'restore' => $item['id'],
+							],
+							$url
+						),
+						'restore',
+						'|uniquestring|_nonce'
+					)
+				) . '">' . esc_html__( 'Restore', '|uniquestring|-domain' ) . '</a>';
+
+				$actions['delete'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Delete Permanently', '|uniquestring|-domain' ) . '" href="' . esc_url(
+					wp_nonce_url(
+						add_query_arg(
+							[
+								'delete' => $item['id'],
+							],
+							$url
+						),
+						'delete',
+						'|uniquestring|_nonce'
+					)
+				) . '">' . esc_html__( 'Delete Permanently', '|uniquestring|-domain' ) . '</a>';
+
+			}
 	
-			$row_actions = array();
+			$row_actions = [];
 	
 			foreach ( $actions as $action => $link ) {
+
 				$row_actions[] = '<span class="' . esc_attr( $action ) . '">' . $link . '</span>';
+			
 			}
 	
 			$output .= '<div class="row-actions">' . implode( ' | ', $row_actions ) . '</div>';
@@ -195,21 +233,28 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-    public function ajax_user_can() {
-
-		return current_user_can( 'edit_posts' );
-
-	}
-
 	protected function get_bulk_actions() {
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return [];
 		}
 
-		return [
+		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+
+		$action = [
 			'trash' => __( 'Move to trash', '|uniquestring|-domain' ),
 		];
+
+		if( $item_status == 'trash' ) {
+
+			unset( $action['trash'] );
+
+			$action['restore'] 	= __( 'Restore Item', '|uniquestring|-domain' );
+			$action['delete'] 	= __( 'Delete Permanently', '|uniquestring|-domain' );
+
+		}
+
+		return $action;
 
 	}
 
@@ -219,37 +264,113 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 			return;
 		}
 
-		if ( ! empty( $_REQUEST['orderby'] ) ) {
-			echo '<input type="hidden" name="orderby" value="' . esc_attr( $_REQUEST['orderby'] ) . '" />';
-		}
-		if ( ! empty( $_REQUEST['order'] ) ) {
-			echo '<input type="hidden" name="order" value="' . esc_attr( $_REQUEST['order'] ) . '" />';
-		}
-		if ( ! empty( $_REQUEST['post_mime_type'] ) ) {
-			echo '<input type="hidden" name="post_mime_type" value="' . esc_attr( $_REQUEST['post_mime_type'] ) . '" />';
-		}
-		if ( ! empty( $_REQUEST['detached'] ) ) {
-			echo '<input type="hidden" name="detached" value="' . esc_attr( $_REQUEST['detached'] ) . '" />';
-		}
-
 		?>
 			<p class="search-box">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo $text; ?>:</label>
 				<input type="search" id="<?php echo esc_attr( $input_id ); ?>" name="s" value="<?php _admin_search_query(); ?>" />
-					<?php submit_button( $text, '', '', false, array( 'id' => '|uniquestring|-search-submit' ) ); ?>
+					<?php submit_button( $text, '', '', false, ['id' => '|uniquestring|-search-submit'] ); ?>
 			</p>
 		<?php
+
+	}
+
+	protected function get_views() {
+
+		global $wpdb;
+		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+
+		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$publish_number = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE status='publish';" );
+		$trash_number = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE status='trash';" );
+		$url = admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG );
+
+		$status_links = [];
+
+		// publish
+		$status_links['publish'] = [
+			'url'     => add_query_arg( 'item_status', 'publish', $url ),
+			'label'   => sprintf(
+				_nx(
+					'Publish <span class="count">(%s)</span>',
+					'Publish <span class="count">(%s)</span>',
+					$publish_number,
+					'publish'
+				),
+				number_format_i18n( $publish_number )
+			),
+			'current' => 'publish' == $item_status,
+		];
+
+		if ( $publish_number == 0 ) {
+			unset( $status_links['publish'] );
+		}
+
+		// trash
+		$status_links['trash'] = [
+			'url'     => add_query_arg( 'item_status', 'trash', $url ),
+			'label'   => sprintf(
+				_nx(
+					'Trash <span class="count">(%s)</span>',
+					'Trash <span class="count">(%s)</span>',
+					$trash_number,
+					'trash'
+				),
+				number_format_i18n( $trash_number )
+			),
+			'current' => 'trash' == $item_status,
+		];
+
+		if ( $trash_number == 0 ) {
+			unset( $status_links['trash'] );
+		}
+
+		return $this->get_views_links( $status_links );
+
+	}
+
+	public function no_items() {
+
+		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		
+		if( $item_status == 'trash' ) {
+
+			_e( 'No items found in trash.' );
+
+		} else {
+
+			_e( 'No items found.' );
+
+		}		
+
 	}
 
 }
 
 function  |uniquestring|_table_layout() {
 
+	global $wpdb;
+
+	$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+
+	$is_table = $wpdb->get_var(
+
+		$wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) )
+
+	);
+
+	if( ! $is_table ) return;
+
+	?>
+		<h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', '|uniquestring|-domain' ); ?></h1>
+		<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU ); ?>" class="page-title-action">Add New</a>
+		<hr class="wp-header-end">
+	<?php
+
 	$table_instance = new |UNIQUESTRING|_Custom_Table();
 	
 	$table_instance->prepare_items();
 
-	// $table_instance->views();
+	$table_instance->views();
 
 	echo '<form id="|uniquestring|_custom_talbe_search_form" method="post">';
 		$table_instance->search_box( 'Search Items', '|uniquestring|_custom_talbe_search_input' );
