@@ -4,7 +4,7 @@
 
 	<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
 
-    <div class="mx-block_wrap">
+    <div class="|uniquestring|mx-block_wrap">
 
 		<form id="|uniquestring|_form_create_table_item" class="mx-settings" method="post" action="">
 

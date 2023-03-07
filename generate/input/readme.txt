@@ -1,14 +1,14 @@
 === |Plugin Name| ===
 Contributors: |Contributors|
 Tags: create table, create CPT, add metaboxes
-Requires at least: 4.9
-Tested up to: 5.8
+Requires at least: 5.0
+Tested up to: 6.1
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-	WP Plugin Skeleton Generator Version: 			4.0
-	WP Plugin Skeleton Generator Author: 			Maksym Marko
-	WP Plugin Skeleton Generator Author Website:	https://markomaksym.com.ua/
+	WPP Generator Version: 			5.1
+	WPP Generator Author: 			Maksym Marko
+	WPP Generator Author Website:	https://markomaksym.com.ua/
 
 |Brief description|
 

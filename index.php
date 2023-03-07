@@ -3,7 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Create a WordPress Plugin Boilerplate</title>
+  <title>WPP generator - boilerplate for your best WordPress plugin</title>
+
+  <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
+  <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
+
+  <meta name="description" content="When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work." />
+  <meta property="og:description" content="When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work." />
+  <meta name="twitter:description" content="When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work." />
+  
+  <meta name="keywords" content="skeleton plugin in wordpress,wordpress blank plugin,wordpress empty plugin,WordPress Starter plugin,boilerplate plugin,starter plugin,plugin template,WordPress Plugin Creator" />
 
   <link rel="stylesheet" href="access/css/bootstrap.min.css" />
   <link rel="stylesheet" href="access/css/style.css" />
@@ -12,24 +21,41 @@
 
 <body>
 
+  <div class="container border border-left-0 border-top-0 border-right-0 border-primary">
+    <div class="row">
+      <div class="col-md-12">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+          <a class="navbar-brand" href="#">WPP generator</a>
+        
+        </nav>
+
+      </div>
+    </div>
+  </div>
+  
   <div class="container mt-5">
-    <div class="text-center">
-      <h2>WPP Generator</h2>
-      <p class="lead">To create a WordPress Plugin Boilerplate, fill out the fields below.</p>
-      <p class="lead">This information will be included in your future plugin.</p>
+
+    <div class="text-center mb-5">
+      <h1><span class="text-primary">WPP generator</span> - boilerplate for your best WordPress plugin</h1>
+      <p >To create a WordPress Plugin Boilerplate, fill out the fields below</p>
     </div>
 
     <div class="row">
       <div class="col-md-12 order-md-1">
-        <h4 class="mb-3">Required information</h4>
+        <h4 class="mb-3">Required Fields</h4>
         <form class="needs-validation" id="mxFormCreateSkeleton">
           <div class="row">
             <div class="col-md-12">
               <label for="pluginName">Plugin name:</label>
               <input type="text" class="form-control" id="pluginName" name="plugin_name" placeholder="" value="" />
+              
               <div class="invalid-feedback">
                 Valid plugin name is required.
               </div>
+
+              <small>This is a very important field. <b>Use only English words!</b> Using the "plugin name" WPP generator will create a unique string for all the PHP classes and functions. It is recommended to fill in at least 3 words. (eg. Super Car Plugin - the unique string in this case will be scp_...). You can change the plugin name later in your main plugin file and readme.txt file.</small>
             </div>
 
             <div class="col-md-12 mt-3">
@@ -51,7 +77,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-              <label for="contributors">Contributors <span class="text-muted">(this should be a list of wordpress.org userid's)</span>:</label>
+              <label for="contributors">Contributors <span class="text-muted">(this should be a list of wordpress.org user id's)</span>:</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
@@ -69,6 +95,7 @@
               <div class="invalid-feedback">
                 Valid plugin URI is required.
               </div>
+              <small>Plugin URI is a URL of a web page with detailed information about your plugin. If you don't have a website with your plugin, please provide any URL (you can always change it in the future).</small>
             </div>
 
             <div class="col-md-12 mt-3">
@@ -85,6 +112,7 @@
               <div class="invalid-feedback">
                 Valid Author URI is required.
               </div>
+              <small>Author URI is a URL of your website, Github profile or social media profile.</small>
             </div>
 
           </div>
@@ -97,6 +125,119 @@
       </div>
     </div>
 
+    <div class="row mt-5">
+      <div class="col-md-12">
+
+        <h2 class="mb-4">About WPP generator</h2>
+
+        <p>
+          When I want to create a new WordPress plugin I always use a <b>WPP generator</b> (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
+        </p>
+        <p>
+          To quickly get a starter set for any WordPress plugin, I created a <b>WPP generator - Wordpress plugin skeleton generator</b>.
+        </p>
+        <p>
+          This framework gives a much wider starter functionality and a set of necessary files to start working then most of existing starter kits.
+        </p>
+
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12">
+
+        <h2 class="mb-4">How to use the WPP generator</h2>
+
+        <p>
+            <i><b>1. Generate plugin skeleton</b></i> <br>
+            WPP generator will generate the skeleton files needed for any WordPress plugin. The full functionality of the plugin can be accessed either via a web interface.
+            <br>
+            To generate a plugin skeleton for WordPress go to <a href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/#top">https://markomaksym.com.ua/wp-plugin-skeleton-generator/</a>. Fill in all the fields and click the "Create Plugin Boilerplate" button.
+        </p>
+        <p>
+          <i><b>2. Installation</b></i> <br>
+          This starter plugin has been tested to work with WordPress 5.0 and newer. 
+          <br>
+          General installation procedures are those common for all WordPress plugins:
+            <ul>
+              <li>
+                download the plugin template zip archive;
+              </li>
+              <li>
+                upload the archive to the "Plugins" section of your website;
+              </li>
+              <li>
+                click the "Activate" button.
+              </li>
+            </ul>
+        </p>
+        <p>
+          <i><b>3. Features</b></i> <br>
+          Your boilerplate plugin will included:
+            <ul>
+              <li>
+                Basic install and uninstall, activate and deactivate plugin hooks;
+              </li>
+              <li>
+                During the generation of a new WordPress Plugin boilerplate, all the PHP classes and functions will be rewritten with a unique string created using your plugin name;
+              </li>
+              <li>
+                Ability to separate your code to admin and frontend folders;
+              </li>
+              <li>
+                Admin menu items and ability to create unlimited number of admin pages;
+              </li>
+              <li>
+                Custom Post Type (ability to create a new post type and add new posts);
+              </li>
+              <li>
+                Metaboxes examples (text, number, select, checkboxes, radio buttons, textarea, image upload);
+              </li>
+              <li>
+                Custom database table creation;
+              </li>
+              <li>
+                AJAX request examples;
+              </li>
+              <li>
+                admin_enqueue_scripts, wp_enqueue_scripts and wp_localize_script examples;
+              </li>
+              <li>
+                Custom table with search box, bulk actions, sorting, editing, remove, restore features (example how to extend WP_List_Table basic WordPress table framework);
+              </li>
+              <li>
+                A set of examples of banners, icons, screenshots, readme.txt and license.txt files needed for uploading your plugin to the WordPress.org directory;
+              </li>
+              <li>
+                The plugin boilerplate template has been designed to be easily expanded by adding new features.
+              </li>
+              
+            </ul>
+        </p>
+
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12">
+
+        <p class="lead">
+          Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory:
+          <a href="https://profiles.wordpress.org/markomaksym/#content-plugins">https://profiles.wordpress.org/markomaksym/#content-plugins</a>
+        </p>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
     <footer class="mx-footer my-5 pt-5 text-muted text-center text-small">
       <p class="mb-1">© 2018 - 2023 WPP Generator</p>
       <ul class="list-inline">
@@ -104,7 +245,7 @@
         <li class="list-inline-item"><a href="https://markomaksym.com.ua/" target="_blank">Marko Maksym</a></li>
       </ul>
 
-      <?php $url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http" ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+      <?php $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
 
       <div class="mx-download-plugin" data-curr-url="<?php echo $url; ?>">
         <a href="<?php echo $url; ?>" style="margin-top: -106px;">Close</a>

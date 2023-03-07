@@ -41,3 +41,6 @@
     box-shadow: 2px -2px 23px -5px rgba(0,123,255,1);
     border-radius: 8px;
 }
+.navbar-brand {
+    font-size: 1.3rem;
+}

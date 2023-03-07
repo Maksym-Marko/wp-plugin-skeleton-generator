@@ -98,6 +98,7 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 			'title'         => __( 'Title', '|uniquestring|-domain' ),
 			'description' 	=> __( 'Description', '|uniquestring|-domain' ),
 			'status' 		=> __( 'Status', '|uniquestring|-domain' ),
+			'created_at' 	=> __( 'Created', '|uniquestring|-domain' ),
 		];
 		
 	}	
@@ -230,6 +231,12 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		$length = 30;
 
 		echo strlen( $item['description'] ) <= $length ? $item['description'] : substr( $item['description'], 0, $length ) . '...';
+
+	}
+
+	public function column_created_at( $item ) {
+
+		echo $item['created_at'];
 
 	}
 
