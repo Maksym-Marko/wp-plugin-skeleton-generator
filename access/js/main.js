@@ -25,7 +25,9 @@ $( document ).ready( function(){
 
     setTimeout( function(){
 
-      if( notSubmitted.length === 0 ){        
+      if( notSubmitted.length === 0 ) {
+        
+        $( '.mx-submit-button' ).remove()
 
         mxPostData( _this.serialize() );
 

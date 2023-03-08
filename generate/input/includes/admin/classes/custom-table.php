@@ -47,7 +47,7 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		$search = '';
 
 		if ( ! empty( $_REQUEST['s'] ) ) {
-			$search = "AND title LIKE '%" . esc_sql( $wpdb->esc_like( wc_clean( wp_unslash( $_REQUEST['s'] ) ) ) ) . "%' ";
+			$search = "AND title LIKE '%" . esc_sql( $wpdb->esc_like( sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) ) ) . "%' ";
 		}
 
 		// status

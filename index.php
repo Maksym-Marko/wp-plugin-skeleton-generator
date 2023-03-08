@@ -119,7 +119,7 @@
 
           <hr class="mb-4">
 
-          <button class="btn btn-primary float-right" type="submit">Create Plugin Boilerplate</button>
+          <button class="btn btn-primary float-right mx-submit-button" type="submit">Create Plugin Boilerplate</button>
 
         </form>
       </div>
