@@ -3,23 +3,13 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-final class |UniqueClassName|
+final class |UniqueClassName|WPPGenerator
 {
-
-	/*
-	* |UniqueClassName| constructor
-	*/
-	public function __construct()
-	{
-
-		// ...
-
-	}
 
 	/*
 	* Include required core files
 	*/
-	public function |uniquestring|_include()
+	public function includeCore()
 	{		
 
 		// helpers
@@ -45,18 +35,18 @@ final class |UniqueClassName|
 	/*
 	* Include Admin Path
 	*/
-	public function |uniquestring|_include_admin_path()
+	public function includeAdminPath()
 	{
 
 		// Part of the Administrator
-		require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/admin-class.php';
+		require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/admin-main.php';
 	
 	}
 
 	/*
 	* Include Frontend Path
 	*/
-	public function |uniquestring|_include_frontend_path()
+	public function includeFrontendPath()
 	{
 
 		// Part of the Frontend
@@ -66,14 +56,14 @@ final class |UniqueClassName|
 
 }
 
-// create a new instance of final class
-$final_class_instance = new |UniqueClassName|();
+// create an instance of final class
+$wppGenerator = new |UniqueClassName|WPPGenerator();
 
 // run core files
-$final_class_instance->|uniquestring|_include();
+$wppGenerator->includeCore();
 
 // include admin parth
-$final_class_instance->|uniquestring|_include_admin_path();
+$wppGenerator->includeAdminPath();
 
 // include frontend parth
-$final_class_instance->|uniquestring|_include_frontend_path();
+$wppGenerator->includeFrontendPath();

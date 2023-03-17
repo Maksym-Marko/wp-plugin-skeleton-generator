@@ -165,14 +165,14 @@ final class MxGeneratePluginStructure
 			$output = 'generate/output/' . $this->main_file_name . '/' . $this->main_file_name . '.php';
 		}
 		/*rename  controller*/
-		elseif( $input == 'generate/input/includes/admin/controllers/MXXXXX_Main_Page_Controller.php' ) {
+		elseif( $input == 'generate/input/includes/admin/controllers/MXXXXXMainAdminController.php' ) {
 
-			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/controllers/' . $this->uniquestring_upc . '_Main_Page_Controller.php';
+			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/controllers/' . $this->uniquestring_upc . 'MainAdminController.php';
 		}
 		/*rename  model*/
-		elseif( $input == 'generate/input/includes/admin/models/MXXXXX_Main_Page_Model.php' ) {
+		elseif( $input == 'generate/input/includes/admin/models/MXXXXXMainAdminModel.php' ) {
 
-			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/models/' . $this->uniquestring_upc . '_Main_Page_Model.php';
+			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/models/' . $this->uniquestring_upc . 'MainAdminModel.php';
 		}
 		/*miss*/
 		else {

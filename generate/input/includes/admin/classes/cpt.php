@@ -3,16 +3,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|CPTclass
+class |UNIQUESTRING|CPTGenerator
 {
-
-	/*
-	* |UNIQUESTRING|CPTclass constructor
-	*/
-	public function __construct()
-	{		
-
-	}
 
 	/*
 	* Observe function
@@ -21,21 +13,21 @@ class |UNIQUESTRING|CPTclass
 	{
 
 		// create CPT
-		add_action( 'init', [ '|UNIQUESTRING|CPTclass', '|uniquestring|_custom_init' ] );
+		add_action( 'init', ['|UNIQUESTRING|CPTGenerator', 'customPostsInit'] );
 
 		// manage columns
 		// add ID column to the table
-		add_filter( 'manage_|uniquestring|_books_posts_columns', [ '|UNIQUESTRING|CPTclass', '|uniquestring|add_id_column' ], 20, 1 );
+		add_filter( 'manage_|uniquestring|_books_posts_columns', ['|UNIQUESTRING|CPTGenerator', 'addIdColumn'], 20, 1 );
 
 			// manage ID column
-			add_action( 'manage_|uniquestring|_books_posts_custom_column', [ '|UNIQUESTRING|CPTclass', '|uniquestring|_books_column_row' ], 20, 2 );
+			add_action( 'manage_|uniquestring|_books_posts_custom_column', ['|UNIQUESTRING|CPTGenerator', 'booksColumnRow'], 20, 2 );
 
 	}
 
 	/*
 	* Manage new column
 	*/
-	public static function |uniquestring|_books_column_row( $column, $post_id )
+	public static function booksColumnRow( $column, $post_id )
 	{
 
 		if( $column === 'book_id' ) {
@@ -49,21 +41,21 @@ class |UNIQUESTRING|CPTclass
 	/*
 	* Add new column to the Custom Post Type
 	*/
-	public static function |uniquestring|add_id_column( $columns )
+	public static function addIdColumn( $columns )
 	{
 
-		$new_column = ['book_id' => 'Book ID'];
+		$newColumn = ['book_id' => 'Book ID'];
 
-		$new_columns = |uniquestring|_insert_new_column_to_position( $columns, 3, $new_column );
+		$newColumns = |uniquestring|InsertNewColumnToPosition( $columns, 3, $newColumn );
 
-		return $new_columns;
+		return $newColumns;
 
 	}
 
 	/*
 	* Create a Custom Post Type
 	*/
-	public static function |uniquestring|_custom_init()
+	public static function customPostsInit()
 	{
 		
 		register_post_type( '|uniquestring|_books', [
@@ -94,13 +86,12 @@ class |UNIQUESTRING|CPTclass
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ]
+			'supports'           => ['title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments']
 
 		] );
 
 		// Rewrite rules
-		if( is_admin() && get_option( '|uniquestring|_flush_rewrite_rules' ) == 'go_flush_rewrite_rules' )
-		{
+		if( is_admin() && get_option( '|uniquestring|_flush_rewrite_rules' ) == 'go_flush_rewrite_rules' ) {
 
 			delete_option( '|uniquestring|_flush_rewrite_rules' );
 
@@ -113,7 +104,7 @@ class |UNIQUESTRING|CPTclass
 		*/
 		
 		// add text input
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'text-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -122,7 +113,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// add email input
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'email-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -132,7 +123,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// add url input
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'url-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -142,7 +133,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// description
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'desc-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -152,7 +143,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// add checkboxes
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'checkboxes-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -174,7 +165,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// add radio buttons
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'radio-buttons-metabox',
 				'post_types' 	=> '|uniquestring|_books',
@@ -196,7 +187,7 @@ class |UNIQUESTRING|CPTclass
 		);
 
 		// image upload
-		new |UNIQUESTRING|_Metaboxes_Class(
+		new |UNIQUESTRING|MetaboxesGenerator(
 			[
 				'id'			=> 'featured-image-metabox',
 				'post_types' 	=> '|uniquestring|_books',

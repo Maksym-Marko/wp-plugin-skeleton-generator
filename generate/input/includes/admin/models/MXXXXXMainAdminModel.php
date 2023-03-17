@@ -1,30 +1,30 @@
 <?php
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Main page Model
  */
-class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
+class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
 {
 
 	/*
 	* Observe function
 	*/
-	public static function |uniquestring|_wp_ajax()
+	public static function wpAjax()
 	{
 
-		add_action( 'wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|_Main_Page_Model', 'prepare_update_database_column'], 10, 1 );
-		add_action( 'wp_ajax_|uniquestring|_create_item', ['|UNIQUESTRING|_Main_Page_Model', 'prepare_item_creation'], 10, 1 );
-		add_action( 'wp_ajax_|uniquestring|_bulk_actions', ['|UNIQUESTRING|_Main_Page_Model', 'prepare_bulk_actions'], 10, 1 );		
+		add_action( 'wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|MainAdminModel', 'prepareUpdateDatabaseColumn'], 10, 1 );
+		add_action( 'wp_ajax_|uniquestring|_create_item', ['|UNIQUESTRING|MainAdminModel', 'prepareItemCreation'], 10, 1 );
+		add_action( 'wp_ajax_|uniquestring|_bulk_actions', ['|UNIQUESTRING|MainAdminModel', 'prepareBulkActions'], 10, 1 );		
 		
 	}
 
 	/*
 	* Prepare to bulk actions
 	*/
-	public static function prepare_bulk_actions()
+	public static function prepareBulkActions()
 	{		
 		
 		// Checked POST nonce is not empty
@@ -38,7 +38,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 				if ( ! current_user_can( 'edit_posts' ) ) return;
 
-				self::action_delete( $_POST['ids'] );	
+				self::actionDelete( $_POST['ids'] );	
 				
 				return;
 
@@ -49,7 +49,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 				if ( ! current_user_can( 'edit_posts' ) ) return;
 
-				self::action_restore( $_POST['ids'] );	
+				self::actionRestore( $_POST['ids'] );	
 				
 				return;
 
@@ -60,7 +60,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 				if ( ! current_user_can( 'edit_posts' ) ) return;
 
-				self::action_trash( $_POST['ids'] );	
+				self::actionTrash( $_POST['ids'] );	
 				
 				return;
 
@@ -72,14 +72,16 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 	}
 
-	// handle bulk actions
+	/**
+	 * Handle bulk actions 
+	 */
 	// Delete permanently
-	public static function action_delete( $ids )
+	public static function actionDelete( $ids )
 	{
 
 		foreach ( $ids as $id ) {
 
-			( new self )->delete_permanently( $id );
+			( new self )->deletePermanently( $id );
 
 		}
 
@@ -88,12 +90,12 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// Restore
-	public static function action_restore( $ids )
+	public static function actionRestore( $ids )
 	{
 
 		foreach ( $ids as $id ) {
 
-			( new self )->restore_item( $id );
+			( new self )->restoreItem( $id );
 
 		}
 
@@ -102,12 +104,12 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// Move to Trash
-	public static function action_trash( $ids )
+	public static function actionTrash( $ids )
 	{
 
 		foreach ( $ids as $id ) {
 
-			( new self )->move_to_trash( $id );
+			( new self )->moveToTrash( $id );
 
 		}
 
@@ -118,7 +120,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	/*
 	* Prepare item creation
 	*/
-	public static function prepare_item_creation()
+	public static function prepareItemCreation()
 	{
 
 		// Checked POST nonce is not empty
@@ -136,7 +138,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 				'description' => $description,
 			];
 
-			self::create_item( $data );
+			self::createItem( $data );
 		}
 
 		wp_die();
@@ -144,16 +146,16 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// Create item
-	public static function create_item( $data )
+	public static function createItem( $data )
 	{
 
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 		
 		$created = $wpdb->insert(
 			
-			$table_name, 
+			$tableName, 
 			[
 				'title' => $data['title'],
 				'description' => $data['description'],
@@ -172,7 +174,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	/*
 	* Prepare item updating
 	*/
-	public static function prepare_update_database_column()
+	public static function prepareUpdateDatabaseColumn()
 	{
 
 		// Checked POST nonce is not empty
@@ -192,7 +194,7 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 				'description' 	=> $description,
 			];
 
-			self::update_database_column( $data );
+			self::updateDatabaseColumn( $data );
 		}
 
 		wp_die();
@@ -200,16 +202,16 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// Update item
-	public static function update_database_column( $data )
+	public static function updateDatabaseColumn( $data )
 	{
 
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$wpdb->update(
 
-			$table_name,
+			$tableName,
 			[
 				'title' 		=> $data['title'],
 				'description' 	=> $data['description'],
@@ -228,18 +230,18 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	* Actions
 	*/
 	// restore item
-	public function restore_item( $id )
+	public function restoreItem( $id )
 	{
 
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$wpdb->update(
 
-			$table_name,
+			$tableName,
 			[
-				'status' 		=> 'publish',
+				'status' => 'publish',
 			],
 			['id' => $id],
 			[
@@ -250,18 +252,18 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 
 	}
 	// move to trash
-	public function move_to_trash( $id )
+	public function moveToTrash( $id )
 	{
 
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$wpdb->update(
 
-			$table_name,
+			$tableName,
 			[
-				'status' 		=> 'trash',
+				'status' => 'trash',
 			],
 			['id' => $id],
 			[
@@ -273,15 +275,15 @@ class |UNIQUESTRING|_Main_Page_Model extends |UNIQUESTRING|_Model
 	}
 
 	// delete permanently
-	public function delete_permanently( $id )
+	public function deletePermanently( $id )
 	{
 
 		global $wpdb;
 
-		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$wpdb->delete( 
-			$table, 
+			$tableName, 
 			[
 				'id' => $id
 			], 

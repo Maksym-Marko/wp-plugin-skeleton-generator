@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * Model class
 */
-class |UNIQUESTRING|_Model
+class |UNIQUESTRING|Model
 {
 
 	private $wpdb;
@@ -29,59 +29,59 @@ class |UNIQUESTRING|_Model
 		
 		global $wpdb;
 
-    	$this->wpdb = $wpdb;    	
+    	$this->wpdb = $wpdb;
 
 	}	
 
 	/**
 	* select row from the database
 	*/
-	public function |uniquestring|_get_row( $table = NULL, $wher_name = NULL, $wher_value = NULL )
+	public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL )
 	{
 
-		$table_name = $this->wpdb->prefix . $this->table;
+		$tableName = $this->wpdb->prefix . $this->table;
 
 		if( $table !== NULL ) {
 
-			$table_name = $table;
+			$tableName = $table;
 
 		}
 
 		$where = '';
 
-		if( $wher_name !== NULL && $wher_value !== NULL ) {
+		if( $wherName !== NULL && $wherValue !== NULL ) {
 
-			$where = "WHERE $wher_name = $wher_value";
+			$where = "WHERE $wherName = $wherValue";
 
 		}
 
-		$get_row = $this->wpdb->get_row( "SELECT $this->fields FROM $table_name {$where}" );
+		$getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where}" );
 
-		return $get_row;
+		return $getRow;
 		
 	}
 
 	/**
 	* get results from the database
 	*/
-	public function |uniquestring|_get_results( $table = false, $wher_name = NULL, $wher_value = 1 )
+	public function getResults( $table = false, $wherName = NULL, $wherValue = 1 )
 	{
 
-		$table_name = $this->wpdb->prefix . $this->table;
+		$tableName = $this->wpdb->prefix . $this->table;
 
 		if( $table !== false ) {
 
-			$table_name = $table;
+			$tableName = $table;
 
 		}
 
-		if( $wher_name !== NULL ) {
+		if( $wherName !== NULL ) {
 
-			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $table_name WHERE $wher_name = $wher_value" );
+			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName WHERE $wherName = $wherValue" );
 
 		} else {
 
-			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $table_name" );
+			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName" );
 
 		}		
 

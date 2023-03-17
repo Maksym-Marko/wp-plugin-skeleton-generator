@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: |Plugin Name|
 Plugin URI: |Plugin URI|
@@ -93,7 +94,7 @@ if ( ! defined( '|UNIQUESTRING|_MAIN_MENU_SLUG' ) ) {
 */
 if ( ! defined( '|UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU' ) ) {
 
-	// version
+	// single table item menu
 	define( '|UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU', '|uniquestring|-wp-plugin-skeleton-single-page' );
 
 }
@@ -103,7 +104,7 @@ if ( ! defined( '|UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU' ) ) {
 */
 if ( ! defined( '|UNIQUESTRING|_CREATE_TABLE_ITEM_MENU' ) ) {
 
-	// version
+	// table item menu
 	define( '|UNIQUESTRING|_CREATE_TABLE_ITEM_MENU', '|uniquestring|-wp-plugin-skeleton-create-item-page' );
 
 }
@@ -117,11 +118,10 @@ require_once plugin_dir_path( __FILE__ ) . 'install.php';
 * Registration hooks
 */
 // Activation
-register_activation_hook( __FILE__, [ '|UNIQUESTRING|_Basis_Plugin_Class', 'activate' ] );
+register_activation_hook( __FILE__, ['|UNIQUESTRING|BasisPluginClass', 'activate'] );
 
 // Deactivation
-register_deactivation_hook( __FILE__, [ '|UNIQUESTRING|_Basis_Plugin_Class', 'deactivate' ] );
-
+register_deactivation_hook( __FILE__, ['|UNIQUESTRING|BasisPluginClass', 'deactivate'] );
 
 /*
 * Include the main |UniqueClassName| class

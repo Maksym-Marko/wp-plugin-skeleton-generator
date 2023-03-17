@@ -6,10 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // create table class
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
 
-class |UNIQUESTRING|_Basis_Plugin_Class
+class |UNIQUESTRING|BasisPluginClass
 {
 
-	private static $table_slug = |UNIQUESTRING|_TABLE_SLUG;
+	private static $tableSlug = |UNIQUESTRING|_TABLE_SLUG;
 
 	public static $data = [
 		// https://mobile-magazine.com/articles/top-10-most-popular-personal-robots
@@ -72,44 +72,44 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 	{
 
 		// set option for rewrite rules CPT
-		self::create_option_for_activation();
+		self::createOptionForActivation();
 
 		// Create table
 		global $wpdb;
 
 		// Table name
-		$table_name = $wpdb->prefix . self::$table_slug;
+		$tableName = $wpdb->prefix . self::$tableSlug;
 
-		$product_table = new |UNIQUESTRING|CreateTable( $table_name );
+		$productTable = new |UNIQUESTRING|CreateTable( $tableName );
 
 		// add some column
 			// title
-			$product_table->varchar( 'title', 200, true, 'text' );
+			$productTable->varchar( 'title', 200, true, 'text' );
 
 			// longtext
-			$product_table->longtext( 'description' );
+			$productTable->longtext( 'description' );
 
 			// statue
-			$product_table->varchar( 'status', 20, true, 'publish' );
+			$productTable->varchar( 'status', 20, true, 'publish' );
 
 			// created
-			$product_table->datetime( 'created_at' );			
+			$productTable->datetime( 'created_at' );			
 
 		// create "id" column as AUTO_INCREMENT
-		$product_table->create_columns();
+		$productTable->create_columns();
 
 		// create table
-		$table_created = $product_table->create_table();
+		$tableCreated = $productTable->createTable();
 
 		// if table has created, insert data
-		if( $table_created == 1 ) {
+		if( $tableCreated == 1 ) {
 
 			// Insert dummy data
 			foreach ( self::$data as $value ) {
 				
 				$wpdb->insert(
 
-					$table_name,
+					$tableName,
 	
 					[
 						'title' 		=> $value['title'],
@@ -142,7 +142,7 @@ class |UNIQUESTRING|_Basis_Plugin_Class
 	/*
 	* This function sets the option in the table for CPT rewrite rules
 	*/
-	public static function create_option_for_activation()
+	public static function createOptionForActivation()
 	{
 
 		add_option( '|uniquestring|_flush_rewrite_rules', 'go_flush_rewrite_rules' );

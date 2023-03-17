@@ -3,57 +3,57 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
+class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 {
 
-	protected $model_inst;
+	protected $modelInstance;
 
 	public function __construct()
 	{
 
-		$this->model_inst = new |UNIQUESTRING|_Main_Page_Model();
+		$this->modelInstance = new |UNIQUESTRING|MainAdminModel();
 		
 	}
 	
 	public function index()
 	{
 
-		return new |UNIQUESTRING|_View( 'main-page' );
+		return new |UNIQUESTRING|MxView( 'main-page' );
 
 	}
 
 	public function submenu()
 	{
 
-		return new |UNIQUESTRING|_View( 'sub-page' );
+		return new |UNIQUESTRING|MxView( 'sub-page' );
 
 	}
 
 	public function hidemenu()
 	{
 
-		return new |UNIQUESTRING|_View( 'hidemenu-page' );
+		return new |UNIQUESTRING|MxView( 'hidemenu-page' );
 
 	}
 
-	public function settings_menu_item_action()
+	public function settingsMenuItemAction()
 	{
 
-		return new |UNIQUESTRING|_View( 'settings-page' );
+		return new |UNIQUESTRING|MxView( 'settings-page' );
 
 	}
 
-	public function single_table_item()
+	public function singleTableItem()
 	{
 
 		// restore action
-		$delete_id = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
+		$deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
 		
-		if( $delete_id ) {
+		if( $deleteId ) {
 
 			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'delete' ) ) {
 
-				$this->model_inst->delete_permanently( $delete_id );
+				$this->modelInstance->deletePermanently( $deleteId );
 
 			}
 
@@ -70,7 +70,7 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 
 			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'restore' ) ) {
 
-				$this->model_inst->restore_item( $restore_id );
+				$this->modelInstance->restoreItem( $restore_id );
 
 			}
 
@@ -87,7 +87,7 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 
 			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'trash' ) ) {
 
-				$this->model_inst->move_to_trash( $trash_id );
+				$this->modelInstance->moveToTrash( $trash_id );
 
 			}
 
@@ -100,7 +100,7 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 		// edit action
 		$item_id = isset( $_GET['edit-item'] ) ? trim( sanitize_text_field( $_GET['edit-item'] ) ) : 0;
 		
-		$data = $this->model_inst->|uniquestring|_get_row( NULL, 'id', intval( $item_id ) );
+		$data = $this->modelInstance->getRow( NULL, 'id', intval( $item_id ) );
 
 		if( $data == NULL ) {
 			if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
@@ -111,14 +111,14 @@ class |UNIQUESTRING|_Main_Page_Controller extends |UNIQUESTRING|_Controller
 			return;
 		}
 		
-		return new |UNIQUESTRING|_View( 'single-table-item', $data );
+		return new |UNIQUESTRING|MxView( 'single-table-item', $data );
 
 	}		
 
 	// create table item
-	public function create_table_item() {
+	public function createTableItem() {
 
-		return new |UNIQUESTRING|_View( 'create-table-item' );
+		return new |UNIQUESTRING|MxView( 'create-table-item' );
 
 	}
 

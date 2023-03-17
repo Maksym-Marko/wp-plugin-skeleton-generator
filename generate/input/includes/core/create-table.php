@@ -21,7 +21,7 @@ class |UNIQUESTRING|CreateTable
 	// datetime
 	private $datetime 	= NULL;
 
-	function __construct( $table_name = 'mx_table' )
+	function __construct( $tableName = 'mx_table' )
 	{
 
 		global $wpdb;
@@ -30,57 +30,57 @@ class |UNIQUESTRING|CreateTable
 
 		$this->wpdb = $wpdb; 
 
-		$this->table = $table_name;
+		$this->table = $tableName;
 
 	}
 
 	// add varchar
-	public function varchar( $column_name = 'name', $length = 10, $not_null = false, $default = NULL )
+	public function varchar( $columnName = 'name', $length = 10, $notNull = false, $default = NULL )
 	{
 
 		// not null
-		$not_null = $not_null ? 'NOT NULL' : 'NULL';
+		$notNull = $notNull ? 'NOT NULL' : 'NULL';
 
 		// default
 		$default = $default !== NULL ? 'default \'' . $default .'\'' : '';
 
-		$sql = "$column_name varchar($length) $not_null $default";
+		$sql = "$columnName varchar($length) $notNull $default";
 
 		array_push( $this->columns, $sql );
 
 	}
 
 	// add longtext
-	public function longtext( $column_name = 'text', $not_null = false )
+	public function longtext( $columnName = 'text', $notNull = false )
 	{
 
 		// not null
-		$not_null = $not_null ? 'NOT NULL' : 'NULL';
+		$notNull = $notNull ? 'NOT NULL' : 'NULL';
 
-		$sql = "$column_name longtext $not_null";
+		$sql = "$columnName longtext $notNull";
 
 		array_push( $this->columns, $sql );
 
 	}
 
 	// add int
-	public function int( $column_name = 'integer' )
+	public function int( $columnName = 'integer' )
 	{
 
-		$sql = "$column_name int(11) NOT NULL";
+		$sql = "$columnName int(11) NOT NULL";
 
 		array_push( $this->columns, $sql );
 
 	}
 
 	// add datetime
-	public function datetime( $column_name = 'created', $default = NULL )
+	public function datetime( $columnName = 'created', $default = NULL )
 	{
 
 		// default
 		$default = $default == NULL ? current_time('mysql') : $default;
 
-		$sql = "$column_name datetime NOT NULL default '$default'";
+		$sql = "$columnName datetime NOT NULL default '$default'";
 
 		array_push( $this->columns, $sql );
 
@@ -126,7 +126,7 @@ class |UNIQUESTRING|CreateTable
 
 	}
 
-	public function create_table()
+	public function createTable()
 	{
 
 		if( $this->_sql == NULL ) return 0;

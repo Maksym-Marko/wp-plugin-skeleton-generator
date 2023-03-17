@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * Controllers class
 */
-abstract class |UNIQUESTRING|_Controller
+abstract class |UNIQUESTRING|Controller
 {
 
 	/**

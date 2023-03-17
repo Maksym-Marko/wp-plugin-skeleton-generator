@@ -3,7 +3,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|_Route_Registrar
+class |UNIQUESTRING|RouteRegistrar
 {
 	
 	/**
@@ -24,7 +24,7 @@ class |UNIQUESTRING|_Route_Registrar
 	/**
 	* catch class error
 	*/
-	public $class_attributes_error = NULL;
+	public $classAttributesError = NULL;
 
 	/**
 	* set properties
@@ -41,30 +41,30 @@ class |UNIQUESTRING|_Route_Registrar
 	/**
 	* set slug of sub menu
 	*/
-	public $sub_menu_slug = false;
+	public $subMenuSlug = false;
 
 	/**
 	* set plugin name
 	*/
-	public $plugin_name;
+	public $pluginName;
 
 	/**
-	* |UNIQUESTRING|_Route_Registrar constructor
+	* |UNIQUESTRING|RouteRegistrar constructor
 	*/
 	public function __construct( ...$args )
 	{
 
-		$this->plugin_name = |UNIQUESTRING|_PLUGN_BASE_NAME;
+		$this->pluginName = |UNIQUESTRING|_PLUGN_BASE_NAME;
 
 		// set data
-		$this->|uniquestring|_set_data( ...$args );
+		$this->|uniquestring|SetData( ...$args );
 
 	}
 
 	/**
 	* require class
 	*/
-	public function |uniquestring|_require_controller( $controller )
+	public function requireController( $controller )
 	{
 
 		if( file_exists( |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php" ) ) {
@@ -83,14 +83,14 @@ class |UNIQUESTRING|_Route_Registrar
 	* $slug 			- if NULL - menu item will investment into
 	*						|UNIQUESTRING|_MAIN_MENU_SLUG menu item
 	*
-	* $menu_properties 	- menu properties
+	* $menuProperties 	- menu properties
 	*
-	* $sub_menu_slug 	- slug of sub menu
+	* $subMenuSlug 	- slug of sub menu
 	*
-	* $settings_area 	- place item to settings area (core WP Settings menu item)
+	* $settingsArea 	- place item to settings area (core WP Settings menu item)
 	*
 	*/
-	public function |uniquestring|_set_data( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menu_properties = [], $sub_menu_slug = false, $settings_area = false )
+	public function |uniquestring|SetData( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menuProperties = [], $subMenuSlug = false, $settingsArea = false )
 	{
 
 		// set controller
@@ -111,72 +111,72 @@ class |UNIQUESTRING|_Route_Registrar
 		}
 
 		// set properties
-		foreach ( $menu_properties as $key => $value ) {
+		foreach ( $menuProperties as $key => $value ) {
 			
 			$this->properties[$key] = $value;
 
 		}
 
 		// callback function
-		$|uniquestring|_callback_function_menu = '|uniquestring|_create_admin_main_menu';
+		$|uniquestring|CallbackFunctionMenu = 'createAdminMainMenu';
 
 		/*
 		* check if it's submenu
-		* set sub_menu_slug
+		* set subMenuSlug
 		*/
-		if( $sub_menu_slug !== false ) {
+		if( $subMenuSlug !== false ) {
 
-			$this->sub_menu_slug = $sub_menu_slug;
+			$this->subMenuSlug = $subMenuSlug;
 
-			$|uniquestring|_callback_function_menu = '|uniquestring|_create_admin_sub_menu';
+			$|uniquestring|CallbackFunctionMenu = 'createAdminSubMenu';
 			
 		}
 
 		/*
 		* check if it's settings menu item
 		*/
-		if( $settings_area !== false ) {
+		if( $settingsArea !== false ) {
 
-			$|uniquestring|_callback_function_menu = '|uniquestring|_settings_area_menu_item';
+			$|uniquestring|CallbackFunctionMenu = 'settingsAreaMenuItem';
 
 			// add link Settings under the name of the plugin
-			add_filter( "plugin_action_links_$this->plugin_name", [ $this, '|uniquestring|_create_settings_link' ] );
+			add_filter( "plugin_action_links_$this->pluginName", [$this, 'createSettingsLink'] );
 			
 		}
 
 		/**
 		* require controller
 		*/
-		$this->|uniquestring|_require_controller( $this->controller );
+		$this->requireController( $this->controller );
 
 		/**
 		* catching errors of class attrs
 		*/
-		$is_error_class_atr = |UNIQUESTRING|_Catching_Errors::|uniquestring|_catch_class_attributes_error( $this->controller, $this->action );
+		$isErrorClassAtr = |UNIQUESTRING|CatchingErrors::catchClassAttributesError( $this->controller, $this->action );
 		
 		// catch error class attr
-		if( $is_error_class_atr !== NULL ) {
+		if( $isErrorClassAtr !== NULL ) {
 
-			$this->class_attributes_error = $is_error_class_atr;
+			$this->classAttributesError = $isErrorClassAtr;
 
 		}
 
 		// register admin menu
-		add_action( 'admin_menu', [ $this, $|uniquestring|_callback_function_menu ] );
+		add_action( 'admin_menu', [$this, $|uniquestring|CallbackFunctionMenu] );
 
 	}
 
 	/**
 	* Create Main menu
 	*/
-	public function |uniquestring|_create_admin_main_menu()
+	public function createAdminMainMenu()
 	{
 
 		add_menu_page( __( $this->properties['page_title'], '|uniquestring|-domain' ),
 			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
 			$this->properties['capability'],
 			$this->slug,
-			[ $this, '|uniquestring|_view_connector' ],
+			[ $this, 'viewConnector' ],
 			$this->properties['dashicons'], // icons https://developer.wordpress.org/resource/dashicons/#id
 			$this->properties['position'] );
 	}
@@ -184,7 +184,7 @@ class |UNIQUESTRING|_Route_Registrar
 	/**
 	* Create Sub menu
 	*/
-	public function |uniquestring|_create_admin_sub_menu()
+	public function createAdminSubMenu()
 	{
 		
 		// create a sub menu
@@ -192,8 +192,8 @@ class |UNIQUESTRING|_Route_Registrar
 			__( $this->properties['page_title'], '|uniquestring|-domain' ),
 			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
 			$this->properties['capability'],
-			$this->sub_menu_slug,
-			[ $this, '|uniquestring|_view_connector' ]
+			$this->subMenuSlug,
+			[ $this, 'viewConnector' ]
 		);
 
 	}
@@ -201,7 +201,7 @@ class |UNIQUESTRING|_Route_Registrar
 	/**
 	* Create Settings area menu item
 	*/
-	public function |uniquestring|_settings_area_menu_item()
+	public function settingsAreaMenuItem()
 	{
 		
 		// create a settings menu
@@ -209,31 +209,31 @@ class |UNIQUESTRING|_Route_Registrar
 			__( $this->properties['page_title'], '|uniquestring|-domain' ),
 			__( $this->properties['menu_title'], '|uniquestring|-domain' ),
 			$this->properties['capability'],
-			$this->sub_menu_slug,
-			[ $this, '|uniquestring|_view_connector' ]
+			$this->subMenuSlug,
+			[ $this, 'viewConnector' ]
 		);
 
 	}
-		public function |uniquestring|_create_settings_link( $links )
+		public function createSettingsLink( $links )
 		{
 
-			$settings_link = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->sub_menu_slug . '">' . __( $this->properties['menu_title'], '|uniquestring|-domain' ) . '</a>'; // options-general.php
+			$settingsLink = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->subMenuSlug . '">' . __( $this->properties['menu_title'], '|uniquestring|-domain' ) . '</a>'; // options-general.php
 
-			array_push( $links, $settings_link );
+			array_push( $links, $settingsLink );
 
 			return $links;
 
 		}
 
 		// connect view
-		public function |uniquestring|_view_connector()
+		public function viewConnector()
 		{
 
-			if( $this->class_attributes_error == NULL ) {
+			if( $this->classAttributesError == NULL ) {
 
-				$class_inst = new $this->controller();
+				$classInstance = new $this->controller();
 
-				call_user_func( [ $class_inst, $this->action ] );
+				call_user_func( [$classInstance, $this->action] );
 
 			}
 			

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * Error Handle calss
 */
-class |UNIQUESTRING|_Error_Handle
+class |UNIQUESTRING|ErrorHandle
 {
 
 	/**
@@ -17,53 +17,48 @@ class |UNIQUESTRING|_Error_Handle
 	/**
 	* has error
 	*/
-	public $|uniquestring|_isnt_error = true;
-
-	public function __construct()
-	{
-
-	}
+	public $errorInstance = true;
 	
-	public function |uniquestring|_class_attributes_error( $class_name, $method )
+	public function classAttributesError( $className, $method )
 	{
 
 		// if class not exists display an error
-		if( class_exists( $class_name ) ) {
+		if( class_exists( $className ) ) {
 
 			// check if method exists
-			$class_inst = new $class_name();
+			$classInstance = new $className();
 
 			// if method not exists display an error
-			if( !method_exists( $class_inst, $method ) ) {
+			if( ! method_exists( $classInstance, $method ) ) {
 
 				// notice of error
-				$|uniquestring|_error_notice = "The <b>\"{$class_name}\"</b> class doesn't contain the <b>\"{$method}\"</b> method.";
+				$errorNotice = "The <b>\"{$className}\"</b> class doesn't contain the <b>\"{$method}\"</b> method.";
 
 				// show an error
-				$error_method_inst = new |UNIQUESTRING|_Display_Error( $|uniquestring|_error_notice );
+				$errorMethodInstance = new |UNIQUESTRING|DisplayError( $errorNotice );
 
-				$error_method_inst->|uniquestring|_show_error();
+				$errorMethodInstance->showError();
 
-				$this->|uniquestring|_isnt_error = $|uniquestring|_error_notice;
+				$this->errorInstance = $errorNotice;
 
 			}
 
 		} else {
 
 			// notice of error
-			$|uniquestring|_error_notice = "The <b>\"{$class_name}\"</b> class not exists.";
+			$errorNotice = "The <b>\"{$className}\"</b> class not exists.";
 
 			// show an error
-			$error_class_inst = new |UNIQUESTRING|_Display_Error( $|uniquestring|_error_notice );
+			$errorClassInstance = new |UNIQUESTRING|DisplayError( $errorNotice );
 
-			$error_class_inst->|uniquestring|_show_error();
+			$errorClassInstance->showError();
 
-			$this->|uniquestring|_isnt_error = $|uniquestring|_error_notice;
+			$this->errorInstance = $errorNotice;
 
 		}
 	
 		// 
-		return $this->|uniquestring|_isnt_error;
+		return $this->errorInstance;
 
 	}
 	

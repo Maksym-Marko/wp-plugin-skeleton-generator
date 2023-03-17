@@ -4,7 +4,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // metabox creating main class
-class |UNIQUESTRING|_Metaboxes_Class
+class |UNIQUESTRING|MetaboxesGenerator
 {
 
 	private $args = [];
@@ -49,22 +49,23 @@ class |UNIQUESTRING|_Metaboxes_Class
 
 				$i++;
 
-			}			
+			}
 
 		}
 
-		add_action( 'add_meta_boxes', [ $this, 'add_meta_box' ] );
+		add_action( 'add_meta_boxes', [$this, 'addMetaBox'] );
 
-		add_action( 'save_post', [ $this, 'save_meta_box' ] );
+		add_action( 'save_post', [$this, 'saveMetaBox'] );
 
 	}
 
 	// add post meta
-	public function add_meta_box() {
+	public function addMetaBox()
+	{
 		add_meta_box(
 			$this->args['metabox_id'],
 			$this->args['name'],
-			[ $this, 'meta_box_content' ],
+			[ $this, 'metaBoxContent' ],
 			$this->args['post_types'],
 			'normal'
 			// 'low'
@@ -72,7 +73,8 @@ class |UNIQUESTRING|_Metaboxes_Class
 	}
 
 	// save post meta
-	public function save_meta_box( $post_id ) {
+	public function saveMetaBox( $post_id )
+	{
 		if ( ! isset( $_POST[ $this->args['nonce_name'] ] ) || ! wp_verify_nonce( wp_unslash( $_POST[ $this->args['nonce_name'] ] ), $this->args['nonce_action'] ) ) { // phpcs:ignore WordPress.Security
 			return;
 		}
@@ -147,10 +149,10 @@ class |UNIQUESTRING|_Metaboxes_Class
 	}
 
 	// metabox content
-	public function meta_box_content( $post, $meta )
+	public function metaBoxContent( $post, $meta )
 	{
 
-		$meta_value = get_post_meta(
+		$metaValue = get_post_meta(
 			$post->ID,
 			$this->args['post_meta_key'],
 			true
@@ -165,7 +167,7 @@ class |UNIQUESTRING|_Metaboxes_Class
 				<input 
 					type="email" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
 					name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-					value="<?php echo $meta_value; ?>"
+					value="<?php echo $metaValue; ?>"
 				/>
 
 			<?php elseif( $this->args['metabox_type'] == 'input-url' ) : ?>
@@ -174,13 +176,13 @@ class |UNIQUESTRING|_Metaboxes_Class
 				<input 
 					type="url" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
 					name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-					value="<?php echo $meta_value; ?>"
+					value="<?php echo $metaValue; ?>"
 				/>
 
 			<?php elseif( $this->args['metabox_type'] == 'textarea' ) : ?>
 
 				<!-- textarea field -->
-				<textarea name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" cols="30" rows="10"><?php echo $meta_value; ?></textarea>
+				<textarea name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
 
 			<?php elseif( $this->args['metabox_type'] == 'image' ) : ?>
 
@@ -188,9 +190,9 @@ class |UNIQUESTRING|_Metaboxes_Class
 
 					$image_url = '';
 
-					if( $meta_value !== '' ) {
+					if( $metaValue !== '' ) {
 
-						$image_url = wp_get_attachment_url( $meta_value );
+						$image_url = wp_get_attachment_url( $metaValue );
 
 					}
 
@@ -210,7 +212,7 @@ class |UNIQUESTRING|_Metaboxes_Class
 						id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
 						type="hidden"
 						class="|uniquestring|_upload_image_save"
-						value="<?php echo $meta_value; ?>"
+						value="<?php echo $metaValue; ?>"
 					/>
 
 					<!-- show an image -->
@@ -253,13 +255,13 @@ class |UNIQUESTRING|_Metaboxes_Class
 										id="<?php echo esc_attr( $this->args['post_meta_key'] ) . $i; ?>"
 										value="<?php echo $val['value']; ?>" 
 										
-										<?php if( $meta_value == '' ) : ?>
+										<?php if( $metaValue == '' ) : ?>
 
 											<?php echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : ''; ?>
 
 										<?php else : ?>
 
-											<?php echo $meta_value == $val['value'] ? 'checked' : ''; ?>
+											<?php echo $metaValue == $val['value'] ? 'checked' : ''; ?>
 
 										<?php endif; ?>
 
@@ -292,7 +294,7 @@ class |UNIQUESTRING|_Metaboxes_Class
 
 							foreach ( $this->args['options'] as $key => $val ) {
 
-								$checkbox_value = get_post_meta(
+								$checkboxValue = get_post_meta(
 									$post->ID,
 									$val['name'],
 									true
@@ -307,13 +309,13 @@ class |UNIQUESTRING|_Metaboxes_Class
 										value="<?php echo $val['value']; ?>"
 
 										<?php 
-										if( !$meta_value ) {
+										if( !$metaValue ) {
 
 											echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : '';
 
 										} else {
 
-											echo $val['value'] == $checkbox_value  ? 'checked' : '';
+											echo $val['value'] == $checkboxValue  ? 'checked' : '';
 
 										}
 
@@ -338,7 +340,7 @@ class |UNIQUESTRING|_Metaboxes_Class
 				<input 
 					type="text" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
 					name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-					value="<?php echo $meta_value; ?>"
+					value="<?php echo $metaValue; ?>"
 				/>
 
 			<?php endif; ?>

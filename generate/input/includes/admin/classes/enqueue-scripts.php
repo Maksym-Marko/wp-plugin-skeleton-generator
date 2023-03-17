@@ -3,29 +3,21 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|_Enqueue_Scripts
+class |UNIQUESTRING|EnqueueScripts
 {
-
-	/*
-	* |UNIQUESTRING|_Enqueue_Scripts
-	*/
-	public function __construct()
-	{
-
-	}
 
 	/*
 	* Registration of styles and scripts
 	*/
-	public static function |uniquestring|_register()
+	public static function registerScripts()
 	{
 
 		// register scripts and styles
-		add_action( 'admin_enqueue_scripts', [ '|UNIQUESTRING|_Enqueue_Scripts', '|uniquestring|_enqueue' ] );
+		add_action( 'admin_enqueue_scripts', ['|UNIQUESTRING|EnqueueScripts', 'enqueue'] );
 
 	}
 
-		public static function |uniquestring|_enqueue()
+		public static function enqueue()
 		{
 
 			wp_enqueue_style( '|uniquestring|_font_awesome', |UNIQUESTRING|_PLUGIN_URL . 'assets/font-awesome-4.6.3/css/font-awesome.min.css' );

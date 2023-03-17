@@ -6,29 +6,29 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * Error Handle calss
 */
-class |UNIQUESTRING|_Display_Error
+class |UNIQUESTRING|DisplayError
 {
 
 	/**
 	* Error notice
 	*/
-	public $|uniquestring|_error_notice = '';
+	public $errorNotice = '';
 
-	public function __construct( $|uniquestring|_error_notice )
+	public function __construct( $errorNotice )
 	{
 
-		$this->|uniquestring|_error_notice = $|uniquestring|_error_notice;
+		$this->errorNotice = $errorNotice;
 
 	}
 
-	public function |uniquestring|_show_error()
+	public function showError()
 	{
 		
 		add_action( 'admin_notices', function() { ?>
 
 			<div class="notice notice-error is-dismissible">
 
-			    <p><?php echo esc_attr( $this->|uniquestring|_error_notice ); ?></p>
+			    <p><?php echo esc_attr( $this->errorNotice ); ?></p>
 			    
 			</div>
 		    

@@ -5,7 +5,7 @@
 	<div class="wrap">
 
 		<?php
-			|uniquestring|_table_layout();
+			|uniquestring|TableLayout();
 		?>
 
 	</div>

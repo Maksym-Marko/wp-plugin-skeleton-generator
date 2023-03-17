@@ -6,18 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * View class
 */
-class |UNIQUESTRING|_View
+class |UNIQUESTRING|MxView
 {
 
 	public function __construct( ...$args )
 	{
 		
-		$this->|uniquestring|_render( ...$args );
+		$this->render( ...$args );
 
 	}
 	
 	// render HTML
-	public function |uniquestring|_render( $file, $data = NULL )
+	public function render( $file, $data = NULL )
 	{
 
 		// view content
@@ -36,7 +36,6 @@ class |UNIQUESTRING|_View
 			    
 			</div>
 		<?php }
-
 
 	}
 	

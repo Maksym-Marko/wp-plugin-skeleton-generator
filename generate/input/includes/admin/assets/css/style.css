@@ -1,5 +1,5 @@
 /*css styles*/
-.|uniquestring|mx-block_wrap {
+.|uniquestring|mx_block_wrap {
 	position: relative;
     margin-top: 20px;
     padding: .7em 2em 1em;
@@ -9,7 +9,7 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
     background: #fff;
 }
-.|uniquestring|mx-block_wrap textarea {
+.|uniquestring|mx_block_wrap textarea {
 	width: 100%;
 	height: 100px;
 }
@@ -33,6 +33,6 @@
     background: #f3f3f3;
     padding: 6px;
 }
-.|uniquestring|mx-block_wrap .thickbox img {
+.|uniquestring|mx_block_wrap .thickbox img {
     width: 200px;
 }

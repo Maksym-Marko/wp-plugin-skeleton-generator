@@ -3,34 +3,26 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class |UNIQUESTRING|_FrontEnd_Main
+class |UNIQUESTRING|FrontEndMain
 {
-
-	/*
-	* |UNIQUESTRING|_FrontEnd_Main constructor
-	*/
-	public function __construct()
-	{
-
-	}
 
 	/*
 	* Additional classes
 	*/
-	public function |uniquestring|_additional_classes()
+	public function additionalClasses()
 	{
 
 		// enqueue_scripts class
-		|uniquestring|_require_class_file_frontend( 'enqueue-scripts.php' );
+		|uniquestring|RequireClassFileFrontend( 'enqueue-scripts.php' );
 
-		|UNIQUESTRING|_Enqueue_Scripts_Frontend::|uniquestring|_register();
+		|UNIQUESTRING|EnqueueScriptsFrontend::registerScripts();
 
 	}
 
 }
 
 // Initialize
-$initialize_frontend_class = new |UNIQUESTRING|_FrontEnd_Main();
+$initialize_frontend_class = new |UNIQUESTRING|FrontEndMain();
 
 // include classes
-$initialize_frontend_class->|uniquestring|_additional_classes();
+$initialize_frontend_class->additionalClasses();

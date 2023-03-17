@@ -7,14 +7,15 @@ if( ! class_exists('WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class |UNIQUESTRING|_Custom_Table extends WP_List_Table
+class |UNIQUESTRING|CustomTable extends WP_List_Table
 {
 
 	/*
-	* |UNIQUESTRING|_Custom_Table
+	* |UNIQUESTRING|CustomTable
 	*/
 
-    public function __construct( $args = [] ) {
+    public function __construct( $args = [] )
+	{
 
 		parent::__construct(
 			[
@@ -25,23 +26,24 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-	public function prepare_items() {
+	public function prepare_items()
+	{
 
 		global $wpdb;
 
 		// pagination
-		$per_page     = 20;
-		$current_page = $this->get_pagenum();
+		$perPage     = 20;
+		$currentPage = $this->get_pagenum();
 
-		if ( 1 < $current_page ) {
-			$offset = $per_page * ( $current_page - 1 );
+		if ( 1 < $currentPage ) {
+			$offset = $perPage * ( $currentPage - 1 );
 		} else {
 			$offset = 0;
 		}
 
 		// sortable
 		$order 		= isset( $_GET['order'] ) ? trim( sanitize_text_field( $_GET['order'] ) ) : 'desc';
-		$orderby  	= isset( $_GET['orderby'] ) ? trim( sanitize_text_field( $_GET['orderby'] ) ) : 'id';
+		$orderBy  	= isset( $_GET['orderby'] ) ? trim( sanitize_text_field( $_GET['orderby'] ) ) : 'id';
 
 		// search
 		$search = '';
@@ -51,19 +53,19 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		}
 
 		// status
-		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
-		$status = "AND status = '$item_status'";
+		$itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$status = "AND status = '$itemStatus'";
 		
 		// get data
-		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
 		$items = $wpdb->get_results(
-			"SELECT * FROM {$table} WHERE 1 = 1 {$status} {$search}" .
-			$wpdb->prepare( "ORDER BY {$orderby} {$order} LIMIT %d OFFSET %d;", $per_page, $offset ),
+			"SELECT * FROM {$tableName} WHERE 1 = 1 {$status} {$search}" .
+			$wpdb->prepare( "ORDER BY {$orderBy} {$order} LIMIT %d OFFSET %d;", $perPage, $offset ),
 			ARRAY_A
 		);
 
-		$count = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE 1 = 1 {$status} {$search};" );
+		$count = $wpdb->get_var( "SELECT COUNT(id) FROM {$tableName} WHERE 1 = 1 {$status} {$search};" );
 
 		// set data
 		$this->items = $items;
@@ -83,14 +85,15 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		$this->set_pagination_args(
 			[
 				'total_items' => $count,
-				'per_page'    => $per_page,
-				'total_pages' => ceil( $count / $per_page ),
+				'per_page'    => $perPage,
+				'total_pages' => ceil( $count / $perPage ),
 			]
 		);
 
 	}
 
-	public function get_columns() {
+	public function get_columns()
+	{
 
 		return [
 			'cb'            => '<input type="checkbox" />',
@@ -103,7 +106,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		
 	}	
 
-	public function get_hidden_columns() {
+	public function get_hidden_columns()
+	{
 
 		return [
 			'id',
@@ -112,7 +116,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-	public function get_sortable_columns() {
+	public function get_sortable_columns()
+	{
 
 		return [
 			'title' => [
@@ -123,25 +128,29 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 		
 	}
 
-	public function column_default( $item, $column_name ) {
+	public function column_default( $item, $columnName )
+	{
 
-		do_action( "manage_|uniquestring|_items_custom_column", $column_name, $item );
+		do_action( "manage_|uniquestring|_items_custom_column", $columnName, $item );
 
 	}
 
-	public function column_cb( $item ) {
+	public function column_cb( $item )
+	{
 		
 		echo sprintf( '<input type="checkbox" class="|uniquestring|_bulk_input" name="|uniquestring|-action-%1$s" value="%1$s" />', $item['id'] );
 	
 	}
 
-	public function column_id( $item ) {
+	public function column_id( $item )
+	{
 
 		echo $item['id'];
 
 	}
 
-	public function column_title( $item ) {
+	public function column_title( $item )
+	{
 
 		$url     = admin_url( 'admin.php?page=' . |UNIQUESTRING|_SINGLE_TABLE_ITEM_MENU );
 
@@ -169,9 +178,9 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 				)
 			) . '">' . esc_html__( 'Trash', '|uniquestring|-domain' ) . '</a>';
 
-			$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+			$itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 
-			if( $item_status == 'trash' ) {
+			if( $itemStatus == 'trash' ) {
 
 				unset( $actions['edit'] );
 				unset( $actions['trash'] );
@@ -204,15 +213,15 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 			}
 	
-			$row_actions = [];
+			$rowActions = [];
 	
 			foreach ( $actions as $action => $link ) {
 
-				$row_actions[] = '<span class="' . esc_attr( $action ) . '">' . $link . '</span>';
+				$rowActions[] = '<span class="' . esc_attr( $action ) . '">' . $link . '</span>';
 			
 			}
 	
-			$output .= '<div class="row-actions">' . implode( ' | ', $row_actions ) . '</div>';
+			$output .= '<div class="row-actions">' . implode( ' | ', $rowActions ) . '</div>';
 				
 		} else {
 
@@ -226,7 +235,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-	public function column_description( $item ) {
+	public function column_description( $item )
+	{
 
 		$length = 30;
 
@@ -234,25 +244,27 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-	public function column_created_at( $item ) {
+	public function column_created_at( $item )
+	{
 
 		echo $item['created_at'];
 
 	}
 
-	protected function get_bulk_actions() {
+	protected function get_bulk_actions()
+	{
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return [];
 		}
 
-		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 
 		$action = [
 			'trash' => __( 'Move to trash', '|uniquestring|-domain' ),
 		];
 
-		if( $item_status == 'trash' ) {
+		if( $itemStatus == 'trash' ) {
 
 			unset( $action['trash'] );
 
@@ -265,7 +277,8 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 	}
 
-	public function search_box( $text, $input_id ) {
+	public function search_box( $text, $inputId )
+	{
 
 		if ( empty( $_REQUEST['s'] ) && ! $this->has_items() ) {
 			return;
@@ -273,73 +286,75 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 		?>
 			<p class="search-box">
-				<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo $text; ?>:</label>
-				<input type="search" id="<?php echo esc_attr( $input_id ); ?>" name="s" value="<?php _admin_search_query(); ?>" />
+				<label class="screen-reader-text" for="<?php echo esc_attr( $inputId ); ?>"><?php echo $text; ?>:</label>
+				<input type="search" id="<?php echo esc_attr( $inputId ); ?>" name="s" value="<?php _admin_search_query(); ?>" />
 					<?php submit_button( $text, '', '', false, ['id' => '|uniquestring|-search-submit'] ); ?>
 			</p>
 		<?php
 
 	}
 
-	protected function get_views() {
+	protected function get_views()
+	{
 
 		global $wpdb;
-		$table = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
-		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
-		$publish_number = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE status='publish';" );
-		$trash_number = $wpdb->get_var( "SELECT COUNT(id) FROM {$table} WHERE status='trash';" );
+		$itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$publishNumber = $wpdb->get_var( "SELECT COUNT(id) FROM {$tableName} WHERE status='publish';" );
+		$trashNumber = $wpdb->get_var( "SELECT COUNT(id) FROM {$tableName} WHERE status='trash';" );
 		$url = admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG );
 
-		$status_links = [];
+		$statusLinks = [];
 
 		// publish
-		$status_links['publish'] = [
+		$statusLinks['publish'] = [
 			'url'     => add_query_arg( 'item_status', 'publish', $url ),
 			'label'   => sprintf(
 				_nx(
 					'Publish <span class="count">(%s)</span>',
 					'Publish <span class="count">(%s)</span>',
-					$publish_number,
+					$publishNumber,
 					'publish'
 				),
-				number_format_i18n( $publish_number )
+				number_format_i18n( $publishNumber )
 			),
-			'current' => 'publish' == $item_status,
+			'current' => 'publish' == $itemStatus,
 		];
 
-		if ( $publish_number == 0 ) {
-			unset( $status_links['publish'] );
+		if ( $publishNumber == 0 ) {
+			unset( $statusLinks['publish'] );
 		}
 
 		// trash
-		$status_links['trash'] = [
+		$statusLinks['trash'] = [
 			'url'     => add_query_arg( 'item_status', 'trash', $url ),
 			'label'   => sprintf(
 				_nx(
 					'Trash <span class="count">(%s)</span>',
 					'Trash <span class="count">(%s)</span>',
-					$trash_number,
+					$trashNumber,
 					'trash'
 				),
-				number_format_i18n( $trash_number )
+				number_format_i18n( $trashNumber )
 			),
-			'current' => 'trash' == $item_status,
+			'current' => 'trash' == $itemStatus,
 		];
 
-		if ( $trash_number == 0 ) {
-			unset( $status_links['trash'] );
+		if ( $trashNumber == 0 ) {
+			unset( $statusLinks['trash'] );
 		}
 
-		return $this->get_views_links( $status_links );
+		return $this->get_views_links( $statusLinks );
 
 	}
 
-	public function no_items() {
+	public function no_items()
+	{
 
-		$item_status = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
+		$itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 		
-		if( $item_status == 'trash' ) {
+		if( $itemStatus == 'trash' ) {
 
 			_e( 'No items found in trash.' );
 
@@ -353,38 +368,42 @@ class |UNIQUESTRING|_Custom_Table extends WP_List_Table
 
 }
 
-function  |uniquestring|_table_layout() {
+if ( ! function_exists( '|uniquestring|TableLayout' ) ) {
 
-	global $wpdb;
+	function |uniquestring|TableLayout() {
 
-	$table_name = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
-
-	$is_table = $wpdb->get_var(
-
-		$wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) )
-
-	);
-
-	if( ! $is_table ) return;
-
-	?>
-		<h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', '|uniquestring|-domain' ); ?></h1>
-		<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU ); ?>" class="page-title-action">Add New</a>
-		<hr class="wp-header-end">
-	<?php
-
-	$table_instance = new |UNIQUESTRING|_Custom_Table();
+		global $wpdb;
 	
-	$table_instance->prepare_items();
-
-	$table_instance->views();
-
-	echo '<form id="|uniquestring|_custom_talbe_search_form" method="post">';
-		$table_instance->search_box( 'Search Items', '|uniquestring|_custom_talbe_search_input' );
-	echo '</form>';
-
-	echo '<form id="|uniquestring|_custom_talbe_form" method="post">';
-		$table_instance->display();
-	echo '</form>';
+		$tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
+	
+		$isTable = $wpdb->get_var(
+	
+			$wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $tableName ) )
+	
+		);
+	
+		if( ! $isTable ) return;
+	
+		?>
+			<h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', '|uniquestring|-domain' ); ?></h1>
+			<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU ); ?>" class="page-title-action">Add New</a>
+			<hr class="wp-header-end">
+		<?php
+	
+		$tableInstance = new |UNIQUESTRING|CustomTable();
+		
+		$tableInstance->prepare_items();
+	
+		$tableInstance->views();
+	
+		echo '<form id="|uniquestring|_custom_talbe_search_form" method="post">';
+			$tableInstance->search_box( 'Search Items', '|uniquestring|_custom_talbe_search_input' );
+		echo '</form>';
+	
+		echo '<form id="|uniquestring|_custom_talbe_form" method="post">';
+			$tableInstance->display();
+		echo '</form>';
+	
+	}
 
 }
