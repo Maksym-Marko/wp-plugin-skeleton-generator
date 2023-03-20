@@ -46,7 +46,7 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 	public function singleTableItem()
 	{
 
-		// restore action
+		// delete action
 		$deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
 		
 		if( $deleteId ) {
@@ -57,7 +57,7 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 
 			}
 
-			wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
+			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
 			return;
 
@@ -74,7 +74,7 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 
 			}
 
-			wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
+			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
 			return;
 
@@ -91,7 +91,7 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 
 			}
 
-			wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
+			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
 
 			return;
 
@@ -104,11 +104,13 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 
 		if( $data == NULL ) {
 			if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
-				wp_redirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
+				|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
 			} else {
-				wp_redirect( $_SERVER['HTTP_REFERER'] );
+				|uniquestring|AdminRedirect( $_SERVER['HTTP_REFERER'] );
 			}
+			
 			return;
+
 		}
 		
 		return new |UNIQUESTRING|MxView( 'single-table-item', $data );

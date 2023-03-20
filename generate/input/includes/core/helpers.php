@@ -76,3 +76,16 @@ function |uniquestring|InsertNewColumnToPosition( array $columns, int $position,
 	return $result;
 
 }
+
+/*
+* Redirect from admin panel
+*/
+function |uniquestring|AdminRedirect( $url ) {
+
+	if( ! $url ) return;
+
+	add_action( 'admin_footer', function() use ( $url ) {
+		echo "<script>window.location.href = '$url';</script>";
+	} );
+
+}
