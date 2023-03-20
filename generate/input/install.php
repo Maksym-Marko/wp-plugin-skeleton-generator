@@ -9,144 +9,144 @@ require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
 class |UNIQUESTRING|BasisPluginClass
 {
 
-	private static $tableSlug = |UNIQUESTRING|_TABLE_SLUG;
+    private static $tableSlug = |UNIQUESTRING|_TABLE_SLUG;
 
-	public static $data = [
-		// https://mobile-magazine.com/articles/top-10-most-popular-personal-robots
-		[
-			'title' 		=> 'Aibo',
-			'description' 	=> 'Aibo is the ultimate virtual pet, and a fantastic demonstration of just how far this field has come. 
-				This AI robot puppy is extremely curious, playful (coming with its own little toys) and friendly. In fact, Aibo actually translates as the Japanese word for ‘friend’. 			
-				It can independently wander about your home, then when it’s with you, it can play, speak and do tricks. And what’s more, your Aibo’s facial recognition software will mean that, not only does it actively engage with people, but over time it can also identify the face of its owner.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Jibo',
-			'description' 	=> 'Jibo has precisely been designed to support the fields of children’s education, telehealth and hospitals. 
-				This sophisticated companion robot is most commonly used to support elderly or chronically ill patients, help to care for anyone receiving long-term hospital treatment, or to assist with education, particularly for children with special educational needs.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Misa',
-			'description' 	=> 'Beyond being a sweet, friendly addition to the family, Misa is a family robot that can help you to manage the family calendar and enhance your children’s home learning. 
-				Through its Misa Connect software, this intelligent little bot can respond to your voice, manage your calendar and even offer you health and nutritional advice. In addition to these useful features, it is also built with a high quality visual display, designed to take home schooling to another level.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Misty',
-			'description' 	=> 'Misty is a personal social robot, which is also designed to assist with business tasks. 
-				Alongside its friendly face and big round eyes, Misty can record audio, act on your voice commands, stream videos, and even collect and share data. 
-				Misty is also equipped with a camera, which gives it its in-built facial recognition capabilities.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Willow',
-			'description' 	=> 'Willow is a multi-purpose personal robot, which can tick both the boxes of household chores and companionship. 
-				Willow’s primary purpose is to autonomously mow lawns, without the need for wires, or even perimeter cables. It also has the ability to shred and collect leaves, guard your property at night, and sweeping your patio. 
-				Its abilities can be expanded even further, as you can use your phone or computer to teach Willow new jobs.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Eilik',
-			'description' 	=> 'Eilik is a small companion robot, which embodies its slogan ‘tech with heart’. 
-				With its charming personality and perceptive emotional responses, the robot is designed to be a little household pal.			
-				And one of the qualities that makes it unique is the shared nature of its interactions with you. For instance, Eilik doesn’t like being picked up, unless it’s by you.',
-			'status' 		=> 'publish',
-		],
-		[
-			'title' 		=> 'Lovot',
-			'description' 	=> '‘Powered by love’, the Lovot is a companion robot that is simply designed to help its user to feel happy.  
-				The Lovot robot has a highly sophisticated level of emotional awareness, including the ability to provide caring companionship, understand and respond to moods, and to learn how best to make users happy.',
-			'status' 		=> 'trash',
-		],
-		[
-			'title' 		=> 'Unitree Go1',
-			'description' 	=> 'Unitree Go1 is the world’s first bionic companion robot.
-				With its AI human recognition, side-follow system and sensory system, it is a remarkable piece of technology.			
-				Through this software and its flexible, adaptive joints, the Unitree Go1 behaves, walks with and responds to its owner exactly like a real dog.',
-			'status' 		=> 'trash',
-		],
-	];
+    public static $data = [
+        // https://mobile-magazine.com/articles/top-10-most-popular-personal-robots
+        [
+            'title'       => 'Aibo',
+            'description' => 'Aibo is the ultimate virtual pet, and a fantastic demonstration of just how far this field has come. 
+                This AI robot puppy is extremely curious, playful (coming with its own little toys) and friendly. In fact, Aibo actually translates as the Japanese word for ‘friend’.
+                It can independently wander about your home, then when it’s with you, it can play, speak and do tricks. And what’s more, your Aibo’s facial recognition software will mean that, not only does it actively engage with people, but over time it can also identify the face of its owner.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Jibo',
+            'description' => 'Jibo has precisely been designed to support the fields of children’s education, telehealth and hospitals. 
+                This sophisticated companion robot is most commonly used to support elderly or chronically ill patients, help to care for anyone receiving long-term hospital treatment, or to assist with education, particularly for children with special educational needs.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Misa',
+            'description' => 'Beyond being a sweet, friendly addition to the family, Misa is a family robot that can help you to manage the family calendar and enhance your children’s home learning. 
+                Through its Misa Connect software, this intelligent little bot can respond to your voice, manage your calendar and even offer you health and nutritional advice. In addition to these useful features, it is also built with a high quality visual display, designed to take home schooling to another level.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Misty',
+            'description' => 'Misty is a personal social robot, which is also designed to assist with business tasks. 
+                Alongside its friendly face and big round eyes, Misty can record audio, act on your voice commands, stream videos, and even collect and share data. 
+                Misty is also equipped with a camera, which gives it its in-built facial recognition capabilities.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Willow',
+            'description' => 'Willow is a multi-purpose personal robot, which can tick both the boxes of household chores and companionship. 
+                Willow’s primary purpose is to autonomously mow lawns, without the need for wires, or even perimeter cables. It also has the ability to shred and collect leaves, guard your property at night, and sweeping your patio. 
+                Its abilities can be expanded even further, as you can use your phone or computer to teach Willow new jobs.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Eilik',
+            'description' => 'Eilik is a small companion robot, which embodies its slogan ‘tech with heart’. 
+                With its charming personality and perceptive emotional responses, the robot is designed to be a little household pal.
+                And one of the qualities that makes it unique is the shared nature of its interactions with you. For instance, Eilik doesn’t like being picked up, unless it’s by you.',
+            'status'      => 'publish',
+        ],
+        [
+            'title'       => 'Lovot',
+            'description' => '‘Powered by love’, the Lovot is a companion robot that is simply designed to help its user to feel happy.
+                The Lovot robot has a highly sophisticated level of emotional awareness, including the ability to provide caring companionship, understand and respond to moods, and to learn how best to make users happy.',
+            'status'      => 'trash',
+        ],
+        [
+            'title'       => 'Unitree Go1',
+            'description' => 'Unitree Go1 is the world’s first bionic companion robot.
+                With its AI human recognition, side-follow system and sensory system, it is a remarkable piece of technology.
+                Through this software and its flexible, adaptive joints, the Unitree Go1 behaves, walks with and responds to its owner exactly like a real dog.',
+            'status'      => 'trash',
+        ],
+    ];
 
-	public static function activate()
-	{
+    public static function activate()
+    {
 
-		// set option for rewrite rules CPT
-		self::createOptionForActivation();
+        // set option for rewrite rules CPT
+        self::createOptionForActivation();
 
-		// Create table
-		global $wpdb;
+        // Create table
+        global $wpdb;
 
-		// Table name
-		$tableName = $wpdb->prefix . self::$tableSlug;
+        // Table name
+        $tableName    = $wpdb->prefix . self::$tableSlug;
 
-		$productTable = new |UNIQUESTRING|CreateTable( $tableName );
+        $productTable = new |UNIQUESTRING|CreateTable( $tableName );
 
-		// add some column
-			// title
-			$productTable->varchar( 'title', 200, true, 'text' );
+        // add some column
+            // title
+            $productTable->varchar( 'title', 200, true, 'text' );
 
-			// longtext
-			$productTable->longtext( 'description' );
+            // longtext
+            $productTable->longtext( 'description' );
 
-			// statue
-			$productTable->varchar( 'status', 20, true, 'publish' );
+            // statue
+            $productTable->varchar( 'status', 20, true, 'publish' );
 
-			// created
-			$productTable->datetime( 'created_at' );			
+            // created
+            $productTable->datetime( 'created_at' );
 
-		// create "id" column as AUTO_INCREMENT
-		$productTable->create_columns();
+        // create "id" column as AUTO_INCREMENT
+        $productTable->create_columns();
 
-		// create table
-		$tableCreated = $productTable->createTable();
+        // create table
+        $tableCreated = $productTable->createTable();
 
-		// if table has created, insert data
-		if( $tableCreated == 1 ) {
+        // if table has created, insert data
+        if( $tableCreated == 1 ) {
 
-			// Insert dummy data
-			foreach ( self::$data as $value ) {
-				
-				$wpdb->insert(
+            // Insert dummy data
+            foreach ( self::$data as $value ) {
+                
+                $wpdb->insert(
 
-					$tableName,
-	
-					[
-						'title' 		=> $value['title'],
-						'description' 	=> $value['description'],
-						'status' 		=> $value['status'],
-					],
-	
-					[
-						'%s',
-						'%s',
-						'%s',
-					]
-	
-				);
+                    $tableName,
+    
+                    [
+                        'title'       => $value['title'],
+                        'description' => $value['description'],
+                        'status'      => $value['status'],
+                    ],
+    
+                    [
+                        '%s',
+                        '%s',
+                        '%s',
+                    ]
+    
+                );
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	public static function deactivate()
-	{
+    public static function deactivate()
+    {
 
-		// Rewrite rules
-		flush_rewrite_rules();
+        // Rewrite rules
+        flush_rewrite_rules();
 
-	}
+    }
 
-	/*
-	* This function sets the option in the table for CPT rewrite rules
-	*/
-	public static function createOptionForActivation()
-	{
+    /*
+    * This function sets the option in the table for CPT rewrite rules
+    */
+    public static function createOptionForActivation()
+    {
 
-		add_option( '|uniquestring|_flush_rewrite_rules', 'go_flush_rewrite_rules' );
+        add_option( '|uniquestring|_flush_rewrite_rules', 'go_flush_rewrite_rules' );
 
-	}
+    }
 
 }

@@ -6,144 +6,144 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class |UNIQUESTRING|CreateTable
 {
 
-	// table name
-	private $table 		= NULL;
+    // table name
+    private $table    = NULL;
 
-	// columns
-	private $columns 	= [];
+    // columns
+    private $columns  = [];
  
-	// SQL query
-	private $_sql 		= NULL;
+    // SQL query
+    private $_sql     = NULL;
 
-	// global $wpdb
-	private $wpdb 		= NULL;
+    // global $wpdb
+    private $wpdb     = NULL;
 
-	// datetime
-	private $datetime 	= NULL;
+    // datetime
+    private $datetime = NULL;
 
-	function __construct( $tableName = 'mx_table' )
-	{
+    function __construct( $tableName = 'mx_table' )
+    {
 
-		global $wpdb;
+        global $wpdb;
 
-		$this->datetime = current_time('mysql');
+        $this->datetime = current_time('mysql');
 
-		$this->wpdb = $wpdb; 
+        $this->wpdb = $wpdb; 
 
-		$this->table = $tableName;
+        $this->table = $tableName;
 
-	}
+    }
 
-	// add varchar
-	public function varchar( $columnName = 'name', $length = 10, $notNull = false, $default = NULL )
-	{
+    // add varchar
+    public function varchar( $columnName = 'name', $length = 10, $notNull = false, $default = NULL )
+    {
 
-		// not null
-		$notNull = $notNull ? 'NOT NULL' : 'NULL';
+        // not null
+        $notNull = $notNull ? 'NOT NULL' : 'NULL';
 
-		// default
-		$default = $default !== NULL ? 'default \'' . $default .'\'' : '';
+        // default
+        $default = $default !== NULL ? 'default \'' . $default .'\'' : '';
 
-		$sql = "$columnName varchar($length) $notNull $default";
+        $sql = "$columnName varchar($length) $notNull $default";
 
-		array_push( $this->columns, $sql );
+        array_push( $this->columns, $sql );
 
-	}
+    }
 
-	// add longtext
-	public function longtext( $columnName = 'text', $notNull = false )
-	{
+    // add longtext
+    public function longtext( $columnName = 'text', $notNull = false )
+    {
 
-		// not null
-		$notNull = $notNull ? 'NOT NULL' : 'NULL';
+        // not null
+        $notNull = $notNull ? 'NOT NULL' : 'NULL';
 
-		$sql = "$columnName longtext $notNull";
+        $sql = "$columnName longtext $notNull";
 
-		array_push( $this->columns, $sql );
+        array_push( $this->columns, $sql );
 
-	}
+    }
 
-	// add int
-	public function int( $columnName = 'integer' )
-	{
+    // add int
+    public function int( $columnName = 'integer' )
+    {
 
-		$sql = "$columnName int(11) NOT NULL";
+        $sql = "$columnName int(11) NOT NULL";
 
-		array_push( $this->columns, $sql );
+        array_push( $this->columns, $sql );
 
-	}
+    }
 
-	// add datetime
-	public function datetime( $columnName = 'created', $default = NULL )
-	{
+    // add datetime
+    public function datetime( $columnName = 'created', $default = NULL )
+    {
 
-		// default
-		$default = $default == NULL ? current_time('mysql') : $default;
+        // default
+        $default = $default == NULL ? current_time('mysql') : $default;
 
-		$sql = "$columnName datetime NOT NULL default '$default'";
+        $sql     = "$columnName datetime NOT NULL default '$default'";
 
-		array_push( $this->columns, $sql );
+        array_push( $this->columns, $sql );
 
-	}
+    }
 
-	// we should to add some coluns to the table
-	public function create_columns( $id = 'id' )
-	{
+    // we should to add some coluns to the table
+    public function create_columns( $id = 'id' )
+    {
 
-		global $wpdb;
+        global $wpdb;
 
-		$collate = '';
+        $collate = '';
 
-		if ( $wpdb->has_cap( 'collation' ) ) {
+        if ( $wpdb->has_cap( 'collation' ) ) {
 
-			$collate = $wpdb->get_charset_collate();
+            $collate = $wpdb->get_charset_collate();
 
-		}
+        }
 
-		// get all columns
-		$columns = implode( ',', $this->columns );
+        // get all columns
+        $columns = implode( ',', $this->columns );
 
-		// create a table
-		if( count( $this->columns ) == 0 ) {
+        // create a table
+        if( count( $this->columns ) == 0 ) {
 
-			$this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
-				(
-					`$id` int(11) NOT NULL AUTO_INCREMENT,
-					PRIMARY KEY (`$id`)
-				) $collate;";
+            $this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
+                (
+                    `$id` int(11) NOT NULL AUTO_INCREMENT,
+                    PRIMARY KEY (`$id`)
+                ) $collate;";
 
-		} else {
+        } else {
 
-			$this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
-				(
-					`$id` int(11) NOT NULL AUTO_INCREMENT,
-					$columns,
-					PRIMARY KEY (`$id`)
-				) $collate;";
+            $this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
+                (
+                    `$id` int(11) NOT NULL AUTO_INCREMENT,
+                    $columns,
+                    PRIMARY KEY (`$id`)
+                ) $collate;";
 
-		}
-		
+        }
 
-	}
 
-	public function createTable()
-	{
+    }
 
-		if( $this->_sql == NULL ) return 0;
+    public function createTable()
+    {
 
-		// lets check if the table exists
-		if ( $this->wpdb->get_var( "SHOW TABLES LIKE '" . $this->table . "'" ) !=  $this->table ) {
+        if( $this->_sql == NULL ) return 0;
 
-			// create a table
-			$this->wpdb->query( $this->_sql );
+        // lets check if the table exists
+        if ( $this->wpdb->get_var( "SHOW TABLES LIKE '" . $this->table . "'" ) !=  $this->table ) {
 
-			return 1;
+            // create a table
+            $this->wpdb->query( $this->_sql );
 
-		} else {
+            return 1;
 
-			return 0;
+        } else {
 
-		}
+            return 0;
 
-	}
+        }
+
+    }
 }

@@ -6,18 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class |UNIQUESTRING|FrontEndMain
 {
 
-	/*
-	* Additional classes
-	*/
-	public function additionalClasses()
-	{
+    /*
+    * Additional classes
+    */
+    public function additionalClasses()
+    {
 
-		// enqueue_scripts class
-		|uniquestring|RequireClassFileFrontend( 'enqueue-scripts.php' );
+        // enqueue_scripts class
+        |uniquestring|RequireClassFileFrontend( 'enqueue-scripts.php' );
 
-		|UNIQUESTRING|EnqueueScriptsFrontend::registerScripts();
+        |UNIQUESTRING|EnqueueScriptsFrontend::registerScripts();
 
-	}
+    }
 
 }
 

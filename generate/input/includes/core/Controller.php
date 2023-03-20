@@ -9,13 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 abstract class |UNIQUESTRING|Controller
 {
 
-	/**
-	* Catch missing methods on the controller
-	*/
-	public function __call( $name, $arguments ) {
+    /**
+    * Catch missing methods on the controller
+    */
+    public function __call( $name, $arguments ) {
 
-		echo esc_attr( 'Missing method "' . $name . '"!' );
+        echo esc_attr( 'Missing method "' . $name . '"!' );
 
-	}
-	
+    }
+
 }

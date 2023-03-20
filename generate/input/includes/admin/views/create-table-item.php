@@ -1,14 +1,14 @@
 <div class="mx-main-page-text-wrap">
-	
-	<h1><?php echo __( 'Create Table Item', '|uniquestring|-domain' ); ?></h1>
+    
+    <h1><?php echo __( 'Create Table Item', '|uniquestring|-domain' ); ?></h1>
 
-	<a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
+    <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
 
     <div class="|uniquestring|mx_block_wrap">
 
-		<form id="|uniquestring|_form_create_table_item" class="mx-settings" method="post" action="">
+        <form id="|uniquestring|_form_create_table_item" class="mx-settings" method="post" action="">
 
-			<div>
+            <div>
                 <label for="|uniquestring|_title">Title</label>
                 <br>
                 <input type="text" name="|uniquestring|_title" id="|uniquestring|_title" value="" />
@@ -25,8 +25,8 @@
                 <input class="button-primary" type="submit" name="|uniquestring|_submit" value="Create" />
             </p>
 
-		</form>
+        </form>
 
-	</div>
+    </div>
 
 </div>

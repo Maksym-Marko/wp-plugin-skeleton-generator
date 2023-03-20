@@ -6,122 +6,122 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 {
 
-	protected $modelInstance;
+    protected $modelInstance;
 
-	public function __construct()
-	{
+    public function __construct()
+    {
 
-		$this->modelInstance = new |UNIQUESTRING|MainAdminModel();
-		
-	}
-	
-	public function index()
-	{
+        $this->modelInstance = new |UNIQUESTRING|MainAdminModel();
+        
+    }
+    
+    public function index()
+    {
 
-		return new |UNIQUESTRING|MxView( 'main-page' );
+        return new |UNIQUESTRING|MxView( 'main-page' );
 
-	}
+    }
 
-	public function submenu()
-	{
+    public function submenu()
+    {
 
-		return new |UNIQUESTRING|MxView( 'sub-page' );
+        return new |UNIQUESTRING|MxView( 'sub-page' );
 
-	}
+    }
 
-	public function hidemenu()
-	{
+    public function hidemenu()
+    {
 
-		return new |UNIQUESTRING|MxView( 'hidemenu-page' );
+        return new |UNIQUESTRING|MxView( 'hidemenu-page' );
 
-	}
+    }
 
-	public function settingsMenuItemAction()
-	{
+    public function settingsMenuItemAction()
+    {
 
-		return new |UNIQUESTRING|MxView( 'settings-page' );
+        return new |UNIQUESTRING|MxView( 'settings-page' );
 
-	}
+    }
 
-	public function singleTableItem()
-	{
+    public function singleTableItem()
+    {
 
-		// delete action
-		$deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
-		
-		if( $deleteId ) {
+        // delete action
+        $deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
+        
+        if( $deleteId ) {
 
-			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'delete' ) ) {
+            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'delete' ) ) {
 
-				$this->modelInstance->deletePermanently( $deleteId );
+                $this->modelInstance->deletePermanently( $deleteId );
 
-			}
+            }
 
-			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
+            |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
-			return;
+            return;
 
-		}
+        }
 
-		// restore action
-		$restore_id = isset( $_GET['restore'] ) ? trim( sanitize_text_field( $_GET['restore'] ) ) : false;
-		
-		if( $restore_id ) {
+        // restore action
+        $restore_id = isset( $_GET['restore'] ) ? trim( sanitize_text_field( $_GET['restore'] ) ) : false;
+        
+        if( $restore_id ) {
 
-			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'restore' ) ) {
+            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'restore' ) ) {
 
-				$this->modelInstance->restoreItem( $restore_id );
+                $this->modelInstance->restoreItem( $restore_id );
 
-			}
+            }
 
-			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
+            |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
-			return;
+            return;
 
-		}
+        }
 
-		// trash action
-		$trash_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
+        // trash action
+        $trash_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
 
-		if( $trash_id ) {
+        if( $trash_id ) {
 
-			if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'trash' ) ) {
+            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'trash' ) ) {
 
-				$this->modelInstance->moveToTrash( $trash_id );
+                $this->modelInstance->moveToTrash( $trash_id );
 
-			}
+            }
 
-			|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
+            |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
 
-			return;
+            return;
 
-		}
+        }
 
-		// edit action
-		$item_id = isset( $_GET['edit-item'] ) ? trim( sanitize_text_field( $_GET['edit-item'] ) ) : 0;
-		
-		$data = $this->modelInstance->getRow( NULL, 'id', intval( $item_id ) );
+        // edit action
+        $item_id = isset( $_GET['edit-item'] ) ? trim( sanitize_text_field( $_GET['edit-item'] ) ) : 0;
+        
+        $data = $this->modelInstance->getRow( NULL, 'id', intval( $item_id ) );
 
-		if( $data == NULL ) {
-			if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
-				|uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
-			} else {
-				|uniquestring|AdminRedirect( $_SERVER['HTTP_REFERER'] );
-			}
-			
-			return;
+        if( $data == NULL ) {
+            if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
+                |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
+            } else {
+                |uniquestring|AdminRedirect( $_SERVER['HTTP_REFERER'] );
+            }
+            
+            return;
 
-		}
-		
-		return new |UNIQUESTRING|MxView( 'single-table-item', $data );
+        }
+        
+        return new |UNIQUESTRING|MxView( 'single-table-item', $data );
 
-	}		
+    }        
 
-	// create table item
-	public function createTableItem() {
+    // create table item
+    public function createTableItem() {
 
-		return new |UNIQUESTRING|MxView( 'create-table-item' );
+        return new |UNIQUESTRING|MxView( 'create-table-item' );
 
-	}
+    }
 
 }

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function |uniquestring|RequireClassFileAdmin( $file ) {
 
-	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/classes/' . $file;
+    require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/classes/' . $file;
 
 }
 
@@ -18,7 +18,7 @@ function |uniquestring|RequireClassFileAdmin( $file ) {
 */
 function |uniquestring|RequireClassFileFrontend( $file ) {
 
-	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/classes/' . $file;
+    require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/classes/' . $file;
 
 }
 
@@ -27,7 +27,7 @@ function |uniquestring|RequireClassFileFrontend( $file ) {
 */
 function |uniquestring|UseModel( $model ) {
 
-	require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/models/' . $model . '.php';
+    require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/models/' . $model . '.php';
 
 }
 
@@ -36,44 +36,44 @@ function |uniquestring|UseModel( $model ) {
 */
 function |uniquestring|DebugToFile( $content ) {
 
-	$content = |uniquestring|ContentToString( $content );
+    $content = |uniquestring|ContentToString( $content );
 
-	$path = |UNIQUESTRING|_PLUGIN_ABS_PATH . 'mx-debug' ;
+    $path = |UNIQUESTRING|_PLUGIN_ABS_PATH . 'mx-debug' ;
 
-	if( ! file_exists( $path ) ) :
+    if( ! file_exists( $path ) ) :
 
-		mkdir( $path, 0777, true );
+        mkdir( $path, 0777, true );
 
-		file_put_contents( $path . '/mx-debug.txt', $content );
+        file_put_contents( $path . '/mx-debug.txt', $content );
 
-	else :
+    else :
 
-		file_put_contents( $path . '/mx-debug.txt', $content );
+        file_put_contents( $path . '/mx-debug.txt', $content );
 
-	endif;
+    endif;
 
 }
-	// pretty debug text to the file
-	function |uniquestring|ContentToString( $content ) {
+    // pretty debug text to the file
+    function |uniquestring|ContentToString( $content ) {
 
-		ob_start();
+        ob_start();
 
-		var_dump( $content );
+        var_dump( $content );
 
-		return ob_get_clean();
+        return ob_get_clean();
 
-	}
+    }
 
 /*
 * Manage posts columns. Add column to position
 */
 function |uniquestring|InsertNewColumnToPosition( array $columns, int $position, array $newColumn ) {
 
-	$chunkedArray = array_chunk( $columns, $position, true );
+    $chunkedArray = array_chunk( $columns, $position, true );
 
-	$result = array_merge( $chunkedArray[0], $newColumn, $chunkedArray[1] );
+    $result = array_merge( $chunkedArray[0], $newColumn, $chunkedArray[1] );
 
-	return $result;
+    return $result;
 
 }
 
@@ -82,10 +82,10 @@ function |uniquestring|InsertNewColumnToPosition( array $columns, int $position,
 */
 function |uniquestring|AdminRedirect( $url ) {
 
-	if( ! $url ) return;
+    if( ! $url ) return;
 
-	add_action( 'admin_footer', function() use ( $url ) {
-		echo "<script>window.location.href = '$url';</script>";
-	} );
+    add_action( 'admin_footer', function() use ( $url ) {
+        echo "<script>window.location.href = '$url';</script>";
+    } );
 
 }

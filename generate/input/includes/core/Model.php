@@ -9,84 +9,84 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class |UNIQUESTRING|Model
 {
 
-	private $wpdb;
+    private $wpdb;
 
-	/**
-	* Table name
-	*/
-	protected $table = |UNIQUESTRING|_TABLE_SLUG;
+    /**
+    * Table name
+    */
+    protected $table = |UNIQUESTRING|_TABLE_SLUG;
 
-	/**
-	* fields
-	*/
-	protected $fields = '*';
+    /**
+    * fields
+    */
+    protected $fields = '*';
 
-	/*
-	* Model constructor
-	*/
-	public function __construct()
-	{
-		
-		global $wpdb;
+    /*
+    * Model constructor
+    */
+    public function __construct()
+    {
+        
+        global $wpdb;
 
-    	$this->wpdb = $wpdb;
+        $this->wpdb = $wpdb;
 
-	}	
+    }    
 
-	/**
-	* select row from the database
-	*/
-	public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL )
-	{
+    /**
+    * select row from the database
+    */
+    public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL )
+    {
 
-		$tableName = $this->wpdb->prefix . $this->table;
+        $tableName = $this->wpdb->prefix . $this->table;
 
-		if( $table !== NULL ) {
+        if( $table !== NULL ) {
 
-			$tableName = $table;
+            $tableName = $table;
 
-		}
+        }
 
-		$where = '';
+        $where = '';
 
-		if( $wherName !== NULL && $wherValue !== NULL ) {
+        if( $wherName !== NULL && $wherValue !== NULL ) {
 
-			$where = "WHERE $wherName = $wherValue";
+            $where = "WHERE $wherName = $wherValue";
 
-		}
+        }
 
-		$getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where}" );
+        $getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where}" );
 
-		return $getRow;
-		
-	}
+        return $getRow;
+        
+    }
 
-	/**
-	* get results from the database
-	*/
-	public function getResults( $table = false, $wherName = NULL, $wherValue = 1 )
-	{
+    /**
+    * get results from the database
+    */
+    public function getResults( $table = false, $wherName = NULL, $wherValue = 1 )
+    {
 
-		$tableName = $this->wpdb->prefix . $this->table;
+        $tableName = $this->wpdb->prefix . $this->table;
 
-		if( $table !== false ) {
+        if( $table !== false ) {
 
-			$tableName = $table;
+            $tableName = $table;
 
-		}
+        }
 
-		if( $wherName !== NULL ) {
+        if( $wherName !== NULL ) {
 
-			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName WHERE $wherName = $wherValue" );
+            $results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName WHERE $wherName = $wherValue" );
 
-		} else {
+        } else {
 
-			$results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName" );
+            $results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName" );
 
-		}		
+        }        
 
-		return $results;
-		
-	}
+        return $results;
+        
+    }
 
 }
