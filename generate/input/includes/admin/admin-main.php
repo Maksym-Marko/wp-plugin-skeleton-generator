@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class |UNIQUESTRING|AdminMain
 {
@@ -46,10 +46,8 @@ class |UNIQUESTRING|AdminMain
     {
 
         // require model file
-        foreach ( $this->modelsCollection as $model ) {
-            
+        foreach ($this->modelsCollection as $model) {            
             |uniquestring|UseModel( $model );
-
         }        
 
     }

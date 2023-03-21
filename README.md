@@ -41,15 +41,20 @@ Here you can find a list of plugins created using the WPP generator and hosted i
 
 == WPP Generator ==
 
-WPP Generator Version: 5.1
-WPP Generator Author: Maksym Marko
+WPP Generator Version:        5.2
+WPP Generator Author:         Maksym Marko
 WPP Generator Author Website: https://markomaksym.com.ua/
+WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
 
 ===
 This script is designed to create a basic skeleton for your future WordPress plugin.
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 5.2 =
+
+\* PSR implemented.
 
 = 5.1 =
 

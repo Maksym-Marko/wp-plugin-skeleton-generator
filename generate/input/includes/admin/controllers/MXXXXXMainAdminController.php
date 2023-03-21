@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 {
@@ -49,9 +49,9 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
         // delete action
         $deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
         
-        if( $deleteId ) {
+        if ($deleteId) {
 
-            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'delete' ) ) {
+            if (isset($_GET['|uniquestring|_nonce']) || wp_verify_nonce($_GET['|uniquestring|_nonce'], 'delete')) {
 
                 $this->modelInstance->deletePermanently( $deleteId );
 
@@ -66,9 +66,9 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
         // restore action
         $restore_id = isset( $_GET['restore'] ) ? trim( sanitize_text_field( $_GET['restore'] ) ) : false;
         
-        if( $restore_id ) {
+        if ($restore_id) {
 
-            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'restore' ) ) {
+            if (isset( $_GET['|uniquestring|_nonce']) || wp_verify_nonce($_GET['|uniquestring|_nonce'], 'restore')) {
 
                 $this->modelInstance->restoreItem( $restore_id );
 
@@ -83,9 +83,9 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
         // trash action
         $trash_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
 
-        if( $trash_id ) {
+        if ($trash_id) {
 
-            if ( isset( $_GET['|uniquestring|_nonce'] ) || wp_verify_nonce( $_GET['|uniquestring|_nonce'], 'trash' ) ) {
+            if (isset($_GET['|uniquestring|_nonce']) || wp_verify_nonce($_GET['|uniquestring|_nonce'], 'trash')) {
 
                 $this->modelInstance->moveToTrash( $trash_id );
 
@@ -102,8 +102,8 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
         
         $data = $this->modelInstance->getRow( NULL, 'id', intval( $item_id ) );
 
-        if( $data == NULL ) {
-            if( ! isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL ) {
+        if ($data == NULL) {
+            if (!isset( $_SERVER['HTTP_REFERER'] ) || $_SERVER['HTTP_REFERER'] == NULL) {
                 |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ) );
             } else {
                 |uniquestring|AdminRedirect( $_SERVER['HTTP_REFERER'] );

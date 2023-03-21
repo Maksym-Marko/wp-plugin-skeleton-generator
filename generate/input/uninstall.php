@@ -6,7 +6,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) die();
 global $wpdb;
 
 // table name
-$table_names = [];
+$table_names   = [];
 
 $table_names[] = $wpdb->prefix . '|uniquestring|_table_slug';
 

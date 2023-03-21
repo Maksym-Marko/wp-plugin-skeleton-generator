@@ -1,7 +1,7 @@
 <?php 
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 // metabox creating main class
 class |UNIQUESTRING|MetaboxesGenerator
@@ -24,26 +24,26 @@ class |UNIQUESTRING|MetaboxesGenerator
 
         $this->args = wp_parse_args( $args, $this->defaults );
 
-        if( is_array( $this->args['post_types'] ) ) :
+        if (is_array($this->args['post_types'])) {
 
             $this->args['metabox_id'] = $this->args['id'] . '_' . implode( '_',  $this->args['post_types'] );
 
-        else :
+        } else {
 
             $this->args['metabox_id'] = $this->args['id'] . '_' . $this->args['post_types'];
 
-        endif;
+        }
 
         $this->args['post_meta_key'] = '_mx_' . $this->args['metabox_id'] . '_id';
         $this->args['nonce_action']  = $this->args['metabox_id'] . '_nonce_action';
         $this->args['nonce_name']    = $this->args['metabox_id'] . '_nonce_name';
 
         // add options area
-        if( $this->args['metabox_type'] == 'checkbox' ) {
+        if ($this->args['metabox_type'] == 'checkbox') {
 
             $i = 0;
 
-            foreach ( $this->args['options'] as $key => $value ) {
+            foreach ($this->args['options'] as $key => $value) {
                 
                 $this->args['options'][$key]['name'] = $this->args['post_meta_key'] . $i;
 
@@ -75,55 +75,53 @@ class |UNIQUESTRING|MetaboxesGenerator
     // save post meta
     public function saveMetaBox( $post_id )
     {
-        if ( ! isset( $_POST[ $this->args['nonce_name'] ] ) || ! wp_verify_nonce( wp_unslash( $_POST[ $this->args['nonce_name'] ] ), $this->args['nonce_action'] ) ) { // phpcs:ignore WordPress.Security
+        if (!isset($_POST[ $this->args['nonce_name'] ]) || !wp_verify_nonce(wp_unslash($_POST[$this->args['nonce_name']]), $this->args['nonce_action'])) {
             return;
         }
 
-        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        if (!current_user_can('edit_post', $post_id)) {
             return;
         }
 
         $value = '';
 
-        if ( isset( $_POST ) && isset( $_POST[ $this->args['post_meta_key'] ] ) ) :
+        if (isset($_POST) && isset($_POST[$this->args['post_meta_key']])) {
 
-            if( $this->args['metabox_type'] == 'input-email' ) :
+            if ($this->args['metabox_type'] == 'input-email') {
 
                 // email field
                 $value = sanitize_email( wp_unslash( $_POST[ $this->args['post_meta_key'] ] ) );
 
-            elseif( $this->args['metabox_type'] == 'input-url' ) :
+            } elseif ($this->args['metabox_type'] == 'input-url') {
 
                 // url field
                 $value = esc_url_raw( $_POST[ $this->args['post_meta_key'] ] );
 
 
-            elseif( $this->args['metabox_type'] == 'textarea' ) :
+            } elseif ($this->args['metabox_type'] == 'textarea') {
 
                 // textarea field
                 $value = sanitize_textarea_field( $_POST[ $this->args['post_meta_key'] ] );
 
-            elseif( $this->args['metabox_type'] == 'image' ) :
+            } elseif ($this->args['metabox_type'] == 'image') {
 
                 // image id
                 $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
 
-            elseif( $this->args['metabox_type'] == 'radio' ) :
+            } elseif ($this->args['metabox_type'] == 'radio') {
 
                 // radio value
                 $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
 
-            elseif( $this->args['metabox_type'] == 'checkbox' ) :
+            } elseif ($this->args['metabox_type'] == 'checkbox') {
 
                 $_value = null;
 
                 // checkbox value
-                foreach( $this->args['options'] as $key => $val ) {
+                foreach ($this->args['options'] as $key => $val) {
 
-                    if( isset( $_POST[ $val['name'] ] ) ) {
-
+                    if (isset($_POST[ $val['name']])) {
                         $_value = sanitize_text_field( $_POST[ $val['name'] ] );
-
                     }
 
                     // save data
@@ -134,14 +132,14 @@ class |UNIQUESTRING|MetaboxesGenerator
                 // checkbox marker
                 $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
 
-            else :
+            } else {
 
                 // input text
                 $value = sanitize_text_field( wp_unslash( $_POST[ $this->args['post_meta_key'] ] ) );
 
-            endif;
+            }
 
-        endif;
+        }
 
         // save data
         update_post_meta( $post_id, $this->args['post_meta_key'], $value );
@@ -161,7 +159,7 @@ class |UNIQUESTRING|MetaboxesGenerator
         <p>
             <label for="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"></label>
 
-            <?php if( $this->args['metabox_type'] == 'input-email' ) : ?>
+            <?php if ($this->args['metabox_type'] == 'input-email') : ?>
 
                 <!-- email field -->
                 <input 
@@ -170,7 +168,7 @@ class |UNIQUESTRING|MetaboxesGenerator
                     value="<?php echo $metaValue; ?>"
                 />
 
-            <?php elseif( $this->args['metabox_type'] == 'input-url' ) : ?>
+            <?php elseif ($this->args['metabox_type'] == 'input-url') : ?>
 
                 <!-- url field -->
                 <input 
@@ -179,21 +177,19 @@ class |UNIQUESTRING|MetaboxesGenerator
                     value="<?php echo $metaValue; ?>"
                 />
 
-            <?php elseif( $this->args['metabox_type'] == 'textarea' ) : ?>
+            <?php elseif ($this->args['metabox_type'] == 'textarea') : ?>
 
                 <!-- textarea field -->
                 <textarea name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
 
-            <?php elseif( $this->args['metabox_type'] == 'image' ) : ?>
+            <?php elseif ($this->args['metabox_type'] == 'image') : ?>
 
                 <?php
 
                     $image_url = '';
 
-                    if( $metaValue !== '' ) {
-
+                    if ($metaValue !== '') {
                         $image_url = wp_get_attachment_url( $metaValue );
-
                     }
 
                 ?>
@@ -233,19 +229,19 @@ class |UNIQUESTRING|MetaboxesGenerator
 
                 </div>
 
-            <?php elseif( $this->args['metabox_type'] == 'radio' ) : ?>
+            <?php elseif ($this->args['metabox_type'] == 'radio') : ?>
 
                 <?php
 
-                    if( count( $this->args['options'] ) == 0 ) {
+                    if (count($this->args['options']) == 0) {
                         echo '<p>You have to add some options to the "Options" array!</p>';
                     } else {
                     
-                        if( is_array( $this->args['options'] ) ) {
+                        if (is_array($this->args['options'])) {
 
                             $i = 0;
 
-                            foreach ( $this->args['options'] as $key => $val ) {
+                            foreach ($this->args['options'] as $key => $val) {
 
                                 ?>
                                 <div>
@@ -255,7 +251,7 @@ class |UNIQUESTRING|MetaboxesGenerator
                                         id="<?php echo esc_attr( $this->args['post_meta_key'] ) . $i; ?>"
                                         value="<?php echo $val['value']; ?>" 
                                         
-                                        <?php if( $metaValue == '' ) : ?>
+                                        <?php if ($metaValue == '') : ?>
 
                                             <?php echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : ''; ?>
 
@@ -278,21 +274,21 @@ class |UNIQUESTRING|MetaboxesGenerator
                     }
                 ?>
 
-            <?php elseif( $this->args['metabox_type'] == 'checkbox' ) : ?>
+            <?php elseif ($this->args['metabox_type'] == 'checkbox') : ?>
 
                 <?php
 
-                    if( count( $this->args['options'] ) == 0 ) {
+                    if (count($this->args['options']) == 0) {
                         echo '<p>You have to add some options to the "Options" array!</p>';
                     } else {
                     
-                        if( is_array( $this->args['options'] ) ) {
+                        if (is_array( $this->args['options'])) {
 
                             ?><input type="hidden" name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" value="checkbox-type" /><?php
 
                             $i = 0;
 
-                            foreach ( $this->args['options'] as $key => $val ) {
+                            foreach ($this->args['options'] as $key => $val) {
 
                                 $checkboxValue = get_post_meta(
                                     $post->ID,
@@ -309,7 +305,7 @@ class |UNIQUESTRING|MetaboxesGenerator
                                         value="<?php echo $val['value']; ?>"
 
                                         <?php 
-                                        if( !$metaValue ) {
+                                        if (!$metaValue) {
 
                                             echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : '';
 

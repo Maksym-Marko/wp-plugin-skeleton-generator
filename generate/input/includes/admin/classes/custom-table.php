@@ -1,9 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
-if( ! class_exists('WP_List_Table' ) ) {
+if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
@@ -35,7 +35,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
         $perPage     = 20;
         $currentPage = $this->get_pagenum();
 
-        if ( 1 < $currentPage ) {
+        if (1 < $currentPage) {
             $offset = $perPage * ( $currentPage - 1 );
         } else {
             $offset = 0;
@@ -48,7 +48,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
         // search
         $search = '';
 
-        if ( ! empty( $_REQUEST['s'] ) ) {
+        if (!empty($_REQUEST['s'])) {
             $search = "AND title LIKE '%" . esc_sql( $wpdb->esc_like( sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) ) ) . "%' ";
         }
 
@@ -160,7 +160,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         $output   = '<strong>';
 
-        if ( $can_edit ) {
+        if ($can_edit) {
 
             $output .= '<a href="' . esc_url( $url ) . '&edit-item=' . $item['id'] . '">' . $item['title'] . '</a>';
 
@@ -180,7 +180,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
             $itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 
-            if( $itemStatus == 'trash' ) {
+            if ($itemStatus == 'trash') {
 
                 unset( $actions['edit'] );
                 unset( $actions['trash'] );
@@ -215,10 +215,8 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
     
             $rowActions = [];
     
-            foreach ( $actions as $action => $link ) {
-
+            foreach ($actions as $action => $link) {
                 $rowActions[] = '<span class="' . esc_attr( $action ) . '">' . $link . '</span>';
-            
             }
     
             $output .= '<div class="row-actions">' . implode( ' | ', $rowActions ) . '</div>';
@@ -254,7 +252,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
     protected function get_bulk_actions()
     {
 
-        if ( ! current_user_can( 'edit_posts' ) ) {
+        if (!current_user_can('edit_posts')) {
             return [];
         }
 
@@ -264,7 +262,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
             'trash' => __( 'Move to trash', '|uniquestring|-domain' ),
         ];
 
-        if( $itemStatus == 'trash' ) {
+        if ($itemStatus == 'trash') {
 
             unset( $action['trash'] );
 
@@ -280,7 +278,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
     public function search_box( $text, $inputId )
     {
 
-        if ( empty( $_REQUEST['s'] ) && ! $this->has_items() ) {
+        if (empty($_REQUEST['s']) && ! $this->has_items()) {
             return;
         }
 
@@ -322,7 +320,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
             'current' => 'publish' == $itemStatus,
         ];
 
-        if ( $publishNumber == 0 ) {
+        if ($publishNumber == 0) {
             unset( $statusLinks['publish'] );
         }
 
@@ -341,7 +339,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
             'current' => 'trash' == $itemStatus,
         ];
 
-        if ( $trashNumber == 0 ) {
+        if ($trashNumber == 0) {
             unset( $statusLinks['trash'] );
         }
 
@@ -354,7 +352,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         $itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
         
-        if( $itemStatus == 'trash' ) {
+        if ($itemStatus == 'trash') {
 
             _e( 'No items found in trash.' );
 
@@ -368,7 +366,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
 }
 
-if ( ! function_exists( '|uniquestring|TableLayout' ) ) {
+if (!function_exists('|uniquestring|TableLayout')) {
 
     function |uniquestring|TableLayout() {
 
@@ -382,7 +380,7 @@ if ( ! function_exists( '|uniquestring|TableLayout' ) ) {
     
         );
     
-        if( ! $isTable ) return;
+        if (!$isTable) return;
     
         ?>
             <h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', '|uniquestring|-domain' ); ?></h1>

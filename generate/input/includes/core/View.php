@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /*
 * View class
@@ -21,7 +21,7 @@ class |UNIQUESTRING|MxView
     {
 
         // view content
-        if( file_exists( |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/views/{$file}.php" ) ) {
+        if (file_exists( |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/views/{$file}.php")) {
 
             // data from model
             $data = $data;

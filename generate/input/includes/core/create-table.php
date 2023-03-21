@@ -1,25 +1,25 @@
 <?php 
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class |UNIQUESTRING|CreateTable
 {
 
     // table name
-    private $table    = NULL;
+    private $table         = NULL;
 
     // columns
-    private $columns  = [];
+    private $columns       = [];
  
     // SQL query
-    private $_sql     = NULL;
+    private $sqlContainer = NULL;
 
     // global $wpdb
-    private $wpdb     = NULL;
+    private $wpdb          = NULL;
 
     // datetime
-    private $datetime = NULL;
+    private $datetime      = NULL;
 
     function __construct( $tableName = 'mx_table' )
     {
@@ -28,9 +28,9 @@ class |UNIQUESTRING|CreateTable
 
         $this->datetime = current_time('mysql');
 
-        $this->wpdb = $wpdb; 
+        $this->wpdb     = $wpdb; 
 
-        $this->table = $tableName;
+        $this->table    = $tableName;
 
     }
 
@@ -44,7 +44,7 @@ class |UNIQUESTRING|CreateTable
         // default
         $default = $default !== NULL ? 'default \'' . $default .'\'' : '';
 
-        $sql = "$columnName varchar($length) $notNull $default";
+        $sql     = "$columnName varchar($length) $notNull $default";
 
         array_push( $this->columns, $sql );
 
@@ -57,7 +57,7 @@ class |UNIQUESTRING|CreateTable
         // not null
         $notNull = $notNull ? 'NOT NULL' : 'NULL';
 
-        $sql = "$columnName longtext $notNull";
+        $sql     = "$columnName longtext $notNull";
 
         array_push( $this->columns, $sql );
 
@@ -94,7 +94,7 @@ class |UNIQUESTRING|CreateTable
 
         $collate = '';
 
-        if ( $wpdb->has_cap( 'collation' ) ) {
+        if ($wpdb->has_cap('collation')) {
 
             $collate = $wpdb->get_charset_collate();
 
@@ -104,9 +104,9 @@ class |UNIQUESTRING|CreateTable
         $columns = implode( ',', $this->columns );
 
         // create a table
-        if( count( $this->columns ) == 0 ) {
+        if (count( $this->columns) == 0) {
 
-            $this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
+            $this->sqlContainer = "CREATE TABLE IF NOT EXISTS `$this->table`
                 (
                     `$id` int(11) NOT NULL AUTO_INCREMENT,
                     PRIMARY KEY (`$id`)
@@ -114,7 +114,7 @@ class |UNIQUESTRING|CreateTable
 
         } else {
 
-            $this->_sql = "CREATE TABLE IF NOT EXISTS `$this->table`
+            $this->sqlContainer = "CREATE TABLE IF NOT EXISTS `$this->table`
                 (
                     `$id` int(11) NOT NULL AUTO_INCREMENT,
                     $columns,
@@ -129,13 +129,13 @@ class |UNIQUESTRING|CreateTable
     public function createTable()
     {
 
-        if( $this->_sql == NULL ) return 0;
+        if ($this->sqlContainer == NULL) return 0;
 
         // lets check if the table exists
-        if ( $this->wpdb->get_var( "SHOW TABLES LIKE '" . $this->table . "'" ) !=  $this->table ) {
+        if ($this->wpdb->get_var("SHOW TABLES LIKE '" . $this->table . "'") != $this->table) {
 
             // create a table
-            $this->wpdb->query( $this->_sql );
+            $this->wpdb->query( $this->sqlContainer );
 
             return 1;
 

@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /**
  * Main page Model
@@ -28,15 +28,15 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     {        
         
         // Checked POST nonce is not empty
-        if ( empty( $_POST['nonce'] ) ) wp_die( '0' );
+        if (empty($_POST['nonce'])) wp_die( '0' );
 
         // Checked or nonce match
-        if ( wp_verify_nonce( $_POST['nonce'], 'bulk-|uniquestring|_plural' ) ) {
+        if (wp_verify_nonce($_POST['nonce'], 'bulk-|uniquestring|_plural')) {
 
             // delete
-            if( $_POST['bulk_action']  == 'delete' ) {
+            if ($_POST['bulk_action']  == 'delete') {
 
-                if ( ! current_user_can( 'edit_posts' ) ) return;
+                if (!current_user_can('edit_posts')) return;
 
                 self::actionDelete( $_POST['ids'] );
                 
@@ -45,9 +45,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             }
             
             // restore
-            if( $_POST['bulk_action']  == 'restore' ) {
+            if ($_POST['bulk_action']  == 'restore') {
 
-                if ( ! current_user_can( 'edit_posts' ) ) return;
+                if (!current_user_can('edit_posts')) return;
 
                 self::actionRestore( $_POST['ids'] );
                 
@@ -56,9 +56,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             }
 
             // move to trash
-            if( $_POST['bulk_action']  == 'trash' ) {
+            if ($_POST['bulk_action']  == 'trash') {
 
-                if ( ! current_user_can( 'edit_posts' ) ) return;
+                if (!current_user_can('edit_posts')) return;
 
                 self::actionTrash( $_POST['ids'] );
                 
@@ -79,10 +79,8 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     public static function actionDelete( $ids )
     {
 
-        foreach ( $ids as $id ) {
-
+        foreach ($ids as $id) {
             ( new self )->deletePermanently( $id );
-
         }
 
         return;
@@ -93,10 +91,8 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     public static function actionRestore( $ids )
     {
 
-        foreach ( $ids as $id ) {
-
+        foreach ($ids as $id) {
             ( new self )->restoreItem( $id );
-
         }
 
         return;
@@ -107,10 +103,8 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     public static function actionTrash( $ids )
     {
 
-        foreach ( $ids as $id ) {
-
+        foreach ($ids as $id) {
             ( new self )->moveToTrash( $id );
-
         }
 
         return;
@@ -124,10 +118,10 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     {
 
         // Checked POST nonce is not empty
-        if ( empty( $_POST['nonce'] ) ) wp_die( '0' );
+        if (empty($_POST['nonce'])) wp_die( '0' );
 
         // Checked or nonce match
-        if ( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ) {
+        if (wp_verify_nonce($_POST['nonce'], '|uniquestring|_nonce_request')) {
 
             // Create item
             $title = sanitize_text_field( $_POST['title'] );
@@ -178,10 +172,10 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     {
 
         // Checked POST nonce is not empty
-        if ( empty( $_POST['nonce'] ) ) wp_die( '0' );
+        if (empty($_POST['nonce'])) wp_die( '0' );
 
         // Checked or nonce match
-        if ( wp_verify_nonce( $_POST['nonce'], '|uniquestring|_nonce_request' ) ) {
+        if (wp_verify_nonce($_POST['nonce'], '|uniquestring|_nonce_request')) {
 
             // Update data
             $id = sanitize_text_field( $_POST['id'] );

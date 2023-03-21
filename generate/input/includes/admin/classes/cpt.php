@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class |UNIQUESTRING|CPTGenerator
 {
@@ -30,10 +30,8 @@ class |UNIQUESTRING|CPTGenerator
     public static function booksColumnRow( $column, $post_id )
     {
 
-        if( $column === 'book_id' ) {
-
+        if ($column === 'book_id') {
             echo 'Book ID = ' . $post_id;
-
         }
 
     }
@@ -44,7 +42,7 @@ class |UNIQUESTRING|CPTGenerator
     public static function addIdColumn( $columns )
     {
 
-        $newColumn = ['book_id' => 'Book ID'];
+        $newColumn  = ['book_id' => 'Book ID'];
 
         $newColumns = |uniquestring|InsertNewColumnToPosition( $columns, 3, $newColumn );
 
@@ -91,7 +89,7 @@ class |UNIQUESTRING|CPTGenerator
         ] );
 
         // Rewrite rules
-        if( is_admin() && get_option( '|uniquestring|_flush_rewrite_rules' ) == 'go_flush_rewrite_rules' ) {
+        if (is_admin() && get_option( '|uniquestring|_flush_rewrite_rules' ) == 'go_flush_rewrite_rules') {
 
             delete_option( '|uniquestring|_flush_rewrite_rules' );
 

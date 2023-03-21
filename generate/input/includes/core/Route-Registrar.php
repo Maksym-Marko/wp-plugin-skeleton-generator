@@ -1,11 +1,11 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class |UNIQUESTRING|RouteRegistrar
 {
-    
+
     /**
     * set controller
     */
@@ -67,10 +67,8 @@ class |UNIQUESTRING|RouteRegistrar
     public function requireController( $controller )
     {
 
-        if( file_exists( |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php" ) ) {
-
+        if (file_exists(|UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php")) {
             require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php";
-
         }
 
     }
@@ -100,7 +98,7 @@ class |UNIQUESTRING|RouteRegistrar
         $this->action     = $action;
 
         // set slug
-        if( $slug == NULL ) {
+        if ($slug == NULL) {
 
             $this->slug = |UNIQUESTRING|_MAIN_MENU_SLUG;
 
@@ -111,10 +109,8 @@ class |UNIQUESTRING|RouteRegistrar
         }
 
         // set properties
-        foreach ( $menuProperties as $key => $value ) {
-            
+        foreach ($menuProperties as $key => $value) {
             $this->properties[$key] = $value;
-
         }
 
         // callback function
@@ -124,7 +120,7 @@ class |UNIQUESTRING|RouteRegistrar
         * check if it's submenu
         * set subMenuSlug
         */
-        if( $subMenuSlug !== false ) {
+        if ($subMenuSlug !== false) {
 
             $this->subMenuSlug = $subMenuSlug;
 
@@ -135,7 +131,7 @@ class |UNIQUESTRING|RouteRegistrar
         /*
         * check if it's settings menu item
         */
-        if( $settingsArea !== false ) {
+        if ($settingsArea !== false) {
 
             $|uniquestring|CallbackFunctionMenu = 'settingsAreaMenuItem';
 
@@ -155,10 +151,8 @@ class |UNIQUESTRING|RouteRegistrar
         $isErrorClassAtr = |UNIQUESTRING|CatchingErrors::catchClassAttributesError( $this->controller, $this->action );
         
         // catch error class attr
-        if( $isErrorClassAtr !== NULL ) {
-
+        if ($isErrorClassAtr !== NULL) {
             $this->classAttributesError = $isErrorClassAtr;
-
         }
 
         // register admin menu
@@ -229,7 +223,7 @@ class |UNIQUESTRING|RouteRegistrar
         public function viewConnector()
         {
 
-            if( $this->classAttributesError == NULL ) {
+            if ($this->classAttributesError == NULL) {
 
                 $classInstance = new $this->controller();
 

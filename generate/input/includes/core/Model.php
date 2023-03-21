@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /*
 * Model class
@@ -41,7 +41,7 @@ class |UNIQUESTRING|Model
 
         $tableName = $this->wpdb->prefix . $this->table;
 
-        if( $table !== NULL ) {
+        if ($table !== NULL) {
 
             $tableName = $table;
 
@@ -49,7 +49,7 @@ class |UNIQUESTRING|Model
 
         $where = '';
 
-        if( $wherName !== NULL && $wherValue !== NULL ) {
+        if ($wherName !== NULL && $wherValue !== NULL) {
 
             $where = "WHERE $wherName = $wherValue";
 
@@ -69,13 +69,13 @@ class |UNIQUESTRING|Model
 
         $tableName = $this->wpdb->prefix . $this->table;
 
-        if( $table !== false ) {
+        if ($table !== false) {
 
             $tableName = $table;
 
         }
 
-        if( $wherName !== NULL ) {
+        if ($wherName !== NULL) {
 
             $results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName WHERE $wherName = $wherValue" );
 

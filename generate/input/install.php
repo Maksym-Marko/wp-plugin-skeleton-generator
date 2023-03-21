@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 // create table class
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
@@ -102,10 +102,10 @@ class |UNIQUESTRING|BasisPluginClass
         $tableCreated = $productTable->createTable();
 
         // if table has created, insert data
-        if( $tableCreated == 1 ) {
+        if ($tableCreated == 1) {
 
             // Insert dummy data
-            foreach ( self::$data as $value ) {
+            foreach (self::$data as $value) {
                 
                 $wpdb->insert(
 

@@ -9,7 +9,7 @@ jQuery( document ).ready( function( $ ) {
 
 		var frame;
 
-		if ( frame ) {
+		if (frame) {
 			frame.open();
 			return;
 		}

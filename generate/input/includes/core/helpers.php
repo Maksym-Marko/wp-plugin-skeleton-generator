@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /*
 * Require class for admin panel
@@ -40,17 +40,17 @@ function |uniquestring|DebugToFile( $content ) {
 
     $path = |UNIQUESTRING|_PLUGIN_ABS_PATH . 'mx-debug' ;
 
-    if( ! file_exists( $path ) ) :
+    if (!file_exists($path)) {
 
         mkdir( $path, 0777, true );
 
         file_put_contents( $path . '/mx-debug.txt', $content );
 
-    else :
+    } else {
 
         file_put_contents( $path . '/mx-debug.txt', $content );
 
-    endif;
+    }
 
 }
     // pretty debug text to the file
@@ -82,7 +82,7 @@ function |uniquestring|InsertNewColumnToPosition( array $columns, int $position,
 */
 function |uniquestring|AdminRedirect( $url ) {
 
-    if( ! $url ) return;
+    if (!$url) return;
 
     add_action( 'admin_footer', function() use ( $url ) {
         echo "<script>window.location.href = '$url';</script>";

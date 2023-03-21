@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 /*
 * Error Handle calss
@@ -23,13 +23,13 @@ class |UNIQUESTRING|ErrorHandle
     {
 
         // if class not exists display an error
-        if( class_exists( $className ) ) {
+        if (class_exists($className)) {
 
             // check if method exists
             $classInstance = new $className();
 
             // if method not exists display an error
-            if( ! method_exists( $classInstance, $method ) ) {
+            if (!method_exists($classInstance, $method)) {
 
                 // notice of error
                 $errorNotice = "The <b>\"{$className}\"</b> class doesn't contain the <b>\"{$method}\"</b> method.";
