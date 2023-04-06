@@ -36,14 +36,14 @@ class |UNIQUESTRING|Model
     /**
     * select row from the database
     */
-    public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL )
+    public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL, $and = '' )
     {
 
         $tableName = $this->wpdb->prefix . $this->table;
 
         if ($table !== NULL) {
 
-            $tableName = $table;
+            $tableName = $this->wpdb->prefix . $table;
 
         }
 
@@ -55,7 +55,7 @@ class |UNIQUESTRING|Model
 
         }
 
-        $getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where}" );
+        $getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where} {$and}" );
 
         return $getRow;
         
@@ -64,12 +64,12 @@ class |UNIQUESTRING|Model
     /**
     * get results from the database
     */
-    public function getResults( $table = false, $wherName = NULL, $wherValue = 1 )
+    public function getResults( $table = NULL, $wherName = NULL, $wherValue = 1, $and = '', $order = 'ORDER BY id DESC', $mask = '%d' )
     {
 
         $tableName = $this->wpdb->prefix . $this->table;
 
-        if ($table !== false) {
+        if ($table !== NULL) {
 
             $tableName = $table;
 
@@ -77,7 +77,19 @@ class |UNIQUESTRING|Model
 
         if ($wherName !== NULL) {
 
-            $results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName WHERE $wherName = $wherValue" );
+            $results = $this->wpdb->get_results( 
+
+                $this->wpdb->prepare(
+
+                    "SELECT $this->fields
+                        FROM $tableName
+                        WHERE $wherName=$mask {$and}
+                        {$order}",
+                    $wherValue
+
+                )
+
+            );
 
         } else {
 
@@ -87,6 +99,82 @@ class |UNIQUESTRING|Model
 
         return $results;
         
+    }
+
+    /**
+    * update row
+    */
+    public function updateRow( $table = NULL, $wherName = NULL, $wherValue = NULL, $columns = [], $masks = [] ){
+
+        $tableName = $this->wpdb->prefix . $this->table;
+
+        if ($table !== NULL) {
+
+            $tableName = $this->wpdb->prefix . $table;
+
+        }
+
+        if($wherName == NULL || $wherValue == NULL) return false;
+
+        $update = $this->wpdb->update(
+
+            $tableName,
+            $columns,
+            [
+                $wherName => $wherValue
+            ],
+            $masks
+
+        );
+
+        return $update;
+
+    }
+
+    /**
+    * insert row
+    */
+    public function insertRow( $table = NULL, $columns = [], $masks = [] ) {
+
+        $tableName = $this->wpdb->prefix . $this->table;
+
+        if ($table !== NULL) {
+
+            $tableName = $this->wpdb->prefix . $table;
+
+        }
+
+        $insert = $this->wpdb->insert(
+
+            $tableName,
+
+            $columns,
+
+            $masks
+
+        );
+
+        return $insert;
+
+    }
+
+    /**
+     * get var
+     */
+    public function getVar($table = NULL, $countBy = 'id', $and = null)
+    {
+
+        $tableName = $this->wpdb->prefix . $this->table;
+
+        if ($table !== NULL) {
+
+            $tableName = $this->wpdb->prefix . $table;
+        }
+
+        $count = $this->wpdb->get_var( "SELECT COUNT($countBy) FROM {$tableName} WHERE 1=1 {$and}");
+
+        return $count;
+
     }
 
 }
