@@ -54,6 +54,18 @@ final class |UniqueClassName|WPPGenerator
     
     }
 
+    /*
+    * Include Gutenberg Path
+    */
+    public function includeGutenbergPath()
+    {
+
+        // Part of the Frontend
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/gutenberg/gutenberg-main.php';
+    
+    }
+
+
 }
 
 // create an instance of final class
@@ -67,3 +79,6 @@ $wppGenerator->includeAdminPath();
 
 // include frontend parth
 $wppGenerator->includeFrontendPath();
+
+// include gutenberg parth
+$wppGenerator->includeGutenbergPath();

@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "|uniquestring|/simple-text",
+	"version": "0.1.0",
+	"title": "Simple Text",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Add a simle text to a page",
+	"supports": {
+		"html": false,
+		"align": [
+			"left",
+			"right",
+			"full"
+		],
+		"color": {
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		}
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": ""
+		},
+		"message": {
+			"type": "string",
+			"source": "text",
+			"selector": "div",
+			"default": "Hello, World!"
+		}
+	},
+	"textdomain": "|uniquestring|-domain",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
