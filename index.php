@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="#">WPP generator</a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3</small></a>
         
         </nav>
 
@@ -209,7 +209,10 @@
                 A set of examples of banners, icons, screenshots, readme.txt and license.txt files needed for uploading your plugin to the WordPress.org directory;
               </li>
               <li>
-                The plugin boilerplate template has been designed to be easily expanded by adding new features.
+                The plugin boilerplate template has been designed to be easily expanded by adding new features;
+              </li>
+              <li>
+                Gutenberg blocks.
               </li>
               
             </ul>
@@ -223,18 +226,22 @@
 
         <p class="lead">
           Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory:
-          <a href="https://profiles.wordpress.org/markomaksym/#content-plugins">https://profiles.wordpress.org/markomaksym/#content-plugins</a>
+          <a href="https://profiles.wordpress.org/markomaksym/#content-plugins" target="_blank">https://profiles.wordpress.org/markomaksym/#content-plugins</a>
         </p>
 
       </div>
     </div>
 
+    <div class="row mt-5">
+      <div class="col-md-12">
 
+        <p class="lead">
+        WPP Generator Video Guide:
+          <a href="https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr" target="_blank">https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr</a>
+        </p>
 
-
-
-
-
+      </div>
+    </div>
 
 
 

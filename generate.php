@@ -113,7 +113,9 @@ final class MxGeneratePluginStructure
 
 			'.php',
 			'.js',
+			'.json',
 			'.css',
+			'.scss',
 			'.txt',
 			'.jpg',
 			'.png',
@@ -126,6 +128,7 @@ final class MxGeneratePluginStructure
 			'.mo',
 			'.po',
 			'.pot',
+			'.gitignore',
 
 		];
 
@@ -152,15 +155,18 @@ final class MxGeneratePluginStructure
 		$input = $input_file;
 
 		// Prepare the file for creation
-		/*rename  main file*/
+		/*rename main file*/
 		if ($input == 'generate/input/wp-plugin-skeleton.php') {
 			$output = 'generate/output/' . $this->main_file_name . '/' . $this->main_file_name . '.php';
 		} elseif ($input == 'generate/input/includes/admin/controllers/MXXXXXMainAdminController.php') {
-            /*rename  controller*/
+            /*rename controller*/
 			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/controllers/' . $this->uniquestring_upc . 'MainAdminController.php';
 		} elseif ($input == 'generate/input/includes/admin/models/MXXXXXMainAdminModel.php') {
-            /*rename  model*/
+            /*rename model*/
 			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/models/' . $this->uniquestring_upc . 'MainAdminModel.php';
+		} elseif ($input == 'generate/input/includes/gutenberg/example.gitignore') {
+            /*rename .gitignore*/
+			$output = 'generate/output/' . $this->main_file_name . '/includes/gutenberg/.gitignore';
 		} else {
 			$output = str_replace('input', 'output/' . $this->main_file_name, $input);
 		}
@@ -294,7 +300,7 @@ foreach ($arr_words as $key => $value) {
 }
 
 // main file name
-$main_file_name = strtolower(str_replace(' ', '-', $plugin_name));
+$main_file_name = strtolower(str_replace(' ', '-', $plugin_name)) . '-' . time();
 
 $brief_description = htmlspecialchars($_POST['brief_description']);
 
