@@ -9,6 +9,12 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
+        // image section
+        add_action( 'init', [$this, 'imageSection'] );
+        
+        // simple image
+        add_action( 'init', [$this, 'simpleImage'] );
+        
         // simple text
         add_action( 'init', [$this, 'simpleText'] );
 
@@ -20,6 +26,19 @@ class |UNIQUESTRING|Gutenberg
     /**
      * Blocks
      */
+
+    // image section
+    public function imageSection()
+    {
+        register_block_type( __DIR__ . '/build/image-section' );
+    }
+
+    // simple image
+    public function simpleImage()
+    {
+        register_block_type( __DIR__ . '/build/simple-image' );
+    }
+
     // simple text
     public function simpleText()
     {

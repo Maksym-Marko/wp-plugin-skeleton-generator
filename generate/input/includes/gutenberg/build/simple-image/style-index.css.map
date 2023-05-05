@@ -1,0 +1,1 @@
+{"version":3,"file":"simple-image/style-index.css","mappings":";;;AAAA;;CAAA;AAIA;EACC;EACA;AAAD,C","sources":["webpack://|uniquestring|-gutenberg-blocks/./src/simple-image/style.scss"],"sourcesContent":["/**\n* Front End Style\n*/\n\n.wp-block-|uniquestring|-image-section img {\n\tdisplay: block;\n\tmargin: auto;\n}\n"],"names":[],"sourceRoot":""}

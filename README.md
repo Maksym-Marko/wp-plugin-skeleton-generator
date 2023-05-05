@@ -23,7 +23,6 @@ General installation procedures are those common for all WordPress plugins:
 
 3. Features
 Your boilerplate plugin will included:
-- Gutenberg blocks;
 - Basic install and uninstall, activate and deactivate plugin hooks;
 - During the generation of a new WordPress Plugin boilerplate, all the PHP classes and functions will be rewritten with a unique string created using your plugin name;
 - Ability to separate your code to admin and frontend folders;
@@ -35,14 +34,18 @@ Your boilerplate plugin will included:
 - admin_enqueue_scripts, wp_enqueue_scripts and wp_localize_script examples;
 - Custom table with search box, bulk actions, sorting, editing, remove, restore features (example how to extend WP_List_Table basic WordPress table framework);
 - A set of examples of banners, icons, screenshots, readme.txt and license.txt files needed for uploading your plugin to the WordPress.org directory;
-- The plugin boilerplate template has been designed to be easily expanded by adding new features.
+- The plugin boilerplate template has been designed to be easily expanded by adding new features;
+- Gutenberg blocks:
+    * Simple Text
+    * Simple Image
+    * Image Section
 
 Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory: https://profiles.wordpress.org/markomaksym/#content-plugins
 
 
 == WPP Generator ==
 
-WPP Generator Version:        5.3
+WPP Generator Version:        5.3.1
 WPP Generator Author:         Maksym Marko
 WPP Generator Author Website: https://markomaksym.com.ua/
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
@@ -52,6 +55,10 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 5.3.1 =
+
+\* Gutenberg blocks: Simple Text, Simple Image, Image Section.
 
 = 5.3 =
 

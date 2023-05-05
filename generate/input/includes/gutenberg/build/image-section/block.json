@@ -1,0 +1,86 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "|uniquestring|/image-section",
+  "version": "0.1.0",
+  "title": "Image Section",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Add Image Section",
+  "supports": {
+    "html": false,
+    "spacing": {
+      "padding": [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ]
+    },
+    "color": {
+      "gradients": false,
+      "link": false,
+      "background": false,
+      "__experimentalDefaultControls": {
+        "text": true
+      }
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalTextDecoration": true,
+      "__experimentalFontStyle": true,
+      "__experimentalFontWeight": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalTextTransform": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
+    }
+  },
+  "attributes": {
+    "testAlignment": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".mxImageSection",
+      "attribute": "data-bg-alignment",
+      "default": "left"
+    },
+    "bgPosition": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".mxImageSection",
+      "attribute": "data-bg-position",
+      "default": "center"
+    },
+    "padding": {
+      "type": "string",
+      "default": "20px"
+    },
+    "mediaId": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".mxImageSection",
+      "attribute": "data-image-id",
+      "default": null
+    },
+    "mediaUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".mxImageSection",
+      "attribute": "data-image-url",
+      "default": null
+    },
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": "p",
+      "default": "Hello World!"
+    }
+  },
+  "textdomain": "|uniquestring|-domain",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
