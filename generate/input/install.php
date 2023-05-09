@@ -115,9 +115,11 @@ class |UNIQUESTRING|BasisPluginClass
                         'title'       => $value['title'],
                         'description' => $value['description'],
                         'status'      => $value['status'],
+                        'created_at'  => date('Y-m-d H:i:s'),
                     ],
     
                     [
+                        '%s',
                         '%s',
                         '%s',
                         '%s',

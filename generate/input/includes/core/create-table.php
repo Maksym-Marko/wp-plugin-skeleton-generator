@@ -26,7 +26,7 @@ class |UNIQUESTRING|CreateTable
 
         global $wpdb;
 
-        $this->datetime = current_time('mysql');
+        $this->datetime = '0000-00-00 00:00:00';
 
         $this->wpdb     = $wpdb;
 
@@ -79,7 +79,7 @@ class |UNIQUESTRING|CreateTable
     {
 
         // default
-        $default = $default == NULL ? '0000-00-00 00:00:00' : $default;
+        $default = $default == NULL ? $this->datetime : $default;
 
         $sql     = "$columnName datetime NOT NULL default '$default'";
 

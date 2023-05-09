@@ -153,8 +153,10 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             [
                 'title' => $data['title'],
                 'description' => $data['description'],
+                'created_at'  => date('Y-m-d H:i:s'),
             ],
             [
+                '%s',
                 '%s',
                 '%s',
             ]

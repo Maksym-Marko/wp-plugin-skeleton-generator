@@ -36,16 +36,18 @@ Your boilerplate plugin will included:
 - A set of examples of banners, icons, screenshots, readme.txt and license.txt files needed for uploading your plugin to the WordPress.org directory;
 - The plugin boilerplate template has been designed to be easily expanded by adding new features;
 - Gutenberg blocks:
+    * Server Side Rendering
     * Simple Text
     * Simple Image
     * Image Section
+    * Nested blocks
 
 Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory: https://profiles.wordpress.org/markomaksym/#content-plugins
 
 
 == WPP Generator ==
 
-WPP Generator Version:        5.3.1
+WPP Generator Version:        5.3.2
 WPP Generator Author:         Maksym Marko
 WPP Generator Author Website: https://markomaksym.com.ua/
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
@@ -55,6 +57,10 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 5.3.2 =
+
+\* Gutenberg blocks: Nested Blocks.
 
 = 5.3.1 =
 

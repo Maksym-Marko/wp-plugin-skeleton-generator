@@ -1,53 +1,54 @@
-$( document ).ready( function(){
+$(document).ready(function () {
 
   // submit
-  $( '#mxFormCreateSkeleton' ).on( 'submit', function( e ){
+  $('#mxFormCreateSkeleton').on('submit', function (e) {
 
     e.preventDefault();
 
     var notSubmitted = [];
 
-    $( this ).find( 'input, textarea' ).each( function(){
+    $(this).find('input, textarea').each(function () {
 
       // check empty
-      mxCheckEmpty( $( this ) );
+      mxCheckEmpty($(this));
 
-      if( $( this ).attr( 'data-not-submitted' ) === 'true' ){
+      if ($(this).attr('data-not-submitted') === 'true') {
 
-        notSubmitted.push( 'true' );
+        notSubmitted.push('true');
 
       }
 
-    } );
+    });
 
     // AJAX
-    var _this = $( this );
+    var _this = $(this);
 
-    setTimeout( function(){
+    setTimeout(function () {
 
-      if( notSubmitted.length === 0 ) {
-        
-        $( '.mx-submit-button' ).remove()
+      if (notSubmitted.length === 0) {
 
-        mxPostData( _this.serialize() );
+        $('.mx-submit-button').remove()
+        $('.mx-spinner-wrapper').show()
 
-      }      
+        mxPostData(_this.serialize());
 
-    },1000 );   
+      }
 
-  } );
+    }, 1000);
+
+  });
 
   // change
-  $( 'input, textarea' ).each( function(){
+  $('input, textarea').each(function () {
 
-    $( this ).on( 'change', function(){
+    $(this).on('change', function () {
 
       // check empty
-      mxCheckEmpty( $( this ) );   
+      mxCheckEmpty($(this));
 
-    } );
+    });
 
-  } );
+  });
 
   // paste
   // $( 'input, textarea' ).each( function(){
@@ -61,60 +62,61 @@ $( document ).ready( function(){
 
   // } );
 
-} );
+});
 
 // check empty
-function mxCheckEmpty( _this ){
+function mxCheckEmpty(_this) {
 
-  if( _this.val().length === 0 ){
+  if (_this.val().length === 0) {
 
-    _this.addClass( 'mx-border_red' );
+    _this.addClass('mx-border_red');
 
-    _this.next( '.invalid-feedback' ).addClass( 'mx-db' );        
+    _this.next('.invalid-feedback').addClass('mx-db');
 
     // not submitted
-    _this.attr( 'data-not-submitted', 'true' );
+    _this.attr('data-not-submitted', 'true');
 
-  } else{
+  } else {
 
-    _this.removeClass( 'mx-border_red' );
+    _this.removeClass('mx-border_red');
 
-    _this.next( '.invalid-feedback' ).removeClass( 'mx-db' );
+    _this.next('.invalid-feedback').removeClass('mx-db');
 
     // is submitted
-    _this.removeAttr( 'data-not-submitted' );
+    _this.removeAttr('data-not-submitted');
 
   }
 
 }
 
 // $.post
-function mxPostData( serialize ){
+function mxPostData(serialize) {
 
-  $.post( "generate.php", serialize, function( data ) {
+  $.post("generate.php", serialize, function (data) {
 
     //console.log( 'Created!' );
-    console.log( data );
+    console.log(data);
+    $('.mx-spinner-wrapper').remove()
 
-    mxAppendLink( data );
+    mxAppendLink(data);
 
-  } );
+  });
 
 }
 
 // append link
-function mxAppendLink( $zip ) {
+function mxAppendLink($zip) {
 
   $zip_name = $zip + '.zip';
 
-  var curr_url = $( '.mx-download-plugin' ).attr( 'data-curr-url' )
+  var curr_url = $('.mx-download-plugin').attr('data-curr-url')
 
-  $( '.mx-download-plugin' ).addClass( 'mx-download-active' );
+  $('.mx-download-plugin').addClass('mx-download-active');
 
-  $( '.mx-download-plugin' ).find( 'a.mx-download-link' ).attr( 'href', curr_url + 'generate/output/' + $zip_name );
+  $('.mx-download-plugin').find('a.mx-download-link').attr('href', curr_url + 'generate/output/' + $zip_name);
 
-  $( '.mx-download-plugin' ).find( 'a.mx-download-link span' ).text( $zip );
+  $('.mx-download-plugin').find('a.mx-download-link span').text($zip);
 
 }
 
-console.log(  )
+console.log()

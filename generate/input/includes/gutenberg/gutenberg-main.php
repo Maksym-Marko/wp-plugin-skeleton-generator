@@ -9,6 +9,9 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
+        // nested blocks
+        add_action( 'init', [$this, 'nestedBlocks'] );
+        
         // image section
         add_action( 'init', [$this, 'imageSection'] );
         
@@ -27,6 +30,16 @@ class |UNIQUESTRING|Gutenberg
      * Blocks
      */
 
+    // nested blocks
+    public function nestedBlocks()
+    {
+        register_block_type( __DIR__ . '/build/nested-blocks' );
+
+        // children blocks
+        // block one
+        register_block_type( __DIR__ . '/build/nested-blocks/child-blocks/block-one' );
+    }
+    
     // image section
     public function imageSection()
     {

@@ -1,0 +1,1 @@
+{"version":3,"file":"nested-blocks/index.css","mappings":";;;AAAA;;CAAA;AAIA;EACC;EACA;AAAD,C","sources":["webpack://|uniquestring|-gutenberg-blocks/./src/nested-blocks/editor.scss"],"sourcesContent":["/**\n* Editor Style\n*/\n\n.wp-block-|uniquestring|-nested-blocks {\n\tborder: 2px solid rgb(43, 42, 42);\n\tpadding: 2px;\n}\n"],"names":[],"sourceRoot":""}
