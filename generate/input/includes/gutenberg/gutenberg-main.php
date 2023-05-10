@@ -9,6 +9,9 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
+        // counter section
+        add_action( 'init', [$this, 'counterSection'] );
+        
         // nested blocks
         add_action( 'init', [$this, 'nestedBlocks'] );
         
@@ -29,6 +32,36 @@ class |UNIQUESTRING|Gutenberg
     /**
      * Blocks
      */
+
+    // counter section
+    public function counterSection()
+    {       
+
+        register_block_type( __DIR__ . '/build/counter-section' );
+
+        // children blocks
+        // block one
+        register_block_type( __DIR__ . '/build/counter-section/child-blocks/block-one' );
+
+        // now lets add animation
+        wp_enqueue_style( '|uniquestring|_animate_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/css/animate.min.css' );
+
+        $asset_file = include('build/counter-section/index.asset.php');
+
+        // wow
+        wp_enqueue_script( '|uniquestring|_counter_section_wow', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/wow.min.js', [ 'jquery', ...$asset_file['dependencies'] ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+
+        // waypoints
+        wp_enqueue_script( '|uniquestring|_counter_section_waypoints', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/waypoints.min.js', [ '|uniquestring|_counter_section_wow' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+
+        // counterup
+        wp_enqueue_script( '|uniquestring|_counter_section_counterup', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/counterup.min.js', [ '|uniquestring|_counter_section_waypoints' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+
+        // main
+        wp_enqueue_script( '|uniquestring|_counter_section_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/script.js', [ '|uniquestring|_counter_section_counterup' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        
+
+    }
 
     // nested blocks
     public function nestedBlocks()

@@ -1,0 +1,131 @@
+// wp-block-|uniquestring|-counter-section
+body {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #596277;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.mx-counter-block .bg-dark {
+    background-color: #111 !important;
+}
+
+.mx-counter-block .py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.mx-counter-block .container,
+.mx-counter-block .container-fluid {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mx-counter-block .g-4,
+.mx-counter-block .gy-4 {
+    --bs-gutter-y: 1.5rem;
+}
+
+.mx-counter-block .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(1.5rem * -1);
+    margin-right: calc(1.5rem / -2);
+    margin-left: calc(1.5rem / -2);
+}
+
+.mx-counter-block .row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(1.5rem / 2);
+    padding-left: calc(1.5rem / 2);
+    margin-top: 1.5rem;
+}
+
+.mx-counter-block h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-family: "Barlow", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #0B2154;
+}
+
+.mx-counter-block h2,
+.mx-counter-block .h2 {
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    .mx-counter-block .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .mx-counter-block .col-lg-3 {
+        flex: 0 0 auto;
+        width: 25%;
+        box-sizing: border-box;
+    }
+}
+
+.mx-counter-block .mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mx-counter-block .mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mx-counter-block .text-center {
+    text-align: center !important;
+}
+
+.mx-counter-block p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.mx-counter-block .mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mx-counter-block .text-white {
+    color: #fff !important;
+}
+
+.mx-counter-block .container,
+.mx-counter-block .container-fluid {
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1400px) {
+    .mx-counter-block .container {
+        max-width: 1320px;
+    }
+}
+
+.fact {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), none;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

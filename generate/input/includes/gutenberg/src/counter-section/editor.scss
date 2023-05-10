@@ -1,0 +1,14 @@
+/**
+* Editor Style
+*/
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css';
+
+.wp-block-|uniquestring|-nested-blocks {
+	border: 2px solid rgb(43, 42, 42);
+	padding: 2px;
+}
+
+.container .block-editor-block-list__layout {
+	display: flex;
+	justify-content: space-around;
+}
