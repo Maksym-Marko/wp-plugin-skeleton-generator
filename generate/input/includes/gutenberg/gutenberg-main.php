@@ -9,86 +9,182 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
+        // full-width-section-image
+        add_action('init', [$this, 'fullWidthSectionImage']);
+
+        // content slider
+        add_action('init', [$this, 'contentSlider']);
+        add_action('wp_enqueue_scripts', [$this, 'contentSliderScripts']);
+
+        // full-width-section
+        add_action('init', [$this, 'fullWidthSection']);
+
+        // responsive spacer
+        add_action('init', [$this, 'responsiveSpacer']);
+
         // counter section
-        add_action( 'init', [$this, 'counterSection'] );
-        
+        add_action('init', [$this, 'counterSection']);
+
         // nested blocks
-        add_action( 'init', [$this, 'nestedBlocks'] );
-        
+        add_action('init', [$this, 'nestedBlocks']);
+
         // image section
-        add_action( 'init', [$this, 'imageSection'] );
-        
+        add_action('init', [$this, 'imageSection']);
+
         // simple image
-        add_action( 'init', [$this, 'simpleImage'] );
-        
+        add_action('init', [$this, 'simpleImage']);
+
         // simple text
-        add_action( 'init', [$this, 'simpleText'] );
+        add_action('init', [$this, 'simpleText']);
 
         // server side rendering
         add_action('init', [$this, 'serverSideRendering']);
-
     }
 
     /**
      * Blocks
      */
 
+    // full width section image
+    public function fullWidthSectionImage()
+    {
+
+        register_block_type(__DIR__ . '/build/full-width-section-image');
+    }
+
+    // block attributes
+    public function blockAttributes()
+    {
+
+        $asset_file = include('data-attributes/index.asset.php');
+
+        wp_enqueue_script('|uniquestring|-block-attributes', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/data-attributes/index.js', $asset_file['dependencies'] ?? array(), $asset_file['version'] ?? '1.0', true);
+    }
+
+    // content slider
+    public function contentSlider()
+    {
+
+        register_block_type(__DIR__ . '/build/content-slider');
+    }
+
+    public function contentSliderScripts()
+    {
+
+        $asset_file = include('build/responsive-spacer/index.asset.php');
+
+        // owl css
+        wp_enqueue_style(
+            'owl-carousel',
+            |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/css/owl.carousel.min.css',
+            [],
+            $asset_file['version']
+        );
+
+        // owl js
+        wp_enqueue_script(
+            'owl-carousel',
+            |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/js/owl.carousel.min.js',
+            ['jquery'],
+            $asset_file['version'],
+            true
+        );
+
+        // owl handler.js
+        wp_enqueue_script(
+            'mx-owl-carousel-handler',
+            |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/js/handler.js',
+            ['owl-carousel'],
+            $asset_file['version'],
+            true
+        );
+    }
+
+    // full width section
+    public function fullWidthSection()
+    {
+
+        register_block_type(__DIR__ . '/build/full-width-section');
+    }
+
+    // main banner
+    public function mainBanner()
+    {
+
+        register_block_type(__DIR__ . '/build/main-banner');
+    }
+
+    // responsive spacer
+    public function responsiveSpacer()
+    {
+
+        register_block_type( __DIR__ . '/build/responsive-spacer' );
+
+    }
+
+    public function responsive_spacer_dynamic_render_callback($block_attributes)
+    {
+        ob_start();
+
+        include  __DIR__ . '/src/responsive-spacer/callback.php';
+
+        return ob_get_clean();
+    }
+
     // counter section
     public function counterSection()
-    {       
+    {
 
-        register_block_type( __DIR__ . '/build/counter-section' );
+        register_block_type(__DIR__ . '/build/counter-section');
 
         // children blocks
         // block one
-        register_block_type( __DIR__ . '/build/counter-section/child-blocks/block-one' );
+        register_block_type(__DIR__ . '/build/counter-section/child-blocks/block-one');
 
         // now lets add animation
-        wp_enqueue_style( '|uniquestring|_animate_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/css/animate.min.css' );
+        wp_enqueue_style('|uniquestring|_animate_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/css/animate.min.css');
 
         $asset_file = include('build/counter-section/index.asset.php');
 
         // wow
-        wp_enqueue_script( '|uniquestring|_counter_section_wow', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/wow.min.js', [ 'jquery', ...$asset_file['dependencies'] ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        wp_enqueue_script('|uniquestring|_counter_section_wow', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/wow.min.js', ['jquery', ...$asset_file['dependencies']], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
         // waypoints
-        wp_enqueue_script( '|uniquestring|_counter_section_waypoints', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/waypoints.min.js', [ '|uniquestring|_counter_section_wow' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        wp_enqueue_script('|uniquestring|_counter_section_waypoints', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/waypoints.min.js', ['|uniquestring|_counter_section_wow'], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
         // counterup
-        wp_enqueue_script( '|uniquestring|_counter_section_counterup', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/counterup.min.js', [ '|uniquestring|_counter_section_waypoints' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        wp_enqueue_script('|uniquestring|_counter_section_counterup', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/counterup.min.js', ['|uniquestring|_counter_section_waypoints'], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
         // main
-        wp_enqueue_script( '|uniquestring|_counter_section_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/script.js', [ '|uniquestring|_counter_section_counterup' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
-        
-
+        wp_enqueue_script('|uniquestring|_counter_section_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/script.js', ['|uniquestring|_counter_section_counterup'], |UNIQUESTRING|_PLUGIN_VERSION, true);
     }
 
     // nested blocks
     public function nestedBlocks()
     {
-        register_block_type( __DIR__ . '/build/nested-blocks' );
+        register_block_type(__DIR__ . '/build/nested-blocks');
 
         // children blocks
         // block one
-        register_block_type( __DIR__ . '/build/nested-blocks/child-blocks/block-one' );
+        register_block_type(__DIR__ . '/build/nested-blocks/child-blocks/block-one');
     }
-    
+
     // image section
     public function imageSection()
     {
-        register_block_type( __DIR__ . '/build/image-section' );
+        register_block_type(__DIR__ . '/build/image-section');
     }
 
     // simple image
     public function simpleImage()
     {
-        register_block_type( __DIR__ . '/build/simple-image' );
+        register_block_type(__DIR__ . '/build/simple-image');
     }
 
     // simple text
     public function simpleText()
     {
-        register_block_type( __DIR__ . '/build/simple-text' );
+        register_block_type(__DIR__ . '/build/simple-text');
     }
 
     // server side rendering
@@ -143,7 +239,6 @@ class |UNIQUESTRING|Gutenberg
 
         return ob_get_clean();
     }
-
 }
 
 $gutenbergClassInstance = new |UNIQUESTRING|Gutenberg();

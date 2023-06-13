@@ -1,0 +1,20 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/gutenberg/src/full-width-section/editor.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/**
+* Editor Style
+*/
+.wp-block-|uniquestring|-nested-blocks {
+  border: 2px solid rgb(43, 42, 42);
+  padding: 2px;
+}
+
+.editor-styles-wrapper .image-list li img {
+  width: 30px;
+}
+
+.editor-styles-wrapper .wp-block-|uniquestring|-full-width-section .wp-block-image img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=index.css.map*/

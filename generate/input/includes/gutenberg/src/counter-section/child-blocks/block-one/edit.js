@@ -61,7 +61,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 							max="1000000"
 						/>
 					</Placeholder>
-					
+
 					<Placeholder
 						label="Set Label"
 						instructions="Please set label"

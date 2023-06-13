@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 5.3.3) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 5.3.4) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.3</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.4</small></a>
 
         </nav>
 
@@ -220,13 +220,16 @@
           </li>
           <li>
             Gutenberg blocks:
-            <ul>
+            <ul>              
               <li> Server Side Rendering</li>
               <li> Simple Text</li>
               <li> Simple Image</li>
               <li> Image Section</li>
               <li> Nested blocks</li>
               <li> Counter Section</li>
+              <li> Content Slider</li>
+              <li> Full width section</li>
+              <li> Responsive spacer</li>
             </ul>
           </li>
 

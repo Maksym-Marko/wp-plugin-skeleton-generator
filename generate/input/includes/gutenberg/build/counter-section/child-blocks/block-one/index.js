@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/counter-section/child-blocks/block-one/edit.js":
-/*!************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/edit.js ***!
-  \************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/edit.js":
+/*!*******************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/edit.js ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -16,24 +16,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/counter-section/child-blocks/block-one/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/block.json");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/counter-section/child-blocks/block-one/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/editor.scss");
 
 
 
 
 
 
-function edit(_ref) {
-  let {
-    attributes,
-    isSelected,
-    setAttributes
-  } = _ref;
+function edit({
+  attributes,
+  isSelected,
+  setAttributes
+}) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, attributes.number && !isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, {
     label: "Set icon",
@@ -100,19 +99,19 @@ function edit(_ref) {
 
 /***/ }),
 
-/***/ "./src/counter-section/child-blocks/block-one/index.js":
-/*!*************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/index.js ***!
-  \*************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/index.js":
+/*!********************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/index.js ***!
+  \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/counter-section/child-blocks/block-one/block.json");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/counter-section/child-blocks/block-one/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/counter-section/child-blocks/block-one/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/counter-section/child-blocks/block-one/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./includes/gutenberg/src/counter-section/child-blocks/block-one/save.js");
 
 
 
@@ -131,10 +130,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/counter-section/child-blocks/block-one/save.js":
-/*!************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/save.js ***!
-  \************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/save.js":
+/*!*******************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/save.js ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -147,10 +146,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function save(_ref) {
-  let {
-    attributes
-  } = _ref;
+function save({
+  attributes
+}) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-md-6 col-lg-3 text-center wow fadeIn mx-counter-item",
@@ -168,10 +166,10 @@ function save(_ref) {
 
 /***/ }),
 
-/***/ "./src/counter-section/child-blocks/block-one/editor.scss":
-/*!****************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/editor.scss ***!
-  \****************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/editor.scss":
+/*!***********************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/editor.scss ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -180,10 +178,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/counter-section/child-blocks/block-one/style.scss":
-/*!***************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/style.scss ***!
-  \***************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/style.scss":
+/*!**********************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/style.scss ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -242,10 +240,10 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "./src/counter-section/child-blocks/block-one/block.json":
-/*!***************************************************************!*\
-  !*** ./src/counter-section/child-blocks/block-one/block.json ***!
-  \***************************************************************/
+/***/ "./includes/gutenberg/src/counter-section/child-blocks/block-one/block.json":
+/*!**********************************************************************************!*\
+  !*** ./includes/gutenberg/src/counter-section/child-blocks/block-one/block.json ***!
+  \**********************************************************************************/
 /***/ ((module) => {
 
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/counter-section-child-blocks-block-one","parent":["|uniquestring|/counter-section"],"version":"0.1.0","title":"Counter Item","category":"design","icon":"smiley","description":"Add Counter Item","supports":{"html":false,"align":["left","right","full"],"color":{"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"align":{"type":"string","default":""},"number":{"type":"string","source":"text","selector":"h2","default":"0"},"label":{"type":"string","source":"text","selector":"p","default":"Years Experience"},"icon":{"type":"string","source":"attribute","selector":"i","attribute":"data-icon-key","default":"fa-check"}},"textdomain":"|uniquestring|-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
@@ -413,7 +411,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["counter-section/child-blocks/block-one/style-index"], () => (__webpack_require__("./src/counter-section/child-blocks/block-one/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["counter-section/child-blocks/block-one/style-index"], () => (__webpack_require__("./includes/gutenberg/src/counter-section/child-blocks/block-one/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

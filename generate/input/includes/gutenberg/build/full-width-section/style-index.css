@@ -1,0 +1,21 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/gutenberg/src/full-width-section/style.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-|uniquestring|-full-width-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0;
+  margin: 0 !important;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.wp-block-|uniquestring|-full-width-section > div {
+  width: 100%;
+  max-width: 1320px;
+  padding: 0px 48px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

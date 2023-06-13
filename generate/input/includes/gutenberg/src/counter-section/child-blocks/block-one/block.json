@@ -2,7 +2,9 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "|uniquestring|/counter-section-child-blocks-block-one",
-	"parent": [ "|uniquestring|/counter-section" ],
+	"parent": [
+		"|uniquestring|/counter-section"
+	],
 	"version": "0.1.0",
 	"title": "Counter Item",
 	"category": "design",

@@ -1,0 +1,26 @@
+.wp-block-|uniquestring|-content-slider .wp-block-group {
+	&:not(.is-selected):not(.has-child-selected) {
+		border: 1px dotted;
+		height: 100px;
+		overflow: hidden;
+		cursor: pointer;
+
+		* {
+			visibility: hidden;
+		}
+
+		&:before {
+			content: 'edit slide';
+			visibility: visible;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			height: 20px;
+			text-align: center;
+			width: 100%;
+			display: block;
+			z-index: 2;
+		}
+	}
+}

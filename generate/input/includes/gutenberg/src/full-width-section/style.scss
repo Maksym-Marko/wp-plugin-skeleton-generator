@@ -1,0 +1,16 @@
+.wp-block-|uniquestring|-full-width-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.wp-block-|uniquestring|-full-width-section>div {
+    width: 100%;
+    max-width: 1320px;
+    padding: 0px 48px;
+    margin-left: auto;
+    margin-right: auto;
+}

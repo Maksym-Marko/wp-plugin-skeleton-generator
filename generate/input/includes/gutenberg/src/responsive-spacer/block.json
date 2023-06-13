@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "|uniquestring|/responsive-spacer",
+	"version": "0.1.0",
+	"title": "Responsive Spacer",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Add Responsive Spacer",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"unique_class": {
+			"type": "string",
+			"default": "mx-spacer"
+		},
+		"media_default": {
+			"type": "string",
+			"default": "100"
+		},
+		"media_768": {
+			"type": "string",
+			"default": ""
+		},
+		"media_992": {
+			"type": "string",
+			"default": ""
+		},
+		"media_1220": {
+			"type": "string",
+			"default": ""
+		},
+		"media_1500": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "|uniquestring|-domain",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

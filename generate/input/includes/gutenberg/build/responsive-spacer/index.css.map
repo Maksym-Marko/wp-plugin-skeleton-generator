@@ -1,0 +1,1 @@
+{"version":3,"file":"responsive-spacer/index.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://mxnst-gutenberg-blocks/./includes/gutenberg/src/responsive-spacer/editor.scss"],"sourcesContent":[".wp-block-|uniquestring|-responsive-spacer.is-selected {\r\n\tbackground: #e5e5e5 !important;\r\n}"],"names":[],"sourceRoot":""}

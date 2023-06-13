@@ -6,10 +6,10 @@ import './editor.scss';
 
 export default function edit({ attributes, isSelected, setAttributes }) {
 	const blockProps = useBlockProps()
-	const ALLOWED_BLOCKS = [ '|uniquestring|/nested-blocks-child-blocks-block-one' ];
+	const ALLOWED_BLOCKS = ['|uniquestring|/nested-blocks-child-blocks-block-one'];
 	return (
 		<div  {...blockProps}>
-			<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+			<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 		</div>
 	);
 }

@@ -10,7 +10,12 @@
 	"supports": {
 		"html": false,
 		"spacing": {
-			"padding": ["top", "right", "bottom", "left"]
+			"padding": [
+				"top",
+				"right",
+				"bottom",
+				"left"
+			]
 		},
 		"color": {
 			"gradients": false,

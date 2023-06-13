@@ -5,14 +5,14 @@ import { __experimentalNumberControl as NumberControl } from '@wordpress/compone
 import './editor.scss';
 import metadata from './block.json';
 
-export default function Edit( {attributes, setAttributes} ) {
+export default function Edit({ attributes, setAttributes }) {
 
-	const blockProps = useBlockProps();	
+	const blockProps = useBlockProps();
 
-	const onChangeNumber = ( number ) => {
-		setAttributes( { postsNumber: number } );		
+	const onChangeNumber = (number) => {
+		setAttributes({ postsNumber: number });
 	};
-		
+
 	return (
 		<div {...blockProps}>
 			<NumberControl
@@ -21,8 +21,8 @@ export default function Edit( {attributes, setAttributes} ) {
 				onChange={onChangeNumber}
 			/>
 			<ServerSideRender
-				block={ metadata.name }
-				attributes={ attributes }
+				block={metadata.name}
+				attributes={attributes}
 			/>
 		</div>
 	);

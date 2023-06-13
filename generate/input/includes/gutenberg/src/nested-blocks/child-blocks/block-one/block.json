@@ -2,7 +2,9 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "|uniquestring|/nested-blocks-child-blocks-block-one",
-	"parent": [ "|uniquestring|/nested-blocks" ],
+	"parent": [
+		"|uniquestring|/nested-blocks"
+	],
 	"version": "0.1.0",
 	"title": "Block One",
 	"category": "widgets",

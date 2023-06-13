@@ -10,26 +10,27 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 	const blockProps = useBlockProps()
 	const ALLOWED_MEDIA_TYPES = ['image']
 
-	const imageData = useSelect( ( select ) => {
-		if(attributes.mediaId) {
-			return select( 'core' ).getEntityRecord( 'postType', 'attachment', attributes.mediaId );			
-			
+	const imageData = useSelect((select) => {
+		if (attributes.mediaId) {
+			return select('core').getEntityRecord('postType', 'attachment', attributes.mediaId);
+
 		} else {
 			return false
 		}
-	}, [attributes] );
+	}, [attributes]);
 
 	useEffect(() => {
-		if( imageData?.media_details ) {
-			setAttributes( {
-				mediaUrl: imageData.media_details.sizes.full.source_url } )
+		if (imageData?.media_details) {
+			setAttributes({
+				mediaUrl: imageData.media_details.sizes.full.source_url
+			})
 		}
 	}, [imageData])
-	
+
 	return (
 		<div {...blockProps}>
 
-			{ isSelected && (
+			{isSelected && (
 				<Placeholder
 					label={metadata.title}
 					instructions={metadata.description}
@@ -37,30 +38,30 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 
 					<MediaUploadCheck>
 						<MediaUpload
-							onSelect={ ( media ) => setAttributes( {
+							onSelect={(media) => setAttributes({
 								mediaId: media.id
-							} )}
-							allowedTypes={ ALLOWED_MEDIA_TYPES }
-							value={ attributes.mediaId }
-							render={ ( { open } ) => (
+							})}
+							allowedTypes={ALLOWED_MEDIA_TYPES}
+							value={attributes.mediaId}
+							render={({ open }) => (
 								<Button
 									icon="upload"
-									text={ attributes.mediaId ? 'Change Image' : 'Upload Image'}
+									text={attributes.mediaId ? 'Change Image' : 'Upload Image'}
 									variant="secondary"
-									onClick={ open }
+									onClick={open}
 								/>
-							) }
+							)}
 						/>
 					</MediaUploadCheck>
 
 				</Placeholder>
-			) }
+			)}
 
-			{ attributes.mediaId && attributes?.mediaUrl ? (
-				
+			{attributes.mediaId && attributes?.mediaUrl ? (
+
 				<img src={attributes.mediaUrl} id={attributes.mediaId} />
-				
-			) : (<h3>No image attached!</h3>) }			
+
+			) : (<h3>No image attached!</h3>)}
 
 		</div>
 	);

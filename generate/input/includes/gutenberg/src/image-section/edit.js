@@ -35,9 +35,9 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 		}
 
 		if (attributes?.mediaUrl) {
-			
+
 			styleObj.backgroundImage = 'url("' + attributes.mediaUrl + '")'
-			
+
 		}
 
 		return styleObj
@@ -75,7 +75,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 				<PanelBody title="Set background position" initialOpen={true}>
 					<PanelRow>
 						<SelectControl
-							onChange={ ( bgPosition ) => setAttributes( { bgPosition } ) }
+							onChange={(bgPosition) => setAttributes({ bgPosition })}
 							__nextHasNoMarginBottom
 							value={attributes.bgPosition}
 							options={[
@@ -111,7 +111,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 				<PanelBody title="Text Alignment" initialOpen={true}>
 					<PanelRow>
 						<SelectControl
-							onChange={ ( testAlignment ) => setAttributes( { testAlignment } ) }
+							onChange={(testAlignment) => setAttributes({ testAlignment })}
 							__nextHasNoMarginBottom
 							value={attributes.testAlignment}
 							options={[

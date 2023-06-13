@@ -4,7 +4,7 @@ import './style.scss';
 import edit from './edit';
 import save from './save';
 
-registerBlockType( metadata.name, {
+registerBlockType(metadata.name, {
 	/**
 	 * @see ./edit.js
 	 */
@@ -14,4 +14,4 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
-} );
+});

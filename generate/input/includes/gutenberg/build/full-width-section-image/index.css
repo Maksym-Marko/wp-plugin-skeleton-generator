@@ -1,0 +1,54 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/gutenberg/src/full-width-section-image/editor.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-|uniquestring|-full-width-section-image {
+  max-width: 100% !important;
+  width: 100% !important;
+  display: flex;
+  height: auto;
+  min-width: 600px;
+}
+.wp-block-|uniquestring|-full-width-section-image > div {
+  width: 50%;
+}
+.wp-block-|uniquestring|-full-width-section-image--image-wrapper {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.wp-block-|uniquestring|-full-width-section-image--image-wrapper img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: 100%;
+  -o-object-position: bottom left;
+     object-position: bottom left;
+}
+.wp-block-|uniquestring|-full-width-section-image--content-wrapper {
+  display: flex;
+}
+.wp-block-|uniquestring|-full-width-section-image--text {
+  max-width: 620px;
+  padding: 0px 48px 0px 24px;
+  width: 100%;
+}
+
+.wp-block-|uniquestring|-full-width-section-image[data-image-to-right="1"] .wp-block-|uniquestring|-full-width-section-image--image-wrapper {
+  order: 1;
+}
+
+.wp-block-|uniquestring|-full-width-section-image[data-image-to-right="1"] .wp-block-|uniquestring|-full-width-section-image--image-wrapper img {
+  -o-object-position: top left;
+     object-position: top left;
+}
+
+.wp-block-|uniquestring|-full-width-section-image[data-image-to-right="1"] .wp-block-|uniquestring|-full-width-section-image--content-wrapper {
+  justify-content: flex-end;
+}
+
+.wp-block-|uniquestring|-full-width-section-image[data-image-to-right="1"] .wp-block-|uniquestring|-full-width-section-image--text {
+  padding: 0px 24px 0px 48px;
+}
+
+/*# sourceMappingURL=index.css.map*/
