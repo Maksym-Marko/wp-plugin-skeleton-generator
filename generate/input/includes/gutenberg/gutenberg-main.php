@@ -9,6 +9,9 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
+        // add block attributes
+        add_action('enqueue_block_editor_assets', [$this, 'blockAttributes']);
+
         // full-width-section-image
         add_action('init', [$this, 'fullWidthSectionImage']);
 
