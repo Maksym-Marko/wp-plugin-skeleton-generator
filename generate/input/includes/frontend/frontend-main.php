@@ -22,7 +22,7 @@ class |UNIQUESTRING|FrontEndMain
 }
 
 // Initialize
-$initialize_frontend_class = new |UNIQUESTRING|FrontEndMain();
+$initializeFrontendClass = new |UNIQUESTRING|FrontEndMain();
 
 // include classes
-$initialize_frontend_class->additionalClasses();
+$initializeFrontendClass->additionalClasses();

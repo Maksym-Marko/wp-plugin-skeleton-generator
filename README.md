@@ -48,7 +48,7 @@ Here you can find a list of plugins created using the WPP generator and hosted i
 
 == WPP Generator ==
 
-WPP Generator Version:        5.3.4
+WPP Generator Version:        5.3.5
 WPP Generator Author:         Maksym Marko
 WPP Generator Author Website: https://markomaksym.com.ua/
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
@@ -59,9 +59,13 @@ Contains a wide set of files and functions.
 
 == Changelog ==
 
+= 5.3.5 =
+
+\* Small bug fixed.
+
 = 5.3.4 =
 
-\* Gutenberg blocks: Content Slider, Full width section, Responsive spacer
+\* Gutenberg blocks: Content Slider, Full width section, Responsive spacer.
 
 = 5.3.3 =
 

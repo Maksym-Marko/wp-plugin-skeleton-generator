@@ -17,7 +17,7 @@ class |UNIQUESTRING|MetaboxesGenerator
         $this->defaults = [
             'id'           => 'mx-extra-metabox-1',
             'post_types'   => 'page', // ['page', 'post']
-            'name'         => esc_html( 'Extra metabox 1', '|uniquestring|-domain' ),
+            'name'         => esc_html( 'Extra metabox 1', 'mx-|uniquestring|' ),
             'metabox_type' => 'input-text',
                 'options'  => []
         ];

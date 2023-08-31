@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 5.3.4) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 5.3.5) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.4</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.5</small></a>
 
         </nav>
 
@@ -99,7 +99,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-              <label for="author">Author <span class="text-muted">(example: Marko Maksym)</span>:</label>
+              <label for="author">Author <span class="text-muted">(example: Maksym Marko)</span>:</label>
               <input type="text" class="form-control" id="author" name="author" placeholder="" value="" />
               <div class="invalid-feedback">
                 Valid Author is required.

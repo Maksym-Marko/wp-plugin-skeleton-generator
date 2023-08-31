@@ -190,7 +190,7 @@ module.exports = window["wp"]["serverSideRender"];
   \*****************************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/server-side-rendering","version":"0.1.3","title":"Server Side Rendering","category":"design","icon":"smiley","description":"Server Side Rendering","supports":{"html":false},"attributes":{"postsNumber":{"type":"string","default":"4"}},"textdomain":"|uniquestring|-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/server-side-rendering","version":"0.1.3","title":"Server Side Rendering","category":"design","icon":"smiley","description":"Server Side Rendering","supports":{"html":false},"attributes":{"postsNumber":{"type":"string","default":"4"}},"textdomain":"mx-|uniquestring|","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

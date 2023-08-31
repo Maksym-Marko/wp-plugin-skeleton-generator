@@ -63,7 +63,7 @@ function edit({
     label: "Set Count",
     instructions: "Please set count"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number', '|uniquestring|-domain'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number', 'mx-|uniquestring|'),
     value: attributes.number,
     onChange: val => {
       setAttributes({
@@ -77,7 +77,7 @@ function edit({
     label: "Set Label",
     instructions: "Please set label"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Label', '|uniquestring|-domain'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Label', 'mx-|uniquestring|'),
     value: attributes.label,
     onChange: val => {
       setAttributes({
@@ -246,7 +246,7 @@ module.exports = window["wp"]["i18n"];
   \**********************************************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/counter-section-child-blocks-block-one","parent":["|uniquestring|/counter-section"],"version":"0.1.0","title":"Counter Item","category":"design","icon":"smiley","description":"Add Counter Item","supports":{"html":false,"align":["left","right","full"],"color":{"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"align":{"type":"string","default":""},"number":{"type":"string","source":"text","selector":"h2","default":"0"},"label":{"type":"string","source":"text","selector":"p","default":"Years Experience"},"icon":{"type":"string","source":"attribute","selector":"i","attribute":"data-icon-key","default":"fa-check"}},"textdomain":"|uniquestring|-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/counter-section-child-blocks-block-one","parent":["|uniquestring|/counter-section"],"version":"0.1.0","title":"Counter Item","category":"design","icon":"smiley","description":"Add Counter Item","supports":{"html":false,"align":["left","right","full"],"color":{"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"align":{"type":"string","default":""},"number":{"type":"string","source":"text","selector":"h2","default":"0"},"label":{"type":"string","source":"text","selector":"p","default":"Years Experience"},"icon":{"type":"string","source":"attribute","selector":"i","attribute":"data-icon-key","default":"fa-check"}},"textdomain":"mx-|uniquestring|","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

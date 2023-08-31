@@ -17,7 +17,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions={metadata.description}
 					>
 						<TextControl
-							label={__('Message', '|uniquestring|-domain')}
+							label={__('Message', 'mx-|uniquestring|')}
 							value={attributes.message}
 							onChange={(val) => setAttributes({ message: val })}
 						/>

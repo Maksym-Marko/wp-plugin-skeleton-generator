@@ -166,8 +166,8 @@ class |UNIQUESTRING|RouteRegistrar
     public function createAdminMainMenu()
     {
 
-        add_menu_page( __( $this->properties['page_title'], '|uniquestring|-domain' ),
-            __( $this->properties['menu_title'], '|uniquestring|-domain' ),
+        add_menu_page( __( $this->properties['page_title'], 'mx-|uniquestring|' ),
+            __( $this->properties['menu_title'], 'mx-|uniquestring|' ),
             $this->properties['capability'],
             $this->slug,
             [ $this, 'viewConnector' ],
@@ -183,8 +183,8 @@ class |UNIQUESTRING|RouteRegistrar
         
         // create a sub menu
         add_submenu_page( $this->slug,
-            __( $this->properties['page_title'], '|uniquestring|-domain' ),
-            __( $this->properties['menu_title'], '|uniquestring|-domain' ),
+            __( $this->properties['page_title'], 'mx-|uniquestring|' ),
+            __( $this->properties['menu_title'], 'mx-|uniquestring|' ),
             $this->properties['capability'],
             $this->subMenuSlug,
             [ $this, 'viewConnector' ]
@@ -200,8 +200,8 @@ class |UNIQUESTRING|RouteRegistrar
         
         // create a settings menu
         add_options_page(
-            __( $this->properties['page_title'], '|uniquestring|-domain' ),
-            __( $this->properties['menu_title'], '|uniquestring|-domain' ),
+            __( $this->properties['page_title'], 'mx-|uniquestring|' ),
+            __( $this->properties['menu_title'], 'mx-|uniquestring|' ),
             $this->properties['capability'],
             $this->subMenuSlug,
             [ $this, 'viewConnector' ]
@@ -211,7 +211,7 @@ class |UNIQUESTRING|RouteRegistrar
         public function createSettingsLink( $links )
         {
 
-            $settingsLink = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->subMenuSlug . '">' . __( $this->properties['menu_title'], '|uniquestring|-domain' ) . '</a>'; // options-general.php
+            $settingsLink = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->subMenuSlug . '">' . __( $this->properties['menu_title'], 'mx-|uniquestring|' ) . '</a>'; // options-general.php
 
             array_push( $links, $settingsLink );
 

@@ -36,7 +36,7 @@
 			"default": ""
 		}
 	},
-	"textdomain": "|uniquestring|-domain",
+	"textdomain": "mx-|uniquestring|",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"

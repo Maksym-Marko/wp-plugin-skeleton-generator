@@ -1,6 +1,6 @@
-<div class="mx-main-page-text-wrap">
+<div class="|uniquestring|-admin-page-wrap">
     
-    <h1><?php echo __( 'Create Table Item', '|uniquestring|-domain' ); ?></h1>
+    <h1><?php echo __( 'Create Table Item', 'mx-|uniquestring|' ); ?></h1>
 
     <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
 
@@ -9,13 +9,13 @@
         <form id="|uniquestring|_form_create_table_item" class="mx-settings" method="post" action="">
 
             <div>
-                <label for="|uniquestring|_title">Title</label>
+                <label for="|uniquestring|_title"><?php echo __( 'Title', 'mx-|uniquestring|' ); ?></label>
                 <br>
                 <input type="text" name="|uniquestring|_title" id="|uniquestring|_title" value="" />
             </div>
             <br>
             <div>
-                <label for="|uniquestring|_mx_description">Description</label>
+                <label for="|uniquestring|_mx_description"><?php echo __( 'Description', 'mx-|uniquestring|' ); ?></label>
                 <br>
                 <textarea name="|uniquestring|_mx_description" id="|uniquestring|_mx_description"></textarea>
             </div>

@@ -106,7 +106,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'         => 'text-metabox',
                 'post_types' => '|uniquestring|_books',
-                'name'       => esc_html( 'Text field', '|uniquestring|-domain' )
+                'name'       => esc_html( 'Text field', 'mx-|uniquestring|' )
             ]
         );
 
@@ -115,7 +115,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'email-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'E-mail field', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'E-mail field', 'mx-|uniquestring|' ),
                 'metabox_type' => 'input-email'
             ]
         );
@@ -125,7 +125,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'url-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'URL field', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'URL field', 'mx-|uniquestring|' ),
                 'metabox_type' => 'input-url'
             ]
         );
@@ -135,7 +135,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'desc-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'Some Description', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'Some Description', 'mx-|uniquestring|' ),
                 'metabox_type' => 'textarea'
             ]
         );
@@ -145,7 +145,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'checkboxes-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'Checkbox Buttons', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'Checkbox Buttons', 'mx-|uniquestring|' ),
                 'metabox_type' => 'checkbox',
                 'options' => [
                     [
@@ -167,7 +167,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'radio-buttons-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'Radio Buttons', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'Radio Buttons', 'mx-|uniquestring|' ),
                 'metabox_type' => 'radio',
                 'options' => [
                     [
@@ -189,7 +189,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'featured-image-metabox',
                 'post_types'   => '|uniquestring|_books',
-                'name'         => esc_html( 'Featured image', '|uniquestring|-domain' ),
+                'name'         => esc_html( 'Featured image', 'mx-|uniquestring|' ),
                 'metabox_type' => 'image'
             ]
         );

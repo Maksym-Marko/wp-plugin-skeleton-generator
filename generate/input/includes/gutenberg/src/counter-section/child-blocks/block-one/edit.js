@@ -51,7 +51,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions="Please set count"
 					>
 						<NumberControl
-							label={__('Number', '|uniquestring|-domain')}
+							label={__('Number', 'mx-|uniquestring|')}
 							value={attributes.number}
 							onChange={(val) => {
 								setAttributes({ number: val })
@@ -67,7 +67,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions="Please set label"
 					>
 						<TextControl
-							label={__('Label', '|uniquestring|-domain')}
+							label={__('Label', 'mx-|uniquestring|')}
 							value={attributes.label}
 							onChange={(val) => {
 								setAttributes({ label: val })

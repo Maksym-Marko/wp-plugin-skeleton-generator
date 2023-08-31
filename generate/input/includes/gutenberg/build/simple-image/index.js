@@ -227,7 +227,7 @@ module.exports = window["wp"]["i18n"];
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/simple-image","version":"0.1.0","title":"Simple Image","category":"widgets","icon":"smiley","description":"Add Simple Image","supports":{"html":false,"align":["left","right","full"]},"attributes":{"align":{"type":"string","default":""},"mediaId":{"type":"string","source":"attribute","selector":"img","attribute":"data-image-id","default":null},"mediaUrl":{"type":"string","source":"attribute","selector":"img","attribute":"src","default":null}},"textdomain":"|uniquestring|-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/simple-image","version":"0.1.0","title":"Simple Image","category":"widgets","icon":"smiley","description":"Add Simple Image","supports":{"html":false,"align":["left","right","full"]},"attributes":{"align":{"type":"string","default":""},"mediaId":{"type":"string","source":"attribute","selector":"img","attribute":"data-image-id","default":null},"mediaUrl":{"type":"string","source":"attribute","selector":"img","attribute":"src","default":null}},"textdomain":"mx-|uniquestring|","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

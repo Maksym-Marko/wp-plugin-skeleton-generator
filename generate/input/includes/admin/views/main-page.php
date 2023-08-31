@@ -1,6 +1,6 @@
-<div class="mx-main-page-text-wrap">
+<div class="|uniquestring|-admin-page-wrap">
 
-    <h2><?php echo __( 'Main page', '|uniquestring|-domain' ); ?></h2>
+    <h2><?php echo __( 'Main page', 'mx-|uniquestring|' ); ?></h2>
 
     <div class="wrap">
 

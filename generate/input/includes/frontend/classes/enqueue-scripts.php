@@ -24,7 +24,7 @@ class |UNIQUESTRING|EnqueueScriptsFrontend
 
             wp_enqueue_style( '|uniquestring|_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/css/style.css', [ '|uniquestring|_font_awesome' ], |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
 
-            wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/js/script.js', [ 'jquery' ], |UNIQUESTRING|_PLUGIN_VERSION, false );
+            wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/js/script.js', [ 'jquery' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
 
         }
 

@@ -24,7 +24,7 @@ class |UNIQUESTRING|EnqueueScripts
 
             wp_enqueue_style( '|uniquestring|_admin_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/css/style.css', [ '|uniquestring|_font_awesome' ], |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
 
-            wp_enqueue_script( '|uniquestring|_admin_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/js/script.js', [ 'jquery' ], |UNIQUESTRING|_PLUGIN_VERSION, false );
+            wp_enqueue_script( '|uniquestring|_admin_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/admin/assets/js/script.js', [ 'jquery' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
 
             wp_localize_script( '|uniquestring|_admin_script', '|uniquestring|_admin_localize', [
 
