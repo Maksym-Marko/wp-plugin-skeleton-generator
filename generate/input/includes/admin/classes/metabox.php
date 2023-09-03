@@ -111,8 +111,11 @@ class |UNIQUESTRING|MetaboxesGenerator
             } elseif ($this->args['metabox_type'] == 'radio') {
 
                 // radio value
-                $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
+                $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );            
+            } elseif ($this->args['metabox_type'] == 'select') {
 
+                // select value
+                $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'checkbox') {
 
                 $_value = null;
@@ -273,6 +276,28 @@ class |UNIQUESTRING|MetaboxesGenerator
 
                     }
                 ?>
+
+            <?php elseif ($this->args['metabox_type'] == 'select') : ?>
+
+            <?php if (count($this->args['options']) == 0) {
+                        echo '<p>You have to add some options to the "options" array!</p>';
+                    } else {
+
+                        if (is_array($this->args['options'])) { ?>
+                    <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"><?php echo esc_attr($this->args['name']); ?></label>
+                    <select name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>">
+
+                        <option>---</option>
+
+                        <?php foreach ($this->args['options'] as $key => $val) { ?>
+                            <option value="<?php echo $val['value']; ?>" <?php if ($metaValue == '') : ?> <?php echo isset($val['selected']) && $val['selected'] == true  ? 'selected' : ''; ?> <?php else : ?> <?php echo $metaValue == $val['value'] ? 'selected' : ''; ?> <?php endif; ?>><?php echo $val['label']; ?></option>
+                        <?php } ?>
+
+                    </select>
+
+            <?php }
+
+            } ?>
 
             <?php elseif ($this->args['metabox_type'] == 'checkbox') : ?>
 

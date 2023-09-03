@@ -194,6 +194,31 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
+        // select
+        new |UNIQUESTRING|MetaboxesGenerator(
+            [
+                'id'            => 'select-metabox',
+                'post_types'    => '|uniquestring|_books',
+                'metabox_type'  => 'select',
+                'name'          => esc_html( 'Select Pet', 'mx-|uniquestring|' ),
+                'options' => [
+                    [
+                        'value'   => 'dog',
+                        'label'   => 'Dog',
+                        'selected' => true
+                    ],
+                    [
+                        'value'   => 'cat',
+                        'label'   => 'Cat'
+                    ],
+                    [
+                        'value'   => 'fish',
+                        'label'   => 'Fish'
+                    ]        
+                ]
+            ]
+        );
+
     }
 
 }
