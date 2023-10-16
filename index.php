@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 5.3.5) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 5.3.6) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.5</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.6</small></a>
 
         </nav>
 
@@ -138,10 +138,10 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          When I want to create a new WordPress plugin I always use a <b>WPP generator</b> (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
+          When I want to create a new WordPress plugin I always use the <b>WPP generator</b> (wordpress starter kit plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
         </p>
         <p>
-          To quickly get a starter set for any WordPress plugin, I created a <b>WPP generator - Wordpress plugin skeleton generator</b>.
+          To quickly get a starter set for any WordPress plugin, I created the <b>WPP generator - Wordpress plugin skeleton generator</b>.
         </p>
         <p>
           This framework gives a much wider starter functionality and a set of necessary files to start working then most of existing starter kits.

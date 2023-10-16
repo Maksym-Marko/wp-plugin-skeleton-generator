@@ -3,6 +3,8 @@
 You can create a WordPress Plugin Boilerplate here - https://markomaksym.com.ua/wp-plugin-skeleton-generator/
 
 ## About WPP generator
+**Stable version: 5.3.6**  
+**Tested up to WordPress: 6.4**  
 When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
 
 To quickly get a starter set for any WordPress plugin, I created a WPP generator - Wordpress plugin skeleton generator.
@@ -21,14 +23,20 @@ General installation procedures are those common for all WordPress plugins:
 - upload the archive to the "Plugins" section of your website;
 - click the "Activate" button.
 
-3. Features
-Your boilerplate plugin will included:
+## Features
 - Basic install and uninstall, activate and deactivate plugin hooks;
 - During the generation of a new WordPress Plugin boilerplate, all the PHP classes and functions will be rewritten with a unique string created using your plugin name;
 - Ability to separate your code to admin and frontend folders;
 - Admin menu items and ability to create unlimited number of admin pages;
 - Custom Post Type (ability to create a new post type and add new posts);
-- Metaboxes examples (text, number, select, checkboxes, radio buttons, textarea, image upload);
+- Metaboxes:
+    * text
+    * number
+    * checkboxes
+    * radio buttons
+    * textarea
+    * image upload
+    * select
 - Custom database table creation;
 - AJAX request examples;
 - admin_enqueue_scripts, wp_enqueue_scripts and wp_localize_script examples;
@@ -42,15 +50,18 @@ Your boilerplate plugin will included:
     * Image Section
     * Nested blocks
     * Counter Section
+- Added sortable column to CPT admin table;
+- Improved admin table search for CPT (search by metabox values) - Must be improved.
+- Improved metaboxes.
 
 Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory: https://profiles.wordpress.org/markomaksym/#content-plugins
 
 
 == WPP Generator ==
 
-WPP Generator Version:        5.3.5
-WPP Generator Author:         Maksym Marko
-WPP Generator Author Website: https://markomaksym.com.ua/
+WPP Generator Version:        5.3.6  
+WPP Generator Author:         Maksym Marko  
+WPP Generator Author Website: https://markomaksym.com.ua/  
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
 
 ===
@@ -58,6 +69,10 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 5.3.6 =
+
+\* Added "select" metabox. Added sortable column to CPT admin table. Improved admin table search for CPT (search by metabox values). Improved metaboxes.
 
 = 5.3.5 =
 
