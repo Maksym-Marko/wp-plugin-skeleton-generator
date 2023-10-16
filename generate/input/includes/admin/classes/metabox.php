@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
@@ -9,29 +9,27 @@ class |UNIQUESTRING|MetaboxesGenerator
 
     private $args = [];
 
-    private $defauls = [];
+    private $defaults = [];
 
-    public function __construct( $args )
+    public function __construct($args)
     {
 
         $this->defaults = [
             'id'           => 'mx-extra-metabox-1',
             'post_types'   => 'page', // ['page', 'post']
-            'name'         => esc_html( 'Extra metabox 1', 'mx-|uniquestring|' ),
+            'name'         => esc_html('Extra metabox 1', 'mx-|uniquestring|'),
             'metabox_type' => 'input-text',
-                'options'  => []
+            'options'  => []
         ];
 
-        $this->args = wp_parse_args( $args, $this->defaults );
+        $this->args = wp_parse_args($args, $this->defaults);
 
         if (is_array($this->args['post_types'])) {
 
-            $this->args['metabox_id'] = $this->args['id'] . '_' . implode( '_',  $this->args['post_types'] );
-
+            $this->args['metabox_id'] = $this->args['id'] . '_' . implode('_',  $this->args['post_types']);
         } else {
 
             $this->args['metabox_id'] = $this->args['id'] . '_' . $this->args['post_types'];
-
         }
 
         $this->args['post_meta_key'] = '_mx_' . $this->args['metabox_id'] . '_id';
@@ -44,19 +42,16 @@ class |UNIQUESTRING|MetaboxesGenerator
             $i = 0;
 
             foreach ($this->args['options'] as $key => $value) {
-                
+
                 $this->args['options'][$key]['name'] = $this->args['post_meta_key'] . $i;
 
                 $i++;
-
             }
-
         }
 
-        add_action( 'add_meta_boxes', [$this, 'addMetaBox'] );
+        add_action('add_meta_boxes', [$this, 'addMetaBox']);
 
-        add_action( 'save_post', [$this, 'saveMetaBox'] );
-
+        add_action('save_post', [$this, 'saveMetaBox']);
     }
 
     // add post meta
@@ -65,17 +60,16 @@ class |UNIQUESTRING|MetaboxesGenerator
         add_meta_box(
             $this->args['metabox_id'],
             $this->args['name'],
-            [ $this, 'metaBoxContent' ],
+            [$this, 'metaBoxContent'],
             $this->args['post_types'],
-            'normal'
-            // 'low'
+            'normal' // 'low'
         );
     }
 
     // save post meta
-    public function saveMetaBox( $post_id )
+    public function saveMetaBox($post_id)
     {
-        if (!isset($_POST[ $this->args['nonce_name'] ]) || !wp_verify_nonce(wp_unslash($_POST[$this->args['nonce_name']]), $this->args['nonce_action'])) {
+        if (!isset($_POST[$this->args['nonce_name']]) || !wp_verify_nonce(wp_unslash($_POST[$this->args['nonce_name']]), $this->args['nonce_action'])) {
             return;
         }
 
@@ -90,28 +84,23 @@ class |UNIQUESTRING|MetaboxesGenerator
             if ($this->args['metabox_type'] == 'input-email') {
 
                 // email field
-                $value = sanitize_email( wp_unslash( $_POST[ $this->args['post_meta_key'] ] ) );
-
+                $value = sanitize_email(wp_unslash($_POST[$this->args['post_meta_key']]));
             } elseif ($this->args['metabox_type'] == 'input-url') {
 
                 // url field
-                $value = esc_url_raw( $_POST[ $this->args['post_meta_key'] ] );
-
-
+                $value = esc_url_raw($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'textarea') {
 
                 // textarea field
-                $value = sanitize_textarea_field( $_POST[ $this->args['post_meta_key'] ] );
-
+                $value = sanitize_textarea_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'image') {
 
                 // image id
-                $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
-
+                $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'radio') {
 
                 // radio value
-                $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );            
+                $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'select') {
 
                 // select value
@@ -123,34 +112,29 @@ class |UNIQUESTRING|MetaboxesGenerator
                 // checkbox value
                 foreach ($this->args['options'] as $key => $val) {
 
-                    if (isset($_POST[ $val['name']])) {
-                        $_value = sanitize_text_field( $_POST[ $val['name'] ] );
+                    if (isset($_POST[$val['name']])) {
+                        $_value = sanitize_text_field($_POST[$val['name']]);
                     }
 
                     // save data
-                    update_post_meta( $post_id, $val['name'], $_value );
-
+                    update_post_meta($post_id, $val['name'], $_value);
                 }
 
                 // checkbox marker
-                $value = sanitize_text_field( $_POST[ $this->args['post_meta_key'] ] );
-
+                $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } else {
 
                 // input text
-                $value = sanitize_text_field( wp_unslash( $_POST[ $this->args['post_meta_key'] ] ) );
-
+                $value = sanitize_text_field(wp_unslash($_POST[$this->args['post_meta_key']]));
             }
-
         }
 
         // save data
-        update_post_meta( $post_id, $this->args['post_meta_key'], $value );
-        
+        update_post_meta($post_id, $this->args['post_meta_key'], $value);
     }
 
     // metabox content
-    public function metaBoxContent( $post, $meta )
+    public function metaBoxContent($post, $meta)
     {
 
         $metaValue = get_post_meta(
@@ -159,218 +143,200 @@ class |UNIQUESTRING|MetaboxesGenerator
             true
         ); ?>
 
-        <p>
-            <label for="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"></label>
+        <div>
+            <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"></label>
 
             <?php if ($this->args['metabox_type'] == 'input-email') : ?>
 
                 <!-- email field -->
-                <input 
-                    type="email" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    value="<?php echo $metaValue; ?>"
-                />
+                <input type="email" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php elseif ($this->args['metabox_type'] == 'input-url') : ?>
 
                 <!-- url field -->
-                <input 
-                    type="url" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    value="<?php echo $metaValue; ?>"
-                />
+                <input type="url" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php elseif ($this->args['metabox_type'] == 'textarea') : ?>
 
                 <!-- textarea field -->
-                <textarea name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
+                <textarea name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
 
             <?php elseif ($this->args['metabox_type'] == 'image') : ?>
 
-                <?php
+                <?php $image_url = ''; ?>
 
-                    $image_url = '';
+                <?php if ($metaValue !== '') : ?>
 
-                    if ($metaValue !== '') {
-                        $image_url = wp_get_attachment_url( $metaValue );
-                    }
+                    <?php $image_url = wp_get_attachment_url($metaValue); ?>
 
-                ?>
+                <?php endif; ?>
 
                 <!-- image upload -->
                 <div class="mx-image-uploader">
 
-                    <button
-                        class="|uniquestring|_upload_image"
-                        <?php echo $image_url !== '' ? 'style="display: none;"' : ''; ?>
-                    >Choose image</button>
+                    <button class="|uniquestring|_upload_image" <?php echo $image_url !== '' ? 'style="display: none;"' : ''; ?>>Choose image</button>
 
                     <!-- here we will save an id of image -->
-                    <input
-                        name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                        id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                        type="hidden"
-                        class="|uniquestring|_upload_image_save"
-                        value="<?php echo $metaValue; ?>"
-                    />
+                    <input name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" type="hidden" class="|uniquestring|_upload_image_save" value="<?php echo $metaValue; ?>" />
 
                     <!-- show an image -->
-                    <img
-                        src="<?php echo $image_url !== '' ? $image_url : ''; ?>"
-                        style="width: 300px;"
-                        alt=""
-                        class="|uniquestring|_upload_image_show"
-                        <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?>
-                    />
+                    <img src="<?php echo $image_url !== '' ? $image_url : ''; ?>" style="width: 300px;" alt="" class="|uniquestring|_upload_image_show" <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?> />
 
                     <!-- remove image -->
-                    <a
-                        href="#"
-                        class="|uniquestring|_upload_image_remove"
-                        <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?>
-                    >Remove Image</a>
+                    <a href="#" class="|uniquestring|_upload_image_remove" <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?>>Remove Image</a>
 
                 </div>
 
             <?php elseif ($this->args['metabox_type'] == 'radio') : ?>
 
-                <?php
+                <?php if (count($this->args['options']) == 0) : ?>
+                    <p>You have to add some options to the "Options" array!</p>
+                <?php else : ?>
 
-                    if (count($this->args['options']) == 0) {
-                        echo '<p>You have to add some options to the "Options" array!</p>';
-                    } else {
-                    
-                        if (is_array($this->args['options'])) {
+                    <?php if (is_array($this->args['options'])) : ?>
 
-                            $i = 0;
+                        <?php $i = 0; ?>
 
-                            foreach ($this->args['options'] as $key => $val) {
+                        <?php foreach ($this->args['options'] as $key => $val) : ?>
 
-                                ?>
+                            <?php if (isset($val['value'])) : ?>
+
                                 <div>
                                     <input 
-                                        type="radio"
-                                        name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                                        id="<?php echo esc_attr( $this->args['post_meta_key'] ) . $i; ?>"
+                                        type="radio" 
+                                        name="<?php echo esc_attr($this->args['post_meta_key']); ?>" 
+                                        id="<?php echo esc_attr($this->args['post_meta_key']) . $i; ?>" 
                                         value="<?php echo $val['value']; ?>" 
-                                        
-                                        <?php if ($metaValue == '') : ?>
-
-                                            <?php echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : ''; ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo $metaValue == $val['value'] ? 'checked' : ''; ?>
-
+                                        <?php if ($metaValue == '') : ?> 
+                                            <?php echo isset($val['checked']) && $val['checked'] == true  ? 'checked' : ''; ?> 
+                                        <?php else : ?> 
+                                            <?php echo $metaValue == $val['value'] ? 'checked' : ''; ?> 
                                         <?php endif; ?>
-
+                                    />
+                                    <label
+                                        for="<?php echo esc_attr($this->args['post_meta_key']) . $i; ?>"
                                     >
-                                    <label for="<?php echo esc_attr( $this->args['post_meta_key'] ) . $i; ?>"><?php echo $val['value']; ?></label>
+                                        <?php if (isset($val['label'])) : ?>
+                                            <?php echo esc_html($val['label']); ?>
+                                        <?php else : ?>
+                                            <?php echo esc_html($val['value']); ?>
+                                        <?php endif; ?>
+                                    </label>
                                 </div>
-                                
-                                <?php $i++;
 
-                            }
+                                <?php $i++; ?>
 
-                        }
+                            <?php endif; ?>
 
-                    }
-                ?>
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                <?php endif; ?>
 
             <?php elseif ($this->args['metabox_type'] == 'select') : ?>
 
-            <?php if (count($this->args['options']) == 0) {
-                        echo '<p>You have to add some options to the "options" array!</p>';
-                    } else {
+                <?php if (count($this->args['options']) == 0) : ?>
+                    <p>You have to add some options to the "options" array!</p>
+                <?php else : ?>
 
-                        if (is_array($this->args['options'])) { ?>
-                    <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"><?php echo esc_attr($this->args['name']); ?></label>
-                    <select name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>">
+                    <?php if (is_array($this->args['options'])) : ?>
 
-                        <option>---</option>
+                        <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"><?php echo esc_attr($this->args['name']); ?></label>
+                        <select name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>">
 
-                        <?php foreach ($this->args['options'] as $key => $val) { ?>
-                            <option value="<?php echo $val['value']; ?>" <?php if ($metaValue == '') : ?> <?php echo isset($val['selected']) && $val['selected'] == true  ? 'selected' : ''; ?> <?php else : ?> <?php echo $metaValue == $val['value'] ? 'selected' : ''; ?> <?php endif; ?>><?php echo $val['label']; ?></option>
-                        <?php } ?>
+                            <option>---</option>
 
-                    </select>
+                            <?php foreach ($this->args['options'] as $key => $val) : ?>
 
-            <?php }
+                                <?php if (isset($val['value'])) : ?>
 
-            } ?>
+                                    <option 
+                                        value="<?php echo $val['value']; ?>" 
+                                        <?php if ($metaValue == '') : ?> 
+                                            <?php echo isset($val['selected']) && $val['selected'] == true  ? 'selected' : ''; ?> 
+                                        <?php else : ?>
+                                            <?php echo $metaValue == $val['value'] ? 'selected' : ''; ?>
+                                        <?php endif; ?>
+                                    >
+                                        <?php if (isset($val['label'])) : ?>
+                                            <?php echo esc_html($val['label']); ?>
+                                        <?php else : ?>
+                                            <?php echo esc_html($val['value']); ?>
+                                        <?php endif; ?>
+                                    </option>
+
+                                <?php endif; ?>
+
+                            <?php endforeach; ?>
+
+                        </select>
+
+                    <?php endif; ?>
+
+                <?php endif; ?>
 
             <?php elseif ($this->args['metabox_type'] == 'checkbox') : ?>
 
-                <?php
+                <?php if (count($this->args['options']) == 0) : ?>
 
-                    if (count($this->args['options']) == 0) {
-                        echo '<p>You have to add some options to the "Options" array!</p>';
-                    } else {
+                    <p>You have to add some options to the "Options" array!</p>
                     
-                        if (is_array( $this->args['options'])) {
+                <?php else : ?>
 
-                            ?><input type="hidden" name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>" value="checkbox-type" /><?php
+                    <?php if (is_array($this->args['options'])) : ?>
 
-                            $i = 0;
+                        <input type="hidden" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="checkbox-type" />
 
-                            foreach ($this->args['options'] as $key => $val) {
+                        <?php $i = 0; ?>
 
-                                $checkboxValue = get_post_meta(
-                                    $post->ID,
-                                    $val['name'],
-                                    true
-                                );
+                        <?php foreach ($this->args['options'] as $key => $val) : ?>
 
-                                ?>
+                            <?php if (isset($val['value'])) : ?>
+
+                                <?php $checkboxValue = get_post_meta($post->ID, $val['name'], true); ?>
+
                                 <div>
                                     <input 
                                         type="checkbox"
-                                        name="<?php echo esc_attr( $val['name'] ); ?>"
-                                        id="<?php echo esc_attr( $val['name'] ); ?>"
+                                        name="<?php echo esc_attr($val['name']); ?>"
+                                        id="<?php echo esc_attr($val['name']); ?>"
                                         value="<?php echo $val['value']; ?>"
-
-                                        <?php 
-                                        if (!$metaValue) {
-
-                                            echo isset( $val['checked'] ) && $val['checked'] == true  ? 'checked' : '';
-
-                                        } else {
-
-                                            echo $val['value'] == $checkboxValue  ? 'checked' : '';
-
-                                        }
-
-                                        ?>
-
-                                    >
-                                    <label for="<?php echo esc_attr( $val['name'] ); ?>"><?php echo $val['value']; ?></label>
+                                        <?php if (!$metaValue) : ?>
+                                            <?php echo isset($val['checked']) && $val['checked'] == true  ? 'checked' : ''; ?>
+                                        <?php else : ?>
+                                            <?php echo $val['value'] == $checkboxValue  ? 'checked' : ''; ?>
+                                        <?php endif; ?>
+                                    />
+                                    <label for="<?php echo esc_attr($val['name']); ?>">
+                                        <?php if (isset($val['label'])) : ?>
+                                            <?php echo esc_html($val['label']); ?>
+                                        <?php else : ?>
+                                            <?php echo esc_html($val['value']); ?>
+                                        <?php endif; ?>
+                                    </label>
                                 </div>
 
-                                <?php $i++;
+                                <?php $i++; ?>
 
-                            }
+                            <?php endif; ?>
 
-                        }
+                        <?php endforeach; ?>
 
-                    }
-                ?>
-                
+                    <?php endif; ?>
+
+                <?php endif; ?>
+
             <?php else : ?>
 
                 <!-- input text -->
-                <input 
-                    type="text" id="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    name="<?php echo esc_attr( $this->args['post_meta_key'] ); ?>"
-                    value="<?php echo $metaValue; ?>"
-                />
+                <input type="text" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php endif; ?>
 
 
-        </p>
+        </div>
 
-        <?php wp_nonce_field( $this->args['nonce_action'], $this->args['nonce_name'], true, true );
-
+<?php wp_nonce_field($this->args['nonce_action'], $this->args['nonce_name'], true, true);
     }
-
 }
