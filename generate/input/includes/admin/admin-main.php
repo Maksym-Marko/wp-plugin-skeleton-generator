@@ -38,7 +38,7 @@ class |UNIQUESTRING|AdminMain
         |uniquestring|RequireClassFileAdmin( 'custom-table.php' );
 
         // improve search (*must be improved)
-		|uniquestring|RequireClassFileAdmin( 'improve-search.php' );
+		// |uniquestring|RequireClassFileAdmin( 'improve-search.php' );
 
     }
 

@@ -5,6 +5,7 @@ You can create a WordPress Plugin Boilerplate here - https://markomaksym.com.ua/
 ## About WPP generator
 **Stable version: 5.3.6**  
 **Tested up to WordPress: 6.4**  
+
 When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
 
 To quickly get a starter set for any WordPress plugin, I created a WPP generator - Wordpress plugin skeleton generator.
