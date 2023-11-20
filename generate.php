@@ -39,22 +39,26 @@ final class MxGeneratePluginStructure
 	// author URL
 	public $author_uri;
 
+	// time stamp
+	public $time_stamp;
+
 	// constructor
 	public function __construct($array_vars, $dir)
 	{
 
-		$this->plugin_name             = $array_vars['plugin_name'];
+		$this->plugin_name          = $array_vars['plugin_name'];
 		$this->uniquestring_upc     = $array_vars['uniquestring_upc'];
-		$this->uniquestring_lowc     = $array_vars['uniquestring_lowc'];
-		$this->unique_class_name     = $array_vars['unique_class_name'];
-		$this->main_file_name         = $array_vars['main_file_name'];
-		$this->brief_description     = $array_vars['brief_description'];
+		$this->uniquestring_lowc    = $array_vars['uniquestring_lowc'];
+		$this->unique_class_name    = $array_vars['unique_class_name'];
+		$this->main_file_name       = $array_vars['main_file_name'];
+		$this->brief_description    = $array_vars['brief_description'];
 		$this->long_description     = $array_vars['long_description'];
 		$this->contributors         = $array_vars['contributors'];
-		$this->plugin_uri             = $array_vars['plugin_uri'];
-		$this->author                 = $array_vars['author'];
-		$this->author_uri             = $array_vars['author_uri'];
+		$this->plugin_uri           = $array_vars['plugin_uri'];
+		$this->author               = $array_vars['author'];
+		$this->author_uri           = $array_vars['author_uri'];
 		$this->scan_dir             = $dir;
+		$this->time_stamp           = time();
 	}
 
 	/*
@@ -66,7 +70,7 @@ final class MxGeneratePluginStructure
 		// run mx_scan_dir function
 		$this->mx_scan_dir($this->scan_dir);
 
-		echo $this->main_file_name;
+		echo $this->main_file_name .  '-' . $this->time_stamp;
 	}
 
 	/*
@@ -154,21 +158,23 @@ final class MxGeneratePluginStructure
 
 		$input = $input_file;
 
+		$plugin_folder_name = $this->main_file_name;
+
 		// Prepare the file for creation
 		/*rename main file*/
 		if ($input == 'generate/input/wp-plugin-skeleton.php') {
-			$output = 'generate/output/' . $this->main_file_name . '/' . $this->main_file_name . '.php';
+			$output = 'generate/output/' . $plugin_folder_name . '/' . $this->main_file_name . '.php';
 		} elseif ($input == 'generate/input/includes/admin/controllers/MXXXXXMainAdminController.php') {
             /*rename controller*/
-			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/controllers/' . $this->uniquestring_upc . 'MainAdminController.php';
+			$output = 'generate/output/' . $plugin_folder_name . '/includes/admin/controllers/' . $this->uniquestring_upc . 'MainAdminController.php';
 		} elseif ($input == 'generate/input/includes/admin/models/MXXXXXMainAdminModel.php') {
             /*rename model*/
-			$output = 'generate/output/' . $this->main_file_name . '/includes/admin/models/' . $this->uniquestring_upc . 'MainAdminModel.php';
+			$output = 'generate/output/' . $plugin_folder_name . '/includes/admin/models/' . $this->uniquestring_upc . 'MainAdminModel.php';
 		} elseif ($input == 'generate/input/includes/gutenberg/example.gitignore') {
             /*rename .gitignore*/
-			$output = 'generate/output/' . $this->main_file_name . '/includes/gutenberg/.gitignore';
+			$output = 'generate/output/' . $plugin_folder_name . '/includes/gutenberg/.gitignore';
 		} else {
-			$output = str_replace('input', 'output/' . $this->main_file_name, $input);
+			$output = str_replace('input', 'output/' . $plugin_folder_name, $input);
 		}
 
 		// Get data from the source
@@ -222,7 +228,7 @@ final class MxGeneratePluginStructure
 		// create file
 		// file_put_contents( $output, $mx_final );
 
-		$this->mx_create_zip('generate/output/' . $this->main_file_name . '.zip', $output, $mx_final);
+		$this->mx_create_zip('generate/output/' . $this->main_file_name . '-' . $this->time_stamp . '.zip', $output, $mx_final);
 	}
 
 	/*
@@ -300,7 +306,7 @@ foreach ($arr_words as $key => $value) {
 }
 
 // main file name
-$main_file_name = strtolower(str_replace(' ', '-', $plugin_name)) . '-' . time();
+$main_file_name = strtolower(str_replace(' ', '-', $plugin_name));
 
 $brief_description = htmlspecialchars($_POST['brief_description']);
 
