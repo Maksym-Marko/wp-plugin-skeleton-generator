@@ -92,18 +92,18 @@ class |UNIQUESTRING|AdminMain
         |UNIQUESTRING|Route::get( '|UNIQUESTRING|MainAdminController', 'submenu', '', [
             'page_title' => 'Sub Menu title',
             'menu_title' => 'Sub menu'
-        ], 'sub_menu' );
+        ], '|uniquestring|-sub-menu' );
 
         // hide menu item
         |UNIQUESTRING|Route::get( '|UNIQUESTRING|MainAdminController', 'hidemenu', 'NULL', [
             'page_title' => 'Hidden Menu title',
-        ], 'hide_menu' );
+        ], '|uniquestring|-hide-menu' );
 
         // sub settings menu item
         |UNIQUESTRING|Route::get( '|UNIQUESTRING|MainAdminController', 'settingsMenuItemAction', 'NULL', [
             'menu_title' => 'Settings Item',
             'page_title' => 'Title of settings page'
-        ], 'settings_menu_item', true );
+        ], '|uniquestring|-settings-menu-item', true );
 
     }
 

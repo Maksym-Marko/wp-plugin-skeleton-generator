@@ -51,7 +51,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions="Please set count"
 					>
 						<NumberControl
-							label={__('Number', 'mx-|uniquestring|')}
+							label={__('Number', 'wp-plugin-skeleton')}
 							value={attributes.number}
 							onChange={(val) => {
 								setAttributes({ number: val })
@@ -67,7 +67,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions="Please set label"
 					>
 						<TextControl
-							label={__('Label', 'mx-|uniquestring|')}
+							label={__('Label', 'wp-plugin-skeleton')}
 							value={attributes.label}
 							onChange={(val) => {
 								setAttributes({ label: val })

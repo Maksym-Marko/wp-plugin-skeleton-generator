@@ -85,7 +85,7 @@ function |uniquestring|AdminRedirect( $url ) {
     if (!$url) return;
 
     add_action( 'admin_footer', function() use ( $url ) {
-        echo "<script>window.location.href = '$url';</script>";
+        printf("<script>window.location.href = '%s';</script>", esc_url_raw($url));
     } );
 
 }

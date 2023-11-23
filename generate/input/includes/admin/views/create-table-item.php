@@ -1,6 +1,6 @@
 <div class="|uniquestring|-admin-page-wrap">
     
-    <h1><?php echo __( 'Create Table Item', 'mx-|uniquestring|' ); ?></h1>
+    <h1><?php echo __( 'Create Table Item', 'wp-plugin-skeleton' ); ?></h1>
 
     <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
 
@@ -9,13 +9,13 @@
         <form id="|uniquestring|_form_create_table_item" class="mx-settings" method="post" action="">
 
             <div>
-                <label for="|uniquestring|_title"><?php echo __( 'Title', 'mx-|uniquestring|' ); ?></label>
+                <label for="|uniquestring|_title"><?php echo __( 'Title', 'wp-plugin-skeleton' ); ?></label>
                 <br>
                 <input type="text" name="|uniquestring|_title" id="|uniquestring|_title" value="" />
             </div>
             <br>
             <div>
-                <label for="|uniquestring|_mx_description"><?php echo __( 'Description', 'mx-|uniquestring|' ); ?></label>
+                <label for="|uniquestring|_mx_description"><?php echo __( 'Description', 'wp-plugin-skeleton' ); ?></label>
                 <br>
                 <textarea name="|uniquestring|_mx_description" id="|uniquestring|_mx_description"></textarea>
             </div>

@@ -38,7 +38,7 @@ function edit({
     label: _block_json__WEBPACK_IMPORTED_MODULE_2__.title,
     instructions: _block_json__WEBPACK_IMPORTED_MODULE_2__.description
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Message', 'mx-|uniquestring|'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Message', 'wp-plugin-skeleton'),
     value: attributes.message,
     onChange: val => setAttributes({
       message: val
@@ -187,7 +187,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/simple-text","version":"0.1.0","title":"Simple Text","category":"widgets","icon":"smiley","description":"Add a simle text to a page","supports":{"html":false,"align":["left","right","full"],"color":{"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"align":{"type":"string","default":""},"message":{"type":"string","source":"text","selector":"div","default":"Hello, World!"}},"textdomain":"mx-|uniquestring|","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/simple-text","version":"0.1.0","title":"Simple Text","category":"widgets","icon":"smiley","description":"Add a simle text to a page","supports":{"html":false,"align":["left","right","full"],"color":{"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"align":{"type":"string","default":""},"message":{"type":"string","source":"text","selector":"div","default":"Hello, World!"}},"textdomain":"wp-plugin-skeleton","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

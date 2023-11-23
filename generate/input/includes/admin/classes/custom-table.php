@@ -97,11 +97,11 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         return [
             'cb'          => '<input type="checkbox" />',
-            'id'          => __( 'ID', 'mx-|uniquestring|' ),
-            'title'       => __( 'Title', 'mx-|uniquestring|' ),
-            'description' => __( 'Description', 'mx-|uniquestring|' ),
-            'status'      => __( 'Status', 'mx-|uniquestring|' ),
-            'created_at'  => __( 'Created', 'mx-|uniquestring|' ),
+            'id'          => __( 'ID', 'wp-plugin-skeleton' ),
+            'title'       => __( 'Title', 'wp-plugin-skeleton' ),
+            'description' => __( 'Description', 'wp-plugin-skeleton' ),
+            'status'      => __( 'Status', 'wp-plugin-skeleton' ),
+            'created_at'  => __( 'Created', 'wp-plugin-skeleton' ),
         ];
         
     }    
@@ -164,8 +164,8 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
             $output .= '<a href="' . esc_url( $url ) . '&edit-item=' . $item['id'] . '">' . $item['title'] . '</a>';
 
-            $actions['edit']  = '<a href="' . esc_url( $url ) . '&edit-item=' . $item['id'] . '">' . __( 'Edit', 'mx-|uniquestring|' ) . '</a>';
-            $actions['trash'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Trash', 'mx-|uniquestring|' ) . '" href="' . esc_url(
+            $actions['edit']  = '<a href="' . esc_url( $url ) . '&edit-item=' . $item['id'] . '">' . __( 'Edit', 'wp-plugin-skeleton' ) . '</a>';
+            $actions['trash'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Trash', 'wp-plugin-skeleton' ) . '" href="' . esc_url(
                 wp_nonce_url(
                     add_query_arg(
                         [
@@ -176,7 +176,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
                     'trash',
                     '|uniquestring|_nonce'
                 )
-            ) . '">' . esc_html__( 'Trash', 'mx-|uniquestring|' ) . '</a>';
+            ) . '">' . esc_html__( 'Trash', 'wp-plugin-skeleton' ) . '</a>';
 
             $itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 
@@ -185,7 +185,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
                 unset( $actions['edit'] );
                 unset( $actions['trash'] );
 
-                $actions['restore'] = '<a aria-label="' . esc_attr__( 'Restore', 'mx-|uniquestring|' ) . '" href="' . esc_url(
+                $actions['restore'] = '<a aria-label="' . esc_attr__( 'Restore', 'wp-plugin-skeleton' ) . '" href="' . esc_url(
                     wp_nonce_url(
                         add_query_arg(
                             [
@@ -196,9 +196,9 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
                         'restore',
                         '|uniquestring|_nonce'
                     )
-                ) . '">' . esc_html__( 'Restore', 'mx-|uniquestring|' ) . '</a>';
+                ) . '">' . esc_html__( 'Restore', 'wp-plugin-skeleton' ) . '</a>';
 
-                $actions['delete'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Delete Permanently', 'mx-|uniquestring|' ) . '" href="' . esc_url(
+                $actions['delete'] = '<a class="submitdelete" aria-label="' . esc_attr__( 'Delete Permanently', 'wp-plugin-skeleton' ) . '" href="' . esc_url(
                     wp_nonce_url(
                         add_query_arg(
                             [
@@ -209,7 +209,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
                         'delete',
                         '|uniquestring|_nonce'
                     )
-                ) . '">' . esc_html__( 'Delete Permanently', 'mx-|uniquestring|' ) . '</a>';
+                ) . '">' . esc_html__( 'Delete Permanently', 'wp-plugin-skeleton' ) . '</a>';
 
             }
     
@@ -259,15 +259,15 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
         $itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
 
         $action = [
-            'trash' => __( 'Move to trash', 'mx-|uniquestring|' ),
+            'trash' => __( 'Move to trash', 'wp-plugin-skeleton' ),
         ];
 
         if ($itemStatus == 'trash') {
 
             unset( $action['trash'] );
 
-            $action['restore'] = __( 'Restore Item', 'mx-|uniquestring|' );
-            $action['delete']  = __( 'Delete Permanently', 'mx-|uniquestring|' );
+            $action['restore'] = __( 'Restore Item', 'wp-plugin-skeleton' );
+            $action['delete']  = __( 'Delete Permanently', 'wp-plugin-skeleton' );
 
         }
 
@@ -383,7 +383,7 @@ if (!function_exists('|uniquestring|TableLayout')) {
         if (!$isTable) return;
     
         ?>
-            <h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', 'mx-|uniquestring|' ); ?></h1>
+            <h1 class="wp-heading-inline"><?php _e( 'Custom Table Items', 'wp-plugin-skeleton' ); ?></h1>
             <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_CREATE_TABLE_ITEM_MENU ); ?>" class="page-title-action">Add New</a>
             <hr class="wp-header-end">
         <?php

@@ -17,6 +17,11 @@ class |UNIQUESTRING|FrontEndMain
 
         |UNIQUESTRING|EnqueueScriptsFrontend::registerScripts();
 
+        // add shortcode
+        |uniquestring|RequireClassFileFrontend( 'add-shortcode.php' );
+        
+        (new |UNIQUESTRING|AddShortcode)->shortcodeDisplayApp();
+
     }
 
 }

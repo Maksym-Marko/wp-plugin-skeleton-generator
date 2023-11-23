@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 5.3.6) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 5.4.0) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.3.6</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.4.0</small></a>
 
         </nav>
 
@@ -138,6 +138,11 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
+          Stable version: <b>5.4.0</b> <br>
+          Tested up to WordPress: <b>6.4</b>
+        </p>
+
+        <p>
           When I want to create a new WordPress plugin I always use the <b>WPP generator</b> (wordpress starter kit plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
         </p>
         <p>
@@ -163,7 +168,7 @@
         </p>
         <p>
           <i><b>2. Installation</b></i> <br>
-          This starter plugin has been tested to work with WordPress 5.0 and newer.
+          This starter plugin has been tested to work with WordPress 5.9 and newer.
           <br>
           General installation procedures are those common for all WordPress plugins:
         <ul>
@@ -231,6 +236,15 @@
               <li> Full width section</li>
               <li> Responsive spacer</li>
             </ul>
+          </li>
+          <li>
+            Added Vue.js v2.7.14 and example;
+          </li>
+          <li>
+            Added shortcode example;
+          </li>
+          <li>
+            You can easily minify your JS code for production.
           </li>
 
         </ul>

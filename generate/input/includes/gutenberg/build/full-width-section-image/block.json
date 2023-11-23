@@ -65,7 +65,7 @@
       "default": "0"
     }
   },
-  "textdomain": "mx-|uniquestring|",
+  "textdomain": "wp-plugin-skeleton",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

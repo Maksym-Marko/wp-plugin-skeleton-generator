@@ -1,6 +1,6 @@
 <div class="mx-single-table-item-wrap">
 
-    <h1><?php echo __( 'Edit Table Item', 'mx-|uniquestring|' ); ?></h1>
+    <h1><?php echo __( 'Edit Table Item', 'wp-plugin-skeleton' ); ?></h1>
 
     <a href="<?php echo admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG ); ?>">Go Back</a>
 

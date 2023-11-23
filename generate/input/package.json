@@ -1,7 +1,7 @@
 {
-	"name": "|uniquestring|-gutenberg-blocks",
+	"name": "|uniquestring|-npm-handler",
 	"version": "0.1.0",
-	"description": "Gutenberg Blocks",
+	"description": "NPM Handler",
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
@@ -11,9 +11,14 @@
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
 		"build": "wp-scripts build --webpack-src-dir=includes/gutenberg/src/ --output-path=includes/gutenberg/build/",
-		"start": "wp-scripts start --webpack-src-dir=includes/gutenberg/src/ --output-path=includes/gutenberg/build/"
+		"start": "wp-scripts start --webpack-src-dir=includes/gutenberg/src/ --output-path=includes/gutenberg/build/",
+		"minify-js": "nodemon includes/frontend/assets/js/src/script.js"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.6.0"
+		"@wordpress/scripts": "^26.17.0"
+	},
+	"dependencies": {
+		"nodemon": "^3.0.1",
+		"uglify-js": "^3.17.4"
 	}
-}
+} 

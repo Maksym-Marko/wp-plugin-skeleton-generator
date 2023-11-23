@@ -222,7 +222,7 @@ function _extends() {
   \**********************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/content-slider","version":"0.1.0","title":"Content Slider","category":"widgets","icon":"format-gallery","description":"Add a Content Slider","supports":{"html":false,"align":["left","right","full"],"anchor":true,"color":{"gradients":true,"link":true,"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"autoplay":{"type":"string","source":"attribute","selector":".wp-block-|uniquestring|-content-slider","attribute":"data-autoplay-speed","default":"0"}},"textdomain":"mx-|uniquestring|","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"|uniquestring|/content-slider","version":"0.1.0","title":"Content Slider","category":"widgets","icon":"format-gallery","description":"Add a Content Slider","supports":{"html":false,"align":["left","right","full"],"anchor":true,"color":{"gradients":true,"link":true,"__experimentalDefaultControls":{"background":true,"text":true}}},"attributes":{"autoplay":{"type":"string","source":"attribute","selector":".wp-block-|uniquestring|-content-slider","attribute":"data-autoplay-speed","default":"0"}},"textdomain":"wp-plugin-skeleton","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

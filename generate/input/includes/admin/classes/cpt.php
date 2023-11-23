@@ -79,18 +79,18 @@ class |UNIQUESTRING|CPTGenerator
         register_post_type(self::$post_type, [
 
             'labels' => [
-                'name'               => __('Books', 'mx-|uniquestring|'),
-                'singular_name'      => __('Book', 'mx-|uniquestring|'),
-                'add_new'            => __('Add a new one', 'mx-|uniquestring|'),
-                'add_new_item'       => __('Add a new book', 'mx-|uniquestring|'),
-                'edit_item'          => __('Edit the book', 'mx-|uniquestring|'),
-                'new_item'           => __('New book', 'mx-|uniquestring|'),
-                'view_item'          => __('See the book', 'mx-|uniquestring|'),
-                'search_items'       => __('Find a book', 'mx-|uniquestring|'),
-                'not_found'          => __('Books not found', 'mx-|uniquestring|'),
-                'not_found_in_trash' => __('No books found in the trash', 'mx-|uniquestring|'),
-                'parent_item_colon'  => __('Parent Pages:', 'mx-|uniquestring|'),
-                'menu_name'          => __('Books', 'mx-|uniquestring|')
+                'name'               => __('Books', 'wp-plugin-skeleton'),
+                'singular_name'      => __('Book', 'wp-plugin-skeleton'),
+                'add_new'            => __('Add a new one', 'wp-plugin-skeleton'),
+                'add_new_item'       => __('Add a new book', 'wp-plugin-skeleton'),
+                'edit_item'          => __('Edit the book', 'wp-plugin-skeleton'),
+                'new_item'           => __('New book', 'wp-plugin-skeleton'),
+                'view_item'          => __('See the book', 'wp-plugin-skeleton'),
+                'search_items'       => __('Find a book', 'wp-plugin-skeleton'),
+                'not_found'          => __('Books not found', 'wp-plugin-skeleton'),
+                'not_found_in_trash' => __('No books found in the trash', 'wp-plugin-skeleton'),
+                'parent_item_colon'  => __('Parent Pages:', 'wp-plugin-skeleton'),
+                'menu_name'          => __('Books', 'wp-plugin-skeleton')
 
             ],
             'menu_icon'          => 'dashicons-admin-site',
@@ -124,7 +124,7 @@ class |UNIQUESTRING|CPTGenerator
     public static function addTaxonomies()
     {
         $type_labels = [
-            'name' => __('Book Type', 'mx-|uniquestring|')
+            'name' => __('Book Type', 'wp-plugin-skeleton')
         ];
 
         $type_args = [
@@ -150,7 +150,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'         => 'text-metabox',
                 'post_types' => self::$post_type,
-                'name'       => esc_html('Book Author', 'mx-|uniquestring|')
+                'name'       => esc_html('Book Author', 'wp-plugin-skeleton')
             ]
         );
 
@@ -159,7 +159,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'email-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('E-mail field', 'mx-|uniquestring|'),
+                'name'         => esc_html('E-mail field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'input-email'
             ]
         );
@@ -169,7 +169,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'url-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('URL field', 'mx-|uniquestring|'),
+                'name'         => esc_html('URL field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'input-url'
             ]
         );
@@ -179,7 +179,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'desc-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Some Description', 'mx-|uniquestring|'),
+                'name'         => esc_html('Some Description', 'wp-plugin-skeleton'),
                 'metabox_type' => 'textarea'
             ]
         );
@@ -189,7 +189,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'checkboxes-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Checkbox Buttons', 'mx-|uniquestring|'),
+                'name'         => esc_html('Checkbox Buttons', 'wp-plugin-skeleton'),
                 'metabox_type' => 'checkbox',
                 'options' => [
                     [
@@ -214,7 +214,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'radio-buttons-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Radio Buttons', 'mx-|uniquestring|'),
+                'name'         => esc_html('Radio Buttons', 'wp-plugin-skeleton'),
                 'metabox_type' => 'radio',
                 'options' => [
                     [
@@ -239,7 +239,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'featured-image-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Featured image', 'mx-|uniquestring|'),
+                'name'         => esc_html('Featured image', 'wp-plugin-skeleton'),
                 'metabox_type' => 'image'
             ]
         );
@@ -250,7 +250,7 @@ class |UNIQUESTRING|CPTGenerator
                 'id'            => 'select-metabox',
                 'post_types'    => self::$post_type,
                 'metabox_type'  => 'select',
-                'name'          => esc_html('Select Pet', 'mx-|uniquestring|'),
+                'name'          => esc_html('Select Pet', 'wp-plugin-skeleton'),
                 'options' => [
                     [
                         'value'   => 'dog',

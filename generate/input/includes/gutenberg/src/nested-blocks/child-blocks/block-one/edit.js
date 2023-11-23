@@ -17,7 +17,7 @@ export default function edit({ attributes, isSelected, setAttributes }) {
 						instructions={metadata.description}
 					>
 						<TextControl
-							label={__('Message', 'mx-|uniquestring|')}
+							label={__('Message', 'wp-plugin-skeleton')}
 							value={attributes.message}
 							onChange={(val) => setAttributes({ message: val })}
 						/>

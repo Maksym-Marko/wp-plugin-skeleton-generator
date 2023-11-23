@@ -3,7 +3,7 @@
 You can create a WordPress Plugin Boilerplate here - https://markomaksym.com.ua/wp-plugin-skeleton-generator/
 
 ## About WPP generator
-**Stable version: 5.3.6**  
+**Stable version: 5.4.0**  
 **Tested up to WordPress: 6.4**  
 
 When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
@@ -60,7 +60,7 @@ Here you can find a list of plugins created using the WPP generator and hosted i
 
 == WPP Generator ==
 
-WPP Generator Version:        5.3.6  
+WPP Generator Version:        5.4.0  
 WPP Generator Author:         Maksym Marko  
 WPP Generator Author Website: https://markomaksym.com.ua/  
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
@@ -70,6 +70,9 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 5.4.0 =
+\* Added JS minifier. Added more escape functions. Fixed Routers by WordPress requirements. Added Vue.js v2.7.14 and example. Added shortcode example. Made admin menu links unique.
 
 = 5.3.6 =
 

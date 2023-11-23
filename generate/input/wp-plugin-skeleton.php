@@ -7,7 +7,7 @@ Description: |Brief description|
 Author: |Author|
 Version: 1.0
 Author URI: |Author URI|
-Plugin Starter Kit Name:       WPP Generator v5.3.6
+Plugin Starter Kit Name:       WPP Generator v5.4.0
 Plugin Starter Kit Author:     Maksym Marko
 Plugin Starter Kit URL:        https://markomaksym.com.ua/wp-plugin-skeleton-generator/
 Plugin Starter Kit Author URL: https://markomaksym.com.ua/
@@ -142,7 +142,7 @@ if (!class_exists('|UniqueClassName|')) {
 	function |uniquestring|_translate()
 	{
 
-		load_plugin_textdomain( 'mx-|uniquestring|', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'wp-plugin-skeleton', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 	}
 

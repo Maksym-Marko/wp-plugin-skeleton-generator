@@ -1,6 +1,6 @@
 <div class="|uniquestring|-admin-page-wrap">
 
-    <h2><?php echo __( 'Main page', 'mx-|uniquestring|' ); ?></h2>
+    <h2><?php echo __( 'Main page', 'wp-plugin-skeleton' ); ?></h2>
 
     <div class="wrap">
 
