@@ -9,8 +9,9 @@ class |UNIQUESTRING|Gutenberg
     public function registerBlocks()
     {
 
-        // add block attributes
-        add_action('enqueue_block_editor_assets', [$this, 'blockAttributes']);
+        // blocks extending
+        add_action('enqueue_block_editor_assets', [$this, 'blocksExtendingScript']);
+        add_filter('render_block', [$this, 'blocksExtendingRender'], 10, 2);
 
         // full-width-section-image
         add_action('init', [$this, 'fullWidthSectionImage']);
@@ -45,6 +46,50 @@ class |UNIQUESTRING|Gutenberg
     }
 
     /**
+     * Extending
+     */
+
+    public function  blocksExtendingScript()
+    {
+
+        $config = require_once __DIR__ . '/build/extending/index.asset.php';
+        
+        wp_enqueue_script(
+            'extending-gutenberg-script',
+            |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/build/extending/index.js',
+            $config['dependencies'],
+            $config['version']
+        );
+
+    }
+
+    public function blocksExtendingRender(string $blockContent, array $block)
+    {
+
+        if (
+            $block['blockName'] !== 'core/paragraph' && 
+            $block['blockName'] !== 'core/heading' && 
+            $block['blockName'] !== 'core/button' && 
+            ! isset($block['attrs']['extendedSettings'])
+        ) {
+            return $blockContent;
+        }
+
+        if(!isset($block['attrs']['extendedSettings']['prompt'])) {
+            return $blockContent;
+        }
+
+        if($block['attrs']['extendedSettings']['prompt'] == '') {
+            return $blockContent;
+        }
+
+        $blockContent = preg_replace('#^<([^>]+)>#m', '<$1 data-oa-prompt="' . esc_html($block['attrs']['extendedSettings']['prompt']) . '">', $blockContent);
+    
+        return $blockContent;
+
+    }
+
+    /**
      * Blocks
      */
 
@@ -53,15 +98,6 @@ class |UNIQUESTRING|Gutenberg
     {
 
         register_block_type(__DIR__ . '/build/full-width-section-image');
-    }
-
-    // block attributes
-    public function blockAttributes()
-    {
-
-        $asset_file = include('data-attributes/index.asset.php');
-
-        wp_enqueue_script('|uniquestring|-block-attributes', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/data-attributes/index.js', $asset_file['dependencies'] ?? array(), $asset_file['version'] ?? '1.0', true);
     }
 
     // content slider

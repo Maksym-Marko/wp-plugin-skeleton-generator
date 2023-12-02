@@ -1,0 +1,8 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "|uniquestring|/extending",
+	"version": "0.1.3",
+	"title": "extending",
+    "editorScript": "file:./index.js"
+}

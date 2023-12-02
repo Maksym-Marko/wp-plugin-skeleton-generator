@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 5.4.0) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 5.4.1) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> <small>version - 5.4.0</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 5.4.1 <small>(12/2/2023)</small></a>
 
         </nav>
 
@@ -138,7 +138,7 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          Stable version: <b>5.4.0</b> <br>
+          Stable version: <b>5.4.1</b> <br>
           Tested up to WordPress: <b>6.4</b>
         </p>
 
@@ -245,6 +245,9 @@
           </li>
           <li>
             You can easily minify your JS code for production.
+          </li>
+          <li>
+            Added an example of block expansion. Now you can add metadata to paragraph, title and button.
           </li>
 
         </ul>
