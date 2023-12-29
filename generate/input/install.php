@@ -1,10 +1,10 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 // create table class
-require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
+require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Create-Table.php';
 
 class |UNIQUESTRING|BasisPluginClass
 {

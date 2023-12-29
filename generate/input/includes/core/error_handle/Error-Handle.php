@@ -1,65 +1,58 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-/*
-* Error Handle calss
-*/
+/**
+ * The |UNIQUESTRING|ErrorHandle class.
+ *
+ * Error Handling.
+ */
 class |UNIQUESTRING|ErrorHandle
 {
 
     /**
-    * Error name
-    */
-    // public $|uniquestring|_error_name = '';    
-
-    /**
-    * has error
+    * Has an error.
     */
     public $errorInstance = true;
     
     public function classAttributesError( $className, $method )
     {
 
-        // if class not exists display an error
+        // If class not exists display an error.
         if (class_exists($className)) {
 
-            // check if method exists
+            // Check if a method exists.
             $classInstance = new $className();
 
-            // if method not exists display an error
+            // If a method not exists display an error.
             if (!method_exists($classInstance, $method)) {
 
-                // notice of error
+                // Error notice.
                 $errorNotice = "The <b>\"{$className}\"</b> class doesn't contain the <b>\"{$method}\"</b> method.";
 
-                // show an error
+                // Show an error.
                 $errorMethodInstance = new |UNIQUESTRING|DisplayError( $errorNotice );
 
                 $errorMethodInstance->showError();
 
                 $this->errorInstance = $errorNotice;
-
             }
 
         } else {
 
-            // notice of error
+            // Notice of error.
             $errorNotice = "The <b>\"{$className}\"</b> class not exists.";
 
-            // show an error
+            // Show an error.
             $errorClassInstance = new |UNIQUESTRING|DisplayError( $errorNotice );
 
             $errorClassInstance->showError();
 
             $this->errorInstance = $errorNotice;
-
         }
     
-        // 
         return $this->errorInstance;
-
     }
     
 }

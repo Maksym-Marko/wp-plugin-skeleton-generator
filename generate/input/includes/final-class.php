@@ -1,84 +1,94 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 final class |UniqueClassName|WPPGenerator
 {
 
-    /*
-    * Include required core files
-    */
+    /**
+     * Require necessary files.
+     * 
+     * @return void
+     */
     public function includeCore()
     {        
 
-        // helpers
-        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/helpers.php';
+        // Helpers.
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Helpers.php';
 
-        // cathing errors
+        // Catching errors.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Catching-Errors.php';
 
-        // Route
+        // Route.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Route.php';
 
-        // Models
+        // Models.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Model.php';
 
-        // Views
+        // Views.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/View.php';
 
-        // Controllers
+        // Controllers.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Controller.php';
-
     }
 
-    /*
-    * Include Admin Path
-    */
-    public function includeAdminPath()
+    /**
+     * Include Admin Panel Features.
+     * 
+     * @return void
+     */
+    public function includeAdminPanel()
     {
 
-        // Part of the Administrator
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/admin/admin-main.php';
-    
     }
 
-    /*
-    * Include Frontend Path
-    */
+    /**
+     * Include Frontend Features.
+     * 
+     * @return void
+     */
     public function includeFrontendPath()
     {
 
-        // Part of the Frontend
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/frontend-main.php';
-    
     }
 
-    /*
-    * Include Gutenberg Path
-    */
+    /**
+     * Include Gutenberg Features.
+     * 
+     * @return void
+     */
     public function includeGutenbergPath()
     {
 
-        // Part of the Frontend
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/gutenberg/gutenberg-main.php';
-    
     }
-
 
 }
 
-// create an instance of final class
+/**
+ * The Final class instance.
+ */
 $wppGenerator = new |UniqueClassName|WPPGenerator();
 
-// run core files
+/**
+ * The core files (helpers, models, controllers ...).
+ */
 $wppGenerator->includeCore();
 
-// include admin parth
-$wppGenerator->includeAdminPath();
+/**
+ * Turn on the admin panel features.
+ */
+$wppGenerator->includeAdminPanel();
 
-// include frontend parth
+/**
+ * Turn on the frontend features.
+ */
 $wppGenerator->includeFrontendPath();
 
-// include gutenberg parth
+/**
+ * Turn on the gutenberg features.
+ */
 $wppGenerator->includeGutenbergPath();

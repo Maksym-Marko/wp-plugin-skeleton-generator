@@ -1,8 +1,13 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UNIQUESTRING|CPTGenerator class.
+ *
+ * Here you can generate CPT, Taxonomies and Metaboxes
+ */
 class |UNIQUESTRING|CPTGenerator
 {
 
@@ -14,31 +19,34 @@ class |UNIQUESTRING|CPTGenerator
 
         $post_type = self::$post_type;
 
-        // add CPT
+        // Add CPT.
         add_action('init', ['|UNIQUESTRING|CPTGenerator', 'addCTPs']);
 
-        // add taxonomy
+        // Add taxonomy.
         add_action('init', ['|UNIQUESTRING|CPTGenerator', 'addTaxonomies']);
 
-        // add metaboxes
+        // Add metaboxes.
         add_action('init', ['|UNIQUESTRING|CPTGenerator', 'addMetaboxes']);
 
-        // manage columns
-        // add ID column to the table
+        /**
+         * Manage columns.
+         * 
+         * Add ID column to the table.
+         * */
         add_filter("manage_{$post_type}_posts_columns", ['|UNIQUESTRING|CPTGenerator', 'addIdColumn'], 20, 1);
 
-        // manage ID column
+        // Manage ID column.
         add_action("manage_{$post_type}_posts_custom_column", ['|UNIQUESTRING|CPTGenerator', 'booksColumnRow'], 20, 2);
 
-        // sortable columns
+        // Sortable columns.
         add_filter("manage_edit-{$post_type}_sortable_columns", ['|UNIQUESTRING|CPTGenerator', 'sortableColumns'], 20, 1);
 
-        // view columns order
+        // View columns order.
         add_filter('pre_get_posts', ['|UNIQUESTRING|CPTGenerator', 'viewColumnsOrder']);
     }
 
     /*
-    * Manage new column
+    * Manage new column.
     */
     public static function booksColumnRow($column, $post_id)
     {
@@ -55,7 +63,7 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * Add new column to the Custom Post Type
+    * Add new column to the Custom Post Type.
     */
     public static function addIdColumn($columns)
     {
@@ -71,7 +79,7 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * Create a Custom Post Type
+    * Create a Custom Post Type.
     */
     public static function addCTPs()
     {
@@ -109,7 +117,7 @@ class |UNIQUESTRING|CPTGenerator
 
         ]);
 
-        // Rewrite rules
+        // Rewrite rules.
         if (is_admin() && get_option('|uniquestring|_flush_rewrite_rules') == 'go_flush_rewrite_rules') {
 
             delete_option('|uniquestring|_flush_rewrite_rules');
@@ -119,7 +127,7 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * Create a Custom taxonomy
+    * Create a Custom taxonomy.
     */
     public static function addTaxonomies()
     {
@@ -140,12 +148,12 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * Add metaboxes
+    * Add metaboxes.
     */
     public static function addMetaboxes()
     {
 
-        // add text input
+        // Add text input.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'         => 'text-metabox',
@@ -154,7 +162,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add email input
+        // Add email input.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'email-metabox',
@@ -164,7 +172,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add url input
+        // Add url input.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'url-metabox',
@@ -174,7 +182,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add textarea
+        // Add textarea.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'desc-metabox',
@@ -184,7 +192,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add checkbox inputs
+        // Add checkbox inputs.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'checkboxes-metabox',
@@ -209,7 +217,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add radio inputs
+        // Add radio inputs.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'radio-buttons-metabox',
@@ -234,7 +242,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add image upload field
+        // Add image upload field.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'           => 'featured-image-metabox',
@@ -244,7 +252,7 @@ class |UNIQUESTRING|CPTGenerator
             ]
         );
 
-        // add select
+        // Add select.
         new |UNIQUESTRING|MetaboxesGenerator(
             [
                 'id'            => 'select-metabox',
@@ -271,7 +279,7 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * Sortable columns
+    * Sortable columns.
     */
     public static function sortableColumns($columns)
     {
@@ -284,7 +292,7 @@ class |UNIQUESTRING|CPTGenerator
     }
 
     /*
-    * View columns order
+    * View columns order.
     */
     public static function viewColumnsOrder($query)
     {

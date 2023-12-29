@@ -1,16 +1,18 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-/*
-* Error Handle calss
-*/
+/**
+ * The |UNIQUESTRING|DisplayError class.
+ *
+ * Error Displaying.
+ */
 class |UNIQUESTRING|DisplayError
 {
 
     /**
-    * Error notice
+    * Error notice.
     */
     public $errorNotice = '';
 
@@ -18,7 +20,6 @@ class |UNIQUESTRING|DisplayError
     {
 
         $this->errorNotice = $errorNotice;
-
     }
 
     public function showError()
@@ -33,7 +34,6 @@ class |UNIQUESTRING|DisplayError
             </div>
             
         <?php } );
-
     }
 
 }

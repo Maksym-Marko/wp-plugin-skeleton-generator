@@ -1,18 +1,19 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
+/**
+ * The |UNIQUESTRING|CustomTable class.
+ *
+ * Custom table creation. Data managing.
+ */
 class |UNIQUESTRING|CustomTable extends WP_List_Table
 {
-
-    /*
-    * |UNIQUESTRING|CustomTable
-    */
 
     public function __construct( $args = [] )
     {
@@ -31,7 +32,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         global $wpdb;
 
-        // pagination
+        // Pagination.
         $perPage     = 20;
         $currentPage = $this->get_pagenum();
 
@@ -41,22 +42,22 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
             $offset = 0;
         }
 
-        // sortable
+        // Sortable.
         $order = isset( $_GET['order'] ) ? trim( sanitize_text_field( $_GET['order'] ) ) : 'desc';
         $orderBy = isset( $_GET['orderby'] ) ? trim( sanitize_text_field( $_GET['orderby'] ) ) : 'id';
 
-        // search
+        // Search.
         $search = '';
 
         if (!empty($_REQUEST['s'])) {
             $search = "AND title LIKE '%" . esc_sql( $wpdb->esc_like( sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) ) ) . "%' ";
         }
 
-        // status
+        // Status.
         $itemStatus = isset( $_GET['item_status'] ) ? trim( $_GET['item_status'] ) : 'publish';
         $status = "AND status = '$itemStatus'";
         
-        // get data
+        // Get data.
         $tableName = $wpdb->prefix . |UNIQUESTRING|_TABLE_SLUG;
 
         $items = $wpdb->get_results(
@@ -67,10 +68,10 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         $count = $wpdb->get_var( "SELECT COUNT(id) FROM {$tableName} WHERE 1 = 1 {$status} {$search};" );
 
-        // set data
+        // Set data.
         $this->items = $items;
 
-        // set comumn headers
+        // Set column headers.
         $columns  = $this->get_columns();
         $hidden   = $this->get_hidden_columns();
         $sortable = $this->get_sortable_columns();
@@ -305,7 +306,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
 
         $statusLinks   = [];
 
-        // publish
+        // Publish.
         $statusLinks['publish'] = [
             'url'     => add_query_arg( 'item_status', 'publish', $url ),
             'label'   => sprintf(
@@ -324,7 +325,7 @@ class |UNIQUESTRING|CustomTable extends WP_List_Table
             unset( $statusLinks['publish'] );
         }
 
-        // trash
+        // Trash.
         $statusLinks['trash'] = [
             'url'     => add_query_arg( 'item_status', 'trash', $url ),
             'label'   => sprintf(

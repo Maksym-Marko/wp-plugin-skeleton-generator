@@ -13,7 +13,7 @@ Plugin Starter Kit URL:        https://markomaksym.com.ua/wp-plugin-skeleton-gen
 Plugin Starter Kit Author URL: https://markomaksym.com.ua/
 */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 /*
@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) exit;
 /*
 * Define |UNIQUESTRING|_PLUGIN_PATH
 *
-* E:\OpenServer\domains\my-domain.com\wp-content\plugins\wp-plugin-skeleton\wp-plugin-skeleton.php
+* D:\xampp\htdocs\my-domain.com\wp-content\plugins\wp-plugin-skeleton\wp-plugin-skeleton.php
 */
 if (!defined('|UNIQUESTRING|_PLUGIN_PATH')) {
 
@@ -65,7 +65,7 @@ if (!defined('|UNIQUESTRING|_TABLE_SLUG')) {
 /*
 * Define |UNIQUESTRING|_PLUGIN_ABS_PATH
 * 
-* E:\OpenServer\domains\my-domain.com\wp-content\plugins\wp-plugin-skeleton/
+* D:\xampp\htdocs\my-domain.com\wp-content\plugins\wp-plugin-skeleton/
 */
 if (!defined( '|UNIQUESTRING|_PLUGIN_ABS_PATH')) {
 
@@ -75,10 +75,11 @@ if (!defined( '|UNIQUESTRING|_PLUGIN_ABS_PATH')) {
 
 /*
 * Define |UNIQUESTRING|_PLUGIN_VERSION
+* 
+* The version of all CSS and JavaScript files in this plugin
 */
 if (!defined('|UNIQUESTRING|_PLUGIN_VERSION')) {
 
-	// version
 	define( '|UNIQUESTRING|_PLUGIN_VERSION', time() ); // Must be replaced before production on for example '1.0'
 
 }

@@ -1,3 +1,10 @@
+<?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+
+?>
+
 <div class="|uniquestring|-admin-page-wrap">
     
     <h1><?php echo __( 'Sub Menu Admin Page', 'wp-plugin-skeleton' ); ?></h1>

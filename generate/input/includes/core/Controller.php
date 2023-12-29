@@ -1,11 +1,13 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-/*
-* Controllers class
-*/
+/**
+ * The |UNIQUESTRING|Controller abstract class.
+ *
+ * Basic settings of Controller.
+ */
 abstract class |UNIQUESTRING|Controller
 {
 
@@ -15,7 +17,6 @@ abstract class |UNIQUESTRING|Controller
     public function __call( $name, $arguments ) {
 
         echo esc_attr( 'Missing method "' . $name . '"!' );
-
     }
 
 }

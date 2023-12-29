@@ -1,16 +1,19 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 /**
- * Main page Model
+ * The |UNIQUESTRING|MainAdminModel class.
+ *
+ * Here you can pass a data to a view.
+ * Also, here you can register an AJAX.
  */
 class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
 {
 
     /*
-    * Observe function
+    * Observe function.
     */
     public static function wpAjax()
     {
@@ -18,22 +21,21 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         add_action( 'wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|MainAdminModel', 'prepareUpdateDatabaseColumn'], 10, 1 );
         add_action( 'wp_ajax_|uniquestring|_create_item', ['|UNIQUESTRING|MainAdminModel', 'prepareItemCreation'], 10, 1 );
         add_action( 'wp_ajax_|uniquestring|_bulk_actions', ['|UNIQUESTRING|MainAdminModel', 'prepareBulkActions'], 10, 1 );
-        
     }
 
     /*
-    * Prepare to bulk actions
+    * Prepare to bulk actions.
     */
     public static function prepareBulkActions()
     {        
         
-        // Checked POST nonce is not empty
+        // Checked POST nonce is not empty.
         if (empty($_POST['nonce'])) wp_die( '0' );
 
-        // Checked or nonce match
+        // Checked or nonce match.
         if (wp_verify_nonce($_POST['nonce'], 'bulk-|uniquestring|_plural')) {
 
-            // delete
+            // Delete.
             if ($_POST['bulk_action']  == 'delete') {
 
                 if (!current_user_can('edit_posts')) return;
@@ -41,10 +43,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
                 self::actionDelete( $_POST['ids'] );
                 
                 return;
-
             }
             
-            // restore
+            // Restore.
             if ($_POST['bulk_action']  == 'restore') {
 
                 if (!current_user_can('edit_posts')) return;
@@ -52,10 +53,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
                 self::actionRestore( $_POST['ids'] );
                 
                 return;
-
             }
 
-            // move to trash
+            // Move to trash.
             if ($_POST['bulk_action']  == 'trash') {
 
                 if (!current_user_can('edit_posts')) return;
@@ -63,19 +63,17 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
                 self::actionTrash( $_POST['ids'] );
                 
                 return;
-
             }
 
         }
 
         wp_die();
-
     }
 
     /**
-     * Handle bulk actions 
+     * Handle bulk actions.
      */
-    // Delete permanently
+    // Delete permanently.
     public static function actionDelete( $ids )
     {
 
@@ -84,10 +82,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         }
 
         return;
-
     }
 
-    // Restore
+    // Restore.
     public static function actionRestore( $ids )
     {
 
@@ -96,10 +93,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         }
 
         return;
-
     }
 
-    // Move to Trash
+    // Move to Trash.
     public static function actionTrash( $ids )
     {
 
@@ -108,19 +104,18 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         }
 
         return;
-
     }
 
     /*
-    * Prepare item creation
+    * Prepare item creation.
     */
     public static function prepareItemCreation()
     {
 
-        // Checked POST nonce is not empty
+        // Checked POST nonce is not empty.
         if (empty($_POST['nonce'])) wp_die( '0' );
 
-        // Checked or nonce match
+        // Checked or nonce match.
         if (wp_verify_nonce($_POST['nonce'], '|uniquestring|_nonce_request')) {
 
             // Create item
@@ -136,10 +131,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         }
 
         wp_die();
-
     }
 
-    // Create item
+    // Create item.
     public static function createItem( $data )
     {
 
@@ -164,19 +158,18 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         );
 
         echo $created;
-
     }
 
     /*
-    * Prepare item updating
+    * Prepare item updating.
     */
     public static function prepareUpdateDatabaseColumn()
     {
 
-        // Checked POST nonce is not empty
+        // Checked POST nonce is not empty.
         if (empty($_POST['nonce'])) wp_die( '0' );
 
-        // Checked or nonce match
+        // Checked or nonce match.
         if (wp_verify_nonce($_POST['nonce'], '|uniquestring|_nonce_request')) {
 
             // Update data
@@ -194,10 +187,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
         }
 
         wp_die();
-
     }
 
-    // Update item
+    // Update item.
     public static function updateDatabaseColumn( $data )
     {
 
@@ -221,13 +213,12 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             ]
 
         );
-
     }
 
     /*
-    * Actions
+    * Actions.
     */
-    // restore item
+    // Restore item.
     public function restoreItem( $id )
     {
 
@@ -249,9 +240,8 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             ]
 
         );
-
     }
-    // move to trash
+    // Move to trash.
     public function moveToTrash( $id )
     {
 
@@ -273,10 +263,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
             ]
 
         );
-
     }
 
-    // delete permanently
+    // Delete permanently.
     public function deletePermanently( $id )
     {
 
@@ -293,7 +282,6 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
                 '%d'
             ] 
         );
-
     }
 
 }

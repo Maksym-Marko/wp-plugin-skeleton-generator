@@ -1,6 +1,6 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 /*
@@ -34,31 +34,45 @@ function |uniquestring|UseModel( $model ) {
 /*
 * Debugging
 */
-function |uniquestring|DebugToFile( $content ) {
+function |uniquestring|DebugToFile( ...$content ) {
 
-    $content = |uniquestring|ContentToString( $content );
+    $content = |uniquestring|ContentToString( ...$content );
 
-    $path = |UNIQUESTRING|_PLUGIN_ABS_PATH . 'mx-debug' ;
+    $dir = |UNIQUESTRING|_PLUGIN_ABS_PATH . 'mx-debug';
 
-    if (!file_exists($path)) {
+    $file = $dir . '/mx-debug.txt';
 
-        mkdir( $path, 0777, true );
+    if (!file_exists($dir)) {
 
-        file_put_contents( $path . '/mx-debug.txt', $content );
+        mkdir($dir, 0777, true);
 
+        $current = '>>>' . date('Y/m/d H:i:s', time()) . ':' . "\n";
+
+        $current .= $content . "\n";
+
+        $current .= '_____________________________________' . "\n";
+
+        file_put_contents($file, $current);
     } else {
 
-        file_put_contents( $path . '/mx-debug.txt', $content );
+        $current = '>>>' . date('Y/m/d H:i:s', time()) . ':' . "\n";
 
+        $current .= $content . "\n";
+        
+        $current .= '_____________________________________' . "\n";          
+
+        $current .= file_get_contents($file) . "\n";
+
+        file_put_contents($file, $current);
     }
 
 }
     // pretty debug text to the file
-    function |uniquestring|ContentToString( $content ) {
+    function |uniquestring|ContentToString( ...$content ) {
 
         ob_start();
 
-        var_dump( $content );
+        var_dump( ...$content );
 
         return ob_get_clean();
 

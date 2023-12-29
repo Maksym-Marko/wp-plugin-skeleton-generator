@@ -1,8 +1,13 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UNIQUESTRING|MainAdminController class.
+ *
+ * Here you can connect your model with a view.
+ */
 class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 {
 
@@ -12,41 +17,36 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
     {
 
         $this->modelInstance = new |UNIQUESTRING|MainAdminModel();
-        
     }
     
     public function index()
     {
 
         return new |UNIQUESTRING|MxView( 'main-page' );
-
     }
 
     public function submenu()
     {
 
         return new |UNIQUESTRING|MxView( 'sub-page' );
-
     }
 
     public function hidemenu()
     {
 
         return new |UNIQUESTRING|MxView( 'hidemenu-page' );
-
     }
 
     public function settingsMenuItemAction()
     {
 
         return new |UNIQUESTRING|MxView( 'settings-page' );
-
     }
 
     public function singleTableItem()
     {
 
-        // delete action
+        // Delete action.
         $deleteId = isset( $_GET['delete'] ) ? trim( sanitize_text_field( $_GET['delete'] ) ) : false;
         
         if ($deleteId) {
@@ -54,16 +54,14 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
             if (isset($_GET['|uniquestring|_nonce']) || wp_verify_nonce($_GET['|uniquestring|_nonce'], 'delete')) {
 
                 $this->modelInstance->deletePermanently( $deleteId );
-
             }
 
             |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
             return;
-
         }
 
-        // restore action
+        // Restore action.
         $restore_id = isset( $_GET['restore'] ) ? trim( sanitize_text_field( $_GET['restore'] ) ) : false;
         
         if ($restore_id) {
@@ -77,10 +75,9 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
             |uniquestring|AdminRedirect( admin_url( 'admin.php?page=' . |UNIQUESTRING|_MAIN_MENU_SLUG . '&item_status=trash' ) );
 
             return;
-
         }
 
-        // trash action
+        // Trash action.
         $trash_id = isset( $_GET['trash'] ) ? trim( sanitize_text_field( $_GET['trash'] ) ) : false;
 
         if ($trash_id) {
@@ -97,7 +94,7 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
 
         }
 
-        // edit action
+        // Edit action.
         $item_id = isset( $_GET['edit-item'] ) ? trim( sanitize_text_field( $_GET['edit-item'] ) ) : 0;
         
         $data = $this->modelInstance->getRow( NULL, 'id', intval( $item_id ) );
@@ -110,18 +107,15 @@ class |UNIQUESTRING|MainAdminController extends |UNIQUESTRING|Controller
             }
             
             return;
-
         }
         
         return new |UNIQUESTRING|MxView( 'single-table-item', $data );
-
     }        
 
-    // create table item
+    // Create a table item.
     public function createTableItem() {
 
         return new |UNIQUESTRING|MxView( 'create-table-item' );
-
     }
 
 }

@@ -1,3 +1,10 @@
+<?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+
+?>
+
 <div class="mx-single-table-item-wrap">
 
     <h1><?php echo __( 'Edit Table Item', 'wp-plugin-skeleton' ); ?></h1>

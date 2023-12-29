@@ -1,22 +1,24 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-// require Display-Error.php
+// Require Display Error feature.
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/error_handle/Display-Error.php';
 
-// handle error
+// Require Handle Error feature.
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/error_handle/Error-Handle.php';
 
-/*
-* Cathing errors calss
-*/
+/**
+ * The |UNIQUESTRING|CatchingErrors class.
+ *
+ * Catching errors.
+ */
 class |UNIQUESTRING|CatchingErrors
 {
 
 	/**
-	* Show notification missing class or methods
+	* Show notification missing class or methods.
 	*/
 	public static function catchClassAttributesError( $className, $method )
 	{
@@ -32,7 +34,6 @@ class |UNIQUESTRING|CatchingErrors
 		}		
 
 		return $error;
-
 	}
 
 }

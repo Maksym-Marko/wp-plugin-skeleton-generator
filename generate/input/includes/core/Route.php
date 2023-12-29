@@ -1,13 +1,13 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
 // require Route-Registrar.php
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Route-Registrar.php';
 
 /*
-* Routes class
+* Route class
 */
 class |UNIQUESTRING|Route
 {

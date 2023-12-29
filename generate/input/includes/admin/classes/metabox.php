@@ -1,9 +1,13 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-// metabox creating main class
+/**
+ * The |UNIQUESTRING|MetaboxesGenerator class.
+ *
+ * This Class helps add Metaboxes to any CPT.
+ */
 class |UNIQUESTRING|MetaboxesGenerator
 {
 
@@ -36,7 +40,7 @@ class |UNIQUESTRING|MetaboxesGenerator
         $this->args['nonce_action']  = $this->args['metabox_id'] . '_nonce_action';
         $this->args['nonce_name']    = $this->args['metabox_id'] . '_nonce_name';
 
-        // add options area
+        // Add options area.
         if ($this->args['metabox_type'] == 'checkbox') {
 
             $i = 0;
@@ -54,9 +58,10 @@ class |UNIQUESTRING|MetaboxesGenerator
         add_action('save_post', [$this, 'saveMetaBox']);
     }
 
-    // add post meta
+    // Add post meta.
     public function addMetaBox()
     {
+
         add_meta_box(
             $this->args['metabox_id'],
             $this->args['name'],
@@ -66,9 +71,10 @@ class |UNIQUESTRING|MetaboxesGenerator
         );
     }
 
-    // save post meta
+    // Save post meta.
     public function saveMetaBox($post_id)
     {
+
         if (!isset($_POST[$this->args['nonce_name']]) || !wp_verify_nonce(wp_unslash($_POST[$this->args['nonce_name']]), $this->args['nonce_action'])) {
             return;
         }
@@ -83,57 +89,57 @@ class |UNIQUESTRING|MetaboxesGenerator
 
             if ($this->args['metabox_type'] == 'input-email') {
 
-                // email field
+                // Email field.
                 $value = sanitize_email(wp_unslash($_POST[$this->args['post_meta_key']]));
             } elseif ($this->args['metabox_type'] == 'input-url') {
 
-                // url field
+                // Url field.
                 $value = esc_url_raw($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'textarea') {
 
-                // textarea field
+                // Textarea field.
                 $value = sanitize_textarea_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'image') {
 
-                // image id
+                // Image id.
                 $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'radio') {
 
-                // radio value
+                // Radio value.
                 $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'select') {
 
-                // select value
+                // Select value.
                 $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'checkbox') {
 
                 $_value = null;
 
-                // checkbox value
+                // Checkbox value.
                 foreach ($this->args['options'] as $key => $val) {
 
                     if (isset($_POST[$val['name']])) {
                         $_value = sanitize_text_field($_POST[$val['name']]);
                     }
 
-                    // save data
+                    // Save data.
                     update_post_meta($post_id, $val['name'], $_value);
                 }
 
-                // checkbox marker
+                // Checkbox marker.
                 $value = sanitize_text_field($_POST[$this->args['post_meta_key']]);
             } else {
 
-                // input text
+                // Input text.
                 $value = sanitize_text_field(wp_unslash($_POST[$this->args['post_meta_key']]));
             }
         }
 
-        // save data
+        // Save data.
         update_post_meta($post_id, $this->args['post_meta_key'], $value);
     }
 
-    // metabox content
+    // Metabox content.
     public function metaBoxContent($post, $meta)
     {
 
@@ -148,17 +154,17 @@ class |UNIQUESTRING|MetaboxesGenerator
 
             <?php if ($this->args['metabox_type'] == 'input-email') : ?>
 
-                <!-- email field -->
+                <!-- Email field. -->
                 <input type="email" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php elseif ($this->args['metabox_type'] == 'input-url') : ?>
 
-                <!-- url field -->
+                <!-- Url field. -->
                 <input type="url" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php elseif ($this->args['metabox_type'] == 'textarea') : ?>
 
-                <!-- textarea field -->
+                <!-- Textarea field. -->
                 <textarea name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
 
             <?php elseif ($this->args['metabox_type'] == 'image') : ?>
@@ -171,18 +177,18 @@ class |UNIQUESTRING|MetaboxesGenerator
 
                 <?php endif; ?>
 
-                <!-- image upload -->
+                <!-- Image upload. -->
                 <div class="mx-image-uploader">
 
                     <button class="|uniquestring|_upload_image" <?php echo $image_url !== '' ? 'style="display: none;"' : ''; ?>>Choose image</button>
 
-                    <!-- here we will save an id of image -->
-                    <input name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" type="hidden" class="|uniquestring|_upload_image_save" value="<?php echo $metaValue; ?>" />
+                    <!-- Save an image id. -->
+                    <input name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" type="hidden" class="|uniquestring|_upload_image_save" value="<?php echo esc_html($metaValue); ?>" />
 
-                    <!-- show an image -->
-                    <img src="<?php echo $image_url !== '' ? $image_url : ''; ?>" style="width: 300px;" alt="" class="|uniquestring|_upload_image_show" <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?> />
+                    <!-- Show an image. -->
+                    <img src="<?php echo $image_url !== '' ? esc_url($image_url) : ''; ?>" style="width: 300px;" alt="" class="|uniquestring|_upload_image_show" <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?> />
 
-                    <!-- remove image -->
+                    <!-- Remove image. -->
                     <a href="#" class="|uniquestring|_upload_image_remove" <?php echo $image_url == '' ? 'style="display: none;"' : ''; ?>>Remove Image</a>
 
                 </div>
@@ -206,7 +212,7 @@ class |UNIQUESTRING|MetaboxesGenerator
                                         type="radio" 
                                         name="<?php echo esc_attr($this->args['post_meta_key']); ?>" 
                                         id="<?php echo esc_attr($this->args['post_meta_key']) . $i; ?>" 
-                                        value="<?php echo $val['value']; ?>" 
+                                        value="<?php echo esc_html($val['value']); ?>" 
                                         <?php if ($metaValue == '') : ?> 
                                             <?php echo isset($val['checked']) && $val['checked'] == true  ? 'checked' : ''; ?> 
                                         <?php else : ?> 
@@ -329,11 +335,10 @@ class |UNIQUESTRING|MetaboxesGenerator
 
             <?php else : ?>
 
-                <!-- input text -->
+                <!-- Input text. -->
                 <input type="text" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php endif; ?>
-
 
         </div>
 

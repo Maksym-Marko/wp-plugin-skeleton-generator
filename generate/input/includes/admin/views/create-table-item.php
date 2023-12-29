@@ -1,3 +1,10 @@
+<?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+
+?>
+
 <div class="|uniquestring|-admin-page-wrap">
     
     <h1><?php echo __( 'Create Table Item', 'wp-plugin-skeleton' ); ?></h1>
