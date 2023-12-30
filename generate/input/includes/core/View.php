@@ -3,9 +3,12 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-/*
-* View class
-*/
+/**
+ * The |UNIQUESTRING|MxView class.
+ *
+ * This class helps connect a view file
+ * to a controller and a model.
+ */
 class |UNIQUESTRING|MxView
 {
 
@@ -13,21 +16,19 @@ class |UNIQUESTRING|MxView
     {
         
         $this->render( ...$args );
-
     }
     
-    // render HTML
+    // Render HTML.
     public function render( $file, $data = NULL )
     {
 
-        // view content
+        // View content.
         if (file_exists( |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/views/{$file}.php")) {
 
-            // data from model
+            // Get a data from a model.
             $data = $data;
 
             require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/views/{$file}.php";
-
         } else { ?>
 
             <div class="notice notice-error is-dismissible">
@@ -36,7 +37,6 @@ class |UNIQUESTRING|MxView
  
             </div>
         <?php }
-
     }
     
 }

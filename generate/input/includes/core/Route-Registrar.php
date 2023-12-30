@@ -3,35 +3,42 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UNIQUESTRING|RouteRegistrar class.
+ *
+ * This class works together with 
+ * |UNIQUESTRING|Route class and helps
+ * create a menu pate in the admin panel.
+ */
 class |UNIQUESTRING|RouteRegistrar
 {
 
     /**
-    * set controller
+    * Set controller.
     */
     public $controller = '';
 
     /**
-    * set action
+    * Set action.
     */
     public $action     = '';
 
     /**
-    * set slug or parent menu slug
+    * Set slug or parent menu slug.
     */
     public $slug = |UNIQUESTRING|_MAIN_MENU_SLUG;
 
     /**
-    * catch class error
+    * Catch class error.
     */
     public $classAttributesError = NULL;
 
     /**
-    * set properties
+    * Set properties.
     */
     public $properties = [
         'page_title' => 'Title of the page',
-        'menu_title' => 'Link Name',
+        'menu_title' => 'Link Name', 'wp-plugin-skeleton',
         'capability' => 'manage_options',
         'menu_slug'  => |UNIQUESTRING|_MAIN_MENU_SLUG,
         'dashicons'  => 'dashicons-image-filter',
@@ -39,129 +46,121 @@ class |UNIQUESTRING|RouteRegistrar
     ];
 
     /**
-    * set slug of sub menu
+    * Set slug of sub menu.
     */
     public $subMenuSlug = false;
 
     /**
-    * set plugin name
+    * Set plugin name.
     */
     public $pluginName;
-
+   
     /**
-    * |UNIQUESTRING|RouteRegistrar constructor
-    */
+     * |UNIQUESTRING|RouteRegistrar constructor
+     * 
+     * @param string $args  List of data needed for 
+     * admin menu creation.
+     *
+     * @return void
+     */
     public function __construct( ...$args )
     {
 
         $this->pluginName = |UNIQUESTRING|_PLUGN_BASE_NAME;
 
-        // set data
+        // Set data.
         $this->|uniquestring|SetData( ...$args );
-
     }
 
     /**
-    * require class
-    */
+     * Require class.
+     * 
+     * @param string $controller  Name of controller's file.
+     *
+     * @return void
+     */
     public function requireController( $controller )
     {
 
         if (file_exists(|UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php")) {
             require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . "includes/admin/controllers/{$controller}.php";
         }
-
     }
 
     /**
-    * $controller     - Controller
-    *
-    * $action         - Action
-    *
-    * $slug           - if NULL - menu item will investment into
-    *                        |UNIQUESTRING|_MAIN_MENU_SLUG menu item
-    *
-    * $menuProperties - menu properties
-    *
-    * $subMenuSlug    - slug of sub menu
-    *
-    * $settingsArea   - place item to settings area (core WP Settings menu item)
-    *
-    */
+     * Create an admin menu.
+     * 
+     * @param string $controller           Controller name.
+     * @param string $action               Action name.
+     * @param string $slug                 if NULL - menu item
+     * will be investment into.
+     * |UNIQUESTRING|_MAIN_MENU_SLUG menu item.
+     * @param array $menuProperties        Menu properties.
+     * @param string|boolean $subMenuSlug  Slug of sub menu.
+     * @param boolean $settingsArea        Place item to settings area
+     * (core WP Settings menu item).
+     *
+     * @return void
+     */
     public function |uniquestring|SetData( $controller, $action, $slug = |UNIQUESTRING|_MAIN_MENU_SLUG, array $menuProperties = [], $subMenuSlug = false, $settingsArea = false )
     {
 
-        // set controller
+        // Set controller.
         $this->controller = $controller;
 
-        // set action
+        // Set action.
         $this->action     = $action;
 
-        // set slug
+        // Set slug.
         if ($slug == NULL) {
 
             $this->slug = |UNIQUESTRING|_MAIN_MENU_SLUG;
-
         } else {
 
             $this->slug = $slug;
-
         }
 
-        // set properties
+        // Set properties.
         foreach ($menuProperties as $key => $value) {
             $this->properties[$key] = $value;
         }
 
-        // callback function
+        // Callback function.
         $|uniquestring|CallbackFunctionMenu = 'createAdminMainMenu';
 
-        /*
-        * check if it's submenu
-        * set subMenuSlug
-        */
+        // Check if it's submenu.
         if ($subMenuSlug !== false) {
 
             $this->subMenuSlug = $subMenuSlug;
 
-            $|uniquestring|CallbackFunctionMenu = 'createAdminSubMenu';
-            
+            $|uniquestring|CallbackFunctionMenu = 'createAdminSubMenu';            
         }
 
-        /*
-        * check if it's settings menu item
-        */
+        // Check if it's settings menu item.
         if ($settingsArea !== false) {
 
             $|uniquestring|CallbackFunctionMenu = 'settingsAreaMenuItem';
 
-            // add link Settings under the name of the plugin
+            // Sdd link "Settings" under the name of the plugin.
             add_filter( "plugin_action_links_$this->pluginName", [$this, 'createSettingsLink'] );
-            
         }
 
-        /**
-        * require controller
-        */
+        // Require controller.
         $this->requireController( $this->controller );
 
-        /**
-        * catching errors of class attrs
-        */
+        // Catching errors of class attrs.
         $isErrorClassAtr = |UNIQUESTRING|CatchingErrors::catchClassAttributesError( $this->controller, $this->action );
         
-        // catch error class attr
         if ($isErrorClassAtr !== NULL) {
             $this->classAttributesError = $isErrorClassAtr;
         }
 
-        // register admin menu
+        // Register admin menu.
         add_action( 'admin_menu', [$this, $|uniquestring|CallbackFunctionMenu] );
-
     }
 
     /**
-    * Create Main menu
+    * Create Main menu.
     */
     public function createAdminMainMenu()
     {
@@ -177,12 +176,11 @@ class |UNIQUESTRING|RouteRegistrar
     }
 
     /**
-    * Create Sub menu
+    * Create Sub menu.
     */
     public function createAdminSubMenu()
     {
         
-        // create a sub menu
         add_submenu_page( $this->slug,
             sprintf( esc_html__( '%s', 'wp-plugin-skeleton' ), $this->properties['page_title']),
             sprintf( esc_html__( '%s', 'wp-plugin-skeleton' ), $this->properties['menu_title']),
@@ -190,16 +188,14 @@ class |UNIQUESTRING|RouteRegistrar
             $this->subMenuSlug,
             [ $this, 'viewConnector' ]
         );
-
     }
 
     /**
-    * Create Settings area menu item
+    * Create Settings area menu item.
     */
     public function settingsAreaMenuItem()
     {
         
-        // create a settings menu
         add_options_page(
             sprintf( esc_html__( '%s', 'wp-plugin-skeleton' ), $this->properties['page_title']),
             sprintf( esc_html__( '%s', 'wp-plugin-skeleton' ), $this->properties['menu_title']),
@@ -207,31 +203,31 @@ class |UNIQUESTRING|RouteRegistrar
             $this->subMenuSlug,
             [ $this, 'viewConnector' ]
         );
-
     }
-        public function createSettingsLink( $links )
-        {
 
-            $settingsLink = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->subMenuSlug . '">' . sprintf( esc_html__( '%s', 'olena-blocks-set' ), $this->properties['menu_title']) . '</a>'; // options-general.php
+    /**
+    * Create Settings link.
+    */
+    public function createSettingsLink( $links )
+    {
 
-            array_push( $links, $settingsLink );
+        $settingsLink = '<a href="' . get_admin_url() . 'admin.php?page=' . $this->subMenuSlug . '">' . sprintf( esc_html__( '%s', 'wp-plugin-skeleton' ), $this->properties['menu_title']) . '</a>'; // options-general.php
 
-            return $links;
+        array_push( $links, $settingsLink );
 
+        return $links;
+    }
+
+    // Connect a view.
+    public function viewConnector()
+    {
+
+        if ($this->classAttributesError == NULL) {
+
+            $classInstance = new $this->controller();
+
+            call_user_func( [$classInstance, $this->action] );
         }
-
-        // connect view
-        public function viewConnector()
-        {
-
-            if ($this->classAttributesError == NULL) {
-
-                $classInstance = new $this->controller();
-
-                call_user_func( [$classInstance, $this->action] );
-
-            }
-
-        }
+    }
 
 }

@@ -3,23 +3,27 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-
+/**
+ * The |UNIQUESTRING|CreateTable class.
+ *
+ * Custom table creation. 
+ */
 class |UNIQUESTRING|CreateTable
 {
 
-    // table name
+    // Table name.
     private $table         = NULL;
 
-    // columns
+    // Columns.
     private $columns       = [];
 
-    // SQL query
+    // SQL query.
     private $sqlContainer = NULL;
 
-    // global $wpdb
+    // Global $wpdb.
     private $wpdb          = NULL;
 
-    // datetime
+    // Datetime.
     private $datetime      = NULL;
 
     function __construct($tableName = 'mx_table')
@@ -34,14 +38,12 @@ class |UNIQUESTRING|CreateTable
         $this->table    = $tableName;
     }
 
-    // add varchar
+    // Add varchar.
     public function varchar($columnName = 'name', $length = 10, $notNull = false, $default = NULL)
     {
 
-        // not null
         $notNull = $notNull ? 'NOT NULL' : 'NULL';
 
-        // default
         $default = $default !== NULL ? 'default \'' . $default . '\'' : '';
 
         $sql     = "$columnName varchar($length) $notNull $default";
@@ -49,15 +51,14 @@ class |UNIQUESTRING|CreateTable
         array_push($this->columns, $sql);
     }
 
-    // add longtext
+    // Add longtext.
     public function longtext($columnName = 'text', $notNull = false)
     {
 
-        // not null
         $notNull = $notNull ? 'NOT NULL' : 'NULL';
 
         /**
-         *  "default" doesn't work for old MySQL versions
+         * "default" doesn't work for old MySQL versions.
          * */
         // $default = $default !== NULL ? 'default \'' . $default . '\'' : '';
 
@@ -66,7 +67,7 @@ class |UNIQUESTRING|CreateTable
         array_push($this->columns, $sql);
     }
 
-    // add int
+    // Add int.
     public function int($columnName = 'integer')
     {
 
@@ -75,11 +76,10 @@ class |UNIQUESTRING|CreateTable
         array_push($this->columns, $sql);
     }
 
-    // add datetime
+    // Add datetime.
     public function datetime($columnName = 'created', $default = NULL)
     {
 
-        // default
         $default = $default == NULL ? $this->datetime : $default;
 
         $sql     = "$columnName datetime NOT NULL default '$default'";
@@ -87,7 +87,7 @@ class |UNIQUESTRING|CreateTable
         array_push($this->columns, $sql);
     }
 
-    // we should to add some coluns to the table
+    // We should add some columns to the table.
     public function create_columns($id = 'id')
     {
 
@@ -100,10 +100,10 @@ class |UNIQUESTRING|CreateTable
             $collate = $wpdb->get_charset_collate();
         }
 
-        // get all columns
+        // Get all columns.
         $columns = implode(',', $this->columns);
 
-        // create a table
+        // Create a table.
         if (count($this->columns) == 0) {
 
             $this->sqlContainer = "CREATE TABLE IF NOT EXISTS `$this->table`
@@ -127,10 +127,10 @@ class |UNIQUESTRING|CreateTable
 
         if ($this->sqlContainer == NULL) return 0;
 
-        // lets check if the table exists
+        // Lets check if the table exists.
         if ($this->wpdb->get_var("SHOW TABLES LIKE '" . $this->table . "'") != $this->table) {
 
-            // create a table
+            // Create a table.
             $this->wpdb->query($this->sqlContainer);
 
             return 1;

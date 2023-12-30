@@ -3,6 +3,13 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UniqueClassName|WPPGenerator class.
+ *
+ * This is a final class of the plugin.
+ * Here you can find/add/remove components
+ * of the plugin.
+ */
 final class |UniqueClassName|WPPGenerator
 {
 

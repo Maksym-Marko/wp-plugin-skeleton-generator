@@ -3,38 +3,37 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-/*
-* Model class
-*/
+/**
+ * The |UNIQUESTRING|Model class.
+ *
+ * This class helps manage data and
+ * pass it to the view.
+ */
 class |UNIQUESTRING|Model
 {
 
     private $wpdb;
 
     /**
-    * Table name
+    * Table name.
     */
     protected $table = |UNIQUESTRING|_TABLE_SLUG;
 
     /**
-    * fields
+    * Fields.
     */
     protected $fields = '*';
 
-    /*
-    * Model constructor
-    */
     public function __construct()
     {
         
         global $wpdb;
 
         $this->wpdb = $wpdb;
-
     }    
 
     /**
-    * select row from the database
+    * Select row from the database.
     */
     public function getRow( $table = NULL, $wherName = NULL, $wherValue = NULL, $and = '' )
     {
@@ -44,7 +43,6 @@ class |UNIQUESTRING|Model
         if ($table !== NULL) {
 
             $tableName = $this->wpdb->prefix . $table;
-
         }
 
         $where = '';
@@ -52,17 +50,15 @@ class |UNIQUESTRING|Model
         if ($wherName !== NULL && $wherValue !== NULL) {
 
             $where = "WHERE $wherName = $wherValue";
-
         }
 
         $getRow = $this->wpdb->get_row( "SELECT $this->fields FROM $tableName {$where} {$and}" );
 
-        return $getRow;
-        
+        return $getRow;        
     }
 
     /**
-    * get results from the database
+    * Get results from the database.
     */
     public function getResults( $table = NULL, $wherName = NULL, $wherValue = 1, $and = '', $order = 'ORDER BY id DESC', $mask = '%d' )
     {
@@ -72,7 +68,6 @@ class |UNIQUESTRING|Model
         if ($table !== NULL) {
 
             $tableName = $table;
-
         }
 
         if ($wherName !== NULL) {
@@ -88,21 +83,17 @@ class |UNIQUESTRING|Model
                     $wherValue
 
                 )
-
             );
-
         } else {
 
             $results = $this->wpdb->get_results( "SELECT $this->fields FROM $tableName" );
-
         }        
 
-        return $results;
-        
+        return $results;        
     }
 
     /**
-    * update row
+    * Update row.
     */
     public function updateRow( $table = NULL, $wherName = NULL, $wherValue = NULL, $columns = [], $masks = [] ){
 
@@ -111,7 +102,6 @@ class |UNIQUESTRING|Model
         if ($table !== NULL) {
 
             $tableName = $this->wpdb->prefix . $table;
-
         }
 
         if($wherName == NULL || $wherValue == NULL) return false;
@@ -128,11 +118,10 @@ class |UNIQUESTRING|Model
         );
 
         return $update;
-
     }
 
     /**
-    * insert row
+    * Insert row.
     */
     public function insertRow( $table = NULL, $columns = [], $masks = [] ) {
 
@@ -141,7 +130,6 @@ class |UNIQUESTRING|Model
         if ($table !== NULL) {
 
             $tableName = $this->wpdb->prefix . $table;
-
         }
 
         $insert = $this->wpdb->insert(
@@ -155,11 +143,10 @@ class |UNIQUESTRING|Model
         );
 
         return $insert;
-
     }
 
     /**
-     * get var
+     * Get var.
      */
     public function getVar($table = NULL, $countBy = 'id', $and = null)
     {
@@ -174,7 +161,6 @@ class |UNIQUESTRING|Model
         $count = $this->wpdb->get_var( "SELECT COUNT($countBy) FROM {$tableName} WHERE 1=1 {$and}");
 
         return $count;
-
     }
 
 }

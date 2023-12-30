@@ -3,6 +3,11 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UNIQUESTRING|FrontEndMain class.
+ *
+ * Here you can register you classes.
+ */
 class |UNIQUESTRING|FrontEndMain
 {
 
@@ -21,13 +26,16 @@ class |UNIQUESTRING|FrontEndMain
         |uniquestring|RequireClassFileFrontend( 'add-shortcode.php' );
         
         (new |UNIQUESTRING|AddShortcode)->shortcodeDisplayApp();
-
     }
 
 }
 
-// Initialize
-$initializeFrontendClass = new |UNIQUESTRING|FrontEndMain();
+/**
+ * Initialization.
+ */
+$frontendClassInstance = new |UNIQUESTRING|FrontEndMain();
 
-// include classes
-$initializeFrontendClass->additionalClasses();
+/**
+ * Include classes to the global space.
+ */
+$frontendClassInstance->additionalClasses();

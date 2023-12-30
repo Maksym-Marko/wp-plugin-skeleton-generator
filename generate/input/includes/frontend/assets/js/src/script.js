@@ -1,9 +1,9 @@
 ; (function ($) {
     $(function () {
-		// JS Script
+		// JS Script.
 		if (document.getElementById('|uniquestring|_app')) {
 
-			// Block component
+			// Block component.
 			Vue.component('|uniquestring|_block', {
 				props: {
 					open: {
@@ -18,7 +18,7 @@
 				`
 			});
 
-			// Button component
+			// Button component.
 			Vue.component('|uniquestring|_button', {
 				props: {
 					open: {
@@ -36,7 +36,7 @@
 				`
 			});
 			
-			// run app
+			// Run the app.
 			new Vue({
 				el: '#|uniquestring|_app',
 				data: {

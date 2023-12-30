@@ -3,52 +3,57 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * The |UNIQUESTRING|Gutenberg class.
+ *
+ * Here you can register you own
+ * Gutenberg blocks.
+ */
 class |UNIQUESTRING|Gutenberg
 {
 
     public function registerBlocks()
     {
 
-        // blocks extending
+        // Blocks extending.
         add_action('enqueue_block_editor_assets', [$this, 'blocksExtendingScript']);
         add_filter('render_block', [$this, 'blocksExtendingRender'], 10, 2);
 
-        // full-width-section-image
+        // Full width section image.
         add_action('init', [$this, 'fullWidthSectionImage']);
 
-        // content slider
+        // Content slider.
         add_action('init', [$this, 'contentSlider']);
         add_action('wp_enqueue_scripts', [$this, 'contentSliderScripts']);
 
-        // full-width-section
+        // Full width section.
         add_action('init', [$this, 'fullWidthSection']);
 
-        // responsive spacer
+        // Responsive spacer.
         add_action('init', [$this, 'responsiveSpacer']);
 
-        // counter section
+        // Counter section.
         add_action('init', [$this, 'counterSection']);
 
-        // nested blocks
+        // Nested blocks.
         add_action('init', [$this, 'nestedBlocks']);
 
-        // image section
+        // Image section.
         add_action('init', [$this, 'imageSection']);
 
-        // simple image
+        // Simple image.
         add_action('init', [$this, 'simpleImage']);
 
-        // simple text
+        // Simple text.
         add_action('init', [$this, 'simpleText']);
 
-        // server side rendering
+        // Server side rendering.
         add_action('init', [$this, 'serverSideRendering']);
     }
 
     /**
-     * Extending
+     * Extending example.
      */
-
     public function  blocksExtendingScript()
     {
 
@@ -60,7 +65,6 @@ class |UNIQUESTRING|Gutenberg
             $config['dependencies'],
             $config['version']
         );
-
     }
 
     public function blocksExtendingRender(string $blockContent, array $block)
@@ -86,21 +90,20 @@ class |UNIQUESTRING|Gutenberg
         $blockContent = preg_replace('#^<([^>]+)>#m', '<$1 data-oa-prompt="' . esc_html($block['attrs']['extendedSettings']['prompt']) . '">', $blockContent);
     
         return $blockContent;
-
     }
 
     /**
      * Blocks
      */
 
-    // full width section image
+    // Full width section image.
     public function fullWidthSectionImage()
     {
 
         register_block_type(__DIR__ . '/build/full-width-section-image');
     }
 
-    // content slider
+    // Content slider.
     public function contentSlider()
     {
 
@@ -112,7 +115,7 @@ class |UNIQUESTRING|Gutenberg
 
         $asset_file = include('build/responsive-spacer/index.asset.php');
 
-        // owl css
+        // Owl css.
         wp_enqueue_style(
             'owl-carousel',
             |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/css/owl.carousel.min.css',
@@ -120,7 +123,7 @@ class |UNIQUESTRING|Gutenberg
             $asset_file['version']
         );
 
-        // owl js
+        // Owl js.
         wp_enqueue_script(
             'owl-carousel',
             |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/js/owl.carousel.min.js',
@@ -129,7 +132,7 @@ class |UNIQUESTRING|Gutenberg
             true
         );
 
-        // owl handler.js
+        // Owl handler.js
         wp_enqueue_script(
             'mx-owl-carousel-handler',
             |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/content-slider/js/handler.js',
@@ -139,30 +142,30 @@ class |UNIQUESTRING|Gutenberg
         );
     }
 
-    // full width section
+    // Full width section.
     public function fullWidthSection()
     {
 
         register_block_type(__DIR__ . '/build/full-width-section');
     }
 
-    // main banner
+    // Main banner.
     public function mainBanner()
     {
 
         register_block_type(__DIR__ . '/build/main-banner');
     }
 
-    // responsive spacer
+    // Responsive spacer.
     public function responsiveSpacer()
     {
 
         register_block_type( __DIR__ . '/build/responsive-spacer' );
-
     }
 
     public function responsive_spacer_dynamic_render_callback($block_attributes)
     {
+
         ob_start();
 
         include  __DIR__ . '/src/responsive-spacer/callback.php';
@@ -170,63 +173,70 @@ class |UNIQUESTRING|Gutenberg
         return ob_get_clean();
     }
 
-    // counter section
+    // Counter section.
     public function counterSection()
     {
 
         register_block_type(__DIR__ . '/build/counter-section');
 
-        // children blocks
-        // block one
+        /**
+         * Children blocks.
+         */
+        // Block one.
         register_block_type(__DIR__ . '/build/counter-section/child-blocks/block-one');
 
-        // now lets add animation
+        // Let's add animation.
         wp_enqueue_style('|uniquestring|_animate_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/css/animate.min.css');
 
         $asset_file = include('build/counter-section/index.asset.php');
 
-        // wow
+        // WOW.
         wp_enqueue_script('|uniquestring|_counter_section_wow', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/wow.min.js', ['jquery', ...$asset_file['dependencies']], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
-        // waypoints
+        // WAYPOINTS.
         wp_enqueue_script('|uniquestring|_counter_section_waypoints', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/waypoints.min.js', ['|uniquestring|_counter_section_wow'], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
-        // counterup
+        // COUNTERUP.
         wp_enqueue_script('|uniquestring|_counter_section_counterup', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/counterup.min.js', ['|uniquestring|_counter_section_waypoints'], |UNIQUESTRING|_PLUGIN_VERSION, true);
 
-        // main
+        // Main.
         wp_enqueue_script('|uniquestring|_counter_section_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/gutenberg/assets/counter-section/js/script.js', ['|uniquestring|_counter_section_counterup'], |UNIQUESTRING|_PLUGIN_VERSION, true);
     }
 
-    // nested blocks
+    // Nested blocks.
     public function nestedBlocks()
     {
         register_block_type(__DIR__ . '/build/nested-blocks');
 
-        // children blocks
-        // block one
+        /**
+         * Children blocks.
+         */
+        // Block one.
         register_block_type(__DIR__ . '/build/nested-blocks/child-blocks/block-one');
     }
 
-    // image section
+    // Image section.
     public function imageSection()
     {
+
         register_block_type(__DIR__ . '/build/image-section');
     }
 
-    // simple image
+    // Simple image.
     public function simpleImage()
     {
+
         register_block_type(__DIR__ . '/build/simple-image');
     }
 
-    // simple text
+    // Simple text.
     public function simpleText()
     {
+
         register_block_type(__DIR__ . '/build/simple-text');
     }
 
-    // server side rendering
+    // Server side rendering.
     public function serverSideRendering()
     {
 
@@ -280,6 +290,12 @@ class |UNIQUESTRING|Gutenberg
     }
 }
 
+/**
+ * Initialization.
+ */
 $gutenbergClassInstance = new |UNIQUESTRING|Gutenberg();
 
+/**
+ * Register custom Gutenberg blocks.
+ */
 $gutenbergClassInstance->registerBlocks();

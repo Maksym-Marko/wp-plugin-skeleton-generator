@@ -3,12 +3,16 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-// require Route-Registrar.php
+// Require Route Registrar class.
 require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Route-Registrar.php';
 
-/*
-* Route class
-*/
+/**
+ * The |UNIQUESTRING|Route class.
+ *
+ * This class works together with 
+ * |UNIQUESTRING|RouteRegistrar class and helps
+ * create a menu pate in the admin panel.
+ */
 class |UNIQUESTRING|Route
 {
     
@@ -16,7 +20,6 @@ class |UNIQUESTRING|Route
     {
 
         return new |UNIQUESTRING|RouteRegistrar( ...$args );
-
     }
     
 }
