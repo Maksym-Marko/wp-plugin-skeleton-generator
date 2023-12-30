@@ -71,13 +71,13 @@ Contains a wide set of files and functions.
 
 == Changelog ==
 
-= 6.0.0 (12/30/2023) =
+= 6.0.0 (12/30/2023) =  
 \* Refactoring. Added more escape/translate functions. Debugging mode improved.
 
-= 5.4.1 (12/2/2023) =
+= 5.4.1 (12/2/2023) =  
 \* Added an example of block extending. Now you can add metadata to paragraph, title and button.
 
-= 5.4.0 (11/23/2023) =
+= 5.4.0 (11/23/2023) =  
 \* Added JS minifier. Added more escape functions. Fixed Routers by WordPress requirements. Added Vue.js v2.7.14 and example. Added shortcode example. Made admin menu links unique.
 
 = 5.3.6 =
