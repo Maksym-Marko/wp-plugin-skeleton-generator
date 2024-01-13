@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) exit;
 class |UNIQUESTRING|MetaboxesGenerator
 {
 
-    private $args = [];
+    private $args = []; 
 
     private $defaults = [];
 
@@ -23,7 +23,8 @@ class |UNIQUESTRING|MetaboxesGenerator
             'post_types'   => 'page', // ['page', 'post']
             'name'         => esc_html('Extra metabox 1', 'wp-plugin-skeleton'),
             'metabox_type' => 'input-text',
-            'options'  => []
+            'options'      => [],
+			'context'      => 'normal' //side, advanced
         ];
 
         $this->args = wp_parse_args($args, $this->defaults);
@@ -67,7 +68,7 @@ class |UNIQUESTRING|MetaboxesGenerator
             $this->args['name'],
             [$this, 'metaBoxContent'],
             $this->args['post_types'],
-            'normal' // 'low'
+            $this->args['context'],
         );
     }
 
