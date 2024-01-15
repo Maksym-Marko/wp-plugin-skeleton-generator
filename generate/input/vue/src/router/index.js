@@ -14,6 +14,10 @@ const routes = [
                 path: '/',
                 name: 'Home',
                 component: () => import('@/views/Home.vue'),
+            },
+            {
+                path: '/:pageSlug',
+                component: () => import('@/views/Page.vue'),
             }
         ]
     },

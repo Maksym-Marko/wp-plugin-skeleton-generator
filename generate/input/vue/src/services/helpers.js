@@ -9,10 +9,16 @@ export const extractMenuItem = (domElement) => {
         menuItem = {}
 
         menuItem.label = a.innerText
-        menuItem.route = a.getAttribute('href')
+        menuItem.route = '/'
+        const href = a.getAttribute('href')        
 
-        // TODO
-        // Extract route from href
+        const pattern = new RegExp(`${import.meta.env.VITE_API_BASE_URL}\/(.*)\/$`)
+
+        const route = href.match(pattern)
+
+        if (!route) return false
+
+        menuItem.route = route[1]
 
         const subMenu = domElement.querySelector('ul')
 
