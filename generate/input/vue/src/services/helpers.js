@@ -10,11 +10,18 @@ export const extractMenuItem = (domElement) => {
 
         menuItem.label = a.innerText
         menuItem.route = '/'
-        const href = a.getAttribute('href')        
+        const href = a.getAttribute('href')
 
         const pattern = new RegExp(`${import.meta.env.VITE_API_BASE_URL}\/(.*)\/$`)
 
-        const route = href.match(pattern)
+        let route = href.match(pattern)
+
+        if (href === import.meta.env.VITE_API_BASE_URL + '/') {
+            route = [
+                import.meta.env.VITE_API_BASE_URL,
+                '/'
+            ]
+        }
 
         if (!route) return false
 

@@ -44,9 +44,11 @@ router.beforeEach( ( to, from, next ) => {
 
                 const headerMenu = store.getters['navigation/getHeaderMenu']
 
+                console.log(navigation);
+
                 if(headerMenu.length === 0) {
 
-                    const mainMenu = Navigation.getHeaderMenu(198);
+                    const mainMenu = Navigation.getHeaderMenu(parseInt(import.meta.env.VITE_HEADER_MENU_ID));
 
                     if(Array.isArray(mainMenu)) {
                         // Set Header Menu
@@ -55,11 +57,7 @@ router.beforeEach( ( to, from, next ) => {
                             headerMenu: mainMenu
                         } )
                     }
-
-                    
-
                 }
-
               } )
         } )()
 
@@ -75,7 +73,7 @@ router.beforeEach( ( to, from, next ) => {
 
     }
 
-    next(_next);  
+    next(_next);
   
     // Reset attempt
     store.commit( {

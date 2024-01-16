@@ -10,4 +10,15 @@ export default defineConfig({
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }
     ],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        dir: 'dist/assets/',
+        entryFileNames: 'index.js',
+        assetFileNames: 'index.css',
+        chunkFileNames: 'chunk.js',
+        manualChunks: undefined,
+      }
+    }
+  }
 });

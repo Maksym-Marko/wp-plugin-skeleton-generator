@@ -6,11 +6,12 @@ const pages = {
     getters: {
       getPages: state => state.items,
     },
-    mutations: {     
+    mutations: {
         SET_PAGES: ( state, payload ) => {
-
-            const {pages} = payload            
-            state.items = pages;
+          
+          const {pages} = payload
+          
+          state.items = pages;
 
         },
     },

@@ -1,14 +1,48 @@
 <template>
-    <div class="flex p-8 justify-center">
-        <input type="text" class="rounded border-2 border-gray-200" />
-    </div>
+    <div v-if="homePage" :id="homePage.id" class="p-8" v-html="homePage.content.rendered"></div>
 </template>
 
-<!-- https://youtu.be/cfiN8lCA3RM?si=MGszGzCSS5z8vEQD -->
-
 <script setup>
-import { computed } from 'vue';
+import { onMounted, computed, watch, ref } from 'vue';
 import store from '../store';
+import { useRoute } from "vue-router";
 
-const meals = computed(() => store.state.meals)
+const route = useRoute()
+
+const pages = computed(() => store.getters['pages/getPages'])
+
+const homePage = ref(null)
+
+const getHomePage = () => {
+
+    const pages = store.getters['pages/getPages']
+
+    if (Array.isArray(pages)) {
+
+        for (let page of pages) {
+
+            if (page.slug === import.meta.env.VITE_HOME_SLUG) {
+
+                homePage.value = page
+                break;
+            }
+        }
+    }
+}
+
+onMounted(() => {
+
+    getHomePage()
+})
+
+watch(route, () => {
+
+    getHomePage()
+})
+
+watch(pages, () => {
+
+    getHomePage()
+})
+
 </script>
