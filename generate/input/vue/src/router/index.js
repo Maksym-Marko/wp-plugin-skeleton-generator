@@ -28,59 +28,73 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach( ( to, from, next ) => {
+router.beforeEach((to, from, next) => {
 
     const pages = store.getters['pages/getPages']
     const navigation = store.getters['navigation/getNavigations']
-  
+
     let _next = null
 
     // Get navigation
-    if(navigation.length === 0) {
+    if (navigation.length === 0) {
 
-        ;( async () => {
+        ; (async () => {
             await Navigation.getNavigations()
-              .then( res => {
+                .then(res => {
 
-                const headerMenu = store.getters['navigation/getHeaderMenu']
+                    // Set Header Menu
+                    const headerMenu = store.getters['navigation/getHeaderMenu']
 
-                console.log(navigation);
+                    if (headerMenu.length === 0) {
 
-                if(headerMenu.length === 0) {
+                        const mainMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_HEADER_MENU_ID));
 
-                    const mainMenu = Navigation.getHeaderMenu(parseInt(import.meta.env.VITE_HEADER_MENU_ID));
-
-                    if(Array.isArray(mainMenu)) {
-                        // Set Header Menu
-                        store.commit( {
-                            type: 'navigation/SET_HEADER_MENU',
-                            headerMenu: mainMenu
-                        } )
+                        if (Array.isArray(mainMenu)) {
+                            store.commit({
+                                type: 'navigation/SET_HEADER_MENU',
+                                headerMenu: mainMenu
+                            })
+                        }
                     }
-                }
-              } )
-        } )()
+
+                    // Set Footer Menu
+                    const footerMenu = store.getters['navigation/getFooterMenu']
+
+                    if (footerMenu.length === 0) {
+
+                        const secondMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_FOOTER_MENU_ID));
+
+                        if (Array.isArray(secondMenu)) {
+                            store.commit({
+                                type: 'navigation/SET_FOOTER_MENU',
+                                footerMenu: secondMenu
+                            })
+                        }
+                    }
+
+                })
+        })()
 
     }
 
     // Get pages
-    if(pages.length === 0) {
+    if (pages.length === 0) {
 
-        ;( async () => {
+        ; (async () => {
             await Pages.getPages()
-              .then( res => {} )      
-        } )()
+                .then(res => { })
+        })()
 
     }
 
     next(_next);
-  
+
     // Reset attempt
-    store.commit( {
-      type: 'system/SET_ATTEMPT',
-      attempt: false
-    } )
-  
-  } )
-  
-  export default router
+    store.commit({
+        type: 'system/SET_ATTEMPT',
+        attempt: false
+    })
+
+})
+
+export default router

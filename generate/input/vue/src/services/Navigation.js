@@ -26,7 +26,7 @@ const Navigation = {
         })
 
     },
-    getHeaderMenu(menuID) {
+    getMenu(menuID) {
 
         if (isNaN(menuID)) return false
 
@@ -34,7 +34,7 @@ const Navigation = {
 
         if (navigation.length === 0) return false
 
-        let headerMenu = [];
+        let fullMenu = [];
 
         navigation.forEach(menu => {
 
@@ -57,7 +57,7 @@ const Navigation = {
 
                                 if (menuItem) {
 
-                                    headerMenu.push(menuItem)
+                                    fullMenu.push(menuItem)
                                 }
                             }
                         }
@@ -69,9 +69,19 @@ const Navigation = {
             }
         });
 
-        return headerMenu
+        if(fullMenu.length===0) {
+            fullMenu = [
+                {
+                    route: '/',
+                    label: 'Home'
+                }
+            ]
+        }
 
-    }
+        return fullMenu
+
+    },
+
 }
 
 export default Navigation

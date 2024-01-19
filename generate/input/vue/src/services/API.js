@@ -47,14 +47,7 @@ API.interceptors.response.use(
 
         type: 'notify/SET_ERRORS',
         errors: _errors
-      })
-
-      if (error.response.status !== 422) {
-
-        // logout 
-        store.commit('user/DESTROY_USER')
-        router.push({ name: 'Login' })
-      }
+      });
 
     } else {
 

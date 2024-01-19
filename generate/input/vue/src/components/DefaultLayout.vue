@@ -1,18 +1,20 @@
 <template>
-  <Navigation />
 
-  <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+  <div class="wp-site-blocks">
+    
+    <Header />
 
-      <router-view />
+    <router-view />
 
-    </div>
-  </main>
+    <Footer />
+    
+  </div>
 
   <FlashMessage />
 </template>
 
 <script setup>
-import Navigation from '@/components/Navigation.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 import FlashMessage from '@/components/FlashMessage.vue'
 </script>

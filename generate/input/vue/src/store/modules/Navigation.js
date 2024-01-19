@@ -2,17 +2,13 @@ const navigation = {
     namespaced: true,
     state: {
       items: [],
-      headerMenu: [
-        // {
-        //   label: 'About',
-        //   route: 'about',
-        //   children: []
-        // }
-      ]
+      headerMenu: [],
+      footerMenu: []
     },
     getters: {
       getNavigations: state => state.items,
       getHeaderMenu: state => state.headerMenu,
+      getFooterMenu: state => state.footerMenu,
     },
     mutations: {     
         SET_NAVIGATIONS: ( state, payload ) => {
@@ -24,7 +20,12 @@ const navigation = {
 
           const {headerMenu} = payload
           state.headerMenu = headerMenu;
-        }
+        },
+        SET_FOOTER_MENU: ( state, payload ) => {
+
+          const {footerMenu} = payload
+          state.footerMenu = footerMenu;
+        },
     },
   }
   

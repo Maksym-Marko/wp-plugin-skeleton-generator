@@ -1,5 +1,7 @@
 <template>
-    <div v-if="currentPage" :id="currentPage.id" class="p-8" v-html="currentPage.content.rendered"></div>
+
+    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="currentPage?.content?.rendered"></div>
+
 </template>
 
 <script setup>
