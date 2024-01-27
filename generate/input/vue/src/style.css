@@ -1,5 +1,3 @@
-
-/* @import "http://gutenberg.local/wp-includes/css/dist/block-library/style.css"; */
 @import "./assets/css/wp-style.css";
 @tailwind base;
 @tailwind components;

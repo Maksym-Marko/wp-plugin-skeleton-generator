@@ -1,14 +1,9 @@
 <template>
+  <Header />
 
-  <div class="wp-site-blocks">
-    
-    <Header />
+  <router-view />
 
-    <router-view />
-
-    <Footer />
-    
-  </div>
+  <Footer />
 
   <FlashMessage />
 </template>

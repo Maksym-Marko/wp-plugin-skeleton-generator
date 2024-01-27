@@ -1,6 +1,6 @@
 <template>
 
-    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="homePage?.content?.rendered"></div>
+    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="homePage?.post_content"></div>
 
 </template>
 
@@ -23,7 +23,7 @@ const getHomePage = () => {
 
         for (let page of pages) {
 
-            if (page.slug === import.meta.env.VITE_HOME_SLUG) {
+            if (page.post_name === import.meta.env.VITE_HOME_SLUG) {
 
                 homePage.value = page
                 break;

@@ -12,6 +12,8 @@ const Navigation = {
 
                     if (res?.status === 200) {
 
+                        console.log(res.data);
+
                         store.commit({
                             type: 'navigation/SET_NAVIGATIONS',
                             navigations: res.data,
@@ -38,11 +40,11 @@ const Navigation = {
 
         navigation.forEach(menu => {
 
-            if (menu.id === parseInt(menuID)) {
-                if (typeof menu?.content?.rendered === 'string') {
-                    const menuString = menu.content.rendered
+            if (menu.ID === parseInt(menuID)) {
+                if (typeof menu?.post_content === 'string') {
+                    const menuString = menu.post_content
                     const parser = new DOMParser()
-
+                    
                     try {
 
                         const dom = parser.parseFromString(menuString, 'text/html')

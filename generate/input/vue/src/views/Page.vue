@@ -1,6 +1,6 @@
 <template>
 
-    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="currentPage?.content?.rendered"></div>
+    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="currentPage?.post_content"></div>
 
 </template>
 
@@ -29,7 +29,7 @@ const getCurrentPage = () => {
 
         for (let page of pages) {
 
-            if (page.slug === route.params.pageSlug) {
+            if (page.post_name === route.params.pageSlug) {
 
                 currentPage.value = page
                 break;

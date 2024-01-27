@@ -4,7 +4,7 @@ import router from '@/router'
 
 const API = axios.create({
 
-  baseURL: `${import.meta.env.VITE_API_BASE_URL}/wp-json/wp/v2`,
+  baseURL: `${import.meta.env.VITE_API_BASE_URL}/wp-json/wpp-generator/v1`,
   withCredentials: true,
 })
 

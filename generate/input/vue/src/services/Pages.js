@@ -11,7 +11,7 @@ const Pages = {
 
                     if( res?.status === 200 ) {
 
-                        // console.log(res.data);
+                        console.log(res.data);
 
                         store.commit( {
                             type: 'pages/SET_PAGES',
