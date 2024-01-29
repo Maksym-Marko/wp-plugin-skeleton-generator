@@ -1,14 +1,14 @@
 <template>
-
-    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="currentPage?.post_content"></div>
-
+    <div style="min-height: 100vh;"
+        class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained"
+        v-html="currentPage?.post_content"></div>
 </template>
 
 <script setup>
-import { onMounted, computed, watch, ref } from 'vue';
+import { onMounted, computed, watch, ref } from 'vue'
 import router from '@/router'
-import store from '../store';
-import { useRoute } from "vue-router";
+import store from '../store'
+import { useRoute } from "vue-router"
 
 const route = useRoute()
 
@@ -16,11 +16,11 @@ const pages = computed(() => store.getters['pages/getPages'])
 
 const currentPage = ref(null)
 
-const getCurrentPage = () => {
+const getCurrentPage = (computed = false) => {
 
     if (!route?.params?.pageSlug) {
 
-        router.push({ name: 'Home' })
+        router.push({ name: 'home' })
     }
 
     const pages = store.getters['pages/getPages']
@@ -32,10 +32,19 @@ const getCurrentPage = () => {
             if (page.post_name === route.params.pageSlug) {
 
                 currentPage.value = page
-                break;
+                break
             }
         }
     }
+
+    if (computed) {
+
+        if (!currentPage.value) {
+
+            router.push({ name: 'notFound' })
+        }
+    }
+
 }
 
 onMounted(() => {
@@ -50,7 +59,7 @@ watch(route, () => {
 
 watch(pages, () => {
 
-    getCurrentPage()
+    getCurrentPage(true)
 })
 
 </script>

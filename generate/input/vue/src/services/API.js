@@ -1,6 +1,5 @@
 import axios from 'axios'
 import store from '@/store'
-import router from '@/router'
 
 const API = axios.create({
 
@@ -11,7 +10,7 @@ const API = axios.create({
 API.interceptors.request.use(config => {
 
   config.headers.Authorization = `Bearer ${store.getters['user/getToken']}`
-  return config;
+  return config
 })
 
 API.interceptors.response.use(
@@ -47,15 +46,15 @@ API.interceptors.response.use(
 
         type: 'notify/SET_ERRORS',
         errors: _errors
-      });
+      })
 
     } else {
 
       alert(error.message + '. Please check your API connection.')
       console.error(error.message)
     }
-    
-    // return Promise.reject(error);
+
+    // return Promise.reject(error)
   }
 )
 

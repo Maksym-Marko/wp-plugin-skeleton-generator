@@ -11,28 +11,33 @@ const notify = {
         getErrors: state => state.errors,
     },
     mutations: {
-        SET_ERRORS: ( state, payload ) => {
-            const {errors} = payload
+        SET_ERRORS: (state, payload) => {
+
+            const { errors } = payload
+
             state.errors = errors
 
-            clearTimeout( state.eI )
+            clearTimeout(state.eI)
 
-            state.eI = setTimeout( () => {
+            state.eI = setTimeout(() => {
+
                 state.errors = {}
-            }, 6000 )
+            }, 6000)
         },
-        SET_MESSAGES: ( state, payload ) => {
-            const {message} = payload
-            
-            state.messages.push( message )
-            
-            clearTimeout( state.mI )
+        SET_MESSAGES: (state, payload) => {
 
-            state.mI = setTimeout( () => {
+            const { message } = payload
+
+            state.messages.push(message)
+
+            clearTimeout(state.mI)
+
+            state.mI = setTimeout(() => {
+
                 state.messages = []
-            }, 6000 )
+            }, 6000)
         }
     },
 }
-  
+
 export default notify

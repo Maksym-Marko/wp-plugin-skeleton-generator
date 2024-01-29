@@ -12,12 +12,17 @@ const routes = [
         children: [
             {
                 path: '/',
-                name: 'Home',
+                name: 'home',
                 component: () => import('@/views/Home.vue'),
             },
             {
                 path: '/:pageSlug',
                 component: () => import('@/views/Page.vue'),
+            },
+            {
+                path: '/:pathMatch(.*)*',
+                name: 'notFound',
+                component: () => import('@/views/NotFound.vue'),
             }
         ]
     },
@@ -31,15 +36,15 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 
     const pages = store.getters['pages/getPages']
-    const navigation = store.getters['navigation/getNavigations']
+    const navigation = store.getters['navigation/getNavigation']
 
     let _next = null
 
     // Get navigation
     if (navigation.length === 0) {
 
-        ; (async () => {
-            await Navigation.getNavigations()
+        (async () => {
+            await Navigation.getNavigation()
                 .then(res => {
 
                     // Set Header Menu
@@ -47,7 +52,7 @@ router.beforeEach((to, from, next) => {
 
                     if (headerMenu.length === 0) {
 
-                        const mainMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_HEADER_MENU_ID));
+                        const mainMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_HEADER_MENU_ID))
 
                         if (Array.isArray(mainMenu)) {
                             store.commit({
@@ -62,7 +67,7 @@ router.beforeEach((to, from, next) => {
 
                     if (footerMenu.length === 0) {
 
-                        const secondMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_FOOTER_MENU_ID));
+                        const secondMenu = Navigation.getMenu(parseInt(import.meta.env.VITE_FOOTER_MENU_ID))
 
                         if (Array.isArray(secondMenu)) {
                             store.commit({
@@ -80,14 +85,14 @@ router.beforeEach((to, from, next) => {
     // Get pages
     if (pages.length === 0) {
 
-        ; (async () => {
+        (async () => {
             await Pages.getPages()
                 .then(res => { })
         })()
 
     }
 
-    next(_next);
+    next(_next)
 
     // Reset attempt
     store.commit({

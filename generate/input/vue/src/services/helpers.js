@@ -25,7 +25,7 @@ export const extractMenuItem = (domElement) => {
 
         if (!route) return false
 
-        menuItem.route = route[1]
+        menuItem.route = route[1] !== '/' ? '/' + route[1] : '/'
 
         const subMenu = domElement.querySelector('ul')
 

@@ -3,7 +3,7 @@ import store from '@/store'
 import { extractMenuItem } from '@/services/helpers'
 
 const Navigation = {
-    getNavigations() {
+    getNavigation() {
 
         return new Promise((resolve, reject) => {
 
@@ -11,8 +11,6 @@ const Navigation = {
                 .then(res => {
 
                     if (res?.status === 200) {
-
-                        console.log(res.data);
 
                         store.commit({
                             type: 'navigation/SET_NAVIGATIONS',
@@ -32,11 +30,11 @@ const Navigation = {
 
         if (isNaN(menuID)) return false
 
-        const navigation = store.getters['navigation/getNavigations']
+        const navigation = store.getters['navigation/getNavigation']
 
         if (navigation.length === 0) return false
 
-        let fullMenu = [];
+        let fullMenu = []
 
         navigation.forEach(menu => {
 
@@ -44,7 +42,7 @@ const Navigation = {
                 if (typeof menu?.post_content === 'string') {
                     const menuString = menu.post_content
                     const parser = new DOMParser()
-                    
+
                     try {
 
                         const dom = parser.parseFromString(menuString, 'text/html')
@@ -55,7 +53,7 @@ const Navigation = {
 
                             for (let item of menuItems) {
 
-                                const menuItem = extractMenuItem(item);
+                                const menuItem = extractMenuItem(item)
 
                                 if (menuItem) {
 
@@ -69,9 +67,9 @@ const Navigation = {
                     }
                 }
             }
-        });
+        })
 
-        if(fullMenu.length===0) {
+        if (fullMenu.length === 0) {
             fullMenu = [
                 {
                     route: '/',

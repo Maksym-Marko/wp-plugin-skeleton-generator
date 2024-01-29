@@ -1,13 +1,13 @@
 <template>
-
-    <div style="min-height: 100vh;" class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained" v-html="homePage?.post_content"></div>
-
+    <div style="min-height: 100vh;"
+        class="entry-content variations-design-container wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained"
+        v-html="homePage?.post_content"></div>
 </template>
 
 <script setup>
-import { onMounted, computed, watch, ref } from 'vue';
-import store from '../store';
-import { useRoute } from "vue-router";
+import { onMounted, computed, watch, ref } from 'vue'
+import store from '../store'
+import { useRoute } from "vue-router"
 
 const route = useRoute()
 
@@ -26,7 +26,7 @@ const getHomePage = () => {
             if (page.post_name === import.meta.env.VITE_HOME_SLUG) {
 
                 homePage.value = page
-                break;
+                break
             }
         }
     }

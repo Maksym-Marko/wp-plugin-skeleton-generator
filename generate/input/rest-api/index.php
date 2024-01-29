@@ -9,13 +9,13 @@ if (!defined('ABSPATH')) exit;
  * Here you can register your REST API endpoints.
  */
 
-if (!function_exists('mxpfwra_wpp_generator_get_endpoint_pages')) {
+if (!function_exists('|uniquestring|_wpp_generator_get_endpoint_pages')) {
     /**
      * Return all the pages with status publish.
      * 
      * @return void
      */
-    function mxpfwra_wpp_generator_get_endpoint_pages()
+    function |uniquestring|_wpp_generator_get_endpoint_pages()
     {
 
         $pages = get_pages([
@@ -36,13 +36,13 @@ if (!function_exists('mxpfwra_wpp_generator_get_endpoint_pages')) {
     }
 }
 
-if (!function_exists('mxpfwra_wpp_generator_get_endpoint_navigation')) {
+if (!function_exists('|uniquestring|_wpp_generator_get_endpoint_navigation')) {
     /**
      * Return navigation.
      * 
      * @return void
      */
-    function mxpfwra_wpp_generator_get_endpoint_navigation()
+    function |uniquestring|_wpp_generator_get_endpoint_navigation()
     {
 
         $navigation = get_posts([
@@ -63,13 +63,13 @@ if (!function_exists('mxpfwra_wpp_generator_get_endpoint_navigation')) {
     }
 }
 
-if (!function_exists('mxpfwra_wpp_generator_register_example_routes')) {
+if (!function_exists('|uniquestring|_wpp_generator_register_example_routes')) {
     /**
      * Here you can register your routes
      * And example: http://gutenberg.local/wp-json/wpp-generator/v1/pages
      * @return void
      */
-    function mxpfwra_wpp_generator_register_example_routes()
+    function |uniquestring|_wpp_generator_register_example_routes()
     {
 
         /**
@@ -77,7 +77,7 @@ if (!function_exists('mxpfwra_wpp_generator_register_example_routes')) {
          */
         register_rest_route('wpp-generator/v1', '/navigation', array(
             'methods'  => WP_REST_Server::READABLE,
-            'callback' => 'mxpfwra_wpp_generator_get_endpoint_navigation',
+            'callback' => '|uniquestring|_wpp_generator_get_endpoint_navigation',
         ));
 
         /**
@@ -85,8 +85,8 @@ if (!function_exists('mxpfwra_wpp_generator_register_example_routes')) {
          */
         register_rest_route('wpp-generator/v1', '/pages', array(
             'methods'  => WP_REST_Server::READABLE,
-            'callback' => 'mxpfwra_wpp_generator_get_endpoint_pages',
+            'callback' => '|uniquestring|_wpp_generator_get_endpoint_pages',
         ));
     }
 }
-add_action('rest_api_init', 'mxpfwra_wpp_generator_register_example_routes');
+add_action('rest_api_init', '|uniquestring|_wpp_generator_register_example_routes');
