@@ -50,7 +50,7 @@ API.interceptors.response.use(
 
     } else {
 
-      alert(error.message + '. Please check your API connection.')
+      // alert(error.message + '. Please check your API connection.')
       console.error(error.message)
     }
 

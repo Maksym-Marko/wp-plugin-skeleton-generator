@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 6.0.0) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 6.1.0) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.0.0 <small>(12/30/2023)</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.0 <small>(01/30/2024)</small></a>
 
         </nav>
 
@@ -90,7 +90,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-              <label for="pluginURI">Plugin URI <span class="text-muted">(example: https://github.com/Maxim-us/wp-plugin-skeleton)</span>:</label>
+              <label for="pluginURI">Plugin URI <span class="text-muted">(example: https://github.com/Maksym-Marko/wp-plugin-skeleton)</span>:</label>
               <input type="url" class="form-control" id="pluginURI" name="plugin_uri" placeholder="" value="" />
               <div class="invalid-feedback">
                 Valid plugin URI is required.
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-              <label for="authorURI">Author URI <span class="text-muted">(example: https://github.com/Maxim-us)</span>:</label>
+              <label for="authorURI">Author URI <span class="text-muted">(example: https://github.com/Maksym-Marko)</span>:</label>
               <input type="url" class="form-control" id="authorURI" name="author_uri" placeholder="" value="" />
               <div class="invalid-feedback">
                 Valid Author URI is required.
@@ -138,7 +138,7 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          Stable version: <b>6.0.0</b> <br>
+          Stable version: <b>6.1.0</b> <br>
           Tested up to WordPress: <b>6.4</b>
         </p>
 
@@ -249,6 +249,9 @@
           <li>
             Added an example of block extending. Now you can add metadata to paragraph, title and button.
           </li>
+          <li>
+            Ability to create SPA using Vue Composition API and WordPress REST API.
+          </li>
 
         </ul>
         </p>
@@ -281,9 +284,9 @@
 
 
     <footer class="mx-footer my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2018 - 2023 WPP Generator</p>
+      <p class="mb-1">© 2018 - 2024 WPP Generator</p>
       <ul class="list-inline">
-        <li class="list-inline-item"><a href="https://github.com/Maxim-us/wp-plugin-skeleton-generator" target="_blank">Github</a></li>
+        <li class="list-inline-item"><a href="https://github.com/Maksym-Marko/wp-plugin-skeleton-generator" target="_blank">Github</a></li>
         <li class="list-inline-item"><a href="https://markomaksym.com.ua/" target="_blank">Marko Maksym</a></li>
       </ul>
 

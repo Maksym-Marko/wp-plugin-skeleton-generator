@@ -133,7 +133,9 @@ final class MxGeneratePluginStructure
 			'.po',
 			'.pot',
 			'.gitignore',
-
+			'.env',
+			'.html',
+			'.vue',
 		];
 
 		foreach ($list_mime_type as $item_mime_type) {

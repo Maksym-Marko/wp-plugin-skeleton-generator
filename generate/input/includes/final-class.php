@@ -73,6 +73,28 @@ final class |UniqueClassName|WPPGenerator
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/gutenberg/gutenberg-main.php';
     }
 
+    /**
+     * REST API.
+     * 
+     * @return void
+     */
+    public function includeRestApi()
+    {
+
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'rest-api/index.php';
+    }
+
+    /**
+     * Vue Feature.
+     * 
+     * @return void
+     */
+    public function includeVueFeature()
+    {
+
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'vue/wp/index.php';
+    }
+
 }
 
 /**
@@ -99,3 +121,13 @@ $wppGenerator->includeFrontendPath();
  * Turn on the gutenberg features.
  */
 $wppGenerator->includeGutenbergPath();
+
+/**
+ * Turn on REST API.
+ */
+$wppGenerator->includeRestApi();
+
+/**
+ * Turn on the vue feature.
+ */
+// $wppGenerator->includeVueFeature();

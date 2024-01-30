@@ -66,7 +66,7 @@ if (!function_exists('|uniquestring|_wpp_generator_get_endpoint_navigation')) {
 if (!function_exists('|uniquestring|_wpp_generator_register_example_routes')) {
     /**
      * Here you can register your routes
-     * And example: http://gutenberg.local/wp-json/wpp-generator/v1/pages
+     * And example: http://example.local/wp-json/wpp-generator/v1/pages
      * @return void
      */
     function |uniquestring|_wpp_generator_register_example_routes()
