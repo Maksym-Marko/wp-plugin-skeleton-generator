@@ -71,7 +71,7 @@ Contains a wide set of files and functions.
 
 == Changelog ==
 
-= 6.1.0 (01/30/2024) =  
+= 6.1.0 (01/31/2024) =  
 \* Ability to create SPA using Vue Composition API and WordPress REST API.
 
 = 6.0.0 (12/30/2023) =  
