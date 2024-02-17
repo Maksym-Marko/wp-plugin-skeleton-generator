@@ -22,7 +22,7 @@ final class |UniqueClassName|WPPGenerator
     {        
 
         // Helpers.
-        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Helpers.php';
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/helpers.php';
 
         // Catching errors.
         require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Catching-Errors.php';

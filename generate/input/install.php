@@ -4,7 +4,7 @@
 if (!defined('ABSPATH')) exit;
 
 // Create table class.
-require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/Create-Table.php';
+require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/core/create-table.php';
 
 /**
  * The |UNIQUESTRING|BasisPluginClass class.
