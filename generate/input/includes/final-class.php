@@ -41,6 +41,17 @@ final class |UniqueClassName|WPPGenerator
     }
 
     /**
+     * Include Global Features.
+     * 
+     * @return void
+     */
+    public function includeGlobalFeatures()
+    {
+
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/global/index.php';
+    }
+
+    /**
      * Include Admin Panel Features.
      * 
      * @return void
@@ -85,14 +96,14 @@ final class |UniqueClassName|WPPGenerator
     }
 
     /**
-     * Vue Feature.
+     * Vue SPA Feature.
      * 
      * @return void
      */
-    public function includeVueFeature()
+    public function includeVueSPAFeature()
     {
 
-        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'vue/wp/index.php';
+        require_once |UNIQUESTRING|_PLUGIN_ABS_PATH . 'vue-spa/wp/index.php';
     }
 
 }
@@ -106,6 +117,11 @@ $wppGenerator = new |UniqueClassName|WPPGenerator();
  * The core files (helpers, models, controllers ...).
  */
 $wppGenerator->includeCore();
+
+/**
+ * Include global features.
+ */
+$wppGenerator->includeGlobalFeatures();
 
 /**
  * Turn on the admin panel features.
@@ -128,6 +144,6 @@ $wppGenerator->includeGutenbergPath();
 $wppGenerator->includeRestApi();
 
 /**
- * Turn on the vue feature.
+ * Turn on the Vue SPA feature.
  */
-// $wppGenerator->includeVueFeature();
+// $wppGenerator->includeVueSPAFeature();

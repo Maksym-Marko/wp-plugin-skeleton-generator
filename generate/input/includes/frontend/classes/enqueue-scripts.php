@@ -26,16 +26,9 @@ class |UNIQUESTRING|EnqueueScriptsFrontend
 
         wp_enqueue_style( '|uniquestring|_font_awesome', |UNIQUESTRING|_PLUGIN_URL . 'assets/font-awesome-4.6.3/css/font-awesome.min.css' );
 
-        wp_enqueue_style( '|uniquestring|_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/css/style.css', [ '|uniquestring|_font_awesome' ], |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
+        wp_enqueue_style( '|uniquestring|_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/build/index.css', [ '|uniquestring|_font_awesome' ], |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
 
-        // include Vue.js
-        // dev version
-        // wp_enqueue_script('|uniquestring|_vue_js', |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.dev.js', [], UNIQUESTRING|_PLUGIN_VERSION, true);
-
-        // production version
-        wp_enqueue_script( '|uniquestring|_vue_js', |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.production.js', [], |UNIQUESTRING|_PLUGIN_VERSION, true );
-
-        wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/js/build/script.min.js', [ 'jquery', '|uniquestring|_vue_js' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/build/index.js', [ 'jquery', '|uniquestring|-vue-script' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
     }
 
 }

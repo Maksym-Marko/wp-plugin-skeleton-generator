@@ -3,7 +3,7 @@
 You can create a WordPress Plugin Boilerplate here - https://markomaksym.com.ua/wp-plugin-skeleton-generator/
 
 ## About WPP generator
-**Stable version: 6.1.0**  
+**Stable version: 6.1.1**  
 **Tested up to WordPress: 6.4**  
 
 When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
@@ -51,16 +51,20 @@ General installation procedures are those common for all WordPress plugins:
     * Image Section
     * Nested blocks
     * Counter Section
+    * Content Slider
+    * Full width section
+    * Responsive spacer
+    * Block extending example
 - Added sortable column to CPT admin table;
-- Improved admin table search for CPT (search by metabox values) - Must be improved.
-- Improved metaboxes.
+- Improved admin table search for CPT (search by metabox values) - Must be improved;
+- Ability to create SPA using Vue Composition API and WordPress REST API;
+- JavaScript and CSS management.
 
 Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory: https://profiles.wordpress.org/markomaksym/#content-plugins
 
-
 == WPP Generator ==
 
-WPP Generator Version:        6.1.0  
+WPP Generator Version:        6.1.1  
 WPP Generator Author:         Maksym Marko  
 WPP Generator Author Website: https://markomaksym.com.ua/  
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
@@ -70,6 +74,9 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 6.1.1 (02/17/2024) =  
+\* Vite is used for frontend JS and CSS management.
 
 = 6.1.0 (01/31/2024) =  
 \* Ability to create SPA using Vue Composition API and WordPress REST API.

@@ -36,9 +36,9 @@ if (!function_exists('|uniquestring|_wpp_generator_scripts')) {
     function |uniquestring|_wpp_generator_scripts()
     {
 
-        wp_enqueue_script('|uniquestring|_wpp_generator_app_script', |UNIQUESTRING|_PLUGIN_URL .'vue/dist/assets/index.js', [], |UNIQUESTRING|_PLUGIN_VERSION, false);
+        wp_enqueue_script('|uniquestring|_wpp_generator_app_script', |UNIQUESTRING|_PLUGIN_URL .'vue-spa/dist/assets/index.js', [], |UNIQUESTRING|_PLUGIN_VERSION, false);
 
-        wp_enqueue_style('|uniquestring|_wpp_generator_app_script_style', |UNIQUESTRING|_PLUGIN_URL . 'vue/dist/assets/index.css', [], |UNIQUESTRING|_PLUGIN_VERSION, 'all');
+        wp_enqueue_style('|uniquestring|_wpp_generator_app_script_style', |UNIQUESTRING|_PLUGIN_URL . 'vue-spa/dist/assets/index.css', [], |UNIQUESTRING|_PLUGIN_VERSION, 'all');
     }
 }
 add_action('wp_enqueue_scripts', '|uniquestring|_wpp_generator_scripts');

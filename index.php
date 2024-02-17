@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 6.1.0) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 6.1.1) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.0 <small>(01/31/2024)</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.1 <small>(02/17/2024)</small></a>
 
         </nav>
 
@@ -138,7 +138,7 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          Stable version: <b>6.1.0</b> <br>
+          Stable version: <b>6.1.1</b> <br>
           Tested up to WordPress: <b>6.4</b>
         </p>
 
@@ -244,7 +244,7 @@
             Added shortcode example;
           </li>
           <li>
-            You can easily minify your JS code for production.
+            Vite is used for frontend JS and CSS management.
           </li>
           <li>
             Added an example of block extending. Now you can add metadata to paragraph, title and button.
