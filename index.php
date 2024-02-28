@@ -274,8 +274,10 @@
       <div class="col-md-12">
 
         <p class="lead">
-          WPP Generator Video Guide:
-          <a href="https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr" target="_blank">https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr</a>
+          WPP Generator Video Guide:          
+        </p>
+        <p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=dKbi1aBdq7IqSc41&amp;list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </p>
 
       </div>

@@ -17,6 +17,9 @@ This framework gives a much wider starter functionality and a set of necessary f
 WPP generator will generate the skeleton files needed for any WordPress plugin. The full functionality of the plugin can be accessed either via a web interface.
 To generate a plugin skeleton for WordPress go to https://markomaksym.com.ua/wp-plugin-skeleton-generator/. Fill in all the fields and click the "Create Plugin Boilerplate" button.
 
+## WPP Generator Video Guide:
+[![IMAGE ALT TEXT HERE](https://i3.ytimg.com/vi/K_USk6upqMA/maxresdefault.jpg)](https://www.youtube.com/watch?v=K_USk6upqMA&list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML)
+
 2. Installation
 This starter plugin has been tested to work with WordPress 5.0 and newer.
 General installation procedures are those common for all WordPress plugins:
@@ -67,7 +70,7 @@ Here you can find a list of plugins created using the WPP generator and hosted i
 WPP Generator Version:        6.1.1  
 WPP Generator Author:         Maksym Marko  
 WPP Generator Author Website: https://markomaksym.com.ua/  
-WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
+WPP Generator Video Guide:    https://www.youtube.com/watch?v=K_USk6upqMA&list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML
 
 ===
 This script is designed to create a basic skeleton for your future WordPress plugin.

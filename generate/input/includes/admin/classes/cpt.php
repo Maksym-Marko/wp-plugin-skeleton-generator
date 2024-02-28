@@ -110,6 +110,7 @@ class |UNIQUESTRING|CPTGenerator
             'query_var'          => true,
             'rewrite'            => ['slug' => 'world-books'],
             'capability_type'    => 'page', // 'post'
+            'capability'         => 'manage_options',
             'has_archive'        => true,
             'hierarchical'       => true, // false
             'menu_position'      => null,

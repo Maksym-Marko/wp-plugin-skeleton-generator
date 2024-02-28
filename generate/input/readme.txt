@@ -9,7 +9,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
     WPP Generator Version:        6.1.1
     WPP Generator Author:         Maksym Marko
     WPP Generator Author Website: https://markomaksym.com.ua/
-    WPP Generator Video Guide:    https://www.youtube.com/watch?v=6PZbXBhxtN0&list=PLqb2a5jr0z4XRwroV3nA9nAe4596lPjxr
+    WPP Generator Video Guide:    https://www.youtube.com/watch?v=K_USk6upqMA&list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML
 
 |Brief description|
 
