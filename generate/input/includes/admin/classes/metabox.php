@@ -22,7 +22,7 @@ class |UNIQUESTRING|MetaboxesGenerator
             'id'           => 'mx-extra-metabox-1',
             'post_types'   => 'page', // ['page', 'post']
             'name'         => esc_html('Extra metabox 1', 'wp-plugin-skeleton'),
-            'metabox_type' => 'input-text',
+            'metabox_type' => 'text',
             'options'      => [],
 			'context'      => 'normal' //side, advanced
         ];
@@ -88,14 +88,22 @@ class |UNIQUESTRING|MetaboxesGenerator
 
         if (isset($_POST) && isset($_POST[$this->args['post_meta_key']])) {
 
-            if ($this->args['metabox_type'] == 'input-email') {
+            if ($this->args['metabox_type'] == 'email') {
 
                 // Email field.
                 $value = sanitize_email(wp_unslash($_POST[$this->args['post_meta_key']]));
-            } elseif ($this->args['metabox_type'] == 'input-url') {
+            } elseif ($this->args['metabox_type'] == 'url') {
 
                 // Url field.
                 $value = esc_url_raw($_POST[$this->args['post_meta_key']]);
+            } elseif ($this->args['metabox_type'] == 'number-int') {
+
+                // Number int field.
+                $value = intval($_POST[$this->args['post_meta_key']]);
+            } elseif ($this->args['metabox_type'] == 'number-float') {
+
+                // Number float field.
+                $value = floatval($_POST[$this->args['post_meta_key']]);
             } elseif ($this->args['metabox_type'] == 'textarea') {
 
                 // Textarea field.
@@ -153,15 +161,25 @@ class |UNIQUESTRING|MetaboxesGenerator
         <div>
             <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"></label>
 
-            <?php if ($this->args['metabox_type'] == 'input-email') : ?>
+            <?php if ($this->args['metabox_type'] == 'email') : ?>
 
                 <!-- Email field. -->
                 <input type="email" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
-            <?php elseif ($this->args['metabox_type'] == 'input-url') : ?>
+            <?php elseif ($this->args['metabox_type'] == 'url') : ?>
 
                 <!-- Url field. -->
                 <input type="url" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+
+            <?php elseif ($this->args['metabox_type'] == 'number-int') : ?>
+
+                <!-- Number int field. -->
+                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+
+            <?php elseif ($this->args['metabox_type'] == 'number-float') : ?>
+
+                <!-- Number float field. -->
+                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
 
             <?php elseif ($this->args['metabox_type'] == 'textarea') : ?>
 

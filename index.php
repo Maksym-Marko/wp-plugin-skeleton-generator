@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 6.1.1) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 6.1.2) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.1 <small>(02/17/2024)</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.2 <small>(03/02/2024)</small></a>
 
         </nav>
 
@@ -138,7 +138,7 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          Stable version: <b>6.1.1</b> <br>
+          Stable version: <b>6.1.2</b> <br>
           Tested up to WordPress: <b>6.4</b>
         </p>
 
@@ -203,7 +203,7 @@
             Custom Post Type (ability to create a new post type and add new posts);
           </li>
           <li>
-            Metaboxes examples (text, number, select, checkboxes, radio buttons, textarea, image upload);
+            Metaboxes examples (text, email, url, number int/float, select, checkboxes, radio buttons, textarea, image upload.);
           </li>
           <li>
             Custom database table creation;
@@ -225,7 +225,7 @@
           </li>
           <li>
             Gutenberg blocks:
-            <ul>              
+            <ul>
               <li> Server Side Rendering</li>
               <li> Simple Text</li>
               <li> Simple Image</li>
@@ -244,13 +244,19 @@
             Added shortcode example;
           </li>
           <li>
-            Vite is used for frontend JS and CSS management.
+            Vite is used for frontend JS and CSS management;
           </li>
           <li>
-            Added an example of block extending. Now you can add metadata to paragraph, title and button.
+            Added an example of block extending. Now you can add metadata to paragraph, title and button;
           </li>
           <li>
-            Ability to create SPA using Vue Composition API and WordPress REST API.
+            Ability to create SPA using Vue Composition API and WordPress REST API;
+          </li>
+          <li>
+            wp_register_script example;
+          </li>
+          <li>
+            SCSS support.
           </li>
 
         </ul>
@@ -274,7 +280,7 @@
       <div class="col-md-12">
 
         <p class="lead">
-          WPP Generator Video Guide:          
+          WPP Generator Video Guide:
         </p>
         <p>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=dKbi1aBdq7IqSc41&amp;list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

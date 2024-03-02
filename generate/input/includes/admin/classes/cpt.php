@@ -169,7 +169,7 @@ class |UNIQUESTRING|CPTGenerator
                 'id'           => 'email-metabox',
                 'post_types'   => self::$post_type,
                 'name'         => esc_html('E-mail field', 'wp-plugin-skeleton'),
-                'metabox_type' => 'input-email'
+                'metabox_type' => 'email'
             ]
         );
 
@@ -179,7 +179,27 @@ class |UNIQUESTRING|CPTGenerator
                 'id'           => 'url-metabox',
                 'post_types'   => self::$post_type,
                 'name'         => esc_html('URL field', 'wp-plugin-skeleton'),
-                'metabox_type' => 'input-url'
+                'metabox_type' => 'url'
+            ]
+        );
+
+        // Add number int input.
+        new |UNIQUESTRING|MetaboxesGenerator(
+            [
+                'id'           => 'number-int-metabox',
+                'post_types'   => self::$post_type,
+                'name'         => esc_html('Number Int field', 'wp-plugin-skeleton'),
+                'metabox_type' => 'number-int'
+            ]
+        );
+
+        // Add number float input.
+        new |UNIQUESTRING|MetaboxesGenerator(
+            [
+                'id'           => 'number-float-metabox',
+                'post_types'   => self::$post_type,
+                'name'         => esc_html('Number Float field', 'wp-plugin-skeleton'),
+                'metabox_type' => 'number-float'
             ]
         );
 

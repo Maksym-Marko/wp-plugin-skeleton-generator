@@ -18,9 +18,9 @@ class |UNIQUESTRING|MainAdminModel extends |UNIQUESTRING|Model
     public static function wpAjax()
     {
 
-        add_action( 'wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|MainAdminModel', 'prepareUpdateDatabaseColumn'], 10, 1 );
-        add_action( 'wp_ajax_|uniquestring|_create_item', ['|UNIQUESTRING|MainAdminModel', 'prepareItemCreation'], 10, 1 );
-        add_action( 'wp_ajax_|uniquestring|_bulk_actions', ['|UNIQUESTRING|MainAdminModel', 'prepareBulkActions'], 10, 1 );
+        add_action( 'wp_ajax_|uniquestring|_update', ['|UNIQUESTRING|MainAdminModel', 'prepareUpdateDatabaseColumn'] );
+        add_action( 'wp_ajax_|uniquestring|_create_item', ['|UNIQUESTRING|MainAdminModel', 'prepareItemCreation'] );
+        add_action( 'wp_ajax_|uniquestring|_bulk_actions', ['|UNIQUESTRING|MainAdminModel', 'prepareBulkActions'] );
     }
 
     /*

@@ -3,7 +3,7 @@
 You can create a WordPress Plugin Boilerplate here - https://markomaksym.com.ua/wp-plugin-skeleton-generator/
 
 ## About WPP generator
-**Stable version: 6.1.1**  
+**Stable version: 6.1.2**  
 **Tested up to WordPress: 6.4**  
 
 When I want to create a new WordPress plugin I always use a WPP generator (wordpress empty plugin) to start with. This saves a lot of time and allows me to avoid a large part of the routine work.
@@ -35,7 +35,9 @@ General installation procedures are those common for all WordPress plugins:
 - Custom Post Type (ability to create a new post type and add new posts);
 - Metaboxes:
     * text
-    * number
+    * email
+    * url
+    * number int/float
     * checkboxes
     * radio buttons
     * textarea
@@ -61,13 +63,15 @@ General installation procedures are those common for all WordPress plugins:
 - Added sortable column to CPT admin table;
 - Improved admin table search for CPT (search by metabox values) - Must be improved;
 - Ability to create SPA using Vue Composition API and WordPress REST API;
-- JavaScript and CSS management.
+- JavaScript and CSS management;
+- wp_register_script example;
+- SCSS support.
 
 Here you can find a list of plugins created using the WPP generator and hosted in the WordPress.org plugin directory: https://profiles.wordpress.org/markomaksym/#content-plugins
 
 == WPP Generator ==
 
-WPP Generator Version:        6.1.1  
+WPP Generator Version:        6.1.2  
 WPP Generator Author:         Maksym Marko  
 WPP Generator Author Website: https://markomaksym.com.ua/  
 WPP Generator Video Guide:    https://www.youtube.com/watch?v=K_USk6upqMA&list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML
@@ -77,6 +81,9 @@ This script is designed to create a basic skeleton for your future WordPress plu
 Contains a wide set of files and functions.
 
 == Changelog ==
+
+= 6.1.2 (03/02/2024) =  
+\* SCSS support. Number Int/Float metabox. wp_register_script example.
 
 = 6.1.1 (02/17/2024) =  
 \* Vite is used for frontend JS and CSS management.

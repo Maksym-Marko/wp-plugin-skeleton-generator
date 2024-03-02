@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) exit;
         wp_register_script(
             '|uniquestring|-vue-script',
             |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.dev.js', // 'assets/vue/vue.production.js'
-            array(),
+            [],
             |UNIQUESTRING|_PLUGIN_VERSION
         );
 
