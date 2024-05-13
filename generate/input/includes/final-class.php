@@ -145,5 +145,7 @@ $wppGenerator->includeRestApi();
 
 /**
  * Turn on the Vue SPA feature.
+ * Please turn on JS in this file 
+ * \includes\frontend\classes\enqueue-scripts.php
  */
 // $wppGenerator->includeVueSPAFeature();

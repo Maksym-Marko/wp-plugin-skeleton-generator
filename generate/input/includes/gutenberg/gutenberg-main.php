@@ -282,9 +282,14 @@ class |UNIQUESTRING|Gutenberg
 
         $numberOfPostsInDB = $wpdb->get_var("SELECT COUNT(ID) FROM $tableName");
 
-        ob_start();
+        $data = [
+            'numberOfPostsInDB' => $numberOfPostsInDB,
+            'displayPostsNumber' => $displayPostsNumber
+        ];
 
-        var_dump($numberOfPostsInDB, $displayPostsNumber);
+        ob_start();
+        
+        |uniquestring|RequireViewFileFrontend('index.php', $data );
 
         return ob_get_clean();
     }

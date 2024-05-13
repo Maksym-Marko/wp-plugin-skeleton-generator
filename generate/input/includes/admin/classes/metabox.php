@@ -21,10 +21,12 @@ class |UNIQUESTRING|MetaboxesGenerator
         $this->defaults = [
             'id'           => 'mx-extra-metabox-1',
             'post_types'   => 'page', // ['page', 'post']
-            'name'         => esc_html('Extra metabox 1', 'wp-plugin-skeleton'),
+            'name'         => esc_html__('Extra metabox 1', 'wp-plugin-skeleton'),
             'metabox_type' => 'text',
             'options'      => [],
-			'context'      => 'normal' //side, advanced
+			'context'      => 'normal', //side, advanced
+            'readonly'     => false,
+            'default'      => ''
         ];
 
         $this->args = wp_parse_args($args, $this->defaults);
@@ -152,11 +154,15 @@ class |UNIQUESTRING|MetaboxesGenerator
     public function metaBoxContent($post, $meta)
     {
 
+        // saved value
         $metaValue = get_post_meta(
             $post->ID,
             $this->args['post_meta_key'],
             true
-        ); ?>
+        ); 
+        
+        // default value
+        $fieldValue = ($metaValue == '' && $this->args['default'] !== '') ? $this->args['default'] : $metaValue; ?>
 
         <div>
             <label for="<?php echo esc_attr($this->args['post_meta_key']); ?>"></label>
@@ -164,27 +170,27 @@ class |UNIQUESTRING|MetaboxesGenerator
             <?php if ($this->args['metabox_type'] == 'email') : ?>
 
                 <!-- Email field. -->
-                <input type="email" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+                <input type="email" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo sanitize_email( $fieldValue ); ?>" <?php echo $this->args['readonly'] == true ? 'readonly' : ''; ?> />
 
             <?php elseif ($this->args['metabox_type'] == 'url') : ?>
 
                 <!-- Url field. -->
-                <input type="url" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+                <input type="url" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo esc_url_raw( $fieldValue ); ?>" <?php echo $this->args['readonly'] == true ? 'readonly' : ''; ?> />
 
             <?php elseif ($this->args['metabox_type'] == 'number-int') : ?>
 
                 <!-- Number int field. -->
-                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo intval( $fieldValue ); ?>" <?php echo $this->args['readonly'] == true ? 'readonly' : ''; ?> />
 
             <?php elseif ($this->args['metabox_type'] == 'number-float') : ?>
 
                 <!-- Number float field. -->
-                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+                <input type="number" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo floatval( $fieldValue ); ?>" <?php echo $this->args['readonly'] == true ? 'readonly' : ''; ?> />
 
             <?php elseif ($this->args['metabox_type'] == 'textarea') : ?>
 
                 <!-- Textarea field. -->
-                <textarea name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" cols="30" rows="10"><?php echo $metaValue; ?></textarea>
+                <textarea name="<?php echo esc_attr($this->args['post_meta_key']); ?>" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" cols="30" rows="10"><?php echo esc_html( $fieldValue ); ?></textarea>
 
             <?php elseif ($this->args['metabox_type'] == 'image') : ?>
 
@@ -355,7 +361,7 @@ class |UNIQUESTRING|MetaboxesGenerator
             <?php else : ?>
 
                 <!-- Input text. -->
-                <input type="text" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo $metaValue; ?>" />
+                <input type="text" id="<?php echo esc_attr($this->args['post_meta_key']); ?>" name="<?php echo esc_attr($this->args['post_meta_key']); ?>" value="<?php echo esc_html( $metaValue ); ?>" <?php echo $this->args['readonly'] == true ? 'readonly' : ''; ?> />
 
             <?php endif; ?>
 

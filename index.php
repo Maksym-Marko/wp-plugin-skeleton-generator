@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WPP generator (version - 6.1.2) - boilerplate for your best WordPress plugin</title>
+  <title>WPP generator (version - 6.1.3) - boilerplate for your best WordPress plugin</title>
 
   <meta property="og:title" content="WPP generator - boilerplate for your best WordPress plugin" />
   <meta name="twitter:title" content="WPP generator - boilerplate for your best WordPress plugin" />
@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.2 <small>(03/02/2024)</small></a>
+          <a class="navbar-brand" href="https://markomaksym.com.ua/wp-plugin-skeleton-generator/"><b>WPP generator</b> version - 6.1.3 <small>(05/13/2024)</small></a>
 
         </nav>
 
@@ -138,8 +138,8 @@
         <h2 class="mb-4">About WPP generator</h2>
 
         <p>
-          Stable version: <b>6.1.2</b> <br>
-          Tested up to WordPress: <b>6.4</b>
+          Stable version: <b>6.1.3</b> <br>
+          Tested up to WordPress: <b>6.5</b>
         </p>
 
         <p>

@@ -28,7 +28,12 @@ class |UNIQUESTRING|EnqueueScriptsFrontend
 
         wp_enqueue_style( '|uniquestring|_style', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/build/index.css', [ '|uniquestring|_font_awesome' ], |UNIQUESTRING|_PLUGIN_VERSION, 'all' );
 
-        wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/build/index.js', [ 'jquery', '|uniquestring|-vue-script' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
+        /*
+        * Please uncomment this code if you're going
+        * to use any Vue.js features or would like to
+        * organize your JS code.
+        */
+        // wp_enqueue_script( '|uniquestring|_script', |UNIQUESTRING|_PLUGIN_URL . 'includes/frontend/assets/build/index.js', [ 'jquery', '|uniquestring|-vue-script' ], |UNIQUESTRING|_PLUGIN_VERSION, true );
     }
 
 }

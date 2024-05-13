@@ -7,7 +7,7 @@ if (!function_exists('|uniquestring|RequireClassFileAdmin')) {
     /**
      * Require class for admin panel.
      * 
-     * @param string $file   File name in /includes/admin/classes/ folder.
+     * @param string $file   File name in \wp-content\plugins\wp-plugin-skeleton\includes/admin/classes/ folder.
      *
      * @return void
      */
@@ -21,7 +21,7 @@ if (!function_exists('|uniquestring|RequireClassFileFrontend')) {
     /**
      * Require class for frontend part.
      * 
-     * @param string $file   File name in /includes/frontend/classes/ folder.
+     * @param string $file   File name in \wp-content\plugins\wp-plugin-skeleton\includes/frontend/classes/ folder.
      *
      * @return void
      */
@@ -35,7 +35,7 @@ if (!function_exists('|uniquestring|UseModel')) {
     /**
      * Require a Model.
      * 
-     * @param string $model   File name in /includes/admin/models/ folder without ".php".
+     * @param string $model   File name in \wp-content\plugins\wp-plugin-skeleton/includes/admin/models/ folder without ".php".
      *
      * @return void
      */
@@ -51,7 +51,7 @@ if (!function_exists('|uniquestring|UseModel')) {
 if (!function_exists('|uniquestring|DebugToFile')) {
     /**
      * Debug anything. The result will be collected 
-     * in /mx-debug/mx-debug.txt file in the root of
+     * in \wp-content\plugins\wp-plugin-skeleton/mx-debug/mx-debug.txt file in the root of
      * the plugin.
      * 
      * @param string $content   List of parameters (coma separated).
@@ -153,4 +153,15 @@ if (!function_exists('|uniquestring|AdminRedirect')) {
             printf("<script>window.location.href = '%s';</script>", esc_url_raw($url));
         } );
     }
+}
+
+/*
+* Require view for frontend panel
+*/
+function |uniquestring|RequireViewFileFrontend($file, $data = NULL)
+{
+
+    $data = $data;
+
+    include |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/views/' . $file;
 }

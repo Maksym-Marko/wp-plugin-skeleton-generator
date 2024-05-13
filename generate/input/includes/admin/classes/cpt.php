@@ -159,7 +159,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'         => 'text-metabox',
                 'post_types' => self::$post_type,
-                'name'       => esc_html('Book Author', 'wp-plugin-skeleton')
+                'name'       => esc_html__('Book Author', 'wp-plugin-skeleton')
             ]
         );
 
@@ -168,7 +168,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'email-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('E-mail field', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('E-mail field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'email'
             ]
         );
@@ -178,7 +178,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'url-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('URL field', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('URL field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'url'
             ]
         );
@@ -188,7 +188,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'number-int-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Number Int field', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Number Int field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'number-int'
             ]
         );
@@ -198,7 +198,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'number-float-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Number Float field', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Number Float field', 'wp-plugin-skeleton'),
                 'metabox_type' => 'number-float'
             ]
         );
@@ -208,7 +208,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'desc-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Some Description', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Some Description', 'wp-plugin-skeleton'),
                 'metabox_type' => 'textarea'
             ]
         );
@@ -218,7 +218,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'checkboxes-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Checkbox Buttons', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Checkbox Buttons', 'wp-plugin-skeleton'),
                 'metabox_type' => 'checkbox',
                 'options' => [
                     [
@@ -243,7 +243,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'radio-buttons-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Radio Buttons', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Radio Buttons', 'wp-plugin-skeleton'),
                 'metabox_type' => 'radio',
                 'options' => [
                     [
@@ -268,7 +268,7 @@ class |UNIQUESTRING|CPTGenerator
             [
                 'id'           => 'featured-image-metabox',
                 'post_types'   => self::$post_type,
-                'name'         => esc_html('Featured image', 'wp-plugin-skeleton'),
+                'name'         => esc_html__('Featured image', 'wp-plugin-skeleton'),
                 'metabox_type' => 'image'
             ]
         );
@@ -279,7 +279,7 @@ class |UNIQUESTRING|CPTGenerator
                 'id'            => 'select-metabox',
                 'post_types'    => self::$post_type,
                 'metabox_type'  => 'select',
-                'name'          => esc_html('Select Pet', 'wp-plugin-skeleton'),
+                'name'          => esc_html__('Select Pet', 'wp-plugin-skeleton'),
                 'options' => [
                     [
                         'value'   => 'dog',

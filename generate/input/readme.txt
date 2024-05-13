@@ -2,11 +2,11 @@
 Contributors: |Contributors|
 Tags: create table, create CPT, add metaboxes
 Requires at least: 5.9
-Tested up to: 6.4
+Tested up to: 6.5
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-    WPP Generator Version:        6.1.2
+    WPP Generator Version:        6.1.3
     WPP Generator Author:         Maksym Marko
     WPP Generator Author Website: https://markomaksym.com.ua/
     WPP Generator Video Guide:    https://www.youtube.com/watch?v=K_USk6upqMA&list=PLqb2a5jr0z4W5S6YJrQzpaXHsDNt9Z5ML
