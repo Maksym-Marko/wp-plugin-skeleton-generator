@@ -295,7 +295,7 @@
       <p class="mb-1">© 2018 - 2024 WPP Generator</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a href="https://github.com/Maksym-Marko/wp-plugin-skeleton-generator" target="_blank">Github</a></li>
-        <li class="list-inline-item"><a href="https://markomaksym.com.ua/" target="_blank">Marko Maksym</a></li>
+        <li class="list-inline-item"><a href="https://markomaksym.com.ua/" target="_blank">Maksym Marko</a></li>
       </ul>
 
       <?php $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
