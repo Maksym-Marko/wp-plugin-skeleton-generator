@@ -83,27 +83,35 @@ Contains a wide set of files and functions.
 == Changelog ==
 
 = 6.1.4 (05/16/2024) =  
-\* Added Vue.js v2.7.16. Fixes small issues.
+
+\* Added Vue.js v2.7.16. Fixes small issues. REST API small bug fixed.
 
 = 6.1.3 (05/13/2024) =  
+
 \* Metaboxes improved. Frontend views folder added.
 
 = 6.1.2 (03/02/2024) =  
+
 \* SCSS support. Number Int/Float metabox. wp_register_script example.
 
 = 6.1.1 (02/17/2024) =  
+
 \* Vite is used for frontend JS and CSS management.
 
 = 6.1.0 (01/31/2024) =  
+
 \* Ability to create SPA using Vue Composition API and WordPress REST API.
 
 = 6.0.0 (12/30/2023) =  
+
 \* Refactoring. Added more escape/translate functions. Debugging mode improved.
 
 = 5.4.1 (12/2/2023) =  
+
 \* Added an example of block extending. Now you can add metadata to paragraph, title and button.
 
 = 5.4.0 (11/23/2023) =  
+
 \* Added JS minifier. Added more escape functions. Fixed Routers by WordPress requirements. Added Vue.js v2.7.14 and example. Added shortcode example. Made admin menu links unique.
 
 = 5.3.6 =

@@ -78,6 +78,7 @@ if (!function_exists('|uniquestring|_wpp_generator_register_example_routes')) {
         register_rest_route('wpp-generator/v1', '/navigation', array(
             'methods'  => WP_REST_Server::READABLE,
             'callback' => '|uniquestring|_wpp_generator_get_endpoint_navigation',
+            'permission_callback' => '__return_true',
         ));
 
         /**
@@ -86,6 +87,7 @@ if (!function_exists('|uniquestring|_wpp_generator_register_example_routes')) {
         register_rest_route('wpp-generator/v1', '/pages', array(
             'methods'  => WP_REST_Server::READABLE,
             'callback' => '|uniquestring|_wpp_generator_get_endpoint_pages',
+            'permission_callback' => '__return_true',
         ));
     }
 }

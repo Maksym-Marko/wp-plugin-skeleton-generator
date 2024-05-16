@@ -26,17 +26,17 @@ import { getPages } from './features/getPages'
         /**
          * Vue 2 Example
          */
-        if (document.getElementById('mxtps_app')) {
+        if (document.getElementById('|uniquestring|_app')) {
 
             // Block component.
-			Vue.component('mxtps_block', block);
+			Vue.component('|uniquestring|_block', block);
 
             // Button component.
-			Vue.component('mxtps_button', button);
+			Vue.component('|uniquestring|_button', button);
 
             // Run the app
             new Vue({
-                el: '#mxtps_app',
+                el: '#|uniquestring|_app',
                 data: {
                     open: false
                 },
