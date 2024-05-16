@@ -155,13 +155,14 @@ if (!function_exists('|uniquestring|AdminRedirect')) {
     }
 }
 
-/*
-* Require view for frontend panel
-*/
-function |uniquestring|RequireViewFileFrontend($file, $data = NULL)
-{
+if (!function_exists('|uniquestring|RequireViewFileFrontend')) {
+    /*
+    * Require view for frontend panel
+    */
+    function |uniquestring|RequireViewFileFrontend($file, $data = NULL) {
 
-    $data = $data;
+        $data = $data;
 
-    include |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/views/' . $file;
+        include |UNIQUESTRING|_PLUGIN_ABS_PATH . 'includes/frontend/views/' . $file;
+    }
 }

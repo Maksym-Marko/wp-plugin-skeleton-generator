@@ -18,11 +18,12 @@ if (!defined('ABSPATH')) exit;
     {
 
         /**
-         *  Register Vue.js.
+         *  Enqueue Vue 2.
          * */
-        wp_register_script(
+        wp_enqueue_script(
             '|uniquestring|-vue-script',
-            |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.dev.js', // 'assets/vue/vue.production.js'
+            |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.dev.js',
+            // |UNIQUESTRING|_PLUGIN_URL . 'assets/vue/vue.production.js',
             [],
             |UNIQUESTRING|_PLUGIN_VERSION
         );
@@ -30,3 +31,4 @@ if (!defined('ABSPATH')) exit;
     }
 }
 add_action('wp_enqueue_scripts', '|uniquestring|_register_scripts');
+add_action('admin_enqueue_scripts', '|uniquestring|_register_scripts');
